@@ -1,0 +1,17 @@
+FAMILY: name, picture, description
+BELONGS TO, 01 VARIETY, 0N FAMILY
+VARIETY: name, picture
+GROW, 0N VARIETY, 01 BOARD
+USER: first name, last name, street name, street number, town, postcode, department, country, email, password, nickname, profile picture
+
+IS PART OF, 11 OPERATION, 0N OPERATION TYPE
+OPERATION: date, _operation type, quantity, product name, maker, comment
+IS MADE, 01 OPERATION, 0N BOARD
+BOARD: name, active
+OWNS, 11 BOARD, 0N USER
+
+OPERATION TYPE: name, description
+:
+PHOTO: url, date
+HAS, 01 PHOTO, 0N BOARD
+:

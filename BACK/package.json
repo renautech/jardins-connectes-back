@@ -1,0 +1,15 @@
+{
+  "name": "API-jardins-connectes",
+  "version": "1.0.0",
+  "description": "API visant à fournir les données du site Les Jardins connectés // API which supply data for the webapp : 'Les Jardins Connectés'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

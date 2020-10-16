@@ -6,4 +6,6 @@
 
 ### Front
 
+- Component Navigation Added
+
 ### Back

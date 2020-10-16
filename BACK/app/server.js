@@ -1,10 +1,9 @@
 const app = require('express')();
+const router = require('./router');
+
 const port = process.env.PORT || 5555;
 
-
-
-
-
+app.use('/v1', router);
 
 app.launch = () => {
     app.listen(port, () => {

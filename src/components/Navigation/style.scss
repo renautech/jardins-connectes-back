@@ -1,0 +1,16 @@
+.navigation {
+  text-align: center;
+  background-color: lightgreen;
+  &__nav {
+    &__link {
+      display: inline-block;
+      width: 200px;
+
+      font-size: 1.5rem;
+
+      padding: 0.5rem;
+      
+      border: solid black 1px;
+    }
+  }
+}

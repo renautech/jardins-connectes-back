@@ -4,7 +4,10 @@
   "description": "API visant à fournir les données du site Les Jardins connectés // API which supply data for the webapp : 'Les Jardins Connectés'",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "db": "createdb jardins && sqitch deploy",
+    "seed": "node app/services/seeding"
   },
   "keywords": [],
   "author": "",

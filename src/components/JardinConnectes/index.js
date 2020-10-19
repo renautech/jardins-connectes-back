@@ -2,6 +2,7 @@ import React from 'react';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Navigation from 'src/components/Navigation';
+import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 
 import './style.scss';
@@ -13,6 +14,7 @@ const JardinConnectes = () => {
       <Header />
       <Navigation />
       <HomeVideo />
+      <Description />
       <Footer />
     </div>
   );

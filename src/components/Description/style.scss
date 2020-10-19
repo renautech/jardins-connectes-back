@@ -1,0 +1,24 @@
+@use 'src/styles/vars' as v;
+
+.description{
+  font-family: "Chilanka";
+  &-title{
+    color: v.$medium-color;
+    font-size: 1.3rem;
+    margin-top: v.$l-gut;
+   
+  }
+
+  &-content{
+    color: v.$darker-color;
+    margin: v.$xs-gut 0;
+  }
+
+  &-list{
+    margin-left: v.$l-gut;
+    li{
+      list-style: url('https://img.icons8.com/officel/16/000000/cute-pumpkin.png')
+    }
+  }
+
+}

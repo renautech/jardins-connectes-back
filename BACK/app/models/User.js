@@ -21,6 +21,23 @@ class Users {
         const oneUser = await db.query(`SELECT * FROM "user" WHERE id = $1`,[id]);
         return oneUser.rows[0];
     }
+
+    async save() {
+
+        if(this.id) {
+            // UPDATE
+
+        } else {
+
+            const insertedUser = await db.query(`SELECT * FROM newUser($1)`,[this]);
+            if(insertedUser.rowCount) {
+                this.id = insertedUser.rows[0].id;
+            }
+
+        }
+    }
+
+
 }
 
 module.exports = Users;

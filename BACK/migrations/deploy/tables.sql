@@ -9,7 +9,7 @@ CREATE TABLE "user" (
     street_name text,
     street_number int,
     town text,
-    postcode int,
+    postcode text,
     department text NOT NULL,
     country text,
     email text NOT NULL UNIQUE,

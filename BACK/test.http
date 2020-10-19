@@ -1,0 +1,17 @@
+POST http://localhost:5555/v1/users
+Content-Type : application/json
+
+{
+      "first_name": "testttt",
+      "last_name": "çamarcheeee",
+      "street_name": "Bghffghfghfghfgh",
+      "street_number": 14,
+      "town": "balecontest",
+      "postcode": "59500",
+      "department": "Paris",
+      "country": "RIOT",
+      "email": "mendozddfsdfpasddtrick@emtrac.com",
+      "password": "sdfsdfsdfsdf14564ZESDF",
+      "nickname": "Bowmfdfdeux",
+      "profile_picture": "http://seeding/osef"
+}

@@ -1,4 +1,8 @@
+@use 'src/styles/vars' as v;
+
 .footer {
+  position: absolute;
+  bottom: v.$s-gut;
   &-right {
     float: right;
   }

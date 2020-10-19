@@ -9,5 +9,6 @@ router.get('/users', mainController.findAll(User));
 router.get('/users/user/:id', mainController.findOne(User));
 router.post('/users', validateBody(insertUserSchema), mainController.insertOne(User));
 router.patch('/users/user/:id', validateBody(updateUserSchema), mainController.updateOne(User));
+router.delete('/users/user/:id', mainController.deleteOne(User));
 
 module.exports = router;

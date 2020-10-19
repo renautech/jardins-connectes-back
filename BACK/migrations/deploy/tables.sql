@@ -30,7 +30,7 @@ CREATE TABLE  variety(
     "name" text NOT NULL,
     picture text,
     "description" text,
-    family_id int NOT NULL REFERENCES family(id)
+    family_id int NOT NULL REFERENCES family(id) ON DELETE CASCADE
 );
 
 CREATE TABLE board (
@@ -38,14 +38,14 @@ CREATE TABLE board (
     "name" text NOT NULL,
     active boolean NOT NULL,
     variety_id int NOT NULL REFERENCES variety(id),
-    "user_id" int NOT NULL REFERENCES "user"(id)
+    "user_id" int NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
 CREATE TABLE photo (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "url" text NOT NULL,
     "date" timestamptz DEFAULT NOW(),
-    board_id int NOT NULL REFERENCES board(id)
+    board_id int NOT NULL REFERENCES board(id) ON DELETE CASCADE
 );
 
 CREATE TABLE operation_type (
@@ -61,8 +61,8 @@ CREATE TABLE operation (
     product_name text,
     maker text,
     comment text,
-    operation_type_id int NOT NULL REFERENCES operation_type(id),
-    board_id int NOT NULL REFERENCES board(id)
+    operation_type_id int NOT NULL REFERENCES operation_type(id) ON DELETE CASCADE,
+    board_id int NOT NULL REFERENCES board(id) ON DELETE CASCADE
 );
 
 COMMIT;

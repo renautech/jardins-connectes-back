@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const db = require('./database');
 const router = Router();
+const mainController = require('./controllers/mainController');
+const {validateQuery,validateBody} = require('./services/validator');
+const User = require('./models/User');
 
-router.get('/test', async (req, res) => {
-    const testSql = (await db.query(`SELECT * FROM "user";`)).rows;
-    res.json(testSql);
-});
+router.get('/users', mainController.findAll(User));
+router.get('/users/user/:id', mainController.findOne(User));
 
 module.exports = router;

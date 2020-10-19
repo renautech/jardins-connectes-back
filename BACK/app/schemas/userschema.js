@@ -8,9 +8,9 @@ const userschema = Joi.object({
     postcode: Joi.number().integer().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')),
     department: Joi.string().required(),
     country: Joi.string().required(),
-    email: Joi.email({minDomainSegments: 2, tlds: { allow: ['com','net']}}).required(),
+    email: Joi.email({minDomainSegments: 2, tlds: { allow: ['com','net']}}).unique().required(),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-    nickname: Joi.string().alphanum().min(3).max(30).required(),
+    nickname: Joi.string().alphanum().min(3).max(30).unique().required(),
     profile_picture: Joi.string().max(200)
 });
 

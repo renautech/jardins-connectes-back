@@ -1,11 +1,32 @@
+@use 'src/styles/vars' as v;
+
 .header {
   display: flex;
   justify-content: space-between;
+  text-align: center;
 
-  &-buttons{
+  &-links{
     display:flex;
     flex-direction: column;
+    
+
+    &-link {
+      width: 150px;
+      margin: 0.25rem 0.25rem;
+      font-size: 1.5rem;
+  
+      padding: 0.25rem;
+      
+      border: solid black 1px;
+      border-radius: 20px;
+    }
   }
+
+  &-title {
+    color: v.$title-color;
+    font-size: 3.5rem;
+  }
+
 
 }
 

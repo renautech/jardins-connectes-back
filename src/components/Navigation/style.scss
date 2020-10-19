@@ -1,16 +1,20 @@
+@use 'src/styles/vars' as v;
+
 .navigation {
   text-align: center;
-  background-color: lightgreen;
+  background-color: v.$menu-color;
   &__nav {
     &__link {
       display: inline-block;
-      width: 200px;
-
+      color: white;
+      width: 150px;
+      margin: 0.25rem 0.25rem;
       font-size: 1.5rem;
 
-      padding: 0.5rem;
+      padding: 0.25rem;
       
-      border: solid black 1px;
+      border: solid white 1px;
+      border-radius: 20px;
     }
   }
 }

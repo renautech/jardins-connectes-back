@@ -15,3 +15,14 @@ Content-Type : application/json
       "nickname": "Bowmfdfdeux",
       "profile_picture": "http://seeding/osef"
 }
+
+###
+
+PATCH http://localhost:5555/v1/users/user/2
+Content-Type: application/json
+
+{
+      "first_name": "YASUOOOOOOOO",
+      "last_name": "okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+}
+

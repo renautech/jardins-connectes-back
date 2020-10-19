@@ -25,8 +25,8 @@ class Users {
     async save() {
 
         if(this.id) {
-            // UPDATE
 
+            await db.query(`SELECT * FROM updateUser($1)`,[this]);
         } else {
 
             const insertedUser = await db.query(`SELECT * FROM newUser($1)`,[this]);

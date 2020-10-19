@@ -15,9 +15,19 @@ const mainController = {
     insertOne: (model) => async (req,res) => {
 
         const newEntrance = new model(req.body);
-        console.log(newEntrance);
         await newEntrance.save();
         res.json(newEntrance);
+    },
+
+    updateOne: (model) => async (req,res) => {
+
+        const toUpdate = await model.findOne(req.params.id);
+        const modelUpdate = new model(toUpdate);
+        for(const prop in req.body) {
+            modelUpdate[prop] = req.body[prop];
+        }
+        modelUpdate.save();
+        res.json(modelUpdate);
     }
 
 }

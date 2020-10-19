@@ -1,0 +1,8 @@
+@use 'src/styles/vars' as v;
+
+.homevideo {
+  margin-top: v.$m-gut;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

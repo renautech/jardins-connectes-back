@@ -3,7 +3,14 @@
 .footer {
   position: absolute;
   bottom: v.$s-gut;
+
+  width: 80%;
+  height: 5%;
+  color: white;
+  text-align: center;
+  background-color: v.$dark-color;
   &-right {
-    float: right;
+    margin-top: v.$xs-gut;
+
   }
 }

@@ -14,6 +14,12 @@ class Board {
         return boards.rows;
     }
 
+    static async findOne(id) {
+
+        const theBoard = await db.query(`SELECT * FROM "board" WHERE id = $1`,[id]);
+        return theBoard.rows[0];
+    }
+
 }
 
 module.exports = Board;

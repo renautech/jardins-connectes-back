@@ -14,5 +14,6 @@ router.patch('/users/user/:id', validateBody(updateUserSchema),flush ,mainContro
 router.delete('/users/user/:id',flush, mainController.deleteOne(User));
 
 router.get('/boards',cache , mainController.findAll(Board));
+router.get('/boards/board/:id',cache , mainController.findOne(Board));
 
 module.exports = router;

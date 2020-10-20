@@ -33,6 +33,16 @@ class Board {
         }
     }
 
+    async delete() {
+
+        if(this.id) {
+        await db.query(`DELETE FROM "board" WHERE id=$1`,[this.id]);
+        }
+        else {
+            this.errorMessage = "Impossible de supprimer une planche inexistante";
+        }
+    }
+
 }
 
 module.exports = Board;

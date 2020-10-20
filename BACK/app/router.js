@@ -18,5 +18,6 @@ router.get('/boards', cache, mainController.findAll(Board));
 router.get('/boards/board/:id', cache, mainController.findOne(Board));
 router.post('/boards', validateBody(insertBoardSchema), flush, mainController.insertOne(Board));
 router.patch('/boards/board/:id', validateBody(updateBoardSchema), flush, mainController.updateOne(Board));
+router.delete('/boards/board/:id', flush, mainController.deleteOne(Board));
 
 module.exports = router;

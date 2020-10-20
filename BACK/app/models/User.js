@@ -43,7 +43,7 @@ class Users {
         await db.query(`DELETE FROM "user" WHERE id=$1`,[this.id]);
         }
         else {
-            this.errorMessage = "Impossible de supprimer une planche inexistante";
+            this.errorMessage = "Impossible de supprimer un utilisateur inexistant";
         }
     }
 

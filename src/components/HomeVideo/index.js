@@ -14,7 +14,6 @@ const HomeVideo = () => {
         src="https://www.youtube.com/embed/watch?v=dJ26ChZXWUY?rel=0"
         frameBorder="0"
       >
-        test
       </iframe>
     </div>
   );

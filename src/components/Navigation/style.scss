@@ -3,18 +3,33 @@
 .navigation {
   text-align: center;
   background-color: v.$dark-color;
+  margin-bottom: v.$s-gut;
   &__nav {
     &__link {
       display: inline-block;
       color: white;
-      width: 150px;
-      margin: 0.25rem 0.25rem;
-      font-size: 1.5rem;
-
-      padding: 0.25rem;
-      
+      width: 100px;
+      margin: 0.25rem 0.1rem;
+      font-size: 1rem;
+      padding: 0.1rem;
       border: solid white 1px;
       border-radius: 20px;
     }
   }
+}
+
+
+@media screen and (min-width:800px){
+  .navigation {
+    &__nav {
+      &__link {
+        width: 150px;
+        margin: 0.25rem 0.25rem;
+        font-size: 1.5rem;
+        padding: 0.25rem;
+      }
+    }
+  }
+  
+
 }

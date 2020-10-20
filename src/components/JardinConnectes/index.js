@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Route,
   Switch,
@@ -17,6 +17,15 @@ import './style.scss';
 
 const JardinConnectes = () => {
   console.log('App launched');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const newEmail = (value) => {
+    setEmail(value);
+  };
+  const newPassword = (value) => {
+    setPassword(value);
+  };
+
   return (
     <div className="jardinconnectes">
       <Header />
@@ -26,7 +35,7 @@ const JardinConnectes = () => {
         <Description />
       </Route>
       <Route path="/connexion">
-        <LoginForm />
+        <LoginForm email={email} newEmail={newEmail} password={password} newPassword={newPassword}/>
       </Route>
       <Footer />
     </div>

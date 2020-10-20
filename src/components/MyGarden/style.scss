@@ -37,6 +37,14 @@
 
 @media screen and (max-width:1300px){
   .mygarden {
+    &__families {
+      margin-left: v.$m-gut;
+      display: flex;
+      flex-direction: column;
+      flex-wrap : nowrap;
+      height: 90%;
+      overflow: scroll;
+    }
     &__family {
       padding: 0.5rem;
       margin-top: v.$m-gut;;
@@ -59,6 +67,14 @@
 
 @media screen and (max-width:800px){
   .mygarden {
+    &__families {
+      margin-left: v.$m-gut;
+      display: flex;
+      flex-direction: column;
+      flex-wrap : wrap;
+      height: 90%;
+      overflow: scroll;
+    }
     &__family {
       padding: 0.5rem;
       margin-top: v.$m-gut;;

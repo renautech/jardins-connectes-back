@@ -23,7 +23,10 @@ class Photo {
     async save() {
 
         if(this.id) {
-            // UPDATE
+            const updatedPhoto = await db.query(`SELECT * FROM updatePhoto($1)`,[this]);
+            if (updatedPhoto.rowCount) {
+                this.date = updatedPhoto.rows[0].date;
+            }
         } else {
             const insertedPhoto = await db.query(`SELECT * FROM newPhoto($1)`,[this]);
             if(insertedPhoto.rowCount) {

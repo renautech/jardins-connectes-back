@@ -6,4 +6,10 @@ const insertPhotoSchema = Joi.object({
     board_id: Joi.number().integer().required()
 });
 
-module.exports = { insertPhotoSchema };
+const updatePhotoSchema = Joi.object({
+    url: Joi.string(),
+    date: Joi.date(),
+    board_id: Joi.number().integer()
+});
+
+module.exports = { insertPhotoSchema, updatePhotoSchema };

@@ -4,9 +4,11 @@ const mainController = require('./controllers/mainController');
 const {validateQuery,validateBody} = require('./services/validator');
 const {cache, flush} = require('./cache/cacheStrategy');
 const {insertUserSchema,updateUserSchema} = require('./schemas/userschema');
-const {insertFamilySchema,updateFamilySchema} = require('./schemas/userFamily');
+const {insertFamilySchema,updateFamilySchema} = require('./schemas/familyschema');
+const {insertVarietySchema,updateVarietySchema} = require('./schemas/varietyschema');
 const User = require('./models/User');
 const Family = require('./models/Family');
+const Variety = require('./models/Variety');
 
 router.get('/users',cache , mainController.findAll(User));
 router.get('/users/user/:id',cache , mainController.findOne(User));
@@ -19,6 +21,12 @@ router.get('/families/family/:id',cache , mainController.findOne(Family));
 router.post('/families', validateBody(insertFamilySchema), flush, mainController.insertOne(Family));
 router.patch('/families/family/:id', validateBody(updateFamilySchema),flush ,mainController.updateOne(Family));
 router.delete('/families/family/:id',flush, mainController.deleteOne(Family));
+
+router.get('/varieties',cache , mainController.findAll(Variety));
+router.get('/varieties/variety/:id',cache , mainController.findOne(Variety));
+router.post('/varieties', validateBody(insertVarietySchema), flush, mainController.insertOne(Variety));
+router.patch('/varieties/variety/:id', validateBody(updateVarietySchema),flush ,mainController.updateOne(Variety));
+router.delete('/varieties/variety/:id',flush, mainController.deleteOne(Variety));
 
 
 module.exports = router;

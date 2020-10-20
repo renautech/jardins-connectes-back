@@ -61,3 +61,29 @@ Content-Type: application/json
 DELETE http://localhost:5555/v1/families/family/6
 Content-Type: application/json
 
+--------------------------------------------------------- Variety
+
+###
+POST http://localhost:5555/v1/varieties
+Content-Type: application/json
+
+{
+      "name": "YASUOOOOOO",
+      "picture": "YONEEEEEEE",
+      "description": "HARDCARYYYYYY",
+      "family_id": 1
+}
+
+###
+
+PATCH http://localhost:5555/v1/varieties/variety/6
+Content-Type: application/json
+
+{     
+      "name" : "JE CHANGEEE MDRRRR"
+}
+
+
+###
+
+DELETE http://localhost:5555/v1/varieties/variety/6

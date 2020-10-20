@@ -6,3 +6,5 @@ functions/newUser 2020-10-19T09:08:27Z Tidus91 <kurama91@hotmail.fr> # SQL funct
 functions/updateUser 2020-10-19T12:02:21Z Tidus91 <kurama91@hotmail.fr> # updateUser function
 functions/newFamily 2020-10-20T08:24:30Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new Family
 functions/updateFamily 2020-10-20T08:32:46Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to modify easily a family
+functions/newVariety 2020-10-20T10:48:46Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to create a new Variety easily
+functions/updateVariety 2020-10-20T10:55:36Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to modify a  Variety easily

@@ -14,6 +14,11 @@ class Photo {
         return photos.rows;
     }
 
+    static async findOne(id) {
+
+        const thePhoto = await db.query(`SELECT * FROM "photo" WHERE id = $1`,[id]);
+        return thePhoto.rows[0];
+    }
 }
 
 module.exports = Photo;

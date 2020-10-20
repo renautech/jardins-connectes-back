@@ -14,5 +14,6 @@ router.patch('/users/user/:id', validateBody(updateUserSchema),flush ,mainContro
 router.delete('/users/user/:id',flush, mainController.deleteOne(User));
 
 router.get('/photos', cache, mainController.findAll(Photo));
+router.get('/photos/photo/:id',cache , mainController.findOne(Photo));
 
 module.exports = router;

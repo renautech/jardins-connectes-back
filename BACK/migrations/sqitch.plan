@@ -5,3 +5,4 @@ tables 2020-10-16T09:25:33Z Flyworkz <pedron.dorian@gmail.com> # Creation of sql
 functions/newUser 2020-10-19T09:08:27Z Tidus91 <kurama91@hotmail.fr> # SQL function  in order to create a new User easily
 functions/updateUser 2020-10-19T12:02:21Z Tidus91 <kurama91@hotmail.fr> # updateUser function
 functions/newBoard 2020-10-20T08:44:20Z Flyworkz <pedron.dorian@gmail.com> # function to create easily a new board
+functions/updateBoard 2020-10-20T09:15:33Z Flyworkz <pedron.dorian@gmail.com> # function to update easily a board

@@ -23,7 +23,7 @@ class Board {
     async save() {
 
         if(this.id) {
-           // UPDATE
+            await db.query(`SELECT * FROM updateBoard($1)`,[this]);
         } else {
             const insertedBoard = await db.query(`SELECT * FROM newBoard($1)`,[this]);
             if(insertedBoard.rowCount) {

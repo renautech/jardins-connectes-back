@@ -4,7 +4,7 @@ const mainController = require('./controllers/mainController');
 const {validateQuery,validateBody} = require('./services/validator');
 const {cache, flush} = require('./cache/cacheStrategy');
 const {insertUserSchema,updateUserSchema} = require('./schemas/userschema');
-const { insertBoardSchema }= require('./schemas/boardschema');
+const { insertBoardSchema, updateBoardSchema }= require('./schemas/boardschema');
 const Board = require('./models/Board');
 const User = require('./models/User');
 
@@ -14,8 +14,9 @@ router.post('/users', validateBody(insertUserSchema), flush, mainController.inse
 router.patch('/users/user/:id', validateBody(updateUserSchema),flush ,mainController.updateOne(User));
 router.delete('/users/user/:id',flush, mainController.deleteOne(User));
 
-router.get('/boards',cache , mainController.findAll(Board));
-router.get('/boards/board/:id',cache , mainController.findOne(Board));
+router.get('/boards', cache, mainController.findAll(Board));
+router.get('/boards/board/:id', cache, mainController.findOne(Board));
 router.post('/boards', validateBody(insertBoardSchema), flush, mainController.insertOne(Board));
+router.patch('/boards/board/:id', validateBody(updateBoardSchema), flush, mainController.updateOne(Board));
 
 module.exports = router;

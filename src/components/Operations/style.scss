@@ -13,3 +13,9 @@
     border: none;
   }
 }
+
+@media screen and (max-width:800px){
+  .operations {
+    margin-top: 0.5rem;
+  }
+}

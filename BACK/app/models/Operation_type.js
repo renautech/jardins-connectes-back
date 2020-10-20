@@ -14,6 +14,12 @@ class Operation_type {
         return types.rows;
     }
 
+    static async findOne(id) {
+
+        const theType = await db.query(`SELECT * FROM "operation_type" WHERE id = $1`,[id]);
+        return theType.rows[0];
+    }
+
 }
 
 module.exports = Operation_type;

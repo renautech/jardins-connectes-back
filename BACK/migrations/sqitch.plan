@@ -4,3 +4,4 @@
 tables 2020-10-16T09:25:33Z Flyworkz <pedron.dorian@gmail.com> # Creation of sql tables
 functions/newUser 2020-10-19T09:08:27Z Tidus91 <kurama91@hotmail.fr> # SQL function  in order to create a new User easily
 functions/updateUser 2020-10-19T12:02:21Z Tidus91 <kurama91@hotmail.fr> # updateUser function
+functions/newOperationType 2020-10-20T13:57:26Z Flyworkz <pedron.dorian@gmail.com> # function to create a new operation type easily

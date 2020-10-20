@@ -20,7 +20,17 @@ class Operation_type {
         return theType.rows[0];
     }
 
+    async save() {
 
+        if(this.id) {
+            // UPDATE
+        } else {
+            const insertedOperationType = await db.query(`SELECT * FROM newOperationType($1)`,[this]);
+            if(insertedOperationType.rowCount) {
+                this.id = insertedOperationType.rows[0].id;
+            }
+        }
+    }
 
     async delete() {
 

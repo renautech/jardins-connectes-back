@@ -1,26 +1,33 @@
 @use 'src/styles/vars' as v;
 
 .navigation {
-  text-align: center;
-  background-color: v.$dark-color;
-  margin-bottom: v.$s-gut;
-  &__nav {
-    &__link {
-      display: inline-block;
-      color: white;
-      width: 100px;
-      margin: 0.25rem 0.1rem;
-      font-size: 1rem;
-      padding: 0.1rem;
-      border: solid white 1px;
-      border-radius: 20px;
+  visibility: hidden;
+}
+
+@media screen and (min-width:480px){
+  .navigation {
+    visibility: visible;
+    text-align: center;
+    background-color: v.$dark-color;
+    margin-bottom: v.$s-gut;
+    &__nav {
+      &__link {
+        display: inline-block;
+        color: white;
+        width: 100px;
+        margin: 0.25rem 0.1rem;
+        font-size: 1rem;
+        padding: 0.1rem;
+        border: solid white 1px;
+        border-radius: 20px;
+      }
     }
   }
 }
 
-
 @media screen and (min-width:800px){
   .navigation {
+    visibility: visible;
     &__nav {
       &__link {
         width: 150px;

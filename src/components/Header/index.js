@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.scss';
 
-const Header = () => {
+const Header = ({toggleNavMobile}) => {
   console.log('composant header');
   return (
     <div className="header">
@@ -12,6 +12,7 @@ const Header = () => {
         <a className="header-links-link"  href="/connexion">Connexion</a>
         <a className="header-links-link"  href="/">S'inscrire</a>
       </div>
+      <a className="navMobile" href="/navMobile"><img src="https://img.icons8.com/plasticine/100/000000/menu.png" height="50"/></a>
     </div>
   )
 }

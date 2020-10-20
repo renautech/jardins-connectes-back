@@ -37,7 +37,7 @@ const mainController = {
         if (modelDelete.errorMessage) {
             res.status(400).json(modelDelete.errorMessage);
         } else {
-        res.json(`L'Utilisateur ayant l'ID : ${req.params.id} a été supprimé`);
+            res.json(`L'Utilisateur ayant l'ID : ${req.params.id} a été supprimé`);
         }
     }
 

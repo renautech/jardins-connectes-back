@@ -18,5 +18,6 @@ router.get('/photos', cache, mainController.findAll(Photo));
 router.get('/photos/photo/:id',cache , mainController.findOne(Photo));
 router.post('/photos', validateBody(insertPhotoSchema), flush, mainController.insertOne(Photo));
 router.patch('/photos/photo/:id', validateBody(updatePhotoSchema),flush ,mainController.updateOne(Photo));
+router.delete('/photos/photo/:id', flush, mainController.deleteOne(Photo));
 
 module.exports = router;

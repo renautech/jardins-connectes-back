@@ -36,6 +36,16 @@ class Photo {
         }
     }
 
+    async delete() {
+
+        if(this.id) {
+            await db.query(`DELETE FROM "photo" WHERE id=$1`,[this.id]);
+        }
+        else {
+            this.errorMessage = "Impossible de supprimer une photo inexistante";
+        }
+    }
+
 }
 
 module.exports = Photo;

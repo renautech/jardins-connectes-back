@@ -17,4 +17,7 @@ router.get('/operation_types', cache, mainController.findAll(Operation_type));
 router.get('/operation_types/operation_type/:id', cache, mainController.findOne(Operation_type));
 
 
+router.delete('/operation_types/operation_type/:id', flush, mainController.deleteOne(Operation_type));
+
+
 module.exports = router;

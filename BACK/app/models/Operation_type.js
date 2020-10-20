@@ -20,6 +20,18 @@ class Operation_type {
         return theType.rows[0];
     }
 
+
+
+    async delete() {
+
+        if(this.id) {
+        await db.query(`DELETE FROM "operation_type" WHERE id=$1`,[this.id]);
+        }
+        else {
+            this.errorMessage = "Impossible de supprimer un type d'opération inexistant";
+        }
+    }
+
 }
 
 module.exports = Operation_type;

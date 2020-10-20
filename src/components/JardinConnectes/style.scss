@@ -2,10 +2,25 @@
 
 
 .jardinconnectes {
-  width: 80%;
+  width: 95%;
   height: 100vh;
   margin: 0 auto;
 }
 
+@media screen and (min-width:640px){
+
+  .jardinconnectes {
+    width: 90%;
+  }
+
+}
+
+@media screen and (min-width:800px){
+
+  .jardinconnectes {
+    width: 80%;
+  }
+
+}
 
 

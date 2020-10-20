@@ -20,6 +20,19 @@ class Board {
         return theBoard.rows[0];
     }
 
+    async save() {
+
+        if(this.id) {
+           // UPDATE
+        } else {
+            const insertedBoard = await db.query(`SELECT * FROM newBoard($1)`,[this]);
+            if(insertedBoard.rowCount) {
+                this.id = insertedBoard.rows[0].id;
+            }
+
+        }
+    }
+
 }
 
 module.exports = Board;

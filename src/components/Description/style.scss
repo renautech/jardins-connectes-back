@@ -2,6 +2,7 @@
 
 .description{
   font-family: "Chilanka";
+  font-size: 0.8rem;
   &-title{
     color: v.$medium-color;
     font-size: 1.3rem;
@@ -12,6 +13,7 @@
   &-content{
     color: v.$darker-color;
     margin: v.$xs-gut 0;
+    
   }
 
   &-list{
@@ -19,6 +21,13 @@
     li{
       list-style: url('https://img.icons8.com/officel/16/000000/cute-pumpkin.png')
     }
+  }
+
+}
+
+@media screen and (min-width:640px){
+  .description{
+    font-size: 1rem;
   }
 
 }

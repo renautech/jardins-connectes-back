@@ -1,17 +1,15 @@
 @use 'src/styles/vars' as v;
 
 .footer {
-  position: absolute;
-  //bottom: v.$s-gut;
-  bottom: 0;
 
-  width: 80%;
+  margin-top: 2em;
+  width: 100%;
   height: 5%;
   color: white;
   text-align: center;
   background-color: v.$dark-color;
   &-right {
-    margin-top: v.$xs-gut;
+    line-height: 2rem;
 
   }
 }

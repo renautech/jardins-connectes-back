@@ -23,7 +23,7 @@ class Operation_type {
     async save() {
 
         if(this.id) {
-            // UPDATE
+            await db.query(`SELECT * FROM updateOperationType($1)`,[this]);
         } else {
             const insertedOperationType = await db.query(`SELECT * FROM newOperationType($1)`,[this]);
             if(insertedOperationType.rowCount) {

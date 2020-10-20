@@ -5,4 +5,9 @@ const insertOperationTypeSchema = Joi.object({
     description: Joi.string()
 });
 
-module.exports = { insertOperationTypeSchema };
+const updateOperationTypeSchema = Joi.object({
+    name: Joi.string().required(),
+    description: Joi.string()
+});
+
+module.exports = { insertOperationTypeSchema, updateOperationTypeSchema };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   Route,
   Switch,
   Link
@@ -12,6 +12,7 @@ import Navigation from 'src/components/Navigation';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/components/LoginForm';
+import Garden from 'src/components/Garden';
 
 import './style.scss';
 
@@ -33,6 +34,9 @@ const JardinConnectes = () => {
       <Route exact path="/">
         <HomeVideo />
         <Description />
+      </Route>
+      <Route path="/mon-jardin">
+        <Garden />
       </Route>
       <Route path="/connexion">
         <LoginForm email={email} newEmail={newEmail} password={password} newPassword={newPassword}/>

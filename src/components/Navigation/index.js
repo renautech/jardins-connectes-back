@@ -8,7 +8,7 @@ const Navigation = () => {
     <div className="navigation">
       <nav className="navigation__nav">
         <a className="navigation__nav__link" href="/">Menu</a>
-        <a className="navigation__nav__link" href="/">Mon Jardin</a>
+        <a className="navigation__nav__link" href="/mon-jardin">Mon Jardin</a>
       </nav>
     </div>
   );

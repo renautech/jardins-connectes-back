@@ -1,0 +1,15 @@
+@use 'src/styles/vars' as v;
+
+.operations {
+  border-radius: 25px;
+  border: 1px black solid;
+  &__title {
+    margin-top: v.$m-gut;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  &__type {
+    padding: 1rem;
+    border: none;
+  }
+}

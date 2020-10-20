@@ -34,3 +34,30 @@ Content-Type: application/json
 
 GET http://localhost:5555/v1/users
 
+----------------------------------------------------- Family 
+
+###
+
+POST http://localhost:5555/v1/families
+Content-Type: application/json
+
+{
+      "name": "testFamille!!",
+      "picture": "çamarcheeee",
+      "description": "coucou"
+}
+
+###
+
+PATCH http://localhost:5555/v1/families/family/6
+Content-Type: application/json
+
+{
+      "name": "coucoujeviensdechanger !!"
+}
+
+###
+
+DELETE http://localhost:5555/v1/families/family/6
+Content-Type: application/json
+

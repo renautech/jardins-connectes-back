@@ -4,6 +4,7 @@ const mainController = require('./controllers/mainController');
 const {validateQuery,validateBody} = require('./services/validator');
 const {cache, flush} = require('./cache/cacheStrategy');
 const {insertUserSchema,updateUserSchema} = require('./schemas/userschema');
+const { insertPhotoSchema } = require('./schemas/photoschema');
 const User = require('./models/User');
 const Photo = require('./models/Photo');
 
@@ -15,5 +16,6 @@ router.delete('/users/user/:id',flush, mainController.deleteOne(User));
 
 router.get('/photos', cache, mainController.findAll(Photo));
 router.get('/photos/photo/:id',cache , mainController.findOne(Photo));
+router.post('/photos', validateBody(insertPhotoSchema), flush, mainController.insertOne(Photo));
 
 module.exports = router;

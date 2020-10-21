@@ -11,3 +11,10 @@ functions/newOperationType 2020-10-20T13:57:26Z Flyworkz <pedron.dorian@gmail.co
 functions/updateOperationType 2020-10-20T14:04:52Z Flyworkz <pedron.dorian@gmail.com> # function to update an operation type easily
 functions/newBoard 2020-10-20T08:44:20Z Flyworkz <pedron.dorian@gmail.com> # function to create easily a new board
 functions/updateBoard 2020-10-20T09:15:33Z Flyworkz <pedron.dorian@gmail.com> # function to update easily a board
+functions/newFamily 2020-10-20T08:24:30Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new Family
+functions/updateFamily 2020-10-20T08:32:46Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to modify easily a family
+functions/newVariety 2020-10-20T10:48:46Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to create a new Variety easily
+functions/updateVariety 2020-10-20T10:55:36Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to modify a  Variety easily
+functions/newOperation 2020-10-20T12:58:52Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new operation
+functions/updateOperation 2020-10-20T12:59:17Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to change easily an operation
+functions/newOperationWithoutDate 2020-10-21T07:59:05Z Tidus91 <kurama91@hotmail.fr> # function in order to create a new operation without a date easily

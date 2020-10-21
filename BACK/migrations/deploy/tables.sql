@@ -37,7 +37,7 @@ CREATE TABLE board (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" text NOT NULL,
     active boolean NOT NULL,
-    variety_id int NOT NULL REFERENCES variety(id),
+    variety_id int NOT NULL REFERENCES variety(id) ON DELETE CASCADE,
     "user_id" int NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 

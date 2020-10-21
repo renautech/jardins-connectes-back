@@ -72,6 +72,13 @@ const Operations = ({ data, dataBoard }) => {
           <Confirm />
         </form>
       )}
+      {operationType === 'Labourer' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche labourer ?"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
+          <Confirm />
+        </form>
+      )}
       {operationType === 'Semer' && (
         <form action="post">
           <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Sur quelle planche ?"/>
@@ -82,8 +89,9 @@ const Operations = ({ data, dataBoard }) => {
       )}
       {operationType === 'Arroser' && (
         <form action="post">
-          <Field onChange={handleOpTarget} />
-          <Field onChange={handleQttValue} placeholder="Quantité..." />
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche arroser ?"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
+          <Confirm />
         </form>
       )}
     </div>

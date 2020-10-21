@@ -10,11 +10,14 @@ const OperationType = ({ handleOpType }) => {
       <select onChange={handleOpType} name="operations" id="operations">
         <option value="">Choisir une option</option>
         <option value="Créer une planche">Créer une planche</option>
+        <option value="Labourer">Labourer</option>
         <option value="Semer">Semer</option>
         <option value="Arroser">Arroser</option>
-        <option value="Labourer">Labourer</option>
+        <option value="Fertiliser">Fertiliser</option>
         <option value="Traiter">Traiter</option>
-        <option value="Planter">Planter</option>
+        <option value="Désherber">Désherber</option>
+        <option value="Récolter">Récolter</option>
+        <option value="Supprimer une planche">Supprimer une planche</option>
       </select>
     </div>
   );

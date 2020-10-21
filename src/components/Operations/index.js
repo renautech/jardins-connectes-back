@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 
 import OperationType from './OperationType';
 import Field from './Field';
+import CommentField from './CommentField';
 import SelectField from './SelectField';
 import VarietyField from './VarietyField';
 import Confirm from './Confirm';
 
 import './style.scss';
 
-const Operations = ({ data }) => {
+const Operations = ({ data, dataBoard }) => {
   const [operationType, setOpType] = useState('');
   const [operationTarget, setOpTarget] = useState('');
   const [BoardFamily, setBoardFamily] = useState('');
@@ -67,12 +68,13 @@ const Operations = ({ data }) => {
       {operationType === 'Créer une planche' && (
         <form action="post">
           <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
           <Confirm />
         </form>
       )}
       {operationType === 'Semer' && (
         <form action="post">
-          <Field onChange={handleOpTarget} placeholder="Sur quelle planche ?"/>
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Sur quelle planche ?"/>
           <SelectField onChange={handleBoardFamily} data={data.family} placeholder="De quelle famille ?"/>
           <VarietyField onChange={handleBoardVariety} data={data.variety} target={BoardFamily} placeholder="De quelle variété ?"/>
           <Confirm />

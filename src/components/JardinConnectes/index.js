@@ -17,6 +17,7 @@ import NavigationMobile from 'src/components/NavigationMobile';
 import Garden from 'src/components/Garden';
 
 import data from 'src/data/data';
+import dataBoard from 'src/data/dataBoard';
 import './style.scss';
 
 const JardinConnectes = () => {
@@ -84,7 +85,7 @@ const JardinConnectes = () => {
       <Route path="/mon-jardin">
         <Header />
         <Navigation />
-        <Garden data={data} />
+        <Garden data={data} dataBoard={dataBoard} />
         <Footer />
       </Route>
       <Route path="/connexion">

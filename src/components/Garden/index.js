@@ -6,7 +6,7 @@ import Operations from 'src/components/Operations';
 
 import './style.scss';
 
-const Garden = ({ data }) => {
+const Garden = ({ data, dataBoard }) => {
   console.log('garden loaded');
   return (
     <div className="garden">
@@ -15,7 +15,7 @@ const Garden = ({ data }) => {
       </div>
       <div className="garden__right">
         <Weather zipcode="69400" />
-        <Operations data={data} />
+        <Operations data={data} dataBoard={dataBoard}/>
       </div>
     </div>
   );

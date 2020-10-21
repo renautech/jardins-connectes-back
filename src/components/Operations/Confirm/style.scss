@@ -1,0 +1,13 @@
+@use 'src/styles/vars' as v;
+
+.confirm {
+  text-align: center;
+  &__submit {
+    width: 40%;
+    background-color: v.$lighter-color;
+    padding: 1rem;
+    border-radius: 15px;
+    border : none;
+    margin-top: v.$s-gut;
+  }
+}

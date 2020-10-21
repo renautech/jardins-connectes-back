@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   Route,
   Switch,
   Link
@@ -12,16 +12,25 @@ import Navigation from 'src/components/Navigation';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/components/LoginForm';
+<<<<<<< HEAD
 import SignupForm from 'src/components/SignupForm';
 import NavigationMobile from 'src/components/NavigationMobile';
+=======
+import Garden from 'src/components/Garden';
+>>>>>>> front_component_Garden_and_static_data
 
+import data from 'src/data/data';
 import './style.scss';
 
 const JardinConnectes = () => {
+<<<<<<< HEAD
   console.log('App launched');
   
 
   // state for connected user
+=======
+  console.log(data);
+>>>>>>> front_component_Garden_and_static_data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const Email = (value) => {
@@ -78,6 +87,9 @@ const JardinConnectes = () => {
         <HomeVideo />
         <Description />
         <Footer />
+      </Route>
+      <Route path="/mon-jardin">
+        <Garden data={data} />
       </Route>
       <Route path="/connexion">
         <Header />

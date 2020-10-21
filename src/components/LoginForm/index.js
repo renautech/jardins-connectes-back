@@ -19,7 +19,7 @@ const LoginForm = ({email, newEmail, newPassword, password, handleLogin}) => {
   };
   return (
     <div className="loginForm">
-      <form autoComplete="off" onSubmit={handleSubmit} >
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="loginForm-Element">
           <label htmlFor="email">Adresse Email</label>
           <input

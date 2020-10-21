@@ -1,0 +1,97 @@
+@use 'src/styles/vars' as v;
+
+.mygarden {
+  height: 95%;
+  border-radius: 25px;
+  border: 1px black solid;
+  &__title {
+    margin-top: v.$m-gut;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  &__families {
+    margin-left: v.$m-gut;
+    display: flex;
+    flex-direction: column;
+    flex-wrap : wrap;
+    height: 90%;
+  }
+  &__family {
+    padding: 0.5rem;
+    margin-top: v.$m-gut;;
+    width: 45%;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+    &--image {
+      max-height: 32px;
+      display : inline-block;
+    }
+    &--text {
+      margin-left: v.$s-gut;
+      transform: translate(0%, -50%);
+      display : inline-block;
+    }
+  }
+}
+
+@media screen and (max-width:1300px){
+  .mygarden {
+    &__families {
+      margin-left: v.$m-gut;
+      display: flex;
+      flex-direction: column;
+      flex-wrap : nowrap;
+      height: 90%;
+      overflow: scroll;
+    }
+    &__family {
+      padding: 0.5rem;
+      margin-top: v.$m-gut;;
+      width: 90%;
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+      &--image {
+        max-height: 32px;
+        display : inline-block;
+      }
+      &--text {
+        margin-left: v.$s-gut;
+        transform: translate(0%, -50%);
+        display : inline-block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:800px){
+  .mygarden {
+    &__families {
+      margin-left: v.$m-gut;
+      display: flex;
+      flex-direction: column;
+      flex-wrap : wrap;
+      height: 90%;
+      overflow: scroll;
+    }
+    &__family {
+      padding: 0.5rem;
+      margin-top: v.$m-gut;;
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+      &--image {
+        max-height: 32px;
+        display : inline-block;
+      }
+      &--text {
+        display: none;
+        margin-left: v.$s-gut;
+        transform: translate(0%, -50%);
+      }
+    }
+  }
+}

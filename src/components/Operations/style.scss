@@ -1,0 +1,18 @@
+@use 'src/styles/vars' as v;
+
+.operation {
+  height: 70%;
+  border-radius: 25px;
+  border: 1px black solid;
+  &__title {
+    margin-top: v.$m-gut;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width:800px){
+  .operation {
+    margin-top: 0.5rem;
+  }
+}

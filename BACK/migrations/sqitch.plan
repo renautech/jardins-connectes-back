@@ -6,3 +6,4 @@ functions/newUser 2020-10-19T09:08:27Z Tidus91 <kurama91@hotmail.fr> # SQL funct
 functions/updateUser 2020-10-19T12:02:21Z Tidus91 <kurama91@hotmail.fr> # updateUser function
 functions/newPhoto 2020-10-20T12:12:59Z Flyworkz <pedron.dorian@gmail.com> # function to create a new photo easily
 functions/updatePhoto 2020-10-20T13:00:53Z Flyworkz <pedron.dorian@gmail.com> # function to update a photo easily
+functions/newPhotoWithoutDate 2020-10-21T07:55:48Z Flyworkz <pedron.dorian@gmail.com> # function to add a new photo without date easily

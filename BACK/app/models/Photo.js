@@ -28,7 +28,12 @@ class Photo {
                 this.date = updatedPhoto.rows[0].date;
             }
         } else {
-            const insertedPhoto = await db.query(`SELECT * FROM newPhoto($1)`,[this]);
+            let insertedPhoto;
+            if (this.date) {
+                insertedPhoto = await db.query(`SELECT * FROM newPhoto($1)`,[this]);
+            } else {
+                insertedPhoto = await db.query(`SELECT * FROM newPhotoWithoutDate($1)`,[this]);
+            }
             if(insertedPhoto.rowCount) {
                 this.id = insertedPhoto.rows[0].id;
                 this.date = insertedPhoto.rows[0].date;

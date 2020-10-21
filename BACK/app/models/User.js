@@ -22,6 +22,13 @@ class Users {
         return oneUser.rows[0];
     }
 
+    static async findByEmail(email) {
+
+        const oneUser = await db.query(` SELECT * FROM "user" WHERE email = $1`,[email]);
+        return oneUser.rows[0];
+    }
+
+
     async save() {
 
         if(this.id) {
@@ -32,6 +39,9 @@ class Users {
             const insertedUser = await db.query(`SELECT * FROM newUser($1)`,[this]);
             if(insertedUser.rowCount) {
                 this.id = insertedUser.rows[0].id;
+            }
+            else {
+                this.error = true;
             }
 
         }

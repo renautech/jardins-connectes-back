@@ -118,3 +118,28 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:5555/v1/operations/operation/7
+
+###
+
+POST http://localhost:5555/v1/signup
+Content-Type: application/json
+
+{
+      "first_name": "toto",
+      "last_name": "dev",
+      "email": "totodev@gmail.com",
+      "country": "France",
+      "department": "paris",
+      "password": "totototomdp",
+      "nickname": "totoledev"
+}
+
+###
+
+POST http://localhost:5555/v1/signin
+Content-Type: application/json
+
+{
+      "email": "totodev@gmail.com",
+      "password": "totototomdp"
+}

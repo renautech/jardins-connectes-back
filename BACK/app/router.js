@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const mainController = require('./controllers/mainController');
+const userController = require('./controllers/userController');
 const { _,validateBody } = require('./services/validator');
 const { cache, flush } = require('./cache/cacheStrategy');
 
@@ -20,6 +21,13 @@ const Family = require('./models/Family');
 const Variety = require('./models/Variety');
 const Operation = require('./models/Operation');
 
+// Authentification
+
+router.post('/signup', validateBody(insertUserSchema), userController.signup);
+router.post('/signin', userController.signin);
+
+
+// CRUD 
 router.get('/users', cache, mainController.findAll(User));
 router.get('/users/user/:id', cache, mainController.findOne(User));
 router.post('/users', validateBody(insertUserSchema), flush, mainController.insertOne(User));

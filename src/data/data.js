@@ -1,5 +1,5 @@
-﻿{
-    "family": [
+﻿export default {
+    'family': [
         {
             "name": "absinthe"
         },
@@ -441,643 +441,643 @@
     ],
     "variety": [
         {
-            "family id": "absinthe",
+            "family_id": "absinthe",
             "name": "autre"
         },
         {
-            "family id": "agastache anisée",
+            "family_id": "agastache anisée",
             "name": "autre"
         },
         {
-            "family id": "ail",
+            "family_id": "ail",
             "name": "ail ‘Violet Germidour’"
         },
         {
-            "family id": "ail",
+            "family_id": "ail",
             "name": "autre"
         },
         {
-            "family id": "ail",
+            "family_id": "ail",
             "name": "Blanc Thermidrôme"
         },
         {
-            "family id": "ail",
+            "family_id": "ail",
             "name": "Rose à bâton Flavor"
         },
         {
-            "family id": "ail",
+            "family_id": "ail",
             "name": "Rose sans bâton Cledor"
         },
         {
-            "family id": "aneth",
+            "family_id": "aneth",
             "name": "autre"
         },
         {
-            "family id": "anis vert",
+            "family_id": "anis vert",
             "name": "autre"
         },
         {
-            "family id": "arroche",
+            "family_id": "arroche",
             "name": "autre"
         },
         {
-            "family id": "artichaut",
+            "family_id": "artichaut",
             "name": "autre"
         },
         {
-            "family id": "artichaut",
+            "family_id": "artichaut",
             "name": "Imperial Star"
         },
         {
-            "family id": "artichaut",
+            "family_id": "artichaut",
             "name": "Vert de Laon"
         },
         {
-            "family id": "artichaut",
+            "family_id": "artichaut",
             "name": "Vert Globe"
         },
         {
-            "family id": "artichaut",
+            "family_id": "artichaut",
             "name": "Violet de Provence"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "autre"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Black Beauty"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Blanche ronde à œufs"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Louisiana Long Green"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Monstrueuse de New-York / Violette ronde très grosse"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Ronde de Valence"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Rosa Bianca"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Très hâtive de Barbentane"
         },
         {
-            "family id": "aubergine",
+            "family_id": "aubergine",
             "name": "Violette de Florence"
         },
         {
-            "family id": "bardane",
+            "family_id": "bardane",
             "name": "autre"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "autre"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Cannelle"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Fin vert nain compact"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Géant monstrueux mammouth"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "génois / Genovese"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Grec"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Marseillais"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Pourpre"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Simple grand vert"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Thym"
         },
         {
-            "family id": "basilic",
+            "family_id": "basilic",
             "name": "Thym"
         },
         {
-            "family id": "bette à cardes",
+            "family_id": "bette à cardes",
             "name": "autre"
         },
         {
-            "family id": "bette à cardes",
+            "family_id": "bette à cardes",
             "name": "Bright Lights"
         },
         {
-            "family id": "bette à cardes",
+            "family_id": "bette à cardes",
             "name": "Ruby Chard"
         },
         {
-            "family id": "bette à cardes",
+            "family_id": "bette à cardes",
             "name": "Ruby Red"
         },
         {
-            "family id": "bette à cardes",
+            "family_id": "bette à cardes",
             "name": "Verte à couper"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "Albina Vereduna"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "autre"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "de Chioggia"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "de Detroit améliorée 2"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "Rouge Covent garden"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "Rouge crapaudine"
         },
         {
-            "family id": "betterave",
+            "family_id": "betterave",
             "name": "Rouge noire d’Egypte"
         },
         {
-            "family id": "capucine tubéreuse",
+            "family_id": "capucine tubéreuse",
             "name": "autre"
         },
         {
-            "family id": "cardon",
+            "family_id": "cardon",
             "name": "autre"
         },
         {
-            "family id": "cardon",
+            "family_id": "cardon",
             "name": "Blanc amélioré"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "autre"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Blanche de Küttingen"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "de Chantenay à coeur rouge"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "de Colmar à coeur rouge"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Flyaway F1"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Jaune du Doubs"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Jeanette"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Nantaise tip top améliorée 3"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Ronde de Paris"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Rothild"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Rouge demi-longue de Carentan"
         },
         {
-            "family id": "carotte",
+            "family_id": "carotte",
             "name": "Touchon"
         },
         {
-            "family id": "cassis",
+            "family_id": "cassis",
             "name": "autre"
         },
         {
-            "family id": "cassis",
+            "family_id": "cassis",
             "name": "Bigno"
         },
         {
-            "family id": "cassis",
+            "family_id": "cassis",
             "name": "Noir Andega"
         },
         {
-            "family id": "cassis",
+            "family_id": "cassis",
             "name": "Noir de Bourgogne"
         },
         {
-            "family id": "Céleri-branche",
+            "family_id": "Céleri-branche",
             "name": "à couper"
         },
         {
-            "family id": "Céleri-branche",
+            "family_id": "Céleri-branche",
             "name": "autre"
         },
         {
-            "family id": "Céleri-branche",
+            "family_id": "Céleri-branche",
             "name": "Géant doré amélioré"
         },
         {
-            "family id": "Céleri-branche",
+            "family_id": "Céleri-branche",
             "name": "Tall Utah"
         },
         {
-            "family id": "Céleri-rave",
+            "family_id": "Céleri-rave",
             "name": "Alba"
         },
         {
-            "family id": "Céleri-rave",
+            "family_id": "Céleri-rave",
             "name": "autre"
         },
         {
-            "family id": "Céleri-rave",
+            "family_id": "Céleri-rave",
             "name": "Bergers Weisse Kugel"
         },
         {
-            "family id": "cerfeuil commun",
+            "family_id": "cerfeuil commun",
             "name": "autre"
         },
         {
-            "family id": "cerfeuil tubéreux",
+            "family_id": "cerfeuil tubéreux",
             "name": "autre"
         },
         {
-            "family id": "chénopode Bon-Henri",
+            "family_id": "chénopode Bon-Henri",
             "name": "autre"
         },
         {
-            "family id": "Chénopode géant",
+            "family_id": "Chénopode géant",
             "name": "autre"
         },
         {
-            "family id": "Chervis",
+            "family_id": "Chervis",
             "name": "autre"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "autre"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "Catalogne pissenlit"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "frisée ‘Wallonne’"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "Pain de sucre"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "Rouge de Trévise"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "scarole Blonde à coeur plein"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "scarole Casque d’or"
         },
         {
-            "family id": "chicorée",
+            "family_id": "chicorée",
             "name": "scarole En cornet de Bordeaux"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "autre"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "brocoli"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "cabus"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "de Bruxelles"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "de Milan"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "fleur"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "rave"
         },
         {
-            "family id": "chou",
+            "family_id": "chou",
             "name": "vert"
         },
         {
-            "family id": "chou chinois",
+            "family_id": "chou chinois",
             "name": "autre"
         },
         {
-            "family id": "ciboule de Chine",
+            "family_id": "ciboule de Chine",
             "name": "autre"
         },
         {
-            "family id": "ciboulette",
+            "family_id": "ciboulette",
             "name": "autre"
         },
         {
-            "family id": "concombre",
+            "family_id": "concombre",
             "name": "autre"
         },
         {
-            "family id": "coqueret du Pérou",
+            "family_id": "coqueret du Pérou",
             "name": "autre"
         },
         {
-            "family id": "coriandre",
+            "family_id": "coriandre",
             "name": "autre"
         },
         {
-            "family id": "cornichon",
+            "family_id": "cornichon",
             "name": "autre"
         },
         {
-            "family id": "courge",
+            "family_id": "courge",
             "name": "autre"
         },
         {
-            "family id": "courgette",
+            "family_id": "courgette",
             "name": "autre"
         },
         {
-            "family id": "crosne",
+            "family_id": "crosne",
             "name": "autre"
         },
         {
-            "family id": "échalote",
+            "family_id": "échalote",
             "name": "autre"
         },
         {
-            "family id": "épinard",
+            "family_id": "épinard",
             "name": "autre"
         },
         {
-            "family id": "fenouil bulbeux",
+            "family_id": "fenouil bulbeux",
             "name": "autre"
         },
         {
-            "family id": "fève",
+            "family_id": "fève",
             "name": "autre"
         },
         {
-            "family id": "fraisier",
+            "family_id": "fraisier",
             "name": "autre"
         },
         {
-            "family id": "framboisier",
+            "family_id": "framboisier",
             "name": "autre"
         },
         {
-            "family id": "groseiller à grappes",
+            "family_id": "groseiller à grappes",
             "name": "autre"
         },
         {
-            "family id": "haricot",
+            "family_id": "haricot",
             "name": "autre"
         },
         {
-            "family id": "hélianti",
+            "family_id": "hélianti",
             "name": "autre"
         },
         {
-            "family id": "hysope",
+            "family_id": "hysope",
             "name": "autre"
         },
         {
-            "family id": "lavande",
+            "family_id": "lavande",
             "name": "autre"
         },
         {
-            "family id": "lavande",
+            "family_id": "lavande",
             "name": "lavande officinale"
         },
         {
-            "family id": "livèche",
+            "family_id": "livèche",
             "name": "autre"
         },
         {
-            "family id": "mâche",
+            "family_id": "mâche",
             "name": "autre"
         },
         {
-            "family id": "maïs",
+            "family_id": "maïs",
             "name": "autre"
         },
         {
-            "family id": "marjolaine des jardins",
+            "family_id": "marjolaine des jardins",
             "name": "autre"
         },
         {
-            "family id": "mélisse",
+            "family_id": "mélisse",
             "name": "autre"
         },
         {
-            "family id": "melon",
+            "family_id": "melon",
             "name": "autre"
         },
         {
-            "family id": "mélothrie",
+            "family_id": "mélothrie",
             "name": "autre"
         },
         {
-            "family id": "menthe",
+            "family_id": "menthe",
             "name": "autre"
         },
         {
-            "family id": "mesclun",
+            "family_id": "mesclun",
             "name": "autre"
         },
         {
-            "family id": "morelle de Balbis",
+            "family_id": "morelle de Balbis",
             "name": "autre"
         },
         {
-            "family id": "Moutarde de Chine",
+            "family_id": "Moutarde de Chine",
             "name": "autre"
         },
         {
-            "family id": "navet",
+            "family_id": "navet",
             "name": "autre"
         },
         {
-            "family id": "oca du Pérou",
+            "family_id": "oca du Pérou",
             "name": "autre"
         },
         {
-            "family id": "oignon",
+            "family_id": "oignon",
             "name": "autre"
         },
         {
-            "family id": "origan",
+            "family_id": "origan",
             "name": "autre"
         },
         {
-            "family id": "oseille",
+            "family_id": "oseille",
             "name": "autre"
         },
         {
-            "family id": "panais",
+            "family_id": "panais",
             "name": "autre"
         },
         {
-            "family id": "pastèque",
+            "family_id": "pastèque",
             "name": "autre"
         },
         {
-            "family id": "piment",
+            "family_id": "piment",
             "name": "autre"
         },
         {
-            "family id": "poire de terre cochet",
+            "family_id": "poire de terre cochet",
             "name": "autre"
         },
         {
-            "family id": "Poire-melon",
+            "family_id": "Poire-melon",
             "name": "autre"
         },
         {
-            "family id": "poireau",
+            "family_id": "poireau",
             "name": "autre"
         },
         {
-            "family id": "pois",
+            "family_id": "pois",
             "name": "autre"
         },
         {
-            "family id": "poivron",
+            "family_id": "poivron",
             "name": "autre"
         },
         {
-            "family id": "pomme de terre",
+            "family_id": "pomme de terre",
             "name": "autre"
         },
         {
-            "family id": "radis",
+            "family_id": "radis",
             "name": "autre"
         },
         {
-            "family id": "radis d’hiver",
+            "family_id": "radis d’hiver",
             "name": "autre"
         },
         {
-            "family id": "raifort sauvage",
+            "family_id": "raifort sauvage",
             "name": "autre"
         },
         {
-            "family id": "rhubarbe",
+            "family_id": "rhubarbe",
             "name": "autre"
         },
         {
-            "family id": "romarin",
+            "family_id": "romarin",
             "name": "autre"
         },
         {
-            "family id": "roquette cultivée",
+            "family_id": "roquette cultivée",
             "name": "autre"
         },
         {
-            "family id": "rue officinale",
+            "family_id": "rue officinale",
             "name": "autre"
         },
         {
-            "family id": "salade",
+            "family_id": "salade",
             "name": "laitue"
         },
         {
-            "family id": "salsifis",
+            "family_id": "salsifis",
             "name": "autre"
         },
         {
-            "family id": "sarriette",
+            "family_id": "sarriette",
             "name": "autre"
         },
         {
-            "family id": "sauge officinale",
+            "family_id": "sauge officinale",
             "name": "autre"
         },
         {
-            "family id": "scorsonère",
+            "family_id": "scorsonère",
             "name": "autre"
         },
         {
-            "family id": "souchet comestible",
+            "family_id": "souchet comestible",
             "name": "autre"
         },
         {
-            "family id": "stevia",
+            "family_id": "stevia",
             "name": "autre"
         },
         {
-            "family id": "tétragone cornue",
+            "family_id": "tétragone cornue",
             "name": "autre"
         },
         {
-            "family id": "thym commun",
+            "family_id": "thym commun",
             "name": "autre"
         },
         {
-            "family id": "tomate",
+            "family_id": "tomate",
             "name": "autre"
         },
         {
-            "family id": "topinambour",
+            "family_id": "topinambour",
             "name": "autre"
         }
     ],

@@ -1,0 +1,20 @@
+@use 'src/styles/vars' as v;
+
+.operation {
+  &__type {
+    text-align: center;
+    margin-top: v.$s-gut;
+  }
+  
+  &__type select {
+    border-radius: 15px;
+    padding: 1rem 3rem 1rem 3rem;
+    border: none;
+    background-color: v.$medium-color;
+    font-size: 1rem;
+  }
+  
+  &__type option {
+    padding: 1rem;
+  }
+}

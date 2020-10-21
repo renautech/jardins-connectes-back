@@ -1,0 +1,10 @@
+@use 'src/styles/vars' as v;
+
+.field {
+  text-align: center;
+  &__input {
+    margin-top : v.$s-gut;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+  }
+}

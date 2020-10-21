@@ -1,6 +1,7 @@
 @use 'src/styles/vars' as v;
 
-.operations {
+.operation {
+  height: 70%;
   border-radius: 25px;
   border: 1px black solid;
   &__title {
@@ -8,14 +9,10 @@
     text-align: center;
     font-size: 1.5rem;
   }
-  &__type {
-    padding: 1rem;
-    border: none;
-  }
 }
 
 @media screen and (max-width:800px){
-  .operations {
+  .operation {
     margin-top: 0.5rem;
   }
 }

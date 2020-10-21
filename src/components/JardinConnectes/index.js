@@ -14,10 +14,11 @@ import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/components/LoginForm';
 import Garden from 'src/components/Garden';
 
+import data from 'src/data/data';
 import './style.scss';
 
 const JardinConnectes = () => {
-  console.log('App launched');
+  console.log(data);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const newEmail = (value) => {
@@ -36,7 +37,7 @@ const JardinConnectes = () => {
         <Description />
       </Route>
       <Route path="/mon-jardin">
-        <Garden />
+        <Garden data={data} />
       </Route>
       <Route path="/connexion">
         <LoginForm email={email} newEmail={newEmail} password={password} newPassword={newPassword}/>

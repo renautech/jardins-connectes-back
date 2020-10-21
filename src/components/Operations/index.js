@@ -5,6 +5,7 @@ import OperationType from './OperationType';
 import Field from './Field';
 import SelectField from './SelectField';
 import VarietyField from './VarietyField';
+import Confirm from './Confirm';
 
 import './style.scss';
 
@@ -68,6 +69,7 @@ const Operations = ({ data }) => {
           <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
           <SelectField onChange={handleBoardFamily} data={data.family} placeholder="De quelle famille ?"/>
           <VarietyField onChange={handleBoardVariety} data={data.variety} target={BoardFamily} placeholder="De quelle variété ?"/>
+          <Confirm />
         </form>
       )}
       {operationType === 'Arroser' && (

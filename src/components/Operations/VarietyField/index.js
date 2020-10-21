@@ -16,8 +16,8 @@ const VarietyField = ({ onChange, data, target, placeholder }) => {
   });
 
   return (
-    <div className="selectfield">
-      <select onChange={onChange} name="operations" id="operations">
+    <div className="varietyfield">
+      <select onChange={onChange} name="" id="">
         <option value="">{placeholder}</option>
         {varieties}
       </select>

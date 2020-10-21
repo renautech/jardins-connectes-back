@@ -1,10 +1,17 @@
 @use 'src/styles/vars' as v;
 
-.selectfield {
+.varietyfield {
   text-align: center;
-  &__input {
+  & select {
+    min-width: 50%;
     margin-top : v.$s-gut;
-    font-size: 1.3rem;
-    padding: 0.3rem;
+    border-radius: 15px;
+    padding: 1rem 3rem 1rem 3rem;
+    border: none;
+    background-color: v.$medium-color;
+    font-size: 1rem;
+  }
+  & option {
+    padding: 1rem;
   }
 }

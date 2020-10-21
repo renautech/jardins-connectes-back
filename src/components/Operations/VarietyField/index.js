@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const VarietyField = ({ onChange, data, target }) => {
+const VarietyField = ({ onChange, data, target, placeholder }) => {
   const varietiesFound = data.filter((variety) => {
     return (variety.family_id === target);
   });
-
-  console.log(varietiesFound);
 
   const varieties = varietiesFound.map((variety) => {
     return (
@@ -20,6 +18,7 @@ const VarietyField = ({ onChange, data, target }) => {
   return (
     <div className="selectfield">
       <select onChange={onChange} name="operations" id="operations">
+        <option value="">{placeholder}</option>
         {varieties}
       </select>
     </div>
@@ -30,6 +29,7 @@ VarietyField.propTypes = {
   onChange: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
   target: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
 };
 
 VarietyField.defaultProps = {

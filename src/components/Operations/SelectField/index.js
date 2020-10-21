@@ -7,7 +7,7 @@ import './style.scss';
 const SelectField = ({ onChange, data, placeholder }) => {
   const options = data.map((option) => {
     return (
-      <option key={option.name} value={option.name}>{option.name.toUpperCase()}</option>
+      <option key={option.name} value={option.name}>{option.name}</option>
     );
   });
 

@@ -4,16 +4,25 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const SelectField = ({ onChange }) => {
+const SelectField = ({ onChange, data }) => {
+  const options = data.map((option) => {
+    return (
+      <option key={option.name} value={option.name}>{option.name}</option>
+    );
+  });
+
   return (
     <div className="selectfield">
-      <input className="selectfield__input" type="text" onChange={onChange} />
+      <select onChange={onChange} name="operations" id="operations">
+        {options}
+      </select>
     </div>
   );
 };
 
 SelectField.propTypes = {
   onChange: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
 };
 
 export default SelectField;

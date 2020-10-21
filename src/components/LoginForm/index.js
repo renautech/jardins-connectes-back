@@ -14,7 +14,7 @@ const LoginForm = ({email, newEmail, newPassword, password}) => {
   };
   return (
     <div className="loginForm">
-      <form autoComplete="off" >
+      <form autoComplete="off">
         <div className="loginForm-Element">
           <label htmlFor="email">Adresse Email</label>
           <input

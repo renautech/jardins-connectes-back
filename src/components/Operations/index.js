@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import OperationType from './OperationType';
 import Field from './Field';
 import SelectField from './SelectField';
+import VarietyField from './VarietyField';
 
 import './style.scss';
 
@@ -61,11 +62,12 @@ const Operations = ({ data }) => {
     <div className="operation">
       <h2 className="operation__title">Opérations</h2>
       <OperationType handleOpType={handleOpType} />
+  
       {operationType === 'Créer une planche' && (
         <form action="post">
           <Field onChange={handleOpTarget} />
-          <SelectField onChange={handleBoardFamily} data={data} />
-          <Field onChange={handleBoardVariety} placeholder="Variété..." />
+          <SelectField onChange={handleBoardFamily} data={data.family} />
+          <VarietyField onChange={handleBoardVariety} data={data.variety} target={BoardFamily} />
         </form>
       )}
       {operationType === 'Arroser' && (

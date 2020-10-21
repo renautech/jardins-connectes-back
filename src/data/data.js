@@ -10,15 +10,6 @@
             "name": "ail"
         },
         {
-            "name": "ail"
-        },
-        {
-            "name": "ail"
-        },
-        {
-            "name": "ail"
-        },
-        {
             "name": "aneth"
         },
         {
@@ -31,37 +22,7 @@
             "name": "artichaut"
         },
         {
-            "name": "artichaut"
-        },
-        {
-            "name": "artichaut"
-        },
-        {
-            "name": "artichaut"
-        },
-        {
             "name": "cardon"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
-        },
-        {
-            "name": "aubergine"
         },
         {
             "name": "aubergine"
@@ -73,58 +34,7 @@
             "name": "basilic"
         },
         {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
-            "name": "basilic"
-        },
-        {
             "name": "betterave"
-        },
-        {
-            "name": "betterave"
-        },
-        {
-            "name": "betterave"
-        },
-        {
-            "name": "betterave"
-        },
-        {
-            "name": "betterave"
-        },
-        {
-            "name": "betterave"
-        },
-        {
-            "name": "bette à cardes"
-        },
-        {
-            "name": "bette à cardes"
-        },
-        {
-            "name": "bette à cardes"
         },
         {
             "name": "bette à cardes"
@@ -136,55 +46,10 @@
             "name": "carotte"
         },
         {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "carotte"
-        },
-        {
-            "name": "cassis"
-        },
-        {
-            "name": "cassis"
-        },
-        {
             "name": "cassis"
         },
         {
             "name": "Céleri-rave"
-        },
-        {
-            "name": "Céleri-rave"
-        },
-        {
-            "name": "Céleri-branche"
-        },
-        {
-            "name": "Céleri-branche"
         },
         {
             "name": "Céleri-branche"
@@ -205,58 +70,22 @@
             "name": "Chervis"
         },
         {
-            "name": "chicorée"
+            "name": "Chicorée"
         },
         {
-            "name": "chicorée"
+            "name": "Chou"
         },
         {
-            "name": "chicorée"
+            "name": "Chou chinois"
         },
         {
-            "name": "chicorée"
+            "name": "Ciboule de Chine"
         },
         {
-            "name": "chicorée"
+            "name": "Ciboulette"
         },
         {
-            "name": "chicorée"
-        },
-        {
-            "name": "chicorée"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou"
-        },
-        {
-            "name": "chou chinois"
-        },
-        {
-            "name": "ciboule de Chine"
-        },
-        {
-            "name": "ciboulette"
-        },
-        {
-            "name": "concombre"
+            "name": "Concombre"
         },
         {
             "name": "cornichon"

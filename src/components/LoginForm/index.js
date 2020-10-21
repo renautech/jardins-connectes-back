@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const LoginForm = ({email, newEmail, newPassword, password}) => {
+const LoginForm = ({email, newEmail, newPassword, password, handleLogin}) => {
   console.log('composant LoginForm');
   const handleChangeEmail = (event) => {
     console.log(event.target.value);
@@ -12,9 +13,13 @@ const LoginForm = ({email, newEmail, newPassword, password}) => {
     console.log(event.target.value);
     newPassword(event.target.value);
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleLogin();
+  };
   return (
     <div className="loginForm">
-      <form autoComplete="off" >
+      <form autoComplete="off" onSubmit={handleSubmit} >
         <div className="loginForm-Element">
           <label htmlFor="email">Adresse Email</label>
           <input
@@ -41,10 +46,17 @@ const LoginForm = ({email, newEmail, newPassword, password}) => {
         >
           CONNEXION
         </button>
-        
       </form>
     </div>
-  )
-}
+  );
+};
+
+LoginForm.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  newEmail: PropTypes.func.isRequired,
+  newPassword: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired
+};
 
 export default LoginForm;

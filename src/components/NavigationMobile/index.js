@@ -12,7 +12,7 @@ const NavigationMobile = () => {
           <a className="navigationMobile__link" href="/">Accueil</a>
           <a className="navigationMobile__link" href="/">Mon Jardin</a>
           <a className="navigationMobile__link" href="/connexion">Connexion</a>
-          <a className="navigationMobile__link" href="/">S'inscrire</a>
+          <a className="navigationMobile__link" href="/inscription">S'inscrire</a>
         </div>
 
   );

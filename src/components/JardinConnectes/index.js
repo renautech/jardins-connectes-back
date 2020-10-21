@@ -12,29 +12,65 @@ import Navigation from 'src/components/Navigation';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/components/LoginForm';
+import SignupForm from 'src/components/SignupForm';
 import NavigationMobile from 'src/components/NavigationMobile';
 
 import './style.scss';
 
 const JardinConnectes = () => {
   console.log('App launched');
+  
+
+  // state for connected user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const newEmail = (value) => {
+  const Email = (value) => {
     setEmail(value);
   };
-  const newPassword = (value) => {
+  const Password = (value) => {
     setPassword(value);
   };
 
+  // state for new user (signupForm component)
+  const [newUserEmail, setNewUserEmail] = useState("");
+  const [newUserPassword, setNewUserPassword] = useState("");
+  const [newUserFirstName, setNewUserFirstName] = useState("");
+  const [newUserLastName, setNewUserLastName] = useState("");
+  const [newUserAddressRoad, setNewUserAddressRoad] = useState("");
+  const [newUserAddressNumber, setNewUserAddressNumber] = useState("");
+  
+  const NewUserEmail = (value) => {
+    setNewUserEmail(value);
+  };
+  const NewUserPassword = (value) => {
+    setNewUserPassword(value);
+  };
+  const NewUserFirstName = (value) => {
+    setNewUserFirstName(value);
+  };
+  const NewUserLastName = (value) => {
+    setNewUserLastName(value);
+  };
+  const NewUserAddressRoad = (value) => {
+    setNewUserAddressRoad(value);
+  };
+  const NewUserAddressNumber = (value) => {
+    setNewUserAddressNumber(value);
+  };
+
+  // Login
+  const handleLogin = () => {
+    console.log("dans la fonction handleLogin")
+  };
+  // Submit a new user
+  const handleNewUser = () => {
+    console.log("dans la fonction handleNewUser")
+  };
 
   return (
     <div className="jardinconnectes">
       <Route path="/navMobile">
-  
         <NavigationMobile />
-        
       </Route>
       <Route exact path="/">
         <Header />
@@ -46,9 +82,34 @@ const JardinConnectes = () => {
       <Route path="/connexion">
         <Header />
         <Navigation />
-        <LoginForm email={email} newEmail={newEmail} password={password} newPassword={newPassword}/>
+        <LoginForm
+          email={email}
+          newEmail={Email}
+          password={password}
+          newPassword={Password}
+          handleLogin={handleLogin}
+        />
       </Route>
-      
+      <Route path="/inscription">
+        <Header />
+        <Navigation />
+        <SignupForm
+          email={newUserEmail}
+          password={newUserPassword}
+          firstName={newUserFirstName}
+          lastName={newUserLastName}
+          addressRoad={newUserAddressRoad}
+          addressNumber={newUserAddressNumber}
+          newEmail={NewUserEmail}
+          newPassword={NewUserPassword}
+          newFirstName={NewUserFirstName}
+          newLastName={NewUserLastName}
+          newAddressRoad={NewUserAddressRoad}
+          newAddressNumber={NewUserAddressNumber}
+          handleNewUser={handleNewUser}
+        />
+        <Footer />
+      </Route>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 @use 'src/styles/vars' as v;
 
-.loginForm {
+.signupForm {
   background-color: v.$medium-color;
   padding: 2em;
   margin: 0 auto;
@@ -33,15 +33,15 @@
     border-radius: 0.7em;
     border: 2px solid v.$dark-color;
     background-color: v.$dark-color;
-    font-weight: 600;
     color: white;
+    font-weight: 600;
   }
 
 }
 
 @media screen and (min-width:480px){
 
-  .loginForm {
+  .signupForm {
     width: 350px;
   }
 }

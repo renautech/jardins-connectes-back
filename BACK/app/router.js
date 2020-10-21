@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const mainController = require('./controllers/mainController');
 const userController = require('./controllers/userController');
-const { _,validateBody } = require('./services/validator');
+const { validateBody } = require('./services/validator');
 const { cache, flush } = require('./cache/cacheStrategy');
 
 const { insertUserSchema,updateUserSchema } = require('./schemas/userschema');

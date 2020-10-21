@@ -26,18 +26,18 @@ const mainController = {
         for(const prop in req.body) {
             modelUpdate[prop] = req.body[prop];
         }
-        modelUpdate.save();
+        await modelUpdate.save();
         res.json(modelUpdate);
     },
 
     deleteOne: (model) => async (req,res) => {
         const toDelete = await model.findOne(req.params.id);
         const modelDelete = new model(toDelete);
-        modelDelete.delete();
+        await modelDelete.delete();
         if (modelDelete.errorMessage) {
             res.status(400).json(modelDelete.errorMessage);
         } else {
-        res.json(`L'Utilisateur ayant l'ID : ${req.params.id} a été supprimé`);
+            res.json(`L'Utilisateur ayant l'ID : ${req.params.id} a été supprimé`);
         }
     }
 

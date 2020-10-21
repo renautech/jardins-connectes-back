@@ -67,6 +67,12 @@ const Operations = ({ data }) => {
       {operationType === 'Créer une planche' && (
         <form action="post">
           <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Semer' && (
+        <form action="post">
+          <Field onChange={handleOpTarget} placeholder="Sur quelle planche ?"/>
           <SelectField onChange={handleBoardFamily} data={data.family} placeholder="De quelle famille ?"/>
           <VarietyField onChange={handleBoardVariety} data={data.variety} target={BoardFamily} placeholder="De quelle variété ?"/>
           <Confirm />

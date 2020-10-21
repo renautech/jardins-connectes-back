@@ -68,14 +68,14 @@ const Operations = ({ data, dataBoard }) => {
       {operationType === 'Créer une planche' && (
         <form action="post">
           <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
           <Confirm />
         </form>
       )}
       {operationType === 'Labourer' && (
         <form action="post">
           <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche labourer ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
           <Confirm />
         </form>
       )}
@@ -90,7 +90,44 @@ const Operations = ({ data, dataBoard }) => {
       {operationType === 'Arroser' && (
         <form action="post">
           <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche arroser ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Fertiliser' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche fertiliser ?"/>
+          <CommentField onChange={handleCommentValue} placeholder="Avec quel fertilisant ?"/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Traiter' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche traiter ?"/>
+          <Field onChange={handleProductValue} placeholder="Avec quel produit ?"/>
+          <Field onChange={handleQttValue} placeholder="Quelle quantité ?"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Désherber' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche désherber ?"/>
+          <CommentField onChange={handleCommentValue} placeholder="De quelle manière ?"/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Récolter' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche récolter ?"/>
+          <Field onChange={handleQttValue} placeholder="Quelle quantité ? (en kg)"/>
+          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <Confirm />
+        </form>
+      )}
+      {operationType === 'Supprimer une planche' && (
+        <form action="post">
+          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche supprimer ?"/>
           <Confirm />
         </form>
       )}

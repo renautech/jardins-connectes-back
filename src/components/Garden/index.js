@@ -11,7 +11,7 @@ const Garden = ({ data, dataBoard }) => {
   return (
     <div className="garden">
       <div className="garden__left">
-        <MyGarden />
+        <MyGarden dataBoard={dataBoard}/>
       </div>
       <div className="garden__right">
         <Weather zipcode="69400" />

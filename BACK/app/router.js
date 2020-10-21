@@ -7,7 +7,9 @@ const {cache, flush} = require('./cache/cacheStrategy');
 const {insertUserSchema,updateUserSchema} = require('./schemas/userschema');
 const { insertPhotoSchema, updatePhotoSchema } = require('./schemas/photoschema');
 const { insertOperationTypeSchema, updateOperationTypeSchema } = require('./schemas/operationtypeschema');
+const { insertBoardSchema, updateBoardSchema }= require('./schemas/boardschema');
 
+const Board = require('./models/Board');
 const User = require('./models/User');
 const Photo = require('./models/Photo');
 const Operation_type = require('./models/Operation_type');
@@ -30,5 +32,10 @@ router.post('/operation_types', validateBody(insertOperationTypeSchema), flush, 
 router.patch('/operation_types/operation_type/:id', validateBody(updateOperationTypeSchema), flush, mainController.updateOne(Operation_type));
 router.delete('/operation_types/operation_type/:id', flush, mainController.deleteOne(Operation_type));
 
+router.get('/boards', cache, mainController.findAll(Board));
+router.get('/boards/board/:id', cache, mainController.findOne(Board));
+router.post('/boards', validateBody(insertBoardSchema), flush, mainController.insertOne(Board));
+router.patch('/boards/board/:id', validateBody(updateBoardSchema), flush, mainController.updateOne(Board));
+router.delete('/boards/board/:id', flush, mainController.deleteOne(Board));
 
 module.exports = router;

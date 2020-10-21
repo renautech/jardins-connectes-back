@@ -9,3 +9,5 @@ functions/updatePhoto 2020-10-20T13:00:53Z Flyworkz <pedron.dorian@gmail.com> # 
 functions/newPhotoWithoutDate 2020-10-21T07:55:48Z Flyworkz <pedron.dorian@gmail.com> # function to add a new photo without date easily
 functions/newOperationType 2020-10-20T13:57:26Z Flyworkz <pedron.dorian@gmail.com> # function to create a new operation type easily
 functions/updateOperationType 2020-10-20T14:04:52Z Flyworkz <pedron.dorian@gmail.com> # function to update an operation type easily
+functions/newBoard 2020-10-20T08:44:20Z Flyworkz <pedron.dorian@gmail.com> # function to create easily a new board
+functions/updateBoard 2020-10-20T09:15:33Z Flyworkz <pedron.dorian@gmail.com> # function to update easily a board

@@ -8,3 +8,6 @@ functions/newFamily 2020-10-20T08:24:30Z Tidus91 <kurama91@hotmail.fr> # SQL fun
 functions/updateFamily 2020-10-20T08:32:46Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to modify easily a family
 functions/newVariety 2020-10-20T10:48:46Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to create a new Variety easily
 functions/updateVariety 2020-10-20T10:55:36Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to modify a  Variety easily
+functions/newOperation 2020-10-20T12:58:52Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new operation
+functions/updateOperation 2020-10-20T12:59:17Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to change easily an operation
+functions/newOperationWithoutDate 2020-10-21T07:59:05Z Tidus91 <kurama91@hotmail.fr> # function in order to create a new operation without a date easily

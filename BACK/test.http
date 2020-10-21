@@ -87,3 +87,34 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:5555/v1/varieties/variety/6
+
+------------------------------------------------------------ Operations
+
+###
+
+POST http://localhost:5555/v1/operations
+Content-Type: application/json
+
+{
+      "date" : "2020-04-11",
+      "quantity" : 15.5,
+      "product_name" : "DEVELOPPEURTESTTTTTT",
+      "maker" : "testttttMaker",
+      "operation_type_id" : 2,
+      "board_id" : 3
+}
+
+###
+
+PATCH http://localhost:5555/v1/operations/operation/7
+Content-Type: application/json
+
+{
+      "quantity" : 16.5,
+      "date" : "2020-04-04",
+      "maker" : "Yasuoooooooooooo"
+}
+
+###
+
+DELETE http://localhost:5555/v1/operations/operation/7

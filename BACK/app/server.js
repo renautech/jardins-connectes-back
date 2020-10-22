@@ -9,17 +9,16 @@ const session = require('express-session');
 
 const port = process.env.PORT || 5555;
 
-
 app.use(express.json());
-
 
 // on ne donne pas de nom de session dans l'objet de config car : L’utilisation d’un nom de cookie de session par défaut risque d’ouvrir votre application aux attaques. Le problème de sécurité qui en découle est similaire à X-Powered-By : une personne potentiellement malveillante peut l’utiliser pour s’identifier auprès du serveur et cibler ses attaques en conséquence.
 // Pour éviter ce problème, on utilisera des noms de cookie génériques
 app.use(session({
     secret: 'c un mystere jesuis sur que tu trouveraspashaha hihi hoho hilarant pas vrai hein',
     name: 'sessionId',
-    resave: true, // compliqué, mais si on utilise pas 'toutch' faut mettre true
+    resave: true, // compliqué, mais si on utilise pas 'touch' faut mettre true
     // on ajoute des options de sécurité
+    saveUninitialized: true, // Default value
     cookie: {
         secure: false,       // Garantit que le navigateur n’envoie le cookie que sur HTTPS.
         httpOnly: true, // Garantit que le cookie n’est envoyé que sur HTTP(S), pas au JavaScript du client, ce qui renforce la protection contre les attaques de type cross-site scripting.
@@ -31,10 +30,7 @@ app.use(session({
 // permet d'ajouter une sécurité en "cachant" que l'application tourne sur un server Express et donc plus difficile de lancer des attaques spécifiquement ciblées
 app.disable('x-powered-by');
 
-
 app.use('/v1', router);
-
-
 
 app.launch = () => {
     app.listen(port, () => {

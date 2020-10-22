@@ -30,5 +30,14 @@ const updateUserSchema = Joi.object({
     profile_picture: Joi.string().max(200)
 });
 
-module.exports = {insertUserSchema,updateUserSchema};
+const signinSchema = Joi.object({
+    email: Joi.string().email({minDomainSegments: 2, tlds: { allow: ['com','net']}}).required(),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required()
+});
+
+module.exports = {
+    insertUserSchema, 
+    updateUserSchema, 
+    signinSchema 
+};
 

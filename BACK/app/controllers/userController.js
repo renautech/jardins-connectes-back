@@ -8,7 +8,10 @@ const userController = {
         // récupérer les infos de la requête, si les infos sont bien unique et conforme
         const emailrequired = await User.findByEmail(req.body.email);
         if (emailrequired) {
-            res.json("cet adresse email est déja lié à un compte existant");
+            res.json({
+                message: "Cet email est déjà utilisé",
+                state: false
+            });
         } else {   // alors les insérer en BDD et rediriger vers la page connexion
             const salt = await bcrypt.genSalt(10);
             const encryptedPassword = await bcrypt.hash(req.body.password,salt);
@@ -19,7 +22,10 @@ const userController = {
                 const theUser = new User(await User.findOne(newUser.id));
                 req.session.user = theUser;
                 delete req.session.user.password;
-                res.json("Inscrit et connecté");
+                res.json({
+                    message: "Inscrit et connecté",
+                    state: true
+                });
             }
         }
     },
@@ -32,18 +38,30 @@ const userController = {
             if(passwordValidation) {
                 req.session.user = new User(userAllowed);
                 delete req.session.user.password;
-                res.json("Connecté");
+                res.json({
+                    message: "Connecté",
+                    state: true
+                });
             } else {
-                res.json("Mauvaise combinaison email/password");    
+                res.json({
+                    message: "Mot de passe incorrect pour cette adresse email",
+                    state: false
+                });    
             }       
         } else {
-            res.json("l'email n'existe pas !");
+            res.json({
+                message: "Cet email n'existe pas",
+                state: false
+            });
         }
     },
 
     signout: (req, res) => {
         req.session.user = false;
-        res.json("Déconnecté");
+        res.json({
+            message: "Déconnecté",
+            state: true
+        });
     }
 
 };

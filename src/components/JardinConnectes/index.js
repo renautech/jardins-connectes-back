@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import {
   Route,
   Switch,
   Link
 } from 'react-router-dom';
+import axios from 'axios';
 
 // components import
 import Header from 'src/components/Header';
@@ -23,10 +24,10 @@ import './style.scss';
 const JardinConnectes = () => {
   console.log('App launched');
   
-
   // state for connected user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
   const Email = (value) => {
     setEmail(value);
   };
@@ -41,33 +42,84 @@ const JardinConnectes = () => {
   const [newUserLastName, setNewUserLastName] = useState("");
   const [newUserAddressRoad, setNewUserAddressRoad] = useState("");
   const [newUserAddressNumber, setNewUserAddressNumber] = useState("");
-  
-  const NewUserEmail = (value) => {
+  const [newUserDepartment, setNewUserDepartment] = useState("");
+  const [newUserTown, setNewUserTown] = useState("");
+  const [newUserPostcode, setNewUserPostcode] = useState("");
+  const [newUserNickname, setNewUserNickname] = useState("");
+  const [newUserProfilePicture, setNewProfilePicture] = useState("");
+  const newEmail = (value) => {
     setNewUserEmail(value);
   };
-  const NewUserPassword = (value) => {
+  const newPassword = (value) => {
     setNewUserPassword(value);
   };
-  const NewUserFirstName = (value) => {
+  const newFirstName = (value) => {
     setNewUserFirstName(value);
   };
-  const NewUserLastName = (value) => {
+  const newLastName = (value) => {
     setNewUserLastName(value);
   };
-  const NewUserAddressRoad = (value) => {
+  const newAddressRoad = (value) => {
     setNewUserAddressRoad(value);
   };
-  const NewUserAddressNumber = (value) => {
+  const newAddressNumber = (value) => {
     setNewUserAddressNumber(value);
+  };
+  const newDepartment = (value) => {
+    setNewUserDepartment(value);
+  };
+  const newNickname = (value) => {
+    setNewUserNickname(value);
+  };
+  const newPostcode = (value) => {
+    setNewUserPostcode(value);
+  };
+  const newTown = (value) => {
+    setNewUserTown(value);
   };
 
   // Login
   const handleLogin = () => {
-    console.log("dans la fonction handleLogin")
+    console.log("dans la fonction handleLogin");
+    /*axios.get('http://api.openweathermap.org/data/2.5/weather?q=Lyon&appid=9f8ac904cb6948bb2381c7b783d10430')
+      .then( (res) => {
+        console.log(res)
+      }) */
+    axios.get('urlapi', { email, password })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setIsLogged = true;
+        console.log('Utilisateur connecté ? : ${isLogged}');
+      })
+      .catch((error) => console.log(error));
   };
+
   // Submit a new user
   const handleNewUser = () => {
-    console.log("dans la fonction handleNewUser")
+    console.log("dans la fonction handleNewUser");
+    // the object newUser contains state variables filled from signup form
+    const newUser = {
+      email: newUserEmail,
+      password: newUserPassword,
+      first_name: newUserPassword,
+      last_name: newUserLastName,
+      street_name: newUserAddressRoad,
+      street_number: newUserAddressNumber,
+      department: newUserDepartment,
+      town: newUserTown,
+      postcode: newUserPostcode,
+      country: 'France',
+      nickname: newUserNickname,
+      profile_picture: newUserProfilePicture,
+    };
+    // login request to our API
+    axios.get('urlapi', { newUser })
+      .then((res) => {
+        console.log(res)  
+        console.log(res.data)
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -109,12 +161,20 @@ const JardinConnectes = () => {
           lastName={newUserLastName}
           addressRoad={newUserAddressRoad}
           addressNumber={newUserAddressNumber}
-          newEmail={NewUserEmail}
-          newPassword={NewUserPassword}
-          newFirstName={NewUserFirstName}
-          newLastName={NewUserLastName}
-          newAddressRoad={NewUserAddressRoad}
-          newAddressNumber={NewUserAddressNumber}
+          department={newUserDepartment}
+          nickname={newUserNickname}
+          town={newUserTown}
+          postcode={newUserPostcode}
+          newEmail={newEmail}
+          newPassword={newPassword}
+          newFirstName={newFirstName}
+          newLastName={newLastName}
+          newAddressRoad={newAddressRoad}
+          newAddressNumber={newAddressNumber}
+          newDepartment={newDepartment}
+          newNickname={newNickname}
+          newPostcode={newPostcode}
+          newTown={newTown}
           handleNewUser={handleNewUser}
         />
         <Footer />

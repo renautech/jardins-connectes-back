@@ -16,6 +16,14 @@ const SignupForm = (
     newAddressRoad,
     addressNumber,
     newAddressNumber,
+    department,
+    newDepartment,
+    nickname,
+    newNickname,
+    town,
+    newTown,
+    postcode,
+    newPostcode,
     handleNewUser
   },
 ) => {
@@ -40,14 +48,39 @@ const SignupForm = (
   const handleChangeAddressNumber = (event) => {
     newAddressNumber(event.target.value);
   };
+  const handleChangeDepartment = (event) => {
+    newDepartment(event.target.value);
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     handleNewUser();
+  };
+  const handleChangeNickname = (event) => {
+    event.preventDefault();
+    newNickname(event.target.value);
+  };
+  const handleChangeTown = (event) => {
+    event.preventDefault();
+    newTown(event.target.value);
+  };
+  const handleChangePostcode = (event) => {
+    event.preventDefault();
+    newPostcode(event.target.value);
   };
 
   return (
     <div className="signupForm">
       <form autoComplete="off" onSubmit={handleSubmit} >
+        <div className="signupForm-Element">
+          <label htmlFor="nickname">Pseudo</label>
+          <input
+            name="nickname"
+            id="nickname"
+            placeholder="Pseudo"
+            onChange={handleChangeNickname}
+            value={nickname}
+          />
+        </div>
         <div className="signupForm-Element">
           <label htmlFor="firstname">Prénom</label>
           <input
@@ -76,10 +109,11 @@ const SignupForm = (
             placeholder="Adresse Email"
             onChange={handleChangeEmail}
             value={email}
+            required
           />
         </div>
         <div className="signupForm-Element">
-          <label htmlFor="addressRoad">Prénom</label>
+          <label htmlFor="addressRoad">Adresse - Rue</label>
           <input
             name="addressRoad"
             id="addressRoad"
@@ -89,13 +123,44 @@ const SignupForm = (
           />
         </div>
         <div className="signupForm-Element">
-          <label htmlFor="addressNumber">Numéro</label>
+          <label htmlFor="addressNumber">Adresse - Numéro</label>
           <input
             name="addressNumber"
             id="addressNumber"
             placeholder="Numéro"
             onChange={handleChangeAddressNumber}
             value={addressNumber}
+          />
+        </div>
+        <div className="signupForm-Element">
+          <label htmlFor="town">Nom de la ville</label>
+          <input
+            name="town"
+            id="town"
+            placeholder="Nom de la ville"
+            onChange={handleChangeTown}
+            value={town}
+          />
+        </div>
+        <div className="signupForm-Element">
+          <label htmlFor="postcode">Code postal</label>
+          <input
+            name="postcode"
+            id="postcode"
+            placeholder="Code postal"
+            onChange={handleChangePostcode}
+            value={postcode}
+          />
+        </div>
+        <div className="signupForm-Element">
+          <label htmlFor="department">Numéro de département</label>
+          <input
+            name="department"
+            id="department"
+            placeholder="Numéro de département"
+            onChange={handleChangeDepartment}
+            value={department}
+            required
           />
         </div>
         <div className="signupForm-Element">
@@ -106,6 +171,7 @@ const SignupForm = (
             placeholder="Mot de passe"
             onChange={handleChangePassword}
             value={password}
+            required
           />
         </div>
         <button
@@ -125,13 +191,21 @@ SignupForm.propTypes = {
   addressRoad: PropTypes.string,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  nickname: PropTypes.string.isRequired,
+  town: PropTypes.string.isRequired,
+  postcode: PropTypes.string.isRequired,
   newEmail: PropTypes.func.isRequired,
   newPassword: PropTypes.func.isRequired,
   newFirstName: PropTypes.func.isRequired,
   newLastName: PropTypes.func.isRequired,
   newAddressNumber: PropTypes.func.isRequired,
   newAddressRoad: PropTypes.func.isRequired,
-  handleNewUser: PropTypes.func.isRequired
+  newDepartment: PropTypes.func.isRequired,
+  newNickname: PropTypes.func.isRequired,
+  newTown: PropTypes.func.isRequired,
+  newPostcode: PropTypes.func.isRequired,
+  handleNewUser: PropTypes.func.isRequired,
 };
 
 SignupForm.defaultProps = {

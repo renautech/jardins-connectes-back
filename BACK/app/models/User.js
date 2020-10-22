@@ -1,7 +1,7 @@
 const db = require('../database');
 
 
-class Users {
+class User {
 
 
     constructor(data) {
@@ -60,4 +60,4 @@ class Users {
 
 }
 
-module.exports = Users;
+module.exports = User;

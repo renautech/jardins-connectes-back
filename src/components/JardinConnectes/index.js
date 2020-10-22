@@ -3,7 +3,11 @@ import {
   Route,
   Switch,
   Link,
+<<<<<<< HEAD
   Redirect,
+=======
+  Redirect
+>>>>>>> 91aaee9b651c6e2c3c63e55086b23642c1f9228f
 } from 'react-router-dom';
 import axios from 'axios';
 
@@ -27,7 +31,13 @@ import './style.scss';
 
 const JardinConnectes = () => {
   console.log('App launched');
-  
+
+/*
+useEffect( () => {
+  console.log("utilisateur loggé ? " + isLogged)
+});
+*/
+
   // state for connected user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -84,24 +94,17 @@ const JardinConnectes = () => {
 
   // Login
   const handleLogin = () => {
-    console.log("dans la fonction handleLogin");
-    /*axios.get('http://api.openweathermap.org/data/2.5/weather?q=Lyon&appid=9f8ac904cb6948bb2381c7b783d10430')
-      .then( (res) => {
-        console.log(res)
-      }) */
-    axios.get('urlapi', { email, password })
+    axios.post('http://3.92.0.243:5555/v1/signin', { email, password })
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        setIsLogged = true;
-        console.log('Utilisateur connecté ? : ${isLogged}');
+        setIsLogged(true);
       })
       .catch((error) => console.log(error));
   };
 
   // Submit a new user
   const handleNewUser = () => {
-    console.log("dans la fonction handleNewUser");
     // the object newUser contains state variables filled from signup form
     const newUser = {
       email: newUserEmail,
@@ -128,6 +131,7 @@ const JardinConnectes = () => {
 
   return (
     <div className="jardinconnectes">
+
       <Route path="/navMobile">
         <NavigationMobile />
       </Route>
@@ -145,6 +149,7 @@ const JardinConnectes = () => {
         <Footer />
       </Route>
       <Route path="/connexion">
+        { isLogged && <Redirect to="/mon-jardin"/> };
         <Header />
         <Navigation />
         <LoginForm

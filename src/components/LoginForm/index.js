@@ -4,13 +4,10 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const LoginForm = ({email, newEmail, newPassword, password, handleLogin}) => {
-  console.log('composant LoginForm');
   const handleChangeEmail = (event) => {
-    console.log(event.target.value);
     newEmail(event.target.value);
   };
   const handleChangePassword = (event) => {
-    console.log(event.target.value);
     newPassword(event.target.value);
   };
   const handleSubmit = (event) => {

@@ -105,22 +105,21 @@ const JardinConnectes = () => {
     const newUser = {
       email: newUserEmail,
       password: newUserPassword,
-      first_name: newUserPassword,
+      first_name: newUserFirstName,
       last_name: newUserLastName,
       street_name: newUserAddressRoad,
-      street_number: newUserAddressNumber,
+      street_number: parseInt((newUserAddressNumber), 10),
       department: newUserDepartment,
       town: newUserTown,
       postcode: newUserPostcode,
       country: 'France',
       nickname: newUserNickname,
-      profile_picture: newUserProfilePicture,
     };
     // login request to our API
-    axios.get('urlapi', { newUser })
+    axios.post('http://3.92.0.243:5555/v1/signup', newUser)
       .then((res) => {
-        console.log(res)  
-        console.log(res.data)
+        console.log(res);
+        console.log(res.data);
       })
       .catch((error) => console.log(error));
   };

@@ -2,12 +2,19 @@ require('dotenv').config();
 const express= require('express');
 const app = express();
 const router = require('./router');
-const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
 // il ne sauvegarde que l’ID session dans le cookie lui-même, mais pas les données de session (à la différence de cookie-session ou express.session (fourni de base))
 //Par défaut, il utilise le stockage en mémoire et n’est pas conçu pour un environnement de production. En production, on devra configurer un magasin de sessions évolutif
 const session = require('express-session');
 
 const port = process.env.PORT || 5555;
+const host = process.env.HOST || "localhost";
+
+// Accès à l'API
+app.use(cors({
+	origin: '*'
+}));
 
 app.use(express.json());
 
@@ -34,7 +41,7 @@ app.use('/v1', router);
 
 app.launch = () => {
     app.listen(port, () => {
-        console.log(`Listening on http://localhost:${port}`);
+        console.log(`Listening on http://${host}:${port}`);
     });
 }
 

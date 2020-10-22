@@ -17,6 +17,7 @@ import SignupForm from 'src/components/SignupForm';
 import NavigationMobile from 'src/components/NavigationMobile';
 import Garden from 'src/components/Garden';
 import Profile from 'src/components/Profile';
+import ProfileEdit from 'src/components/ProfileEdit';
 
 import data from 'src/data/data';
 import dataBoard from 'src/data/dataBoard';
@@ -181,10 +182,16 @@ const JardinConnectes = () => {
         />
         <Footer />
       </Route>
-      <Route path="/mon-profil">
+      <Route exact path="/mon-profil">
         <Header />
         <Navigation />
         <Profile dataUser={dataUser} />
+        <Footer />
+      </Route>
+      <Route exact path="/mon-profil/modification">
+        <Header />
+        <Navigation />
+        <ProfileEdit dataUser={dataUser} />
         <Footer />
       </Route>
     </div>

@@ -3,11 +3,7 @@ import {
   Route,
   Switch,
   Link,
-<<<<<<< HEAD
   Redirect,
-=======
-  Redirect
->>>>>>> 91aaee9b651c6e2c3c63e55086b23642c1f9228f
 } from 'react-router-dom';
 import axios from 'axios';
 

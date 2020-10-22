@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
@@ -7,8 +8,12 @@ const Navigation = () => {
   return (
     <div className="navigation">
       <nav className="navigation__nav">
-        <a className="navigation__nav__link" href="/">Menu</a>
-        <a className="navigation__nav__link" href="/mon-jardin">Mon Jardin</a>
+        <NavLink to="/">
+          <p className="navigation__nav__link">Menu</p>
+        </NavLink>
+        <NavLink to="/mon-jardin">
+          <p className="navigation__nav__link">Mon Jardin</p>
+        </NavLink>
       </nav>
     </div>
   );

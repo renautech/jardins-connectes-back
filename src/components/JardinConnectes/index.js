@@ -191,7 +191,30 @@ const JardinConnectes = () => {
       <Route exact path="/mon-profil/modification">
         <Header />
         <Navigation />
-        <ProfileEdit dataUser={dataUser} />
+        <ProfileEdit
+          dataUser={dataUser}
+          email={newUserEmail}
+          password={newUserPassword}
+          firstName={newUserFirstName}
+          lastName={newUserLastName}
+          addressRoad={newUserAddressRoad}
+          addressNumber={newUserAddressNumber}
+          department={newUserDepartment}
+          nickname={newUserNickname}
+          town={newUserTown}
+          postcode={newUserPostcode}
+          newEmail={newEmail}
+          newPassword={newPassword}
+          newFirstName={newFirstName}
+          newLastName={newLastName}
+          newAddressRoad={newAddressRoad}
+          newAddressNumber={newAddressNumber}
+          newDepartment={newDepartment}
+          newNickname={newNickname}
+          newPostcode={newPostcode}
+          newTown={newTown}
+          handleNewUser={handleNewUser}
+        />
         <Footer />
       </Route>
     </div>

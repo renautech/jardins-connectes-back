@@ -24,7 +24,7 @@ const SignupForm = (
     newTown,
     postcode,
     newPostcode,
-    handleNewUser
+    handleNewUser,
   },
 ) => {
   console.log('composant SignupForm');

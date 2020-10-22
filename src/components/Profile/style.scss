@@ -1,0 +1,46 @@
+@use 'src/styles/vars' as v;
+
+.profile {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: v.$medium-color;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  overflow: hidden;
+  &__title {
+    margin-top: v.$s-gut;
+    margin-bottom: v.$s-gut;
+    font-size: 1.5rem;
+  }
+  &__container {
+    text-align: left;
+    background-color : v.$lighter-color;
+    overflow: hidden;
+  }
+  &__info {
+    overflow: hidden;
+    margin-top: v.$xs-gut;
+    &__type {
+      padding: v.$xs-gut;
+      margin-left: v.$xs-gut;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 25%;
+    }
+    &__text {
+      margin-left : v.$s-gut;
+      text-align: center;
+      font-weight: normal;
+      background-color: white;
+      width: 45%;
+      padding: v.$xs-gut;
+      border-radius: 15px;
+      display: inline-block;
+    }
+  }
+}

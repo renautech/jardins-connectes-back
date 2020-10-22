@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const Header = ({toggleNavMobile}) => {
-  console.log('composant header');
   return (
     <div className="header">
       <span className="logo">LOGO</span>

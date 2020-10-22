@@ -14,4 +14,4 @@ module.exports = {
     boardRouter,
     varietyRouter,
     familyRouter
-}
+};

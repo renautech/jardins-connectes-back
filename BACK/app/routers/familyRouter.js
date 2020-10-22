@@ -6,10 +6,11 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertFamilySchema, updateFamilySchema } = require('../schemas/familyschema');
 const Family = require('../models/Family');
 
-familyRouter.get('/families', cache, mainController.findAll(Family));
-familyRouter.get('/families/family/:id', cache, mainController.findOne(Family));
-familyRouter.post('/families', validateBody(insertFamilySchema), flush, mainController.insertOne(Family));
-familyRouter.patch('/families/family/:id', validateBody(updateFamilySchema), flush, mainController.updateOne(Family));
-familyRouter.delete('/families/family/:id', flush, mainController.deleteOne(Family));
+// Prefix : /families
+familyRouter.get('/', cache, mainController.findAll(Family));
+familyRouter.get('/family/:id', cache, mainController.findOne(Family));
+familyRouter.post('/', validateBody(insertFamilySchema), flush, mainController.insertOne(Family));
+familyRouter.patch('/family/:id', validateBody(updateFamilySchema), flush, mainController.updateOne(Family));
+familyRouter.delete('/family/:id', flush, mainController.deleteOne(Family));
 
 module.exports = familyRouter;

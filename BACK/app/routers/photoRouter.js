@@ -6,10 +6,11 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertPhotoSchema, updatePhotoSchema } = require('../schemas/photoschema');
 const Photo = require('../models/Photo');
 
-photoRouter.get('/photos', cache, mainController.findAll(Photo));
-photoRouter.get('/photos/photo/:id', cache, mainController.findOne(Photo));
-photoRouter.post('/photos', validateBody(insertPhotoSchema), flush, mainController.insertOne(Photo));
-photoRouter.patch('/photos/photo/:id', validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
-photoRouter.delete('/photos/photo/:id', flush, mainController.deleteOne(Photo));
+// Prefix : /photos
+photoRouter.get('/', cache, mainController.findAll(Photo));
+photoRouter.get('/photo/:id', cache, mainController.findOne(Photo));
+photoRouter.post('/', validateBody(insertPhotoSchema), flush, mainController.insertOne(Photo));
+photoRouter.patch('/photo/:id', validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
+photoRouter.delete('/photo/:id', flush, mainController.deleteOne(Photo));
 
 module.exports = photoRouter;

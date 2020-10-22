@@ -6,10 +6,11 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertVarietySchema, updateVarietySchema } = require('../schemas/varietyschema');
 const Variety = require('../models/Variety');
 
-varietyRouter.get('/varieties', cache, mainController.findAll(Variety));
-varietyRouter.get('/varieties/variety/:id', cache, mainController.findOne(Variety));
-varietyRouter.post('/varieties', validateBody(insertVarietySchema), flush, mainController.insertOne(Variety));
-varietyRouter.patch('/varieties/variety/:id', validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
-varietyRouter.delete('/varieties/variety/:id', flush, mainController.deleteOne(Variety));
+// Prefix : /varieties
+varietyRouter.get('/', cache, mainController.findAll(Variety));
+varietyRouter.get('/variety/:id', cache, mainController.findOne(Variety));
+varietyRouter.post('/', validateBody(insertVarietySchema), flush, mainController.insertOne(Variety));
+varietyRouter.patch('/variety/:id', validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
+varietyRouter.delete('/variety/:id', flush, mainController.deleteOne(Variety));
 
 module.exports = varietyRouter;

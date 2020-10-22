@@ -15,9 +15,11 @@ import LoginForm from 'src/components/LoginForm';
 import SignupForm from 'src/components/SignupForm';
 import NavigationMobile from 'src/components/NavigationMobile';
 import Garden from 'src/components/Garden';
+import Profile from 'src/components/Profile';
 
 import data from 'src/data/data';
 import dataBoard from 'src/data/dataBoard';
+import dataUser from 'src/data/dataFake';
 import './style.scss';
 
 const JardinConnectes = () => {
@@ -117,6 +119,12 @@ const JardinConnectes = () => {
           newAddressNumber={NewUserAddressNumber}
           handleNewUser={handleNewUser}
         />
+        <Footer />
+      </Route>
+      <Route path="/mon-profil">
+        <Header />
+        <Navigation />
+        <Profile dataUser={dataUser} />
         <Footer />
       </Route>
     </div>

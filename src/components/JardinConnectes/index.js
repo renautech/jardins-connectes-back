@@ -2,7 +2,8 @@ import React, { useState, useEffect} from 'react';
 import {
   Route,
   Switch,
-  Link
+  Link,
+  Redirect,
 } from 'react-router-dom';
 import axios from 'axios';
 
@@ -120,6 +121,7 @@ const JardinConnectes = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        setIsLogged(true);
       })
       .catch((error) => console.log(error));
   };
@@ -154,6 +156,9 @@ const JardinConnectes = () => {
         />
       </Route>
       <Route path="/inscription">
+        {isLogged && (
+          <Redirect to="/mon-jardin" />
+        )}
         <Header />
         <Navigation />
         <SignupForm

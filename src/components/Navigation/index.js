@@ -9,13 +9,22 @@ const Navigation = ({ isLogged }) => {
   return (
     <div className="navigation">
       <nav className="navigation__nav">
-        <NavLink to="/">
-          <p className="navigation__nav__link">Accueil</p>
-        </NavLink>
         {isLogged && (
-        <NavLink to="/mon-jardin">
-          <p className="navigation__nav__link">Mon Jardin</p>
-        </NavLink>
+        <div>
+          <NavLink to="/">
+            <p className="navigation__nav__link">Accueil</p>
+          </NavLink>
+          <NavLink to="/mon-jardin">
+            <p className="navigation__nav__link">Mon Jardin</p>
+          </NavLink>
+        </div>
+        )}
+        {!isLogged && (
+        <div>
+          <NavLink to="/">
+            <p className="navigation__nav__link">Accueil</p>
+          </NavLink>
+        </div>
         )}
       </nav>
     </div>

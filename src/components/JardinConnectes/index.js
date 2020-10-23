@@ -133,21 +133,21 @@ useEffect( () => {
       </Route>
       <Route exact path="/">
         <Header isLogged={isLogged} />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <HomeVideo />
         <Description />
         <Footer />
       </Route>
       <Route path="/mon-jardin">
         <Header isLogged={isLogged} />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <Garden data={data} dataBoard={dataBoard} />
         <Footer />
       </Route>
       <Route path="/connexion">
         { isLogged && <Redirect to="/mon-jardin"/> };
         <Header isLogged={isLogged} />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <LoginForm
           email={email}
           newEmail={Email}
@@ -162,7 +162,7 @@ useEffect( () => {
           <Redirect to="/mon-jardin" />
         )}
         <Header isLogged={isLogged} />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <SignupForm
           email={newUserEmail}
           password={newUserPassword}

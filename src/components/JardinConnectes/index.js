@@ -145,13 +145,8 @@ useEffect( () => {
         <Footer />
       </Route>
       <Route path="/connexion">
-<<<<<<< HEAD
-        { isLogged && <Redirect to="/mon-jardin"/> }
-        <Header />
-=======
         { isLogged && <Redirect to="/mon-jardin"/> };
         <Header isLogged={isLogged} />
->>>>>>> front_isLogged
         <Navigation />
         <LoginForm
           email={email}
@@ -200,13 +195,10 @@ useEffect( () => {
         <Footer />
       </Route>
       <Route exact path="/mon-profil/modification">
-<<<<<<< HEAD
         <Header />
         <Navigation isLogged={isLogged} />
-=======
         <Header isLogged={isLogged} />
         <Navigation />
->>>>>>> front_isLogged
         <ProfileEdit
           dataUser={dataUser}
           email={newUserEmail}

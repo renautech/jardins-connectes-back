@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const familyRouter = Router();
 const mainController = require('../controllers/mainController');
+const familyController = require('../controllers/familyController');
 const { validateBody } = require('../services/validator');
 const { cache, flush } = require('../cache/cacheStrategy');
 const { insertFamilySchema, updateFamilySchema } = require('../schemas/familyschema');
@@ -12,5 +13,8 @@ familyRouter.get('/family/:id', cache, mainController.findOne(Family));
 familyRouter.post('/', validateBody(insertFamilySchema), flush, mainController.insertOne(Family));
 familyRouter.patch('/family/:id', validateBody(updateFamilySchema), flush, mainController.updateOne(Family));
 familyRouter.delete('/family/:id', flush, mainController.deleteOne(Family));
+
+// Specifics routes
+familyRouter.get('/user/connected', cache, familyController.findWhereVoidBoardForConnectedUser);
 
 module.exports = familyRouter;

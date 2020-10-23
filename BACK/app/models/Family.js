@@ -1,6 +1,6 @@
 const db = require('../database');
 
-class Families {
+class Family {
 
     constructor(data) {
         for(const prop in data) {
@@ -17,6 +17,11 @@ class Families {
 
         const oneFamily = await db.query(`SELECT * FROM family WHERE id = $1`,[id]);
         return oneFamily.rows[0];
+    }
+
+    static async findWhereVoidBoardByUser(userId) {
+        const families = await db.query(`SELECT * FROM findWhereVoidBoardByUser($1)`, [userId]);
+        return families.rows;
     }
 
     async save() {
@@ -47,4 +52,4 @@ class Families {
 
 }
 
-module.exports = Families;
+module.exports = Family;

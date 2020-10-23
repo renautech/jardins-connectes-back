@@ -1,14 +1,24 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Family from 'src/components/MyGarden/Family';
 
 import './style.scss';
 
-const MyGarden = ({ dataBoard }) => {
+const MyGarden = ({ dataBoard, getMyGardenFamilies }) => {
+  console.log('my garden render');
+
+  // useEffect(() => {
+  //   const myGardenFamilies = getMyGardenFamilies();
+  // });
+
+  // const Families = myGardenFamilies.map((family) => {
+  //   return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
+  // });
+
   const Families = dataBoard.map((family) => {
-    return <Family type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
+    return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
   });
 
   return (
@@ -22,7 +32,7 @@ const MyGarden = ({ dataBoard }) => {
 };
 
 MyGarden.propTypes = {
-  dataBoard: PropTypes.object.isRequired,
+  getMyGardenFamilies: PropTypes.func.isRequired,
 };
 
 export default MyGarden;

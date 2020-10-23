@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import OperationType from './OperationType';
 import Field from './Field';
@@ -10,7 +11,7 @@ import Confirm from './Confirm';
 
 import './style.scss';
 
-const Operations = ({ data, dataBoard }) => {
+const Operations = ({ data, dataBoard, getOperationsType }) => {
   const [operationType, setOpType] = useState('');
   const [operationTarget, setOpTarget] = useState('');
   const [BoardFamily, setBoardFamily] = useState('');
@@ -63,8 +64,8 @@ const Operations = ({ data, dataBoard }) => {
   return (
     <div className="operation">
       <h2 className="operation__title">Opérations</h2>
-      <OperationType handleOpType={handleOpType} />
-  
+      <OperationType handleOpType={handleOpType} getOperationsType={getOperationsType} />
+
       {operationType === 'Créer une planche' && (
         <form action="post">
           <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
@@ -133,6 +134,10 @@ const Operations = ({ data, dataBoard }) => {
       )}
     </div>
   );
+};
+
+Operations.propTypes = {
+  getOperationsType: PropTypes.func.isRequired,
 };
 
 export default Operations;

@@ -129,7 +129,7 @@ useEffect( () => {
     <div className="jardinconnectes">
 
       <Route path="/navMobile">
-        <NavigationMobile />
+        <NavigationMobile isLogged={isLogged} />
       </Route>
       <Route exact path="/">
         <Header />
@@ -145,7 +145,7 @@ useEffect( () => {
         <Footer />
       </Route>
       <Route path="/connexion">
-        { isLogged && <Redirect to="/mon-jardin"/> };
+        { isLogged && <Redirect to="/mon-jardin"/> }
         <Header />
         <Navigation />
         <LoginForm
@@ -155,6 +155,7 @@ useEffect( () => {
           newPassword={Password}
           handleLogin={handleLogin}
         />
+        <Footer />
       </Route>
       <Route path="/inscription">
         {isLogged && (
@@ -195,7 +196,7 @@ useEffect( () => {
       </Route>
       <Route exact path="/mon-profil/modification">
         <Header />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <ProfileEdit
           dataUser={dataUser}
           email={newUserEmail}

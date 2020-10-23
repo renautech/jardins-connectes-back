@@ -4,16 +4,16 @@ import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const Navigation = () => {
+const Navigation = ({isLogged}) => {
   return (
     <div className="navigation">
       <nav className="navigation__nav">
         <NavLink to="/">
-          <p className="navigation__nav__link">Menu</p>
+          <p className="navigation__nav__link">Accueil</p>
         </NavLink>
-        <NavLink to="/mon-jardin">
+        { isLogged && <NavLink to="/mon-jardin">
           <p className="navigation__nav__link">Mon Jardin</p>
-        </NavLink>
+        </NavLink> }
       </nav>
     </div>
   );

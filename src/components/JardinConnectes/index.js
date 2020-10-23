@@ -24,6 +24,7 @@ import data from 'src/data/data';
 import dataBoard from 'src/data/dataBoard';
 import dataUser from 'src/data/dataFake';
 import './style.scss';
+import OperationList from '../OperationList';
 
 const JardinConnectes = () => {
   console.log('App launched');
@@ -225,6 +226,13 @@ useEffect( () => {
         />
         <Footer />
       </Route>
+      <Route exact path="/liste-operations">
+        <Header isLogged={isLogged} />
+        <Navigation isLogged={isLogged} />
+        <OperationList dataOperations={dataUser.operation}/>
+        <Footer />
+      </Route>
+
     </div>
   );
 };

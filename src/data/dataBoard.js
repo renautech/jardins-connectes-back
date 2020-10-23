@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Poirots',
+    name: 'Poireaux',
   },
   {
     name: 'Pommes de terre',

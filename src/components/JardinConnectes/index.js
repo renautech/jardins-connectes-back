@@ -191,7 +191,7 @@ useEffect( () => {
       </Route>
       <Route exact path="/mon-profil">
         <Header isLogged={isLogged} />
-        <Navigation />
+        <Navigation isLogged={isLogged} />
         <Profile dataUser={dataUser} />
         <Footer />
       </Route>

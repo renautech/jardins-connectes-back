@@ -25,6 +25,7 @@ import dataBoard from 'src/data/dataBoard';
 import dataUser from 'src/data/dataFake';
 import './style.scss';
 import OperationList from '../OperationList';
+import { errorMonitor } from 'events';
 
 const JardinConnectes = () => {
   console.log('App launched');
@@ -35,6 +36,7 @@ const JardinConnectes = () => {
   // state for connected user
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const [isLogged, setIsLogged] = useState(false);
   const Email = (value) => {
     setEmail(value);
@@ -90,11 +92,17 @@ const JardinConnectes = () => {
   const handleLogin = () => {
     axios.post('http://3.92.0.243:5555/v1/signin', { email, password })
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        setIsLogged(true);
+        if (res.data.state === true) {
+          setIsLogged(true);
+        }
+        else {
+          setIsLogged(false);
+          setLoginError('Mauvais mot de passe');
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoginError('Mauvaise adresse mail / Mot de passe');
+      });
   };
 
   // Signup
@@ -132,7 +140,7 @@ const JardinConnectes = () => {
         console.log(res.data);
         setIsLogged(true);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setLoginError(error));
   };
 
   // get Garden Families
@@ -150,8 +158,6 @@ const JardinConnectes = () => {
       })
       .catch((error) => console.log(error));
   };
-
-  console.log(() => getOperationsType());
 
   return (
     <div className="jardinconnectes">
@@ -190,6 +196,7 @@ const JardinConnectes = () => {
           password={password}
           newPassword={Password}
           handleLogin={handleLogin}
+          loginError={loginError}
         />
         <Footer />
       </Route>

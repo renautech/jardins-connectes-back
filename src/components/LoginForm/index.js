@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const LoginForm = ({email, newEmail, newPassword, password, handleLogin}) => {
+const LoginForm = ({ email, newEmail, newPassword, password, handleLogin, loginError }) => {
   const handleChangeEmail = (event) => {
     newEmail(event.target.value);
   };
@@ -16,6 +16,7 @@ const LoginForm = ({email, newEmail, newPassword, password, handleLogin}) => {
   };
   return (
     <div className="loginForm">
+      <p className="loginForm-Error">{loginError}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="loginForm-Element">
           <label htmlFor="email">Adresse Email</label>
@@ -53,7 +54,12 @@ LoginForm.propTypes = {
   password: PropTypes.string.isRequired,
   newEmail: PropTypes.func.isRequired,
   newPassword: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired
+  handleLogin: PropTypes.func.isRequired,
+  loginError: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  loginError: '',
 };
 
 export default LoginForm;

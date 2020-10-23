@@ -36,6 +36,11 @@
     font-weight: 600;
     color: white;
   }
+  &-Error {
+    text-align: center;
+    color: red;
+    margin-bottom: v.$s-gut;
+  }
 
 }
 

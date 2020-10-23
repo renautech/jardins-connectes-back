@@ -7,12 +7,12 @@ import './style.scss';
 
 const Family = ({ type, img }) => {
   return (
-    <NavLink to="/liste-operations">
       <div className="mygarden__family">
-        <img className="mygarden__family--image" src={img} alt="famille de légume" />
-        <p className="mygarden__family--text">{type}</p>
+        <NavLink className="mygarden__navlink" to="/liste-operations">
+          <img className="mygarden__family--image" src={img} alt="famille de légume" />
+          <p className="mygarden__family--text">{type}</p>
+        </NavLink>
       </div>
-    </NavLink>
   );
 };
 

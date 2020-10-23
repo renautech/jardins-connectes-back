@@ -8,6 +8,7 @@ import './style.scss';
 
 const OperationType = ({ handleOpType, getOperationsType }) => {
   // const operations = getOperationsType();
+  console.log(getOperationsType());
   return (
     <div className="operation__type">
       <select onChange={handleOpType} name="operations" id="operations">

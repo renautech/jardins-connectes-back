@@ -36,6 +36,9 @@
       display : inline-block;
     }
   }
+  &__navlink {
+    display: block;
+  }
 }
 
 @media screen and (max-width:1300px){

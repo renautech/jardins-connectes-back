@@ -144,10 +144,14 @@ const JardinConnectes = () => {
 
   // get OperationsType
   const getOperationsType = () => {
-    axios.get('http://3.92.0.243:5555/v1')
-      .then((res) => res)
+    axios.get('http://3.92.0.243:5555/v1/operation_types')
+      .then((res) => {
+        return res;
+      })
       .catch((error) => console.log(error));
   };
+
+  console.log(() => getOperationsType());
 
   return (
     <div className="jardinconnectes">

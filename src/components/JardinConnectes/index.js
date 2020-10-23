@@ -132,21 +132,21 @@ useEffect( () => {
         <NavigationMobile />
       </Route>
       <Route exact path="/">
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <HomeVideo />
         <Description />
         <Footer />
       </Route>
       <Route path="/mon-jardin">
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <Garden data={data} dataBoard={dataBoard} />
         <Footer />
       </Route>
       <Route path="/connexion">
         { isLogged && <Redirect to="/mon-jardin"/> };
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <LoginForm
           email={email}
@@ -160,7 +160,7 @@ useEffect( () => {
         {isLogged && (
           <Redirect to="/mon-jardin" />
         )}
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <SignupForm
           email={newUserEmail}
@@ -188,13 +188,13 @@ useEffect( () => {
         <Footer />
       </Route>
       <Route exact path="/mon-profil">
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <Profile dataUser={dataUser} />
         <Footer />
       </Route>
       <Route exact path="/mon-profil/modification">
-        <Header />
+        <Header isLogged={isLogged} />
         <Navigation />
         <ProfileEdit
           dataUser={dataUser}

@@ -90,7 +90,7 @@ const ProfileEdit = ({
 };
 
 ProfileEdit.propTypes = {
-  dataUser: PropTypes.array.isRequired,
+  dataUser: PropTypes.object.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   addressNumber: PropTypes.string,

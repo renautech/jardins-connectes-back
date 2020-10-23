@@ -67,7 +67,7 @@ const Profile = ({ dataUser }) => {
 };
 
 Profile.propTypes = {
-  dataUser: PropTypes.array.isRequired,
+  dataUser: PropTypes.object.isRequired,
 };
 
 export default Profile;

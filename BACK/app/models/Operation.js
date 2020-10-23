@@ -1,7 +1,7 @@
 const db = require('../database');
 
 
-class Operations {
+class Operation {
 
 
     constructor(data) {
@@ -56,4 +56,4 @@ class Operations {
 
 }
 
-module.exports = Operations;
+module.exports = Operation;

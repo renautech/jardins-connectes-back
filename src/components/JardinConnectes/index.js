@@ -28,11 +28,8 @@ import './style.scss';
 const JardinConnectes = () => {
   console.log('App launched');
 
-/*
-useEffect( () => {
-  console.log("utilisateur loggé ? " + isLogged)
-});
-*/
+  // state for MyGarden
+  const [myGardenFamilies, setMyGardenFamilies] = useState("");
 
   // state for connected user
   const [email, setEmail] = useState("");
@@ -99,29 +96,55 @@ useEffect( () => {
       .catch((error) => console.log(error));
   };
 
-  // Submit a new user
+  // Signup
   const handleNewUser = () => {
     // the object newUser contains state variables filled from signup form
-    const newUser = {
-      email: newUserEmail,
-      password: newUserPassword,
+    // const newUser = {
+    //   email: newUserEmail,
+    //   password: newUserPassword,
+    //   first_name: newUserFirstName,
+    //   last_name: newUserLastName,
+    //   street_name: newUserAddressRoad,
+    //   street_number: parseInt((newUserAddressNumber), 10),
+    // department: newUserDepartment,
+    // town: newUserTown,
+    // postcode: newUserPostcode,
+    // country: 'France',
+    //   nickname: newUserNickname,
+    // };
+    // login request to our API
+    axios.post('http://3.92.0.243:5555/v1/signup', {
       first_name: newUserFirstName,
       last_name: newUserLastName,
+      nickname: newUserNickname,
+      email: newUserEmail,
+      password: newUserPassword,
+      department: newUserDepartment,
+      country: 'France',
       street_name: newUserAddressRoad,
       street_number: parseInt((newUserAddressNumber), 10),
-      department: newUserDepartment,
       town: newUserTown,
       postcode: newUserPostcode,
-      country: 'France',
-      nickname: newUserNickname,
-    };
-    // login request to our API
-    axios.post('http://3.92.0.243:5555/v1/signup', newUser)
+    })
       .then((res) => {
         console.log(res);
         console.log(res.data);
         setIsLogged(true);
       })
+      .catch((error) => console.log(error));
+  };
+
+  // get Garden Families
+  const getMyGardenFamilies = () => {
+    axios.get('http://3.92.0.243:5555/v1')
+      .then((res) => res)
+      .catch((error) => console.log(error));
+  };
+
+  // get OperationsType
+  const getOperationsType = () => {
+    axios.get('http://3.92.0.243:5555/v1')
+      .then((res) => res)
       .catch((error) => console.log(error));
   };
 
@@ -131,6 +154,7 @@ useEffect( () => {
       <Route path="/navMobile">
         <NavigationMobile isLogged={isLogged} />
       </Route>
+
       <Route exact path="/">
         <Header isLogged={isLogged} />
         <Navigation isLogged={isLogged} />
@@ -138,14 +162,21 @@ useEffect( () => {
         <Description />
         <Footer />
       </Route>
+
       <Route path="/mon-jardin">
         <Header isLogged={isLogged} />
         <Navigation isLogged={isLogged} />
-        <Garden data={data} dataBoard={dataBoard} />
+        <Garden
+          data={data}
+          dataBoard={dataBoard}
+          getMyGardenFamilies={getMyGardenFamilies}
+          getOperationsType={getOperationsType}
+        />
         <Footer />
       </Route>
+
       <Route path="/connexion">
-        { isLogged && <Redirect to="/mon-jardin"/> };
+        { isLogged && <Redirect to="/mon-jardin" /> };
         <Header isLogged={isLogged} />
         <Navigation isLogged={isLogged} />
         <LoginForm
@@ -157,6 +188,7 @@ useEffect( () => {
         />
         <Footer />
       </Route>
+
       <Route path="/inscription">
         {isLogged && (
           <Redirect to="/mon-jardin" />
@@ -188,14 +220,15 @@ useEffect( () => {
         />
         <Footer />
       </Route>
+
       <Route exact path="/mon-profil">
         <Header isLogged={isLogged} />
         <Navigation />
         <Profile dataUser={dataUser} />
         <Footer />
       </Route>
+
       <Route exact path="/mon-profil/modification">
-        <Header />
         <Navigation isLogged={isLogged} />
         <Header isLogged={isLogged} />
         <Navigation />

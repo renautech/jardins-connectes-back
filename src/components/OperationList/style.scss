@@ -1,38 +1,66 @@
 @use 'src/styles/vars' as v;
 
 .operationList {
+  display: flex;
+  flex-direction: column;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   border-radius: 25px;
   border: 1px black solid;
+
   &__title {
     margin: v.$m-gut 0;
-
     text-align: center;
     font-size: 1.5rem;
   }
-  &-operation {
-    border: 1px black solid;
-    border-radius: 25px;
-    background-color: v.$medium-color;
-    height: 95%;
-    display: flex;
-    padding: 1em;
-    margin: v.$m-gut;
-    &-element{
-      display: block;
-      padding: 0.3em;
+  &__img {
+    margin: 0 auto;
+    max-width: 200px;
+  }
+}
+
+.oneOperation {
+  border: 1px black solid;
+  border-radius: 25px;
+  background-color: v.$medium-color;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: v.$xs-gut ;
+  padding: 0.2em;
+  
+  &__element{
+    
+    padding: 0.5em;
+    &--hidden{
+      visibility: hidden;
     }
+    &--below{
+      width: 100%;
+    }
+  }
+  &__right{
+    float: right;
+    margin-right: v.$xs-gut;
   }
 }
 
 
 
-@media screen and (max-width:1300px){
- 
+@media screen and (min-width:800px){
+  .operationList {
+    display: block;
+    &__img {
+      float: left;
+    }
+  }
+  .oneOperation {
+    
+    margin: 0 v.$s-gut v.$xs-gut 30%;
+  }
 }
 
-@media screen and (max-width:800px){
-  
+@media screen and (min-width:1300px){
+ 
 }

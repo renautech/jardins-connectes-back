@@ -9,16 +9,16 @@ const loginForm = (store) => (next) => (action) => {
       axios.post('http://3.92.0.243:5555/v1/signin', { email, password })
         .then((res) => {
           if (res.data.state === true) {
-            isLogged(true);
+            store.dispatch(isLogged(true));
           }
           else {
-            isLogged(false);
-            loginError('Mauvais mot de passe');
+            store.dispatch(isLogged(false));
+            store.dispatch(loginError('Mauvais mot de passe'));
           }
         })
         .catch((error) => {
-          isLogged(false);
-          loginError('Mauvaise adresse mail / Mot de passe');
+          store.dispatch(isLogged(false));
+          store.dispatch(loginError('Mauvaise adresse mail / Mot de passe'));
           console.error(error);
         });
       break;

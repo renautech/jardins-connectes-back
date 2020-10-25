@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const LoginForm = ({ email, newEmail, newPassword, password, handleLogin, loginError }) => {
+const LoginForm = ({
+  email,
+  password,
+  newEmail,
+  newPassword,
+  handleLogin,
+  loginError,
+}) => {
   const handleChangeEmail = (event) => {
     newEmail(event.target.value);
   };

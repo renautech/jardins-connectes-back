@@ -29,72 +29,6 @@ import OperationList from '../OperationList';
 import { errorMonitor } from 'events';
 
 const JardinConnectes = ({ isLogged }) => {
-  // state for new user (signupForm component)
-  const [newUserEmail, setNewUserEmail] = useState('');
-  const [newUserPassword, setNewUserPassword] = useState('');
-  const [newUserFirstName, setNewUserFirstName] = useState('');
-  const [newUserLastName, setNewUserLastName] = useState('');
-  const [newUserAddressRoad, setNewUserAddressRoad] = useState('');
-  const [newUserAddressNumber, setNewUserAddressNumber] = useState('');
-  const [newUserDepartment, setNewUserDepartment] = useState('');
-  const [newUserTown, setNewUserTown] = useState('');
-  const [newUserPostcode, setNewUserPostcode] = useState('');
-  const [newUserNickname, setNewUserNickname] = useState('');
-  const [newUserProfilePicture, setNewProfilePicture] = useState('');
-  const newEmail = (value) => {
-    setNewUserEmail(value);
-  };
-  const newPassword = (value) => {
-    setNewUserPassword(value);
-  };
-  const newFirstName = (value) => {
-    setNewUserFirstName(value);
-  };
-  const newLastName = (value) => {
-    setNewUserLastName(value);
-  };
-  const newAddressRoad = (value) => {
-    setNewUserAddressRoad(value);
-  };
-  const newAddressNumber = (value) => {
-    setNewUserAddressNumber(value);
-  };
-  const newDepartment = (value) => {
-    setNewUserDepartment(value);
-  };
-  const newNickname = (value) => {
-    setNewUserNickname(value);
-  };
-  const newPostcode = (value) => {
-    setNewUserPostcode(value);
-  };
-  const newTown = (value) => {
-    setNewUserTown(value);
-  };
-
-  // Signup
-  const handleNewUser = () => {
-    axios.post('http://3.92.0.243:5555/v1/signup', {
-      first_name: newUserFirstName,
-      last_name: newUserLastName,
-      nickname: newUserNickname,
-      email: newUserEmail,
-      password: newUserPassword,
-      department: newUserDepartment,
-      country: 'France',
-      street_name: newUserAddressRoad,
-      street_number: parseInt((newUserAddressNumber), 10),
-      town: newUserTown,
-      postcode: newUserPostcode,
-    })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        setIsLogged(true);
-      })
-      .catch((error) => setLoginError(error));
-  };
-
   // get Garden Families
   const getMyGardenFamilies = () => {
     axios.get('http://3.92.0.243:5555/v1')
@@ -139,7 +73,7 @@ const JardinConnectes = ({ isLogged }) => {
       </Route>
 
       <Route path="/connexion">
-        { isLogged && (
+        {isLogged && (
           <Redirect to="/mon-jardin" />
         )}
         <Header />
@@ -154,29 +88,7 @@ const JardinConnectes = ({ isLogged }) => {
         )}
         <Header />
         <Navigation />
-        <SignupForm
-          email={newUserEmail}
-          password={newUserPassword}
-          firstName={newUserFirstName}
-          lastName={newUserLastName}
-          addressRoad={newUserAddressRoad}
-          addressNumber={newUserAddressNumber}
-          department={newUserDepartment}
-          nickname={newUserNickname}
-          town={newUserTown}
-          postcode={newUserPostcode}
-          newEmail={newEmail}
-          newPassword={newPassword}
-          newFirstName={newFirstName}
-          newLastName={newLastName}
-          newAddressRoad={newAddressRoad}
-          newAddressNumber={newAddressNumber}
-          newDepartment={newDepartment}
-          newNickname={newNickname}
-          newPostcode={newPostcode}
-          newTown={newTown}
-          handleNewUser={handleNewUser}
-        />
+        <SignupForm />
         <Footer />
       </Route>
 
@@ -191,30 +103,7 @@ const JardinConnectes = ({ isLogged }) => {
         <Navigation />
         <Header />
         <Navigation />
-        <ProfileEdit
-          dataUser={dataUser}
-          email={newUserEmail}
-          password={newUserPassword}
-          firstName={newUserFirstName}
-          lastName={newUserLastName}
-          addressRoad={newUserAddressRoad}
-          addressNumber={newUserAddressNumber}
-          department={newUserDepartment}
-          nickname={newUserNickname}
-          town={newUserTown}
-          postcode={newUserPostcode}
-          newEmail={newEmail}
-          newPassword={newPassword}
-          newFirstName={newFirstName}
-          newLastName={newLastName}
-          newAddressRoad={newAddressRoad}
-          newAddressNumber={newAddressNumber}
-          newDepartment={newDepartment}
-          newNickname={newNickname}
-          newPostcode={newPostcode}
-          newTown={newTown}
-          handleNewUser={handleNewUser}
-        />
+        <ProfileEdit />
         <Footer />
       </Route>
       <Route exact path="/liste-operations">

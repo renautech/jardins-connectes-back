@@ -4,68 +4,17 @@ import './style.scss';
 
 const SignupForm = (
   {
-    email,
-    newEmail,
-    newPassword,
-    password,
-    firstName,
-    newFirstName,
-    lastName,
-    newLastName,
-    addressRoad,
-    newAddressRoad,
-    addressNumber,
-    newAddressNumber,
-    department,
-    newDepartment,
-    nickname,
-    newNickname,
-    town,
-    newTown,
-    postcode,
-    newPostcode,
-    handleNewUser,
+    changeSignupFormValue,
+    signup,
+    signupValues,
   },
 ) => {
-  console.log('composant SignupForm');
-  const handleChangeEmail = (event) => {
-    console.log(event.target.value);
-    newEmail(event.target.value);
+  const handleOnChange = (event) => {
+    changeSignupFormValue(event.target.value, event.target.name);
   };
-  const handleChangePassword = (event) => {
-    console.log(event.target.value);
-    newPassword(event.target.value);
-  };
-  const handleChangeFirstName = (event) => {
-    newFirstName(event.target.value);
-  };
-  const handleChangeLastName = (event) => {
-    newLastName(event.target.value);
-  };
-  const handleChangeAddressRoad = (event) => {
-    newAddressRoad(event.target.value);
-  };
-  const handleChangeAddressNumber = (event) => {
-    newAddressNumber(event.target.value);
-  };
-  const handleChangeDepartment = (event) => {
-    newDepartment(event.target.value);
-  }
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleNewUser();
-  };
-  const handleChangeNickname = (event) => {
-    event.preventDefault();
-    newNickname(event.target.value);
-  };
-  const handleChangeTown = (event) => {
-    event.preventDefault();
-    newTown(event.target.value);
-  };
-  const handleChangePostcode = (event) => {
-    event.preventDefault();
-    newPostcode(event.target.value);
+    signup();
   };
 
   return (
@@ -74,31 +23,34 @@ const SignupForm = (
         <div className="signupForm-Element">
           <label htmlFor="nickname">Pseudo</label>
           <input
-            name="nickname"
-            id="nickname"
+            name="nickName"
+            id="nickName"
             placeholder="Pseudo"
-            onChange={handleChangeNickname}
-            value={nickname}
+            onChange={handleOnChange}
+            value={signupValues.nickName}
+            required
           />
         </div>
         <div className="signupForm-Element">
           <label htmlFor="firstname">Prénom</label>
           <input
-            name="firstname"
-            id="firstname"
+            name="firstName"
+            id="firstName"
             placeholder="Prénom"
-            onChange={handleChangeFirstName}
-            value={firstName}
+            onChange={handleOnChange}
+            value={signupValues.firstName}
+            required
           />
         </div>
         <div className="signupForm-Element">
           <label htmlFor="lastname">Nom</label>
           <input
-            name="lastname"
-            id="lastname"
+            name="lastName"
+            id="lastName"
             placeholder="Nom"
-            onChange={handleChangeLastName}
-            value={lastName}
+            onChange={handleOnChange}
+            value={signupValues.lastName}
+            required
           />
         </div>
         <div className="signupForm-Element">
@@ -107,29 +59,29 @@ const SignupForm = (
             name="email"
             id="email"
             placeholder="Adresse Email"
-            onChange={handleChangeEmail}
-            value={email}
+            onChange={handleOnChange}
+            value={signupValues.email}
             required
           />
         </div>
         <div className="signupForm-Element">
           <label htmlFor="addressRoad">Adresse - Rue</label>
           <input
-            name="addressRoad"
-            id="addressRoad"
+            name="streetName"
+            id="streetName"
             placeholder="Adresse - nom de la rue"
-            onChange={handleChangeAddressRoad}
-            value={addressRoad}
+            onChange={handleOnChange}
+            value={signupValues.streetName}
           />
         </div>
         <div className="signupForm-Element">
           <label htmlFor="addressNumber">Adresse - Numéro</label>
           <input
-            name="addressNumber"
-            id="addressNumber"
+            name="streetNumber"
+            id="streetNumber"
             placeholder="Numéro"
-            onChange={handleChangeAddressNumber}
-            value={addressNumber}
+            onChange={handleOnChange}
+            value={signupValues.streetNumber}
           />
         </div>
         <div className="signupForm-Element">
@@ -138,8 +90,8 @@ const SignupForm = (
             name="town"
             id="town"
             placeholder="Nom de la ville"
-            onChange={handleChangeTown}
-            value={town}
+            onChange={handleOnChange}
+            value={signupValues.town}
           />
         </div>
         <div className="signupForm-Element">
@@ -148,8 +100,8 @@ const SignupForm = (
             name="postcode"
             id="postcode"
             placeholder="Code postal"
-            onChange={handleChangePostcode}
-            value={postcode}
+            onChange={handleOnChange}
+            value={signupValues.postcode}
           />
         </div>
         <div className="signupForm-Element">
@@ -158,8 +110,8 @@ const SignupForm = (
             name="department"
             id="department"
             placeholder="Numéro de département"
-            onChange={handleChangeDepartment}
-            value={department}
+            onChange={handleOnChange}
+            value={signupValues.department}
             required
           />
         </div>
@@ -169,8 +121,8 @@ const SignupForm = (
             name="password"
             type="password"
             placeholder="Mot de passe"
-            onChange={handleChangePassword}
-            value={password}
+            onChange={handleOnChange}
+            value={signupValues.password}
             required
           />
         </div>
@@ -185,32 +137,14 @@ const SignupForm = (
 };
 
 SignupForm.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  addressNumber: PropTypes.string,
-  addressRoad: PropTypes.string,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  department: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
-  town: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  newEmail: PropTypes.func.isRequired,
-  newPassword: PropTypes.func.isRequired,
-  newFirstName: PropTypes.func.isRequired,
-  newLastName: PropTypes.func.isRequired,
-  newAddressNumber: PropTypes.func.isRequired,
-  newAddressRoad: PropTypes.func.isRequired,
-  newDepartment: PropTypes.func.isRequired,
-  newNickname: PropTypes.func.isRequired,
-  newTown: PropTypes.func.isRequired,
-  newPostcode: PropTypes.func.isRequired,
-  handleNewUser: PropTypes.func.isRequired,
+  changeSignupFormValue: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
+  signupValues: PropTypes.object.isRequired,
 };
 
-SignupForm.defaultProps = {
-  addressRoad: '',
-  addressNumber: '',
-};
+// SignupForm.defaultProps = {
+//   addressRoad: '',
+//   addressNumber: '',
+// };
 
 export default SignupForm;

@@ -4,31 +4,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const ProfileEdit = ({
-  dataUser,
-  email,
-  newEmail,
-  newPassword,
-  password,
-  firstName,
-  newFirstName,
-  lastName,
-  newLastName,
-  addressRoad,
-  newAddressRoad,
-  addressNumber,
-  newAddressNumber,
-  department,
-  newDepartment,
-  nickname,
-  newNickname,
-  town,
-  newTown,
-  postcode,
-  newPostcode,
-  handleNewUser,
-}) => {
-  const { user } = dataUser;
+const ProfileEdit = () => {
   const testUser = {
     first_name: 'Mendoza',
     last_name: 'Patrick',
@@ -89,30 +65,7 @@ const ProfileEdit = ({
   );
 };
 
-ProfileEdit.propTypes = {
-  dataUser: PropTypes.object.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  addressNumber: PropTypes.string,
-  addressRoad: PropTypes.string,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  department: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
-  town: PropTypes.string.isRequired,
-  postcode: PropTypes.string.isRequired,
-  newEmail: PropTypes.func.isRequired,
-  newPassword: PropTypes.func.isRequired,
-  newFirstName: PropTypes.func.isRequired,
-  newLastName: PropTypes.func.isRequired,
-  newAddressNumber: PropTypes.func.isRequired,
-  newAddressRoad: PropTypes.func.isRequired,
-  newDepartment: PropTypes.func.isRequired,
-  newNickname: PropTypes.func.isRequired,
-  newTown: PropTypes.func.isRequired,
-  newPostcode: PropTypes.func.isRequired,
-  handleNewUser: PropTypes.func.isRequired,
-};
+ProfileEdit.propTypes = {};
 
 ProfileEdit.defaultProps = {
   addressRoad: '',

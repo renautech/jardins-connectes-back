@@ -6,6 +6,7 @@ import rootReducer from 'src/reducers';
 import logMiddleware from '../middleware/logMiddleware';
 import weather from '../middleware/weather';
 import loginForm from '../middleware/loginForm';
+import signupForm from '../middleware/signupForm';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -15,6 +16,7 @@ const enhancers = composeEnhancers(
     logMiddleware,
     weather,
     loginForm,
+    signupForm,
   ),
 );
 

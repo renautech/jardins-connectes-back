@@ -28,8 +28,6 @@ import OperationList from '../OperationList';
 import { errorMonitor } from 'events';
 
 const JardinConnectes = () => {
-  console.log('App launched');
-
   // state for MyGarden
   const [myGardenFamilies, setMyGardenFamilies] = useState("");
 

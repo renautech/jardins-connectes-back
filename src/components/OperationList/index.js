@@ -23,7 +23,7 @@ const OperationList = ({ dataOperations }) => {
 };
 
 OperationList.propTypes = {
-  dataOperations: PropTypes.object.isRequired,
+  dataOperations: PropTypes.array.isRequired,
 };
 
 export default OperationList;

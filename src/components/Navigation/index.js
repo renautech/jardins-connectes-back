@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const Navigation = ({ isLogged }) => {
-  console.log(isLogged);
   return (
     <div className="navigation">
       <nav className="navigation__nav">

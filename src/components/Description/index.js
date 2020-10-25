@@ -3,7 +3,6 @@ import React from 'react';
 import './style.scss';
 
 const Description = () => {
-  console.log('composant footer');
   return (
     <div className="description">
       <h2 className="description-title">Bienvenue dans la gestion de votre potager</h2>

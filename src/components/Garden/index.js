@@ -1,15 +1,14 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import MyGarden from 'src/components/MyGarden';
-import Weather from 'src/components/Weather';
+import Weather from 'src/containers/Weather';
 import Operations from 'src/components/Operations';
 
 import './style.scss';
 
 const Garden = ({ data, dataBoard, getMyGardenFamilies, getOperationsType }) => {
-  console.log('garden loaded');
-
   return (
     <div className="garden">
       <div className="garden__left">

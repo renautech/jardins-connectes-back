@@ -7,8 +7,6 @@ import Family from 'src/components/MyGarden/Family';
 import './style.scss';
 
 const MyGarden = ({ dataBoard, getMyGardenFamilies }) => {
-  console.log('my garden render');
-
   // useEffect(() => {
   //   const myGardenFamilies = getMyGardenFamilies();
   // });

@@ -1,5 +1,3 @@
-// import { SAVE_RECIPES } from 'src/actions/recipes';
-
 import { SAVE_WEATHER } from 'src/actions/weather';
 
 export const initialState = {

@@ -10,16 +10,19 @@ const LoginForm = ({
   newPassword,
   handleLogin,
   loginError,
+  changeEmail,
+  changePassword,
+  login,
 }) => {
   const handleChangeEmail = (event) => {
-    newEmail(event.target.value);
+    changeEmail(event.target.value);
   };
   const handleChangePassword = (event) => {
-    newPassword(event.target.value);
+    changePassword(event.target.value);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleLogin();
+    login();
   };
   return (
     <div className="loginForm">
@@ -32,7 +35,7 @@ const LoginForm = ({
             id="email"
             placeholder="Adresse Email"
             onChange={handleChangeEmail}
-            value={email}
+            // value={email}
           />
         </div>
         <div className="loginForm-Element">
@@ -42,7 +45,7 @@ const LoginForm = ({
             type="password"
             placeholder="Mot de passe"
             onChange={handleChangePassword}
-            value={password}
+            // value={password}
           />
         </div>
         <button

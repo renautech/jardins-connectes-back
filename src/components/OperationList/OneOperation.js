@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 
-const OneOperation = ({operation}) => {
+const OneOperation = ({ operation }) => {
   const [showOpDetail, setShowOpDetail] = useState(false);
   const toggleClick = (event) => {
     event.preventDefault();

@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 // == Import : local
 // Composants
-import JardinConnectes from 'src/components/JardinConnectes';
+import JardinConnectes from 'src/containers/JardinConnectes';
 // Store
 import store from 'src/store';
 

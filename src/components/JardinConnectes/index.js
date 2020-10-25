@@ -8,17 +8,17 @@ import {
 import axios from 'axios';
 
 // components import
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
-import Navigation from 'src/components/Navigation';
-import Description from 'src/components/Description';
-import HomeVideo from 'src/components/HomeVideo';
-import LoginForm from 'src/components/LoginForm';
-import SignupForm from 'src/components/SignupForm';
+import Header from 'src/containers/Header';
+import Footer from 'src/containers/Footer';
+import Navigation from 'src/containers/Navigation';
+import Description from 'src/containers/Description';
+import HomeVideo from 'src/containers/HomeVideo';
+import LoginForm from 'src/containers/LoginForm';
+import SignupForm from 'src/containers/SignupForm';
 import NavigationMobile from 'src/components/NavigationMobile';
-import Garden from 'src/components/Garden';
-import Profile from 'src/components/Profile';
-import ProfileEdit from 'src/components/ProfileEdit';
+import Garden from 'src/containers/Garden';
+import Profile from 'src/containers/Profile';
+import ProfileEdit from 'src/containers/ProfileEdit';
 
 import data from 'src/data/data';
 import dataBoard from 'src/data/dataBoard';

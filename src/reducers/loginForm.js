@@ -1,4 +1,9 @@
-import { CHANGE_EMAIL, CHANGE_PASSWORD, IS_LOGGED, LOGIN_ERROR } from 'src/actions/loginForm';
+import {
+  CHANGE_EMAIL,
+  CHANGE_PASSWORD,
+  IS_LOGGED,
+  LOGIN_ERROR,
+} from 'src/actions/loginForm';
 
 export const initialState = {
   email: '',
@@ -22,7 +27,10 @@ const weather = (state = initialState, action = {}) => {
     case IS_LOGGED:
       return {
         ...state,
+        email: '',
+        password: '',
         isLogged: true,
+        loginError: '',
       };
     case LOGIN_ERROR:
       return {

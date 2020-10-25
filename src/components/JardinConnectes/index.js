@@ -5,17 +5,18 @@ import {
   Link,
   Redirect,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 // components import
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Footer from 'src/components/Footer';
-import Navigation from 'src/components/Navigation';
+import Navigation from 'src/containers/Navigation';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/containers/LoginForm';
 import SignupForm from 'src/containers/SignupForm';
-import NavigationMobile from 'src/components/NavigationMobile';
+import NavigationMobile from 'src/containers/NavigationMobile';
 import Garden from 'src/containers/Garden';
 import Profile from 'src/containers/Profile';
 import ProfileEdit from 'src/containers/ProfileEdit';
@@ -27,34 +28,19 @@ import './style.scss';
 import OperationList from '../OperationList';
 import { errorMonitor } from 'events';
 
-const JardinConnectes = () => {
-  // state for MyGarden
-  const [myGardenFamilies, setMyGardenFamilies] = useState("");
-
-  // state for connected user
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
-  const Email = (value) => {
-    setEmail(value);
-  };
-  const Password = (value) => {
-    setPassword(value);
-  };
-
+const JardinConnectes = ({ isLogged }) => {
   // state for new user (signupForm component)
-  const [newUserEmail, setNewUserEmail] = useState("");
-  const [newUserPassword, setNewUserPassword] = useState("");
-  const [newUserFirstName, setNewUserFirstName] = useState("");
-  const [newUserLastName, setNewUserLastName] = useState("");
-  const [newUserAddressRoad, setNewUserAddressRoad] = useState("");
-  const [newUserAddressNumber, setNewUserAddressNumber] = useState("");
-  const [newUserDepartment, setNewUserDepartment] = useState("");
-  const [newUserTown, setNewUserTown] = useState("");
-  const [newUserPostcode, setNewUserPostcode] = useState("");
-  const [newUserNickname, setNewUserNickname] = useState("");
-  const [newUserProfilePicture, setNewProfilePicture] = useState("");
+  const [newUserEmail, setNewUserEmail] = useState('');
+  const [newUserPassword, setNewUserPassword] = useState('');
+  const [newUserFirstName, setNewUserFirstName] = useState('');
+  const [newUserLastName, setNewUserLastName] = useState('');
+  const [newUserAddressRoad, setNewUserAddressRoad] = useState('');
+  const [newUserAddressNumber, setNewUserAddressNumber] = useState('');
+  const [newUserDepartment, setNewUserDepartment] = useState('');
+  const [newUserTown, setNewUserTown] = useState('');
+  const [newUserPostcode, setNewUserPostcode] = useState('');
+  const [newUserNickname, setNewUserNickname] = useState('');
+  const [newUserProfilePicture, setNewProfilePicture] = useState('');
   const newEmail = (value) => {
     setNewUserEmail(value);
   };
@@ -86,40 +72,8 @@ const JardinConnectes = () => {
     setNewUserTown(value);
   };
 
-  // Login
-  const handleLogin = () => {
-    axios.post('http://3.92.0.243:5555/v1/signin', { email, password })
-      .then((res) => {
-        if (res.data.state === true) {
-          setIsLogged(true);
-        }
-        else {
-          setIsLogged(false);
-          setLoginError('Mauvais mot de passe');
-        }
-      })
-      .catch((error) => {
-        setLoginError('Mauvaise adresse mail / Mot de passe');
-      });
-  };
-
   // Signup
   const handleNewUser = () => {
-    // the object newUser contains state variables filled from signup form
-    // const newUser = {
-    //   email: newUserEmail,
-    //   password: newUserPassword,
-    //   first_name: newUserFirstName,
-    //   last_name: newUserLastName,
-    //   street_name: newUserAddressRoad,
-    //   street_number: parseInt((newUserAddressNumber), 10),
-    // department: newUserDepartment,
-    // town: newUserTown,
-    // postcode: newUserPostcode,
-    // country: 'France',
-    //   nickname: newUserNickname,
-    // };
-    // login request to our API
     axios.post('http://3.92.0.243:5555/v1/signup', {
       first_name: newUserFirstName,
       last_name: newUserLastName,
@@ -152,7 +106,7 @@ const JardinConnectes = () => {
   const getOperationsType = () => {
     axios.get('http://3.92.0.243:5555/v1/operation_types')
       .then((res) => {
-        return res;
+        return res
       })
       .catch((error) => console.log(error));
   };
@@ -161,20 +115,20 @@ const JardinConnectes = () => {
     <div className="jardinconnectes">
 
       <Route path="/navMobile">
-        <NavigationMobile isLogged={isLogged} />
+        <NavigationMobile />
       </Route>
 
       <Route exact path="/">
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
+        <Header />
+        <Navigation />
         <HomeVideo />
         <Description />
         <Footer />
       </Route>
 
       <Route path="/mon-jardin">
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
+        <Header />
+        <Navigation />
         <Garden
           data={data}
           dataBoard={dataBoard}
@@ -185,17 +139,12 @@ const JardinConnectes = () => {
       </Route>
 
       <Route path="/connexion">
-        { isLogged && <Redirect to="/mon-jardin" /> };
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
-        <LoginForm
-          email={email}
-          newEmail={Email}
-          password={password}
-          newPassword={Password}
-          handleLogin={handleLogin}
-          loginError={loginError}
-        />
+        { isLogged && (
+          <Redirect to="/mon-jardin" />
+        )}
+        <Header />
+        <Navigation />
+        <LoginForm />
         <Footer />
       </Route>
 
@@ -203,8 +152,8 @@ const JardinConnectes = () => {
         {isLogged && (
           <Redirect to="/mon-jardin" />
         )}
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
+        <Header />
+        <Navigation />
         <SignupForm
           email={newUserEmail}
           password={newUserPassword}
@@ -232,15 +181,15 @@ const JardinConnectes = () => {
       </Route>
 
       <Route exact path="/mon-profil">
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
+        <Header />
+        <Navigation />
         <Profile dataUser={dataUser} />
         <Footer />
       </Route>
 
       <Route exact path="/mon-profil/modification">
-        <Navigation isLogged={isLogged} />
-        <Header isLogged={isLogged} />
+        <Navigation />
+        <Header />
         <Navigation />
         <ProfileEdit
           dataUser={dataUser}
@@ -269,14 +218,18 @@ const JardinConnectes = () => {
         <Footer />
       </Route>
       <Route exact path="/liste-operations">
-        <Header isLogged={isLogged} />
-        <Navigation isLogged={isLogged} />
-        <OperationList dataOperations={dataUser.operation}/>
+        <Header />
+        <Navigation />
+        <OperationList dataOperations={dataUser.operation} />
         <Footer />
       </Route>
 
     </div>
   );
+};
+
+JardinConnectes.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default JardinConnectes;

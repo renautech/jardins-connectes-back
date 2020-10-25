@@ -4,15 +4,12 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const LoginForm = ({
-  email,
-  password,
-  newEmail,
-  newPassword,
-  handleLogin,
-  loginError,
   changeEmail,
+  emailValue,
   changePassword,
+  passwordValue,
   login,
+  loginError,
 }) => {
   const handleChangeEmail = (event) => {
     changeEmail(event.target.value);
@@ -35,7 +32,7 @@ const LoginForm = ({
             id="email"
             placeholder="Adresse Email"
             onChange={handleChangeEmail}
-            // value={email}
+            value={emailValue}
           />
         </div>
         <div className="loginForm-Element">
@@ -45,7 +42,7 @@ const LoginForm = ({
             type="password"
             placeholder="Mot de passe"
             onChange={handleChangePassword}
-            // value={password}
+            value={passwordValue}
           />
         </div>
         <button
@@ -60,11 +57,11 @@ const LoginForm = ({
 };
 
 LoginForm.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  newEmail: PropTypes.func.isRequired,
-  newPassword: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
+  emailValue: PropTypes.string.isRequired,
+  passwordValue: PropTypes.string.isRequired,
+  changeEmail: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   loginError: PropTypes.string,
 };
 

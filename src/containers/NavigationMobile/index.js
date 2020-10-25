@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import JardinConnectes from 'src/components/JardinConnectes';
+import NavigationMobile from 'src/components/NavigationMobile';
 
 const mapStateToProps = (state) => ({
   isLogged: state.loginForm.isLogged,
@@ -7,4 +7,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(JardinConnectes);
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationMobile);

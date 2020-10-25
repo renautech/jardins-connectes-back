@@ -1,4 +1,3 @@
-
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
 import { LOGIN, isLogged, loginError } from 'src/actions/loginForm';

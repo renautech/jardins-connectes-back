@@ -26,6 +26,7 @@ const LoginForm = ({
   };
   return (
     <div className="loginForm">
+      <h2 className="loginForm-Title">Connectez-vous !</h2>
       <p className="loginForm-Error">{loginError}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="loginForm-Element">

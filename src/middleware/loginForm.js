@@ -10,7 +10,6 @@ const loginForm = (store) => (next) => (action) => {
         .then((res) => {
           if (res.data.state === true) {
             store.dispatch(isLogged(true));
-            console.log('logged');
           }
           else {
             store.dispatch(loginError('Mauvais mot de passe'));

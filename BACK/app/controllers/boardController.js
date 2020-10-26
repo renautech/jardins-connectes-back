@@ -24,6 +24,18 @@ const boardController = {
             res.json("Veuillez vous connecter");
         }
             
+    },
+
+    findByFamilyForConnectedUser: async (req,res) => {
+
+        if(req.session.user){
+            const boards = await Board.findByFamilyByUser(req.session.user.id, req.params.id);
+            res.json(boards);
+        }
+        else {
+            res.json("Veuillez vous connecter");
+        }
+            
     }
     
 };

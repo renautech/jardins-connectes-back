@@ -21,3 +21,4 @@ functions/inserts/newOperationWithoutDate 2020-10-21T07:59:05Z Tidus91 <kurama91
 functions/filters/getFamiliesWhereBoard 2020-10-23T07:33:18Z Flyworkz <pedron.dorian@gmail.com> # function to get families which have at least one active board for one user
 functions/filters/findActiveBoardByUser 2020-10-26T08:27:27Z Tidus91 <kurama91@hotmail.fr> # add sqitch function to find all the active board by user
 functions/filters/allVarietiesByFamily 2020-10-26T08:32:30Z Tidus91 <kurama91@hotmail.fr> # add sqitch function to find all varieties by a familyId
+functions/filters/findBoardsByFamilyByUser 2020-10-26T14:33:00Z Flyworkz <pedron.dorian@gmail.com> # function to get all boards by family for connected user

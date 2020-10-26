@@ -17,5 +17,6 @@ boardRouter.delete('/board/:id', flush, mainController.deleteOne(Board));
 // Specifics routes
 boardRouter.get('/users/user',cache , boardController.findAllBoardForConnectedUser);
 boardRouter.get('/empty', cache, boardController.allEmptyBoardForConnectedUser);
+boardRouter.get('/families/family/:id/users/user', cache, boardController.findByFamilyForConnectedUser);
 
 module.exports = boardRouter;

@@ -29,7 +29,7 @@ const loginForm = (state = initialState, action = {}) => {
         ...state,
         email: '',
         password: '',
-        isLogged: true,
+        isLogged: !state.isLogged,
         loginError: '',
       };
     case LOGIN_ERROR:

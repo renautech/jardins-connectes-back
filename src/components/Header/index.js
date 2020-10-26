@@ -5,7 +5,10 @@ import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const Header = ({ isLogged }) => {
+const Header = ({ isLogged, logout }) => {
+  const handleOnClick = () => {
+    logout();
+  };
   return (
     <div className="header">
       <span className="logo">LOGO</span>
@@ -28,8 +31,8 @@ const Header = ({ isLogged }) => {
           <NavLink to="/mon-profil">
             <p className="header-links-link">Mon Profil</p>
           </NavLink>
-          <NavLink to="/deconnexion">
-            <p className="header-links-link">Déconnexion</p>
+          <NavLink to="/">
+            <p onClick={handleOnClick} className="header-links-link">Déconnexion</p>
           </NavLink>
         </div>
         )}
@@ -41,6 +44,7 @@ const Header = ({ isLogged }) => {
 
 Header.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -1,6 +1,6 @@
 const db = require('../database');
 
-class Varieties {
+class Variety {
 
     constructor(data) {
         for(const prop in data) {
@@ -46,4 +46,4 @@ class Varieties {
 
 }
 
-module.exports = Varieties;
+module.exports = Variety;

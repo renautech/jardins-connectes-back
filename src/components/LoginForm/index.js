@@ -21,7 +21,6 @@ const LoginForm = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!isLogged) {
-      console.log('login');
       login();
     }
   };

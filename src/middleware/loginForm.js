@@ -1,6 +1,11 @@
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { LOGIN, isLogged, loginError } from 'src/actions/loginForm';
+import {
+  LOGIN,
+  LOGOUT,
+  isLogged,
+  loginError,
+} from 'src/actions/loginForm';
 
 const loginForm = (store) => (next) => (action) => {
   switch (action.type) {
@@ -9,15 +14,24 @@ const loginForm = (store) => (next) => (action) => {
       axios.post('http://3.93.151.102:5555/v1/signin', { email, password })
         .then((res) => {
           if (res.data.state === true) {
-            store.dispatch(isLogged(true));
-            console.log('logged');
+            store.dispatch(isLogged());
           }
           else {
-            store.dispatch(loginError('Mauvais mot de passe'));
+            store.dispatch(loginError('Mauvaise adresse mail / Mot de passe'));
           }
         })
         .catch((error) => {
           store.dispatch(loginError('Mauvaise adresse mail / Mot de passe'));
+          console.error(error);
+        });
+      break;
+    }
+    case LOGOUT: {
+      axios.get('http://3.93.151.102:5555/v1/signout')
+        .then((res) => {
+          store.dispatch(isLogged());
+        })
+        .catch((error) => {
           console.error(error);
         });
       break;

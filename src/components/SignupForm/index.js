@@ -71,7 +71,9 @@ const SignupForm = (
   return (
     <div className="signupForm">
       <form autoComplete="off" onSubmit={handleSubmit} >
-        <div className="signupForm-Element">
+      <fieldset className="signupForm__fieldset">
+        <legend>Nom du jardinier</legend>
+        <div className="signupForm__element">
           <label htmlFor="nickname">Pseudo</label>
           <input
             name="nickname"
@@ -81,7 +83,7 @@ const SignupForm = (
             value={nickname}
           />
         </div>
-        <div className="signupForm-Element">
+        <div className="signupForm__element">
           <label htmlFor="firstname">Prénom</label>
           <input
             name="firstname"
@@ -91,7 +93,7 @@ const SignupForm = (
             value={firstName}
           />
         </div>
-        <div className="signupForm-Element">
+        <div className="signupForm__element">
           <label htmlFor="lastname">Nom</label>
           <input
             name="lastname"
@@ -101,7 +103,65 @@ const SignupForm = (
             value={lastName}
           />
         </div>
-        <div className="signupForm-Element">
+      </fieldset>
+      <fieldset className="signupForm__fieldset">
+        <legend>Adresse</legend>
+        <div className="signupForm__fieldset__group">
+
+        <div className="signupForm__element signupForm__element--number">
+          <label htmlFor="addressNumber">Numéro</label>
+          <input
+            name="addressNumber"
+            id="addressNumber"
+            placeholder="Numéro"
+            onChange={handleChangeAddressNumber}
+            value={addressNumber}
+          />
+        </div>
+        <div className="signupForm__element">
+          <label htmlFor="addressRoad">Nom de la rue</label>
+          <input
+            name="addressRoad"
+            id="addressRoad"
+            placeholder="Nom de la rue"
+            onChange={handleChangeAddressRoad}
+            value={addressRoad}
+          />
+        </div>
+        <div className="signupForm__element">
+          <label htmlFor="town">Nom de la ville</label>
+          <input
+            name="town"
+            id="town"
+            placeholder="Nom de la ville"
+            onChange={handleChangeTown}
+            value={town}
+          />
+        </div>
+        <div className="signupForm__element">
+          <label htmlFor="postcode">Code postal</label>
+          <input
+            name="postcode"
+            id="postcode"
+            placeholder="Code postal"
+            onChange={handleChangePostcode}
+            value={postcode}
+          />
+        </div>
+        <div className="signupForm__element signupForm__element--number">
+          <label htmlFor="department">Département</label>
+          <input
+            name="department"
+            id="department"
+            placeholder="Numéro"
+            onChange={handleChangeDepartment}
+            value={department}
+            required
+          />
+        </div>
+        </div>
+      </fieldset>
+      <div className="signupForm__element">
           <label htmlFor="email">Adresse Email</label>
           <input
             name="email"
@@ -112,58 +172,7 @@ const SignupForm = (
             required
           />
         </div>
-        <div className="signupForm-Element">
-          <label htmlFor="addressRoad">Adresse - Rue</label>
-          <input
-            name="addressRoad"
-            id="addressRoad"
-            placeholder="Adresse - nom de la rue"
-            onChange={handleChangeAddressRoad}
-            value={addressRoad}
-          />
-        </div>
-        <div className="signupForm-Element">
-          <label htmlFor="addressNumber">Adresse - Numéro</label>
-          <input
-            name="addressNumber"
-            id="addressNumber"
-            placeholder="Numéro"
-            onChange={handleChangeAddressNumber}
-            value={addressNumber}
-          />
-        </div>
-        <div className="signupForm-Element">
-          <label htmlFor="town">Nom de la ville</label>
-          <input
-            name="town"
-            id="town"
-            placeholder="Nom de la ville"
-            onChange={handleChangeTown}
-            value={town}
-          />
-        </div>
-        <div className="signupForm-Element">
-          <label htmlFor="postcode">Code postal</label>
-          <input
-            name="postcode"
-            id="postcode"
-            placeholder="Code postal"
-            onChange={handleChangePostcode}
-            value={postcode}
-          />
-        </div>
-        <div className="signupForm-Element">
-          <label htmlFor="department">Numéro de département</label>
-          <input
-            name="department"
-            id="department"
-            placeholder="Numéro de département"
-            onChange={handleChangeDepartment}
-            value={department}
-            required
-          />
-        </div>
-        <div className="signupForm-Element">
+        <div className="signupForm__element">
           <label htmlFor="password">Mot de passe</label>
           <input
             name="password"
@@ -177,7 +186,7 @@ const SignupForm = (
         <button
           type="submit"
         >
-          CONNEXION
+          INSCRIPTION
         </button>
       </form>
     </div>

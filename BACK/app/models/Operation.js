@@ -16,6 +16,12 @@ class Operation {
         return allOperations.rows;
     }
 
+    static async findAllByBoard(id) {
+
+        const operations = await db.query(`SELECT * from operation where board_id = $1`,[id]);
+        return operations.rows;
+    }
+
     static async findOne(id) {
 
         const oneOperations = await db.query(`SELECT * FROM operation WHERE id = $1`,[id]);

@@ -19,6 +19,12 @@ class Variety {
         return oneVariety.rows[0];
     }
 
+    static async findAllByFamily(id) {
+
+        const varieties = await db.query(`SELECT * FROM findVarietiesByFamily($1);`,[id]);
+        return varieties.rows;
+    }
+
     async save() {
 
         if(this.id) {

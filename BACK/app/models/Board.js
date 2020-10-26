@@ -14,6 +14,18 @@ class Board {
         return boards.rows;
     }
 
+    static async findAllByUser(id) {
+
+        const boards = await db.query(`SELECT * from "board" WHERE user_id = $1`,[id]);
+        return boards.rows;
+    }
+
+    static async findAllEmptyBoardByUser(id) {
+
+        const boardsEmpty = await db.query(`SELECT * FROM findActiveBoardByUser($1)`,[id]);
+        return boardsEmpty.rows;
+    }
+
     static async findOne(id) {
 
         const theBoard = await db.query(`SELECT * FROM "board" WHERE id = $1`,[id]);

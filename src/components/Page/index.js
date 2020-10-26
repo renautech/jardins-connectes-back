@@ -9,10 +9,14 @@ import './style.scss';
 
 const Page = ({ children }) => (
   <div className="page">
-    <Header />
-    <Navigation />
-    {children}
-    <Footer />
+    <div className="page__up">
+      <Header />
+      <Navigation />
+      {children}
+    </div>
+    <div className="page__down">
+      <Footer />
+    </div>
   </div>
 );
 

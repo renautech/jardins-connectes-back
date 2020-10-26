@@ -1,10 +1,16 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { SIGNUP } from 'src/actions/signupForm';
+import { SIGNUP, changeTownList } from 'src/actions/signupForm';
 import { isLogged } from 'src/actions/loginForm';
 
 const signupForm = (store) => (next) => (action) => {
+  if (store.getState().signupForm.newPostcodeFlag) {
+    axios.get(`https://vicopo.selfbuild.fr/cherche/${store.getState().signupForm.postcode}`)
+      .then(function(res) {
+        store.dispatch(changeTownList(res.data.cities));
+      });
+  }
   switch (action.type) {
     case SIGNUP: {
       const {

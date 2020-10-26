@@ -19,8 +19,8 @@ class Family {
         return oneFamily.rows[0];
     }
 
-    static async findWhereVoidBoardByUser(userId) {
-        const families = await db.query(`SELECT * FROM findWhereVoidBoardByUser($1)`, [userId]);
+    static async findWhereActiveBoardsByUser(userId) {
+        const families = await db.query(`SELECT * FROM findWhereActiveBoardsByUser($1)`, [userId]);
         return families.rows;
     }
 

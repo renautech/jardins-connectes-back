@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION findWhereVoidBoardByUser(int);
+DROP FUNCTION findActiveBoardsByUser(int);
 
 COMMIT;

@@ -15,6 +15,6 @@ familyRouter.patch('/family/:id', validateBody(updateFamilySchema), flush, mainC
 familyRouter.delete('/family/:id', flush, mainController.deleteOne(Family));
 
 // Specifics routes
-familyRouter.get('/user/connected', cache, familyController.findWhereVoidBoardForConnectedUser);
+familyRouter.get('/user/connected', cache, familyController.findWhereActiveBoardForConnectedUser);
 
 module.exports = familyRouter;

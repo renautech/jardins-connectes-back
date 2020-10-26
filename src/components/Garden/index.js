@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MyGarden from 'src/components/MyGarden';
+import MyGarden from 'src/containers/MyGarden';
 import Weather from 'src/containers/Weather';
 import Operations from 'src/components/Operations';
 

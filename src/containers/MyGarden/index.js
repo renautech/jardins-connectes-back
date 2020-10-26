@@ -1,8 +1,14 @@
 import { connect } from 'react-redux';
 import MyGarden from 'src/components/MyGarden';
 
-const mapStateToProps = (state) => ({});
+import { getUserFamilies } from 'src/actions/myGarden';
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  getUserFamilies: () => {
+    dispatch(getUserFamilies());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyGarden);

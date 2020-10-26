@@ -13,4 +13,5 @@ userRouter.post('/', validateBody(insertUserSchema), flush, mainController.inser
 userRouter.patch('/user/:id', validateBody(updateUserSchema), flush,mainController.updateOne(User));
 userRouter.delete('/user/:id', flush, mainController.deleteOne(User));
 
+
 module.exports = userRouter;

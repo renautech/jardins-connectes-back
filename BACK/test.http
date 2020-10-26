@@ -143,3 +143,17 @@ Content-Type: application/json
       "email": "totodev@gmail.com",
       "password": "totototomdp"
 }
+
+###
+
+GET http://localhost:5555/v1/photos
+
+### 
+
+POST http://localhost:5555/v1/photos
+Content-Type: application/json
+
+{
+      "url": "ouaistqt",
+      "board_id": "1"
+}

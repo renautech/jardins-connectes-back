@@ -14,6 +14,16 @@ class Photo {
         return photos.rows;
     }
 
+    static async findAllByUser(id) {
+
+        const photos = await db.query(`SELECT * from "board" WHERE user_id = $1`,[id]);
+        return boards.rows;
+    }
+
+    static async findAllByBoard() {
+
+    }
+
     static async findOne(id) {
 
         const thePhoto = await db.query(`SELECT * FROM "photo" WHERE id = $1`,[id]);

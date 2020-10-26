@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import {
   Route,
   Switch,
@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 // components import
-import Header from 'src/containers/Header';
-import Footer from 'src/components/Footer';
-import Navigation from 'src/containers/Navigation';
+import Page from 'src/components/Page';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/containers/LoginForm';
@@ -26,7 +24,6 @@ import dataBoard from 'src/data/dataBoard';
 import dataUser from 'src/data/dataFake';
 import './style.scss';
 import OperationList from '../OperationList';
-import { errorMonitor } from 'events';
 
 const JardinConnectes = ({ isLogged }) => {
   // get Garden Families
@@ -38,11 +35,11 @@ const JardinConnectes = ({ isLogged }) => {
 
   // get OperationsType
   const getOperationsType = () => {
-    axios.get('http://3.92.0.243:5555/v1/operation_types')
-      .then((res) => {
-        return res
-      })
-      .catch((error) => console.log(error));
+    // axios.get('http://3.92.0.243:5555/v1/operation_types')
+    //   .then((res) => {
+    //     return res
+    //   })
+    //   .catch((error) => console.log(error));
   };
 
   return (
@@ -53,64 +50,57 @@ const JardinConnectes = ({ isLogged }) => {
       </Route>
 
       <Route exact path="/">
-        <Header />
-        <Navigation />
-        <HomeVideo />
-        <Description />
-        <Footer />
+        <Page>
+          <HomeVideo />
+          <Description />
+        </Page>
       </Route>
 
       <Route path="/mon-jardin">
-        <Header />
-        <Navigation />
-        <Garden
-          data={data}
-          dataBoard={dataBoard}
-          getMyGardenFamilies={getMyGardenFamilies}
-          getOperationsType={getOperationsType}
-        />
-        <Footer />
+        <Page>
+          <Garden
+            data={data}
+            dataBoard={dataBoard}
+            getMyGardenFamilies={getMyGardenFamilies}
+            getOperationsType={getOperationsType}
+          />
+        </Page>
       </Route>
 
       <Route path="/connexion">
         {isLogged && (
           <Redirect to="/mon-jardin" />
         )}
-        <Header />
-        <Navigation />
-        <LoginForm />
-        <Footer />
+        <Page>
+          <LoginForm />
+        </Page>
       </Route>
 
       <Route path="/inscription">
         {isLogged && (
           <Redirect to="/mon-jardin" />
         )}
-        <Header />
-        <Navigation />
-        <SignupForm />
-        <Footer />
+        <Page>
+          <SignupForm />
+        </Page>
       </Route>
 
       <Route exact path="/mon-profil">
-        <Header />
-        <Navigation />
-        <Profile dataUser={dataUser} />
-        <Footer />
+        <Page>
+          <Profile dataUser={dataUser} />
+        </Page>
       </Route>
 
       <Route exact path="/mon-profil/modification">
-        <Navigation />
-        <Header />
-        <Navigation />
-        <ProfileEdit />
-        <Footer />
+        <Page>
+          <ProfileEdit />
+        </Page>
       </Route>
+
       <Route exact path="/liste-operations">
-        <Header />
-        <Navigation />
-        <OperationList dataOperations={dataUser.operation} />
-        <Footer />
+        <Page>
+          <OperationList dataOperations={dataUser.operation} />
+        </Page>
       </Route>
 
     </div>

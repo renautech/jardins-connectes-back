@@ -1,7 +1,7 @@
 @use 'src/styles/vars' as v;
 
 .loginForm {
-  background-color: v.$medium-color;
+  background-color: #FFFFFF;
   padding: 2em;
   margin: 0 auto;
   border: 1px solid v.$dark-color;
@@ -17,12 +17,13 @@
     padding: .7em;
     margin: 0.5em 0;
     font-size: 1em;
-    border: 1px solid v.$dark-color;
-    border-radius: 0.7em;
+    border: none;
+    border-bottom: 2px solid v.$darker-color;
+    // border-radius: 0.7em;
     height: 2.5em;
   }
   label, button {
-    color: v.$dark-color;
+    color: black;
   }
   button {
     display: block;

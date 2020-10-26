@@ -1,6 +1,9 @@
 @use 'src/styles/vars' as v;
 
 .description{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "Chilanka";
   font-size: 0.8rem;
   &-title{

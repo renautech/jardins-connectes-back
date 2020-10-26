@@ -29,7 +29,6 @@ const LoginForm = ({
       <p className="loginForm-Error">{loginError}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="loginForm-Element">
-          <label htmlFor="email">Adresse Email</label>
           <input
             name="email"
             id="email"
@@ -39,7 +38,6 @@ const LoginForm = ({
           />
         </div>
         <div className="loginForm-Element">
-          <label htmlFor="password">Mot de passe</label>
           <input
             name="password"
             type="password"

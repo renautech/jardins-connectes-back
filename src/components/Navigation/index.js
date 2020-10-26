@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import './style.scss';
@@ -10,24 +11,31 @@ const Navigation = ({ isLogged }) => {
       <nav className="navigation__nav">
         {isLogged && (
         <div>
-          <NavLink to="/">
-            <p className="navigation__nav__link">Accueil</p>
+          <NavLink to="/" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
+            Accueil
           </NavLink>
-          <NavLink to="/mon-jardin">
-            <p className="navigation__nav__link">Mon Jardin</p>
+          <NavLink to="/mon-jardin" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
+            Mon Jardin
           </NavLink>
         </div>
         )}
         {!isLogged && (
         <div>
-          <NavLink to="/">
-            <p className="navigation__nav__link">Accueil</p>
+          <NavLink to="/" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
+            Accueil
+          </NavLink>
+          <NavLink to="/connexion" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
+            Mon Jardin
           </NavLink>
         </div>
         )}
       </nav>
     </div>
   );
+};
+
+Navigation.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Navigation;

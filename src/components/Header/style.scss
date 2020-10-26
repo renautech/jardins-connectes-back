@@ -21,8 +21,14 @@
   
       padding: 0.25rem;
       
-      border: solid v.$medium-color 1px;
+      border: solid v.$dark-color 1px;
       border-radius: 20px;
+
+      transition: ease-in 0.2s;
+    }
+    &-link:hover {
+      background-color: v.$dark-color;
+      color: white;
     }
   }
 
@@ -67,7 +73,7 @@
     
         padding: 0.25rem;
         
-        border: solid v.$medium-color 1px;
+        border: solid v.$dark-color 1px;
         border-radius: 20px;
       }
     }
@@ -96,7 +102,7 @@
     
         padding: 0.25rem;
         
-        border: solid v.$medium-color 1px;
+        border: solid v.$dark-color 1px;
         border-radius: 20px;
       }
     }

@@ -22,7 +22,7 @@ const signupForm = (store) => (next) => (action) => {
         },
       } = store.getState();
 
-      axios.post('http://3.92.0.243:5555/v1/signup', {
+      axios.post('http://3.93.151.102:5555/v1/signup', {
         first_name: firstName,
         last_name: lastName,
         nickname: nickName,
@@ -36,8 +36,7 @@ const signupForm = (store) => (next) => (action) => {
         postcode: postcode,
       })
         .then((res) => {
-          console.log(res.data);
-          isLogged(true);
+          store.dispatch(isLogged(true));
         })
         .catch((error) => console.error(error));
       break;

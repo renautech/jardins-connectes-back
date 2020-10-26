@@ -12,7 +12,7 @@ export const initialState = {
   loginError: '',
 };
 
-const weather = (state = initialState, action = {}) => {
+const loginForm = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_EMAIL:
       return {
@@ -42,4 +42,4 @@ const weather = (state = initialState, action = {}) => {
   }
 };
 
-export default weather;
+export default loginForm;

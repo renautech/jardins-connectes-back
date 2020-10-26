@@ -10,6 +10,7 @@ const LoginForm = ({
   passwordValue,
   login,
   loginError,
+  isLogged,
 }) => {
   const handleChangeEmail = (event) => {
     changeEmail(event.target.value);
@@ -19,7 +20,10 @@ const LoginForm = ({
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    login();
+    if (!isLogged) {
+      console.log('login');
+      login();
+    }
   };
   return (
     <div className="loginForm">
@@ -62,6 +66,7 @@ LoginForm.propTypes = {
   changeEmail: PropTypes.func.isRequired,
   changePassword: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
   loginError: PropTypes.string,
 };
 

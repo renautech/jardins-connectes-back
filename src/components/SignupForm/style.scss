@@ -1,28 +1,35 @@
 @use 'src/styles/vars' as v;
 
 .signupForm {
-  background-color: v.$medium-color;
+  background-color: v.$dark-color;
   padding: 2em;
   margin: 0 auto;
   border: 1px solid v.$dark-color;
   border-radius: 0.7em;
+  
 
-  &-element {
-    display: block;
+  &__element {
+    display: inline-block;
+    margin: 0 0.2em;
+    max-width: 10em;
+    &--number{
+      max-width: 4.5em;
+    }
   }
   input {
     color: v.$dark-color;
     width: 100%;
-    max-width: 300px;
-    padding: .7em;
+    max-width: 10em;
+    padding: .4em;
     margin: 0.5em 0;
-    font-size: 1em;
+    font-size: 0.9em;
     border: 1px solid v.$dark-color;
     border-radius: 0.7em;
     height: 2.5em;
   }
-  label, button {
-    color: v.$dark-color;
+  label {
+    color: v.$darker-color;
+    font-size: 0.9em;
   }
   button {
     display: block;
@@ -32,16 +39,27 @@
     padding: 0.5em;
     border-radius: 0.7em;
     border: 2px solid v.$dark-color;
-    background-color: v.$dark-color;
+    background-color: v.$darker-color;
     color: white;
     font-weight: 600;
   }
-
+  &__fieldset {
+    margin-bottom: 1em;
+    legend {
+      color: white;
+      margin-bottom: 0.7em;
+    }
+    &__group{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
 }
 
 @media screen and (min-width:480px){
 
   .signupForm {
-    width: 350px;
+    max-width: 800px;
   }
 }

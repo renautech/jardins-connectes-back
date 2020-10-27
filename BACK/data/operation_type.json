@@ -1,0 +1,24 @@
+{
+    "operation_type": [
+        {
+            "name": "Semer",
+            "description": "Semer "
+        },
+        {
+            "name": "Arroser",
+            "description": "Arroser ma planche"
+        },
+        {
+            "name": "Recolter",
+            "description": "Recolte des cultures"
+        },
+        {
+            "name": "Traiter",
+            "description": "veuillez remplir le nom du produit/quantité utilisé ainsi que le fabriquant"
+        },
+        {
+            "name": "Autre",
+            "description": "Veuillez précisez le nom de votre Opération"
+        }
+    ]
+}

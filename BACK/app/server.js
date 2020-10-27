@@ -3,6 +3,7 @@ const express= require('express');
 const app = express();
 const router = require('./router');
 const cors = require('cors');
+const path = require('path'); // pour express static
 
 // il ne sauvegarde que l’ID session dans le cookie lui-même, mais pas les données de session (à la différence de cookie-session ou express.session (fourni de base))
 //Par défaut, il utilise le stockage en mémoire et n’est pas conçu pour un environnement de production. En production, on devra configurer un magasin de sessions évolutif
@@ -17,6 +18,7 @@ app.use(cors({
 	origin: 'http://localhost:8080'
 }));
 
+app.use('/images',express.static(path.join(__dirname, 'images')));
 app.use(express.json());
 
 // on ne donne pas de nom de session dans l'objet de config car : L’utilisation d’un nom de cookie de session par défaut risque d’ouvrir votre application aux attaques. Le problème de sécurité qui en découle est similaire à X-Powered-By : une personne potentiellement malveillante peut l’utiliser pour s’identifier auprès du serveur et cibler ses attaques en conséquence.

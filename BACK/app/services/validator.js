@@ -2,6 +2,7 @@ const validateQuery = (schema) => (req,res,next) => {
     const validatedQuery = schema.validate(req.query);
 
     if (validatedQuery.error) {
+        
         res.status(400).json(validatedQuery.error);
 
     } else {
@@ -13,7 +14,9 @@ const validateBody = (schema) => (req,res,next) => {
     const validatedBody = schema.validate(req.body);
 
     if (validatedBody.error) {
+        console.log(req);
         res.status(400).json(validatedBody.error);
+
 
     } else {
         next();

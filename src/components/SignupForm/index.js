@@ -2,20 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
+import TownList from './TownList';
+
 const SignupForm = (
   {
     changeSignupFormValue,
     signup,
     signupValues,
+    changePostcode,
+    townList,
   },
 ) => {
   const handleOnChange = (event) => {
     changeSignupFormValue(event.target.value, event.target.name);
   };
+  const handleChangePostcode = (event) => {
+    changeSignupFormValue(event.target.value, event.target.name);
+    changePostcode();
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     signup();
   };
+
 
   return (
     <div className="signupForm">
@@ -61,11 +70,11 @@ const SignupForm = (
           <div className="signupForm__fieldset__group">
 
             <div className="signupForm__element signupForm__element--number">
-              <label htmlFor="addressNumber">Numéro</label>
+              <label htmlFor="streetNumber">Numéro</label>
               <input
-                name="email"
-                id="email"
-                placeholder="Adresse Email"
+                name="streetNumber"
+                id="streetNumber"
+                placeholder="Numéro"
                 onChange={handleOnChange}
                 value={signupValues.email}
                 required
@@ -91,23 +100,18 @@ const SignupForm = (
                 value={signupValues.streetNumber}
               />
             </div>
-            <div className="signupForm__element">
-              <label htmlFor="town">Nom de la ville</label>
-              <input
-                name="town"
-                id="town"
-                placeholder="Nom de la ville"
-                onChange={handleOnChange}
-                value={signupValues.town}
-              />
-            </div>
+            <TownList
+              signupValues={signupValues}
+              townList={townList}
+              changeSignupFormValue={changeSignupFormValue}
+            />
             <div className="signupForm__element">
               <label htmlFor="postcode">Code postal</label>
               <input
                 name="postcode"
                 id="postcode"
                 placeholder="Code postal"
-                onChange={handleOnChange}
+                onChange={handleChangePostcode}
                 value={signupValues.postcode}
               />
             </div>
@@ -158,13 +162,10 @@ const SignupForm = (
 
 SignupForm.propTypes = {
   changeSignupFormValue: PropTypes.func.isRequired,
+  changePostcode: PropTypes.func.isRequired,
   signup: PropTypes.func.isRequired,
   signupValues: PropTypes.object.isRequired,
+  townList: PropTypes.array.isRequired,
 };
-
-// SignupForm.defaultProps = {
-//   addressRoad: '',
-//   addressNumber: '',
-// };
 
 export default SignupForm;

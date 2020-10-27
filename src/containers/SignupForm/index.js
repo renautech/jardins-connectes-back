@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import SignupForm from 'src/components/SignupForm';
 
-import { changeSignupFormValue, signup } from 'src/actions/signupForm';
+import { changeSignupFormValue, signup, changePostcode } from 'src/actions/signupForm';
 
 const mapStateToProps = (store) => ({
   signupValues: store.signupForm,
+  newPostcodeFlag: store.newPostcodeFlag,
+  townList: store.signupForm.townList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
   signup: () => {
     dispatch(signup());
   },
+  changePostcode: () => {
+    dispatch(changePostcode());
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

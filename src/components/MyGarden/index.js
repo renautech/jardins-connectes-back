@@ -7,14 +7,13 @@ import Family from 'src/components/MyGarden/Family';
 import './style.scss';
 
 const MyGarden = ({ getUserFamilies, isLogged }) => {
-  // useEffect(() => {
-  //   getUserFamilies();
-  //   console.log('my garden launch');
-  // }, []);
-  if (isLogged) {
-    getUserFamilies();
-    console.log('Logged and get families');
-  }
+  console.log('generated');
+  useEffect(() => {
+    console.log('useeffect');
+    if (isLogged) {
+      getUserFamilies();
+    }
+  }, []);
 
   // const Families = dataBoard.map((family) => {
   //   return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;

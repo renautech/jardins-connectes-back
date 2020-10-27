@@ -16,7 +16,7 @@ export const initialState = {
   postcode: '',
   department: '',
   password: '',
-  passwordverify: '',
+  passwordVerify: '',
   townList: [],
   newPostcodeFlag: false,
   signupError: '',

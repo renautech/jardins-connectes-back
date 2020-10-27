@@ -45,6 +45,7 @@ const signupForm = (store) => (next) => (action) => {
           postcode: postcode,
         })
           .then((res) => {
+            console.log('logged');
             store.dispatch(isLogged(true));
           })
           .catch((error) => {

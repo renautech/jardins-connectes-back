@@ -21,14 +21,14 @@ CREATE TABLE "user" (
 
 CREATE TABLE family (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" text NOT NULL,
+    "name" text NOT NULL UNIQUE,
     picture text NOT NULL,
     "description" text
 );
 
 CREATE TABLE  variety(
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" text NOT NULL,
+    "name" text NOT NULL UNIQUE,
     picture text,
     "description" text,
     family_id int NOT NULL REFERENCES family(id) ON DELETE CASCADE

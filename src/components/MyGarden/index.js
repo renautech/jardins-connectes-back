@@ -6,11 +6,16 @@ import Family from 'src/components/MyGarden/Family';
 
 import './style.scss';
 
-const MyGarden = ({ getUserFamilies }) => {
-  useEffect(() => {
+const MyGarden = ({ getUserFamilies, isLogged }) => {
+  // useEffect(() => {
+  //   getUserFamilies();
+  //   console.log('my garden launch');
+  // }, []);
+  if (isLogged) {
     getUserFamilies();
-    console.log('my garden launch');
-  }, []);
+    console.log('Logged and get families');
+  }
+
   // const Families = dataBoard.map((family) => {
   //   return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
   // });
@@ -29,6 +34,7 @@ const MyGarden = ({ getUserFamilies }) => {
 
 MyGarden.propTypes = {
   getUserFamilies: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default MyGarden;

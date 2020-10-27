@@ -3,7 +3,7 @@ import {
 } from 'src/actions/myGarden';
 
 export const initialState = {
-  userFamilies: ['Patate', 'Poirots', 'Pommes'],
+  userFamilies: [],
 };
 
 const myGarden = (state = initialState, action = {}) => {

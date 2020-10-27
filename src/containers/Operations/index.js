@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Operations from 'src/components/Operations';
 
-import { changeOperationsValue, getUserBoards } from 'src/actions/operations';
+import { changeOperationsValue, getUserBoards, submitUserOperation } from 'src/actions/operations';
 
 const mapStateToProps = (state) => ({
   operation: state.operations,
@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserBoards: () => {
     dispatch(getUserBoards());
+  },
+  submitUserOperation: () => {
+    dispatch(submitUserOperation());
   },
 });
 

@@ -34,7 +34,7 @@ MyGarden.propTypes = {
 };
 
 MyGarden.defaultProps = {
-  userFamilies: [{ name: 'Pas de planche' }],
+  userFamilies: [{ name: 'Pas encore de plantations !' }],
 };
 
 export default MyGarden;

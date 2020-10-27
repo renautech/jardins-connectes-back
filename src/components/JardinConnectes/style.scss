@@ -1,10 +1,11 @@
 @use 'src/styles/vars' as v;
 
+html, body {
+  height: 100%;
+}
 
 .jardinconnectes {
   width: 95%;
-  height: 100vh;
-  margin: 0 auto;
 }
 
 @media screen and (min-width:640px){

@@ -6,31 +6,35 @@ import Family from 'src/components/MyGarden/Family';
 
 import './style.scss';
 
-const MyGarden = ({ dataBoard, getMyGardenFamilies }) => {
+const MyGarden = ({ getUserFamilies, isLogged }) => {
   // useEffect(() => {
-  //   const myGardenFamilies = getMyGardenFamilies();
-  // });
+  //   getUserFamilies();
+  //   console.log('my garden launch');
+  // }, []);
+  if (isLogged) {
+    getUserFamilies();
+    console.log('Logged and get families');
+  }
 
-  // const Families = myGardenFamilies.map((family) => {
+  // const Families = dataBoard.map((family) => {
   //   return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
   // });
 
-  const Families = dataBoard.map((family) => {
-    return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
-  });
-
   return (
-    <div className="mygarden">
-      <h2 className="mygarden__title">Mon Jardin</h2>
-      <div className="mygarden__families">
-        {Families}
-      </div>
-    </div>
+    // <div className="mygarden">
+    //   <h2 className="mygarden__title">Mon Jardin</h2>
+    //   <div className="mygarden__families">
+    //     {Families}
+    //   </div>
+    // </div>
+
+    <div>test</div>
   );
 };
 
 MyGarden.propTypes = {
-  getMyGardenFamilies: PropTypes.func.isRequired,
+  getUserFamilies: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default MyGarden;

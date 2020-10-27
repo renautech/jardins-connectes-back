@@ -15,7 +15,7 @@ const Garden = ({ data, dataBoard, getMyGardenFamilies, getOperationsType }) => 
         <MyGarden dataBoard={dataBoard} getMyGardenFamilies={getMyGardenFamilies} />
       </div>
       <div className="garden__right">
-        <Weather zipcode="69400" />
+        <Weather />
         <Operations getOperationsType={getOperationsType} data={data} dataBoard={dataBoard} />
       </div>
     </div>

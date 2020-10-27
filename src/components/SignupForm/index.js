@@ -25,25 +25,14 @@ const SignupForm = (
     signup();
   };
 
-
   return (
     <div className="signupForm">
+      <h2 className="signupForm-Title">Inscrivez-vous !</h2>
+      <p className="signupForm-Error">{signupValues.signupError}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <fieldset className="signupForm__fieldset">
           <legend>Nom du jardinier</legend>
           <div className="signupForm__element">
-            <label htmlFor="nickname">Pseudo</label>
-            <input
-              name="nickName"
-              id="nickName"
-              placeholder="Pseudo"
-              onChange={handleOnChange}
-              value={signupValues.nickName}
-              required
-            />
-          </div>
-          <div className="signupForm__element">
-            <label htmlFor="firstname">Prénom</label>
             <input
               name="firstName"
               id="firstName"
@@ -54,7 +43,6 @@ const SignupForm = (
             />
           </div>
           <div className="signupForm__element">
-            <label htmlFor="lastname">Nom</label>
             <input
               name="lastName"
               id="lastName"
@@ -70,43 +58,29 @@ const SignupForm = (
           <div className="signupForm__fieldset__group">
 
             <div className="signupForm__element signupForm__element--number">
-              <label htmlFor="streetNumber">Numéro</label>
               <input
                 name="streetNumber"
                 id="streetNumber"
-                placeholder="Numéro"
+                placeholder="N°"
                 onChange={handleOnChange}
-                value={signupValues.email}
+                value={signupValues.streetNumber}
                 required
               />
             </div>
-            <div className="signupForm__element">
-              <label htmlFor="addressRoad">Nom de la rue</label>
+            <div className="signupForm__element signupForm__element--street__name">
               <input
                 name="streetName"
                 id="streetName"
-                placeholder="Adresse - nom de la rue"
+                placeholder="Nom de rue"
                 onChange={handleOnChange}
                 value={signupValues.streetName}
               />
             </div>
-            <div className="signupForm__element">
-              <label htmlFor="addressNumber">Adresse - Numéro</label>
-              <input
-                name="streetNumber"
-                id="streetNumber"
-                placeholder="Numéro"
-                onChange={handleOnChange}
-                value={signupValues.streetNumber}
-              />
-            </div>
-            <TownList
-              signupValues={signupValues}
-              townList={townList}
-              changeSignupFormValue={changeSignupFormValue}
-            />
-            <div className="signupForm__element">
-              <label htmlFor="postcode">Code postal</label>
+          </div>
+        </fieldset>
+        <fieldset className="signupForm__fieldset">
+          <div className="signupForm__fieldset__group">
+            <div className="signupForm__element signupForm__element--number">
               <input
                 name="postcode"
                 id="postcode"
@@ -115,21 +89,27 @@ const SignupForm = (
                 value={signupValues.postcode}
               />
             </div>
-            <div className="signupForm__element signupForm__element--number">
-              <label htmlFor="department">Département</label>
-              <input
-                name="department"
-                id="department"
-                placeholder="Numéro de département"
-                onChange={handleOnChange}
-                value={signupValues.department}
-                required
+            <div className="signupForm__element--townlist">
+              <TownList
+                className="signupForm__select"
+                signupValues={signupValues}
+                townList={townList}
+                changeSignupFormValue={changeSignupFormValue}
               />
             </div>
           </div>
         </fieldset>
         <div className="signupForm__element">
-          <label htmlFor="email">Adresse Email</label>
+          <input
+            name="nickName"
+            id="nickName"
+            placeholder="Pseudo"
+            onChange={handleOnChange}
+            value={signupValues.nickName}
+            required
+          />
+        </div>
+        <div className="signupForm__element">
           <input
             name="email"
             id="email"
@@ -140,13 +120,22 @@ const SignupForm = (
           />
         </div>
         <div className="signupForm__element">
-          <label htmlFor="password">Mot de passe</label>
           <input
             name="password"
             type="password"
             placeholder="Mot de passe"
             onChange={handleOnChange}
             value={signupValues.password}
+            required
+          />
+        </div>
+        <div className="signupForm__element">
+          <input
+            name="passwordVerify"
+            type="password"
+            placeholder="Retapez votre mot de passe"
+            onChange={handleOnChange}
+            value={signupValues.passwordVerify}
             required
           />
         </div>

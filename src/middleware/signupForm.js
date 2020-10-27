@@ -1,7 +1,7 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { SIGNUP, changeTownList } from 'src/actions/signupForm';
+import { SIGNUP, changeTownList, signupError } from 'src/actions/signupForm';
 import { isLogged } from 'src/actions/loginForm';
 
 const signupForm = (store) => (next) => (action) => {
@@ -20,7 +20,7 @@ const signupForm = (store) => (next) => (action) => {
           nickName,
           email,
           password,
-          department,
+          passwordVerify,
           streetName,
           streetNumber,
           town,
@@ -28,23 +28,33 @@ const signupForm = (store) => (next) => (action) => {
         },
       } = store.getState();
 
-      axios.post('http://3.93.151.102:5555/v1/signup', {
-        first_name: firstName,
-        last_name: lastName,
-        nickname: nickName,
-        email: email,
-        password: password,
-        department: department,
-        country: 'France',
-        street_name: streetName,
-        street_number: parseInt((streetNumber), 10),
-        town: town,
-        postcode: postcode,
-      })
-        .then((res) => {
-          store.dispatch(isLogged(true));
+      const department = postcode.substring(0, 2);
+
+      if (password === passwordVerify) {
+        axios.post('http://3.93.151.102:5555/v1/signup', {
+          first_name: firstName,
+          last_name: lastName,
+          nickname: nickName,
+          email: email,
+          password: password,
+          department: department,
+          country: 'France',
+          street_name: streetName,
+          street_number: parseInt((streetNumber), 10),
+          town: town,
+          postcode: postcode,
         })
-        .catch((error) => console.error(error));
+          .then((res) => {
+            store.dispatch(isLogged(true));
+          })
+          .catch((error) => {
+            console.error(error);
+            store.dispatch(signupError('Désolé, vous avez du commettre une erreur'));
+          });
+      }
+      else {
+        store.dispatch(signupError('Les mots de passe ne correspondent pas'));
+      }
       break;
     }
     default:

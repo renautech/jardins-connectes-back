@@ -1,7 +1,8 @@
 import {
   CHANGE_SIGNUPFORM_VALUE,
+  SIGNUP_ERROR,
   CHANGE_TOWN_LIST,
-  CHANGE_POSTCODE
+  CHANGE_POSTCODE,
 } from 'src/actions/signupForm';
 
 export const initialState = {
@@ -15,8 +16,10 @@ export const initialState = {
   postcode: '',
   department: '',
   password: '',
+  passwordverify: '',
   townList: [],
   newPostcodeFlag: false,
+  signupError: '',
 };
 
 const signupForm = (state = initialState, action = {}) => {
@@ -31,6 +34,11 @@ const signupForm = (state = initialState, action = {}) => {
         ...state,
         townList: action.list,
         newPostcodeFlag: false,
+      };
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        signupError: action.error,
       };
     case CHANGE_POSTCODE:
       return {

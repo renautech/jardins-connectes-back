@@ -4,10 +4,10 @@ import Select from 'react-select';
 
 const TownList = ({ changeSignupFormValue, signupValues, townList }) => {
   const towns = townList.map((town) => <option value={town.city} key={town.code}>{town.city}</option>);
-  let options = [];
+  const options = [];
   townList.map((town) => {
     //console.log("town " + town.city)
-    options.push({value: town.city, label: town.city});
+    options.push({ value: town.city, label: town.city });
   });
   const handleOnChange = (selectedOption) => {
     console.log({ selectedOption });
@@ -20,14 +20,13 @@ const TownList = ({ changeSignupFormValue, signupValues, townList }) => {
       color: '#223624',
       fontSize: '0.8rem',
     }),
- 
+
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 1500ms';
-  
       return { ...provided, opacity, transition };
-    }
-  }
+    },
+  };
   return (
     <div className="signupForm__element signupForm__element--townlist">
       <Select

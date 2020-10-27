@@ -28,8 +28,8 @@ app.use(session({
     // on ajoute des options de sécurité
     saveUninitialized: true, // Default value
     cookie: {
-        sameSite: "strict",
-        secure: false,       // Garantit que le navigateur n’envoie le cookie que sur HTTPS.
+        sameSite: "none",
+        secure: true,       // Garantit que le navigateur n’envoie le cookie que sur HTTPS.
         httpOnly: true, // Garantit que le cookie n’est envoyé que sur HTTP(S), pas au JavaScript du client, ce qui renforce la protection contre les attaques de type cross-site scripting.
         // domain - Indique le domaine du cookie ; utilisez cette option pour une comparaison avec le domaine du serveur dans lequel l’URL est demandée. S’ils correspondent, vérifiez ensuite l’attribut de chemin.
         // path - Indique le chemin du cookie ; utilisez cette option pour une comparaison avec le chemin demandé. Si le chemin et le domaine correspondent, envoyez le cookie dans la demande.

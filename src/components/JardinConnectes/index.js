@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import {
   Route,
@@ -10,6 +11,7 @@ import axios from 'axios';
 
 // components import
 import Page from 'src/components/Page';
+import Loader from 'src/components/Loader';
 import Description from 'src/components/Description';
 import HomeVideo from 'src/components/HomeVideo';
 import LoginForm from 'src/containers/LoginForm';
@@ -26,22 +28,6 @@ import './style.scss';
 import OperationList from '../OperationList';
 
 const JardinConnectes = ({ isLogged }) => {
-  // get Garden Families
-  const getMyGardenFamilies = () => {
-    axios.get('http://3.92.0.243:5555/v1')
-      .then((res) => res)
-      .catch((error) => console.log(error));
-  };
-
-  // get OperationsType
-  const getOperationsType = () => {
-    // axios.get('http://3.92.0.243:5555/v1/operation_types')
-    //   .then((res) => {
-    //     return res
-    //   })
-    //   .catch((error) => console.log(error));
-  };
-
   return (
     <div className="jardinconnectes">
 
@@ -61,8 +47,6 @@ const JardinConnectes = ({ isLogged }) => {
           <Garden
             data={data}
             dataBoard={dataBoard}
-            getMyGardenFamilies={getMyGardenFamilies}
-            getOperationsType={getOperationsType}
           />
         </Page>
       </Route>

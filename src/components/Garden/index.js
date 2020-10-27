@@ -8,23 +8,21 @@ import Operations from 'src/containers/Operations';
 
 import './style.scss';
 
-const Garden = ({ data, dataBoard, getMyGardenFamilies, getOperationsType }) => {
+const Garden = ({ data, dataBoard }) => {
   return (
     <div className="garden">
       <div className="garden__left">
-        <MyGarden dataBoard={dataBoard} getMyGardenFamilies={getMyGardenFamilies} />
+        <MyGarden dataBoard={dataBoard} />
       </div>
       <div className="garden__right">
         <Weather />
-        <Operations getOperationsType={getOperationsType} data={data} dataBoard={dataBoard} />
+        <Operations data={data} dataBoard={dataBoard} />
       </div>
     </div>
   );
 };
 
 Garden.propTypes = {
-  getMyGardenFamilies: PropTypes.func.isRequired,
-  getOperationsType: PropTypes.func.isRequired,
 };
 
 export default Garden;

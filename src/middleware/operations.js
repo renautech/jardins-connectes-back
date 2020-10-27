@@ -1,6 +1,6 @@
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { GET_USER_BOARDS, SUBMIT_USER_OPERATION, saveUserBoards } from 'src/actions/operations';
+import { GET_USER_BOARDS, SUBMIT_USER_OPERATION, saveUserBoards, getUserBoards } from 'src/actions/operations';
 
 const operations = (store) => (next) => (action) => {
   switch (action.type) {
@@ -24,24 +24,23 @@ const operations = (store) => (next) => (action) => {
       } = store.getState();
 
       if (operationType === 'Créer une planche') {
-        const operationId = 1;
-      }
-
-      axios.post('http://3.93.151.102:5555/v1/boards', {
-        name: boardName,
-        active: true,
-        variety_id: 1,
-        user_id: 6,
-      },
-      {
-        withCredentials: true,
-      })
-        .then(function (res) {
-          console.log(res);
+        axios.post('http://3.93.151.102:5555/v1/boards', {
+          name: boardName,
+          active: true,
+          variety_id: 1,
+          user_id: 11,
+        },
+        {
+          withCredentials: true,
         })
-        .catch(function (error) {
-          console.log(error);
-        });
+          .then(function (res) {
+            console.log(res);
+            store.dispatch(getUserBoards());
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
       break;
     }
     default:

@@ -11,7 +11,7 @@ const SelectField = ({ onChange, data, placeholder, name }) => {
 
   const options = data.map((option) => {
     return (
-      <option key={option.name} value={option.name}>{option.name}</option>
+      <option key={option.id} id={option.id} data-foo="test" value={option.name}>{option.name}</option>
     );
   });
 

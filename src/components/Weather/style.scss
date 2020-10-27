@@ -1,6 +1,9 @@
 @use 'src/styles/vars' as v;
 
 .weather {
+  background-image: url(https://plainesinterieures.weebly.com/uploads/1/9/5/9/19598497/4452225_orig.jpg);
+  background-size: 100%;
+  background-position: center;
   background-color: #FFFFFF;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
@@ -26,7 +29,8 @@
   &__icon {
     //position: relative;
     width: 5em;
-    //left: 1em;
+    background-color: steelblue;
+    border-radius: 15px;
   }
   &__detail {
     display: flex;

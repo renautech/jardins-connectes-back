@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 import Family from 'src/components/MyGarden/Family';
 
+import Loader from 'src/components/Loader';
+
 import './style.scss';
 
-const MyGarden = ({ getUserFamilies, userFamilies, isLogged }) => {
+const MyGarden = ({ getUserFamilies, userFamilies, isLogged, loading }) => {
   useEffect(() => {
     if (isLogged) {
       getUserFamilies();
@@ -20,9 +22,14 @@ const MyGarden = ({ getUserFamilies, userFamilies, isLogged }) => {
   return (
     <div className="mygarden">
       <h2 className="mygarden__title">Mon Jardin</h2>
-      <div className="mygarden__families">
-        {Families}
-      </div>
+      {!loading && (
+        <div className="mygarden__families">
+          {Families}
+        </div>
+      )}
+      {loading && (
+        <Loader />
+      )}
     </div>
   );
 };
@@ -31,6 +38,7 @@ MyGarden.propTypes = {
   getUserFamilies: PropTypes.func.isRequired,
   userFamilies: PropTypes.array,
   isLogged: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 MyGarden.defaultProps = {

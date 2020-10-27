@@ -5,6 +5,7 @@ import { getUserFamilies } from 'src/actions/myGarden';
 
 const mapStateToProps = (store) => ({
   families: store.myGarden.userFamilies,
+  loading: store.myGarden.loading,
   isLogged: store.loginForm.isLogged,
 });
 

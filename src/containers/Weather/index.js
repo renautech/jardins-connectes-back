@@ -5,6 +5,7 @@ import { getWeather } from 'src/actions/weather';
 
 const mapStateToProps = (state) => ({
   weather: state.weather,
+  loading: state.weather.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -4,6 +4,7 @@ import {
 
 export const initialState = {
   userFamilies: [],
+  loading: true,
 };
 
 const myGarden = (state = initialState, action = {}) => {
@@ -11,8 +12,8 @@ const myGarden = (state = initialState, action = {}) => {
     case SAVE_USER_FAMILIES:
       return {
         ...state,
-        userBoards: state.userBoards,
-        // userBoards: action.boards,
+        loading: false,
+        userBoards: action.boards,
       };
     default:
       return state;

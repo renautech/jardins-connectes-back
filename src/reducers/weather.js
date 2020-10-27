@@ -5,6 +5,7 @@ export const initialState = {
   temp: '',
   icon: '',
   postcode: '',
+  loading: true,
 };
 
 const weather = (state = initialState, action = {}) => {
@@ -15,6 +16,7 @@ const weather = (state = initialState, action = {}) => {
         name: action.weather.name,
         temp: action.weather.main.temp,
         icon: `http://openweathermap.org/img/wn/${action.weather.weather[0].icon}@2x.png`,
+        loading: false,
       };
     // case GET_WEATHER:
     //   return {

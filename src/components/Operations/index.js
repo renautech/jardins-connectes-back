@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import OperationType from './OperationType';
@@ -11,124 +11,80 @@ import Confirm from './Confirm';
 
 import './style.scss';
 
-const Operations = ({ data, dataBoard, getOperationsType }) => {
-  const [operationType, setOpType] = useState('');
-  const [operationTarget, setOpTarget] = useState('');
-  const [BoardFamily, setBoardFamily] = useState('');
-  const [BoardVariety, setBoardVariety] = useState('');
-  const [operationQuantity, setOpQtt] = useState('');
-  const [operationProduct, setOpProd] = useState('');
-  const [operationMaker, setOpMaker] = useState('');
-  const [operationComment, setOpComment] = useState('');
-
-  const handleOpType = (event) => {
-    console.log(event.target.value);
-    setOpType(event.target.value);
-  };
-
-  const handleOpTarget = (event) => {
-    console.log(event.target.value);
-    setOpTarget(event.target.value);
-  };
-
-  const handleBoardFamily = (event) => {
-    console.log(event.target.value);
-    setBoardFamily(event.target.value);
-  };
-
-  const handleBoardVariety = (event) => {
-    console.log(event.target.value);
-    setBoardVariety(event.target.value);
-  };
-
-  const handleQttValue = (event) => {
-    console.log(event.target.value);
-    setOpQtt(event.target.value);
-  };
-
-  const handleProductValue = (event) => {
-    console.log(event.target.value);
-    setOpProd(event.target.value);
-  };
-
-  const handleMakerValue = (event) => {
-    console.log(event.target.value);
-    setOpMaker(event.target.value);
-  };
-
-  const handleCommentValue = (event) => {
-    console.log(event.target.value);
-    setOpComment(event.target.value);
+const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperationsValue }) => {
+  const handleOnChange = (event) => {
+    changeOperationsValue(event.target.value, event.target.name);
+    console.log('name', event.target);
   };
 
   return (
     <div className="operation">
       <h2 className="operation__title">Opérations</h2>
-      <OperationType handleOpType={handleOpType} getOperationsType={getOperationsType} />
+      <OperationType name="operationType" handleOpType={handleOnChange} />
 
-      {operationType === 'Créer une planche' && (
+      {operation.operationType === 'Créer une planche' && (
         <form action="post">
-          <Field onChange={handleOpTarget} placeholder="Nom de votre planche..."/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <Field name="boardName" onChange={handleOnChange} placeholder="Nom de votre planche..." />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
-      {operationType === 'Labourer' && (
+      {operation.operationType === 'Labourer' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche labourer ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche labourer ?" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
-      {operationType === 'Semer' && (
+      {operation.operationType === 'Semer' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Sur quelle planche ?"/>
-          <SelectField onChange={handleBoardFamily} data={data.family} placeholder="De quelle famille ?"/>
-          <VarietyField onChange={handleBoardVariety} data={data.variety} target={BoardFamily} placeholder="De quelle variété ?"/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Sur quelle planche ?" />
+          <SelectField name="boardFamily" onChange={handleOnChange} data={data.family} placeholder="De quelle famille ?" />
+          <VarietyField name="boardVariety" onChange={handleOnChange} data={data.variety} target={operation.boardFamily} placeholder="De quelle variété ?" />
           <Confirm />
         </form>
       )}
-      {operationType === 'Arroser' && (
+      {operation.operationType === 'Arroser' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche arroser ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche arroser ?" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
-      {operationType === 'Fertiliser' && (
+      {operation.operationType === 'Fertiliser' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche fertiliser ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Avec quel fertilisant ?"/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche fertiliser ?" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Avec quel fertilisant ?" />
           <Confirm />
         </form>
       )}
-      {operationType === 'Traiter' && (
+      {operation.operationType === 'Traiter' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche traiter ?"/>
-          <Field onChange={handleProductValue} placeholder="Avec quel produit ?"/>
-          <Field onChange={handleQttValue} placeholder="Quelle quantité ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche traiter ?" />
+          <Field name="product" onChange={handleOnChange} placeholder="Avec quel produit ?" />
+          <Field name="quantity" onChange={handleOnChange} placeholder="Quelle quantité ?" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
-      {operationType === 'Désherber' && (
+      {operation.operationType === 'Désherber' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche désherber ?"/>
-          <CommentField onChange={handleCommentValue} placeholder="De quelle manière ?"/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche désherber ?" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="De quelle manière ?" />
           <Confirm />
         </form>
       )}
-      {operationType === 'Récolter' && (
+      {operation.operationType === 'Récolter' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche récolter ?"/>
-          <Field onChange={handleQttValue} placeholder="Quelle quantité ? (en kg)"/>
-          <CommentField onChange={handleCommentValue} placeholder="Plus de détails..."/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche récolter ?" />
+          <Field name="quantity" onChange={handleOnChange} placeholder="Quelle quantité ? (en kg)" />
+          <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
-      {operationType === 'Supprimer une planche' && (
+      {operation.operationType === 'Supprimer une planche' && (
         <form action="post">
-          <SelectField onChange={handleOpTarget} data={dataBoard} placeholder="Quelle planche supprimer ?"/>
+          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche supprimer ?" />
           <Confirm />
         </form>
       )}
@@ -137,7 +93,9 @@ const Operations = ({ data, dataBoard, getOperationsType }) => {
 };
 
 Operations.propTypes = {
-  getOperationsType: PropTypes.func.isRequired,
+  operation: PropTypes.object.isRequired,
+  getUserBoards: PropTypes.func.isRequired,
+  changeOperationsValue: PropTypes.func.isRequired,
 };
 
 export default Operations;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import MyGarden from 'src/containers/MyGarden';
 import Weather from 'src/containers/Weather';
-import Operations from 'src/components/Operations';
+import Operations from 'src/containers/Operations';
 
 import './style.scss';
 

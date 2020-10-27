@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Field = ({ onChange, placeholder }) => {
+const Field = ({ onChange, placeholder, name }) => {
   return (
     <div className="field">
-      <input className="field__input" type="text" onChange={onChange} placeholder={placeholder} />
+      <input className="field__input" name={name} type="text" onChange={onChange} placeholder={placeholder} />
     </div>
   );
 };
@@ -15,6 +15,7 @@ const Field = ({ onChange, placeholder }) => {
 Field.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default Field;

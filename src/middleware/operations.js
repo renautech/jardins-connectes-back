@@ -1,11 +1,11 @@
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { GET_USER_FAMILIES, saveUserFamilies } from 'src/actions/myGarden';
+import { GET_USER_BOARDS, saveUserBoards } from 'src/actions/operations';
 
-const myGarden = (store) => (next) => (action) => {
+const operations = (store) => (next) => (action) => {
   switch (action.type) {
-    case GET_USER_FAMILIES:
-      axios.get('http://3.93.151.102:5555/v1/families/user/connected', { withCredentials: true })
+    case GET_USER_BOARDS:
+      axios.get('http://3.93.151.102:5555/v1/boards/users/user', { withCredentials: true })
         .then(function (res) {
           console.log(res);
         })
@@ -18,4 +18,4 @@ const myGarden = (store) => (next) => (action) => {
   }
 };
 
-export default myGarden;
+export default operations;

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const CommentField = ({ onChange, placeholder }) => {
+const CommentField = ({ onChange, placeholder, name }) => {
   return (
     <div className="commentfield">
-      <textarea className="commentfield__input" onChange={onChange} placeholder={placeholder} />
+      <textarea className="commentfield__input" name={name} onChange={onChange} placeholder={placeholder} />
     </div>
   );
 };
@@ -15,6 +15,7 @@ const CommentField = ({ onChange, placeholder }) => {
 CommentField.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default CommentField;

@@ -8,6 +8,7 @@ import weather from '../middleware/weather';
 import loginForm from '../middleware/loginForm';
 import signupForm from '../middleware/signupForm';
 import myGarden from '../middleware/myGarden';
+import operations from '../middleware/operations';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,6 +20,7 @@ const enhancers = composeEnhancers(
     loginForm,
     signupForm,
     myGarden,
+    operations,
   ),
 );
 

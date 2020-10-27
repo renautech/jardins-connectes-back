@@ -28,7 +28,7 @@ const loginForm = (store) => (next) => (action) => {
       break;
     }
     case LOGOUT: {
-      axios.get('http://3.93.151.102:5555/v1/signout', { withCredentials: true })
+      axios.delete('http://3.93.151.102:5555/v1/signout', { withCredentials: true })
         .then((res) => {
           store.dispatch(isLogged());
         })

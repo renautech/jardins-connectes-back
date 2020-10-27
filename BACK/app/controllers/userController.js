@@ -57,11 +57,26 @@ const userController = {
     },
 
     signout: (req, res) => {
-        req.session.user = false;
-        res.json({
-            message: "Déconnecté",
-            state: true
-        });
+        if (req.session) {
+            req.session.destroy(err => {
+                if (err) {
+                    res.json({
+                        message: "Impossible de se déconnecter",
+                        state: false
+                    });
+                } else {
+                    res.json({
+                        message: "Déconnecté",
+                        state: true
+                    });
+                }
+            });
+        } else {
+            res.json({
+                message: "Pas de session active",
+                state: false
+            });
+        }   
     }
 
 };

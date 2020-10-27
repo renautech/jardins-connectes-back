@@ -1,7 +1,7 @@
 require('dotenv').config();
 const db = require('../database');
-const datas = require('../../data/jardins.json');
-//const datas = require('../../data/operation_type.json');
+//const datas = require('../../data/jardins.json');
+const datas = require('../../data/operation_type.json');
 
 (async () => {
 

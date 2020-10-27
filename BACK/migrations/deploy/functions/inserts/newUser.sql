@@ -17,7 +17,8 @@ INSERT INTO "user" (
     email,
     "password",
     nickname,
-    profile_picture
+    profile_picture,
+    "role"
 ) VALUES(
     juser->> 'first_name',
     juser->> 'last_name',
@@ -30,7 +31,9 @@ INSERT INTO "user" (
     juser->> 'email',
     juser->> 'password',
     juser->> 'nickname',
-    juser->> 'profile_picture'
+    juser->> 'profile_picture',
+    juser->> 'role'
+
 ) RETURNING *;
 $$ LANGUAGE sql STRICT;
 

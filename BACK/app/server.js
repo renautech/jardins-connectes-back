@@ -28,7 +28,6 @@ app.use(session({
     // on ajoute des options de sécurité
     saveUninitialized: true, // Default value
     cookie: {
-        sameSite: "lax",
         secure: false,       // Garantit que le navigateur n’envoie le cookie que sur HTTPS.
         httpOnly: true, // Garantit que le cookie n’est envoyé que sur HTTP(S), pas au JavaScript du client, ce qui renforce la protection contre les attaques de type cross-site scripting.
         // domain - Indique le domaine du cookie ; utilisez cette option pour une comparaison avec le domaine du serveur dans lequel l’URL est demandée. S’ils correspondent, vérifiez ensuite l’attribut de chemin.
@@ -37,13 +36,6 @@ app.use(session({
     }
 }));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, DELETE');
-next();
-});
 // permet d'ajouter une sécurité en "cachant" que l'application tourne sur un server Express et donc plus difficile de lancer des attaques spécifiquement ciblées
 app.disable('x-powered-by');
 

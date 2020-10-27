@@ -12,7 +12,8 @@ const insertUserSchema = Joi.object({
     email: Joi.string().email({minDomainSegments: 2, tlds: { allow: ['com','net']}}).required(),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
     nickname: Joi.string().alphanum().min(3).max(30).required(),
-    profile_picture: Joi.string().max(200)
+    profile_picture: Joi.string().max(200),
+    role: Joi.string()
 });
 
 const updateUserSchema = Joi.object({

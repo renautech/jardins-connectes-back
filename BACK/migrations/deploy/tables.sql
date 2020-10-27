@@ -15,7 +15,8 @@ CREATE TABLE "user" (
     email text NOT NULL UNIQUE,
     "password" text NOT NULL,
     nickname text NOT NULL UNIQUE,
-    profile_picture text
+    profile_picture text,
+    "role" text DEFAULT 'jardinier'
 );
 
 CREATE TABLE family (

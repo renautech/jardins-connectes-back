@@ -25,6 +25,7 @@ const SignupForm = (
     signup();
   };
 
+
   return (
     <div className="signupForm">
       <form autoComplete="off" onSubmit={handleSubmit}>
@@ -100,9 +101,9 @@ const SignupForm = (
               />
             </div>
             <TownList
-              handleOnChange={handleOnChange}
               signupValues={signupValues}
               townList={townList}
+              changeSignupFormValue={changeSignupFormValue}
             />
             <div className="signupForm__element">
               <label htmlFor="postcode">Code postal</label>

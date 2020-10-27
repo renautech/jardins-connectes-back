@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE FUNCTION
-    findActiveBoardsByUser(userId int)
+    findWhereActiveBoardsByUser(userId int)
     RETURNS TABLE ("name" text, "picture" text) AS $$
 SELECT
 	"name",

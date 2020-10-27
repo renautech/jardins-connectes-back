@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION findActiveBoardByUser(int)
+DROP FUNCTION findActiveBoardByUser(int);
 
 COMMIT;

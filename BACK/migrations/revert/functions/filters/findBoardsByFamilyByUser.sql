@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP FUNCTION findBoardsByFamilyByUser(int, int)
+DROP FUNCTION findBoardsByFamilyByUser(int, int);
 
 COMMIT;

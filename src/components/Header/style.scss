@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   text-align: center;
-  color: v.$medium-color;
+  color: v.$white-color;
   height: 5em;
   align-items: center;
   background-image: url(https://images.pexels.com/photos/4112228/pexels-photo-4112228.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
@@ -65,9 +65,9 @@
 @media screen and (min-width:800px){
   .header {
     text-align: center;
-    color: v.$medium-color;
     height: 5em;
     align-items: center;
+    color: v.$white-color;
   
     &-links{
   

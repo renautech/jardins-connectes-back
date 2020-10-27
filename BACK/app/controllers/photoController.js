@@ -13,12 +13,14 @@ const photoController = {
                 board_id: req.body.board_id
             });
             res.status(200).send(photo);
+            photo.save();
         } catch (err) {
             res.status(500).send({
                 message: `Could not upload the image: ${req.file}. ${err}`
             });
         }
     }
+    
 }
 
 module.exports = photoController;

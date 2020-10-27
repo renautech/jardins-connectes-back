@@ -11,7 +11,20 @@ import Confirm from './Confirm';
 
 import './style.scss';
 
-const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperationsValue }) => {
+const Operations = ({
+  data,
+  dataBoard,
+  operation,
+  changeOperationsValue,
+  getUserBoards,
+  isLogged,
+}) => {
+  useEffect(() => {
+    if (isLogged) {
+      getUserBoards();
+    }
+  }, []);
+
   const handleOnChange = (event) => {
     changeOperationsValue(event.target.value, event.target.name);
     console.log('name', event.target);
@@ -31,14 +44,14 @@ const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperation
       )}
       {operation.operationType === 'Labourer' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche labourer ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche labourer ?" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
       {operation.operationType === 'Semer' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Sur quelle planche ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Sur quelle planche ?" />
           <SelectField name="boardFamily" onChange={handleOnChange} data={data.family} placeholder="De quelle famille ?" />
           <VarietyField name="boardVariety" onChange={handleOnChange} data={data.variety} target={operation.boardFamily} placeholder="De quelle variété ?" />
           <Confirm />
@@ -46,21 +59,21 @@ const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperation
       )}
       {operation.operationType === 'Arroser' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche arroser ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche arroser ?" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
         </form>
       )}
       {operation.operationType === 'Fertiliser' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche fertiliser ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche fertiliser ?" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="Avec quel fertilisant ?" />
           <Confirm />
         </form>
       )}
       {operation.operationType === 'Traiter' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche traiter ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche traiter ?" />
           <Field name="product" onChange={handleOnChange} placeholder="Avec quel produit ?" />
           <Field name="quantity" onChange={handleOnChange} placeholder="Quelle quantité ?" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
@@ -69,14 +82,14 @@ const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperation
       )}
       {operation.operationType === 'Désherber' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche désherber ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche désherber ?" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="De quelle manière ?" />
           <Confirm />
         </form>
       )}
       {operation.operationType === 'Récolter' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche récolter ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche récolter ?" />
           <Field name="quantity" onChange={handleOnChange} placeholder="Quelle quantité ? (en kg)" />
           <CommentField name="comment" onChange={handleOnChange} placeholder="Plus de détails..." />
           <Confirm />
@@ -84,7 +97,7 @@ const Operations = ({ data, dataBoard, operation, getUserBoards, changeOperation
       )}
       {operation.operationType === 'Supprimer une planche' && (
         <form action="post">
-          <SelectField name="boardName" onChange={handleOnChange} data={dataBoard} placeholder="Quelle planche supprimer ?" />
+          <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoard} placeholder="Quelle planche supprimer ?" />
           <Confirm />
         </form>
       )}
@@ -96,6 +109,7 @@ Operations.propTypes = {
   operation: PropTypes.object.isRequired,
   getUserBoards: PropTypes.func.isRequired,
   changeOperationsValue: PropTypes.func.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Operations;

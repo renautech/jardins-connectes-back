@@ -11,7 +11,7 @@ const OperationType = ({ handleOpType, name }) => {
   return (
     <div className="operation__type">
       <select onChange={handleOpType} name={name} id={name}>
-        <option value="">Choisir une opération</option>
+        <option value="">Quelle opération effectuer ?</option>
         {/* <Operation operations={operations}> */}
         <option value="Créer une planche">Créer une planche</option>
         <option value="Labourer">Labourer</option>

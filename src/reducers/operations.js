@@ -1,5 +1,6 @@
 import {
   CHANGE_OPERATIONS_VALUE,
+  SAVE_USER_BOARDS,
 } from 'src/actions/operations';
 
 export const initialState = {
@@ -10,6 +11,7 @@ export const initialState = {
   comment: '',
   product: '',
   quantity: '',
+  userBoards: '',
 };
 
 const signupForm = (state = initialState, action = {}) => {
@@ -18,6 +20,11 @@ const signupForm = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SAVE_USER_BOARDS:
+      return {
+        ...state,
+        userBoards: action.boards,
       };
     default:
       return state;

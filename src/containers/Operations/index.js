@@ -5,6 +5,7 @@ import { changeOperationsValue, getUserBoards } from 'src/actions/operations';
 
 const mapStateToProps = (state) => ({
   operation: state.operations,
+  isLogged: state.loginForm.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

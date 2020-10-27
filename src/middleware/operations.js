@@ -8,6 +8,7 @@ const operations = (store) => (next) => (action) => {
       axios.get('http://3.93.151.102:5555/v1/boards/users/user', { withCredentials: true })
         .then(function (res) {
           console.log(res);
+          store.dispatch(saveUserBoards(res.data));
         })
         .catch(function (error) {
           console.log(error);

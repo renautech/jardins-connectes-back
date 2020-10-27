@@ -12,7 +12,7 @@ export const getUserBoards = () => ({
   type: GET_USER_BOARDS,
 });
 
-export const saveUserBoards = (families) => ({
+export const saveUserBoards = (boards) => ({
   type: SAVE_USER_BOARDS,
-  families,
+  boards,
 });

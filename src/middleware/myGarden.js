@@ -8,6 +8,7 @@ const myGarden = (store) => (next) => (action) => {
       axios.get('http://3.93.151.102:5555/v1/families/user/connected', { withCredentials: true })
         .then(function (res) {
           console.log(res);
+          store.dispatch(saveUserFamilies(res.data));
         })
         .catch(function (error) {
           console.log(error);

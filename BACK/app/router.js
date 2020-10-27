@@ -25,6 +25,6 @@ router.use('/varieties', varietyRouter);
 // Authentification
 router.post('/signup', flush, validateBody(insertUserSchema), userController.signup);
 router.post('/signin', validateBody(signinSchema), userController.signin);
-router.get('/signout', userController.signout);
+router.delete('/signout', userController.signout);
 
 module.exports = router;

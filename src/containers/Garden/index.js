@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import Garden from 'src/components/Garden';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = () => ({

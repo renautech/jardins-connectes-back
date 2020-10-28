@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const ProfileEdit = ({ profile }) => {
+const ProfileEdit = ({ profile, changeProfileFormValue }) => {
   const testUser = {
     first_name: 'Mendoza',
     last_name: 'Patrick',
@@ -20,6 +20,12 @@ const ProfileEdit = ({ profile }) => {
     profile_picture: 'http://seeding/osef',
   };
 
+  const handleOnChange = (event) => {
+    console.log("handleonchange");
+
+    changeProfileFormValue(event.target.value, event.target.name);
+  };
+
   return (
     <div className="profileEdit">
       <h2 className="profileEdit__title">Modifications de mon Profil</h2>
@@ -32,6 +38,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouveau nom"
               name="lastName"
               id="lastName"
+              onChange={handleOnChange}
             />
           </p>
           <p className="profileEdit__info">
@@ -41,6 +48,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouveau prénom"
               name="firstName"
               id="firstName"
+              onChange={handleOnChange}
             />
           </p>
           <p className="profileEdit__info">
@@ -50,6 +58,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouvel email"
               name="email"
               id="email"
+              onChange={handleOnChange}
             />
           </p>
           <p className="profileEdit__info">
@@ -57,6 +66,9 @@ const ProfileEdit = ({ profile }) => {
             <input
               className="profileEdit__info__input"
               placeholder="Nouveau pseudo"
+              name="nickName"
+              id="nickName"
+              onChange={handleOnChange}
             />
           </p>
           {/* <p className="profileEdit__info">
@@ -70,6 +82,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouveau code postal"
               name="postcode"
               id="postcode"
+              onChange={handleOnChange}
             />
           </p>
           <p className="profileEdit__info">
@@ -83,6 +96,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouveau numéro de rue"
               name="streetNumber"
               id="streetNumber"
+              onChange={handleOnChange}
             />
           </p>
           <p className="profileEdit__info">
@@ -92,6 +106,7 @@ const ProfileEdit = ({ profile }) => {
               placeholder="Nouveau nom de rue"
               name="streetName"
               id="streetName"
+              onChange={handleOnChange}
             />
           </p>
         </div>
@@ -100,7 +115,9 @@ const ProfileEdit = ({ profile }) => {
   );
 };
 
-ProfileEdit.propTypes = {};
+ProfileEdit.propTypes = {
+  changeProfileFormValue: PropTypes.func.isRequired,
+};
 
 ProfileEdit.defaultProps = {
   addressRoad: '',

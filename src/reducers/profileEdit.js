@@ -13,6 +13,11 @@ export const initialState = {
 
 const profileEdit = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'CHANGE_PROFILEFORM_VALUE':
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
     default:
       return state;
   }

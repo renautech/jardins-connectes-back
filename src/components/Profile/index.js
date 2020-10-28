@@ -73,7 +73,6 @@ const Profile = ({ getProfile, profile }) => {
         (
           <Loader />
         )}
-      <ProfileEdit />
     </>
   );
 };

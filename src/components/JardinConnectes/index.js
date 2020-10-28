@@ -72,6 +72,7 @@ const JardinConnectes = ({ isLogged }) => {
       <Route exact path="/mon-profil">
         <Page>
           <Profile />
+          <ProfileEdit />
         </Page>
       </Route>
 

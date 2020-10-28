@@ -4,8 +4,8 @@ BEGIN;
 
 CREATE FUNCTION 
 findVarietiesByFamily(familyId int)
-RETURNS TABLE ("name" text) AS $$
-SELECT "name" 
+RETURNS TABLE ("name" text, "id" int) AS $$
+SELECT "name", "id" 
 FROM variety 
 WHERE family_id = familyId
 $$ LANGUAGE sql STRICT;

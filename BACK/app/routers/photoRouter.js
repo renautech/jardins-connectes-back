@@ -15,4 +15,8 @@ photoRouter.post('/', upload, validateBody(insertPhotoSchema), flush, photoContr
 photoRouter.patch('/photo/:id', validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
 photoRouter.delete('/photo/:id', flush, mainController.deleteOne(Photo));
 
+// Connected Routes
+photoRouter.get('/photo/:id/users/user', cache, photoController.findOneForUserConnected);
+photoRouter.get('/users/user', cache, photoController.findAllForUserConnected);
+
 module.exports = photoRouter;

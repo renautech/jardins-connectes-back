@@ -7,7 +7,7 @@ const Confirm = ({ boardName, onSubmit }) => {
   console.log(boardName);
   return (
     <div className="confirm">
-      <button className="confirm__submit" type="submit" onSubmit={onSubmit}>Confirmer</button>
+      <button className="confirm__submit" type="submit">Confirmer</button>
     </div>
   );
 };

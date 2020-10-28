@@ -14,14 +14,14 @@ const SelectField = ({
 }) => {
   const options = data.map((option) => {
     return (
-      <Options keyData={option.id} value={option.name} />
+      <Options key={option.id} keyData={option.id} value={option.name} />
     );
   });
 
   return (
     <div className="selectfield">
-      <select name={name} onChange={onChange} id="">
-        <option key="0" value="">{placeholder}</option>
+      <select name={name} onChange={onChange}>
+        <option value="">{placeholder}</option>
         {options}
       </select>
     </div>

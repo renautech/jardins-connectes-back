@@ -16,5 +16,9 @@ operationRouter.delete('/operation/:id', flush, mainController.deleteOne(Operati
 
 // Specifics routes
 operationRouter.get('/boards/board/:id', cache, operationController.allOperationsByBoard);
+operationRouter.get('/users/user', cache, operationController.allOperationsByUser);
+operationRouter.post('/users/user', flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
+operationRouter.delete('/operation/:id/users/user', flush, operationController.deleteOperationForConnectedUser);
+//operationRouter.patch('/board/:id/users/user', validateBody(updateBoardSchema), flush, operationController);
 
 module.exports = operationRouter;

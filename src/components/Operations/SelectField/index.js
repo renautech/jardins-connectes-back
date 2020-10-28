@@ -2,22 +2,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Options from 'src/components/Operations/SelectField/Options';
+
 import './style.scss';
 
-const SelectField = ({ onChange, data, placeholder, name }) => {
-  if (data === undefined) {
-    data = [{ name: 'Vous n\'avez pas de planche !' }];
-  }
-
+const SelectField = ({
+  onChange,
+  data,
+  placeholder,
+  name,
+}) => {
   const options = data.map((option) => {
     return (
-      <option key={option.id} id={option.id} data-foo="test" value={option.name}>{option.name}</option>
+      <Options key={option.id} keyData={option.id} value={option.name} />
     );
   });
 
   return (
     <div className="selectfield">
-      <select name={name} onChange={onChange} id="">
+      <select name={name} onChange={onChange}>
         <option value="">{placeholder}</option>
         {options}
       </select>

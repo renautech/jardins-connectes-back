@@ -1,4 +1,5 @@
 export const CHANGE_OPERATIONS_VALUE = 'CHANGE_OPERATIONS_VALUE';
+export const CHANGE_OPERATIONS_BOARD_VALUE = 'CHANGE_OPERATIONS_BOARD_VALUE';
 export const RESET_OPERATIONS_VALUE = 'RESET_OPERATIONS_VALUE';
 export const GET_USER_BOARDS = 'GET_BOARDS';
 export const SAVE_USER_BOARDS = 'SAVE_BOARDS';
@@ -8,6 +9,12 @@ export const changeOperationsValue = (value, name) => ({
   type: CHANGE_OPERATIONS_VALUE,
   value,
   name,
+});
+
+export const changeOperationsBoardValue = (name, id) => ({
+  type: CHANGE_OPERATIONS_BOARD_VALUE,
+  name,
+  id,
 });
 
 export const resetOperationsValue = () => ({

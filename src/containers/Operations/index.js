@@ -4,9 +4,12 @@ import Operations from 'src/components/Operations';
 import {
   changeOperationsValue,
   changeOperationsBoardValue,
+  changeOperationsFamilyValue,
+  changeOperationsVarietyValue,
   resetOperationsValue,
   getUserBoards,
   getFamilies,
+  getVarieties,
   submitUserOperation,
 } from 'src/actions/operations';
 
@@ -22,8 +25,17 @@ const mapDispatchToProps = (dispatch) => ({
   changeOperationsBoardValue: (name, id) => {
     dispatch(changeOperationsBoardValue(name, id));
   },
+  changeOperationsFamilyValue: (name, id) => {
+    dispatch(changeOperationsFamilyValue(name, id));
+  },
+  changeOperationsVarietyValue: (name, id) => {
+    dispatch(changeOperationsVarietyValue(name, id));
+  },
   getFamilies: () => {
     dispatch(getFamilies());
+  },
+  getVarieties: () => {
+    dispatch(getVarieties());
   },
   getUserBoards: () => {
     dispatch(getUserBoards());

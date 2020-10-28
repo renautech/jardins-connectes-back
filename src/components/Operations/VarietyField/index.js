@@ -2,16 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Options from 'src/components/Operations/SelectField/Options';
+
 import './style.scss';
 
 const VarietyField = ({ onChange, data, target, placeholder, name }) => {
-  const varietiesFound = data.filter((variety) => {
-    return (variety.family_id === target);
-  });
-
-  const varieties = varietiesFound.map((variety) => {
+  const varieties = data.map((option) => {
     return (
-      <option key={variety.name + variety.family} value={variety.name}>{variety.name}</option>
+      <Options key={option.id} keyData={option.id} value={option.name} />
     );
   });
 

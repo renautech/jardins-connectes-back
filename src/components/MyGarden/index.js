@@ -8,15 +8,27 @@ import Loader from 'src/components/Loader';
 
 import './style.scss';
 
-const MyGarden = ({ getUserFamilies, userFamilies, isLogged, loading }) => {
+const MyGarden = ({
+  getUserFamilies,
+  userFamilies,
+  isLogged,
+  loading,
+}) => {
   useEffect(() => {
     if (isLogged) {
       getUserFamilies();
     }
   }, []);
 
+  console.log('user_families', userFamilies);
+
+  if (userFamilies === []) {
+    userFamilies = [{ name: 'Pas encore de plantations' }];
+  }
+
   const Families = userFamilies.map((family) => {
-    return <Family key={family.name} type={family.name} img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThP4gFDgQdTU9TPf_yTOEcyPFC31nkX5qQlg&usqp=CAU" />;
+    console.log(family);
+    return <Family key={family.name} type={family.name} picture={family.picture} />;
   });
 
   return (
@@ -36,13 +48,9 @@ const MyGarden = ({ getUserFamilies, userFamilies, isLogged, loading }) => {
 
 MyGarden.propTypes = {
   getUserFamilies: PropTypes.func.isRequired,
-  userFamilies: PropTypes.array,
+  userFamilies: PropTypes.array.isRequired,
   isLogged: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
-};
-
-MyGarden.defaultProps = {
-  userFamilies: [{ name: 'Pas encore de plantations !' }],
 };
 
 export default MyGarden;

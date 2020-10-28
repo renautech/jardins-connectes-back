@@ -12,8 +12,8 @@ const myGarden = (state = initialState, action = {}) => {
     case SAVE_USER_FAMILIES:
       return {
         ...state,
+        userFamilies: action.families,
         loading: false,
-        userBoards: action.boards,
       };
     default:
       return state;

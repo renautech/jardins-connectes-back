@@ -1,8 +1,12 @@
 import {
   CHANGE_OPERATIONS_VALUE,
   CHANGE_OPERATIONS_BOARD_VALUE,
+  CHANGE_OPERATIONS_FAMILY_VALUE,
+  CHANGE_OPERATIONS_VARIETY_VALUE,
   RESET_OPERATIONS_VALUE,
   SAVE_USER_BOARDS,
+  SAVE_FAMILIES,
+  SAVE_VARIETIES,
 } from 'src/actions/operations';
 
 export const initialState = {
@@ -10,11 +14,15 @@ export const initialState = {
   boardName: '',
   boardId: '',
   boardFamily: '',
+  boardFamilyId: '',
   boardVariety: '',
+  boardVarietyId: '',
   comment: '',
   product: '',
   quantity: '',
   userBoards: '',
+  families: '',
+  varieties: [{ name: 'pas de variété' }],
 };
 
 const signupForm = (state = initialState, action = {}) => {
@@ -30,12 +38,27 @@ const signupForm = (state = initialState, action = {}) => {
         boardName: action.name,
         boardId: action.id,
       };
+    case CHANGE_OPERATIONS_FAMILY_VALUE:
+      return {
+        ...state,
+        boardFamily: action.name,
+        boardFamilyId: action.id,
+        boardVariety: '',
+        boardVarietyId: '',
+      };
+    case CHANGE_OPERATIONS_VARIETY_VALUE:
+      return {
+        ...state,
+        boardVariety: action.name,
+        boardVarietyId: action.id,
+      };
     case RESET_OPERATIONS_VALUE:
       return {
         ...state,
         boardName: '',
         boardId: '',
         boardFamily: '',
+        boardFamilyId: '',
         boardVariety: '',
         comment: '',
         product: '',
@@ -45,6 +68,16 @@ const signupForm = (state = initialState, action = {}) => {
       return {
         ...state,
         userBoards: action.boards,
+      };
+    case SAVE_FAMILIES:
+      return {
+        ...state,
+        families: action.families,
+      };
+    case SAVE_VARIETIES:
+      return {
+        ...state,
+        varieties: action.varieties,
       };
     default:
       return state;

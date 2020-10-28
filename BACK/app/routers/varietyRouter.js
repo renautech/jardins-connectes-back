@@ -7,13 +7,14 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertVarietySchema, updateVarietySchema } = require('../schemas/varietyschema');
 const Variety = require('../models/Variety');
 const upload = require('../services/upload');
+const {isAdmin} = require('../services/session');
 
 // Prefix : /varieties
 varietyRouter.get('/', cache, mainController.findAll(Variety));
 varietyRouter.get('/variety/:id', cache, mainController.findOne(Variety));
-varietyRouter.post('/', upload, validateBody(insertVarietySchema), flush, varietyController.insert);
-varietyRouter.patch('/variety/:id', validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
-varietyRouter.delete('/variety/:id', flush, mainController.deleteOne(Variety));
+varietyRouter.post('/', isAdmin, upload, validateBody(insertVarietySchema), flush, varietyController.insert);
+varietyRouter.patch('/variety/:id', isAdmin, validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
+varietyRouter.delete('/variety/:id', isAdmin, flush, mainController.deleteOne(Variety));
 
 // Specifics routes
 varietyRouter.get('/families/family/:id', cache, varietyController.allVarietiesByFamily);

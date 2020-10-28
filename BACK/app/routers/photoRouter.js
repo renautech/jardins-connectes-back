@@ -7,12 +7,13 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertPhotoSchema, updatePhotoSchema } = require('../schemas/photoschema');
 const Photo = require('../models/Photo');
 const upload = require('../services/upload');
+const {isAdmin} = require('../services/session');
 
 // Prefix : /photos
-photoRouter.get('/', cache, mainController.findAll(Photo));
-photoRouter.get('/photo/:id', cache, mainController.findOne(Photo));
-photoRouter.post('/', upload, validateBody(insertPhotoSchema), flush, photoController.insert);
-photoRouter.patch('/photo/:id', validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
-photoRouter.delete('/photo/:id', flush, mainController.deleteOne(Photo));
+photoRouter.get('/', isAdmin, cache, mainController.findAll(Photo));    //isAdmin ??
+photoRouter.get('/photo/:id', cache, mainController.findOne(Photo));    //isAdmin ??
+photoRouter.post('/', isAdmin, upload, validateBody(insertPhotoSchema), flush, photoController.insert);
+photoRouter.patch('/photo/:id', isAdmin, validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
+photoRouter.delete('/photo/:id', isAdmin, flush, mainController.deleteOne(Photo));
 
 module.exports = photoRouter;

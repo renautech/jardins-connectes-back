@@ -4,6 +4,7 @@ import {
   CHANGE_OPERATIONS_FAMILY_VALUE,
   CHANGE_OPERATIONS_VARIETY_VALUE,
   RESET_OPERATIONS_VALUE,
+  RESET_ALL_OPERATIONS_VALUE,
   SAVE_USER_BOARDS,
   SAVE_FAMILIES,
   SAVE_VARIETIES,
@@ -55,6 +56,19 @@ const signupForm = (state = initialState, action = {}) => {
     case RESET_OPERATIONS_VALUE:
       return {
         ...state,
+        boardName: '',
+        boardId: '',
+        boardFamily: '',
+        boardFamilyId: '',
+        boardVariety: '',
+        comment: '',
+        product: '',
+        quantity: '',
+      };
+    case RESET_ALL_OPERATIONS_VALUE:
+      return {
+        ...state,
+        operationType: '',
         boardName: '',
         boardId: '',
         boardFamily: '',

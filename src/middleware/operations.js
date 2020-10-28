@@ -11,7 +11,7 @@ import {
   saveVarieties,
 } from 'src/actions/operations';
 
-import { getUserFamilies } from 'src/actions/myGarden';
+import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
 
 const operations = (store) => (next) => (action) => {
   console.log('MIDDLEWARE OPERATIONS');
@@ -76,6 +76,7 @@ const operations = (store) => (next) => (action) => {
           .then(function (res) {
             // console.log(res);
             store.dispatch(getUserBoards());
+            store.dispatch(getUserEmptyBoards());
           })
           .catch(function (error) {
             console.log(error);
@@ -89,25 +90,28 @@ const operations = (store) => (next) => (action) => {
           withCredentials: true,
         })
           .then(function (res) {
-            console.log('SEMAGE FONCTIONNEL');
             store.dispatch(getUserFamilies());
+            store.dispatch(getUserEmptyBoards());
           })
           .catch(function (error) {
             console.log(error);
           });
       }
       if (operationType === 'Supprimer une planche') {
-        axios.delete(`http://3.93.151.102:5555/v1/boards/board/${parseInt(boardId, 10)}`, {},
-          {
-            withCredentials: true,
-          })
-          .then(function (res) {
-            // console.log(res);
-            store.dispatch(getUserBoards());
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        if (boardId !== '') {
+          axios.delete(`http://3.93.151.102:5555/v1/boards/board/${parseInt(boardId, 10)}`, {},
+            {
+              withCredentials: true,
+            })
+            .then(function (res) {
+              // console.log(res);
+              store.dispatch(getUserBoards());
+              store.dispatch(getUserEmptyBoards());
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
       }
       break;
     }

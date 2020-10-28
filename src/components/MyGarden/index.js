@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Family from 'src/components/MyGarden/Family';
+import Family from './Family';
+import EmptyBoard from './EmptyBoard';
 
 import Loader from 'src/components/Loader';
 
@@ -10,13 +11,16 @@ import './style.scss';
 
 const MyGarden = ({
   getUserFamilies,
+  getUserEmptyBoards,
   userFamilies,
+  userEmptyBoards,
   isLogged,
   loading,
 }) => {
   useEffect(() => {
     if (isLogged) {
       getUserFamilies();
+      getUserEmptyBoards();
     }
   }, []);
 
@@ -31,12 +35,18 @@ const MyGarden = ({
     return <Family key={family.name} type={family.name} picture={family.picture} />;
   });
 
+  const EmptyBoards = userEmptyBoards.map((family) => {
+    console.log(family);
+    return <EmptyBoard key={family.name} type={family.name} picture={family.picture} />;
+  });
+
   return (
     <div className="mygarden">
       <h2 className="mygarden__title">Mon Jardin</h2>
       {!loading && (
         <div className="mygarden__families">
           {Families}
+          {EmptyBoards}
         </div>
       )}
       {loading && (
@@ -48,7 +58,9 @@ const MyGarden = ({
 
 MyGarden.propTypes = {
   getUserFamilies: PropTypes.func.isRequired,
+  getUserEmptyBoards: PropTypes.func.isRequired,
   userFamilies: PropTypes.array.isRequired,
+  userEmptyBoards: PropTypes.array.isRequired,
   isLogged: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
 };

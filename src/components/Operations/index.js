@@ -76,7 +76,7 @@ const Operations = ({
   return (
     <div className="operation">
       <h2 className="operation__title">Opérations</h2>
-      <OperationType name="operationType" handleOpType={handleOnChangeType} />
+      <OperationType name="operationType" handleOpType={handleOnChangeType} value={operation.operationType} />
 
       {operation.operationType === 'Créer une planche' && (
         <form action="post" onSubmit={handleSubmit}>

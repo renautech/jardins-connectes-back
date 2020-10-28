@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import MyGarden from 'src/components/MyGarden';
 
-import { getUserFamilies } from 'src/actions/myGarden';
+import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
 
 const mapStateToProps = (store) => ({
   userFamilies: store.myGarden.userFamilies,
+  userEmptyBoards: store.myGarden.userEmptyBoards,
   loading: store.myGarden.loading,
   isLogged: store.loginForm.isLogged,
 });
@@ -12,6 +13,9 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   getUserFamilies: () => {
     dispatch(getUserFamilies());
+  },
+  getUserEmptyBoards: () => {
+    dispatch(getUserEmptyBoards());
   },
 });
 

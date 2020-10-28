@@ -6,11 +6,11 @@ import Operation from './Operation';
 
 import './style.scss';
 
-const OperationType = ({ handleOpType, name }) => {
+const OperationType = ({ handleOpType, name, value }) => {
   // const operations = getOperationsType();
   return (
     <div className="operation__type">
-      <select onChange={handleOpType} name={name} id={name}>
+      <select onChange={handleOpType} name={name} id={name} value={value}>
         <option value="">Quelle opération effectuer ?</option>
         {/* <Operation operations={operations}> */}
         <option value="Créer une planche">Créer une planche</option>
@@ -30,6 +30,7 @@ const OperationType = ({ handleOpType, name }) => {
 OperationType.propTypes = {
   handleOpType: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default OperationType;

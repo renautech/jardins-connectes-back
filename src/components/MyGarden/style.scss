@@ -3,7 +3,7 @@
 .mygarden {
   // background-image: url(https://previews.123rf.com/images/mikhaylovaelen/mikhaylovaelen1505/mikhaylovaelen150500004/39996520-vue-a%C3%A9rienne-sur-jardin-potager-avec-diff%C3%A9rents-l%C3%A9gumes.jpg);
   // background-image: url(https://previews.123rf.com/images/jojobob/jojobob0811/jojobob081100505/3817859-une-vue-a%C3%A9rienne-d-un-petit-jardin-potager-en-toscane-italie.jpg);
-  // background-image: url(https://previews.123rf.com/images/gopause/gopause1204/gopause120400256/13428230-vue-a%C3%A9rienne-du-potager.jpg);
+  // background-image: url(https://i.pinimg.com/originals/77/c0/f2/77c0f234b5086bcc68e6b1ab3bed854a.jpg);
   background-image: url(https://images.pexels.com/photos/3708717/pexels-photo-3708717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
   background-size: 125%;
   background-position: bottom;
@@ -31,6 +31,8 @@
     height: 90%;
   }
   &__family {
+    background: rgb(239,255,251);
+    background: linear-gradient(324deg, rgba(239,255,251,1) 0%, rgba(160,255,248,1) 100%, rgba(0,212,255,1) 100%);
     background-color: white;
     padding: 0.5rem;
     margin-top: v.$m-gut;;
@@ -39,6 +41,32 @@
     border: 1px solid black;
     border-radius: 10px;
     &--image {
+      max-height: 32px;
+      display : inline-block;
+    }
+    &--text {
+      margin-left: v.$s-gut;
+      transform: translate(0%, -50%);
+      display : inline-block;
+    }
+  }
+  &__navlink {
+    display: block;
+  }
+
+
+  &__emptyboard {
+    background: rgb(108,48,12);
+    background: linear-gradient(111deg, rgba(108,48,12,1) 0%, rgba(194,129,80,1) 100%);
+    background-color: white;
+    padding: 0.5rem;
+    margin-top: v.$m-gut;;
+    width: 45%;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+    &--image {
+      border-radius: 50%;
       max-height: 32px;
       display : inline-block;
     }

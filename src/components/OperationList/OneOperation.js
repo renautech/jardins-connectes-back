@@ -6,14 +6,18 @@ const OneOperation = ({ operation }) => {
     event.preventDefault();
     setShowOpDetail(!showOpDetail);
   };
-  const comment = showOpDetail ? 
-    (
+  const comment = showOpDetail
+    ? (
       <div className="oneOperation__element oneOperation__element--below">
-        <span >{operation.comment}</span> 
-        <img className="oneOperation__right" src="https://img.icons8.com/fluent-systems-regular/24/000000/settings.png"/>
+        <span>{operation.comment}</span>
+        <img className="oneOperation__right" alt="légume" src="https://img.icons8.com/fluent-systems-regular/24/000000/settings.png"/>
       </div>
-    ):
-    <a href="/" onClick={toggleClick}><img  className="oneOperation__right" src="https://img.icons8.com/fluent-systems-regular/24/000000/button2.png"/></a>;
+    )
+    : (
+      <a href="/" onClick={toggleClick}>
+        <img className="oneOperation__right" alt="options" src="https://img.icons8.com/fluent-systems-regular/24/000000/button2.png"/>
+      </a>
+    );
   return (
     <div className="oneOperation">
       <span className="oneOperation__element">{operation.date}</span>
@@ -23,6 +27,5 @@ const OneOperation = ({ operation }) => {
     </div>
   );
 };
-
 
 export default OneOperation;

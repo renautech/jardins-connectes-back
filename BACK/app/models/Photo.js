@@ -14,20 +14,32 @@ class Photo {
         return photos.rows;
     }
 
-    static async findAllByUser(id) {
-
-        const photos = await db.query(`SELECT * from "board" WHERE user_id = $1`,[id]);
-        return boards.rows;
-    }
-
-    static async findAllByBoard() {
-
-    }
-
     static async findOne(id) {
 
         const thePhoto = await db.query(`SELECT * FROM "photo" WHERE id = $1`,[id]);
         return thePhoto.rows[0];
+    }
+
+    static async findOneByUser(photoId, userId) {
+
+        const thePhoto = await db.query(`
+            SELECT *
+            FROM photo
+            JOIN board ON board.id = photo.board_id
+            WHERE photo.id = $1 AND board.user_id = $2;
+        `,[photoId, userId]);
+        return thePhoto.rows[0];
+    }
+
+    static async findAllByUser(userId) {
+
+        const photos = await db.query(`
+            SELECT *
+            FROM photo
+            JOIN board ON board.id = photo.board_id
+            WHERE board.user_id = 1;
+        `, [userId]);
+        return photos.rows;
     }
 
     async save() {

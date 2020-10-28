@@ -77,6 +77,16 @@ const userController = {
                 state: false
             });
         }   
+    },
+
+    findConnected: async (req, res) => {
+        if (req.session.user) {
+            const connectedUser = await User.findOne(req.session.user.id);
+            delete connectedUser.password;
+            res.json(connectedUser);
+        } else {
+            res.json("Veuillez vous connecter");
+        }  
     }
 
 };

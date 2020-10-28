@@ -43,7 +43,7 @@ const operationController = {
     deleteOperationForConnectedUser: async (req,res) => {
 
         if(req.session.user) {
-
+            //if() securite pour que l'on ne puisse supprimer seulement les planches nous appartenant
             const operation = new Operation(await Operation.findOne(req.params.id));
             await operation.delete();
             res.status(200).json("Operation supprimé !");
@@ -56,7 +56,7 @@ const operationController = {
     updateOperationForConnectedUser: async (req,res) => {
 
             if(req.session.user) {
-
+                // if() securite pour que l'on ne puisse changer seulement les planches nous appartenant
                 const operation = new Operation(await Operation.findOne(req.params.id));
                 const newOperation = new Operation(req.body);
                 for(let prop in newOperation){

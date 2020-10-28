@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Profile = ({ dataUser }) => {
+const Profile = ({ dataUser, getProfile }) => {
   const { user } = dataUser;
   const testUser = {
     first_name: 'Mendoza',
@@ -20,6 +20,8 @@ const Profile = ({ dataUser }) => {
     nickname: 'Bowman',
     profile_picture: 'http://seeding/osef',
   };
+  // requête API
+  getProfile();
 
   return (
     <div className="profile">

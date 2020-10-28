@@ -28,6 +28,11 @@ class User {
         return oneUser.rows[0];
     }
 
+    static async findByNickname(nickname) {
+
+        const oneUser = await db.query(` SELECT * FROM "user" WHERE nickname = $1`,[nickname]);
+        return oneUser.rows[0];
+    }
 
     async save() {
 
@@ -48,9 +53,6 @@ class User {
             if(insertedUser.rowCount) {
                 this.id = insertedUser.rows[0].id;
             }
-            else {
-                this.error = true;
-            }
 
         }
     }
@@ -58,7 +60,7 @@ class User {
     async delete() {
 
         if(this.id) {
-        await db.query(`DELETE FROM "user" WHERE id=$1`,[this.id]);
+            await db.query(`DELETE FROM "user" WHERE id=$1`,[this.id]);
         }
         else {
             this.errorMessage = "Impossible de supprimer un utilisateur inexistant";

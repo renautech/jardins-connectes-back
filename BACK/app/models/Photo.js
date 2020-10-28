@@ -23,7 +23,7 @@ class Photo {
     static async findOneByUser(photoId, userId) {
 
         const thePhoto = await db.query(`
-            SELECT *
+            SELECT photo.*
             FROM photo
             JOIN board ON board.id = photo.board_id
             WHERE photo.id = $1 AND board.user_id = $2;
@@ -34,10 +34,10 @@ class Photo {
     static async findAllByUser(userId) {
 
         const photos = await db.query(`
-            SELECT *
+            SELECT photo.*
             FROM photo
             JOIN board ON board.id = photo.board_id
-            WHERE board.user_id = 1;
+            WHERE board.user_id = $1;
         `, [userId]);
         return photos.rows;
     }

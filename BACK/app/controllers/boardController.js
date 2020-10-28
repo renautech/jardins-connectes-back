@@ -68,6 +68,23 @@ const boardController = {
         else {
             res.json("Veuillez vous connecter");
         }
+    },
+
+    updateBoardForConnectedUser: async (req,res) => {
+
+        if(req.session.user) {
+
+            const oldData = new Board(await Board.findOne(req.params.id));
+            const newData = new Board(req.body); 
+            for(const prop in newData) {
+                oldData[prop] = newData[prop];
+            }
+            oldData.save();
+            res.json(`Changement effectué ! `);
+        }
+        else {
+            res.json("Veuillez vous connecter");
+        }
     }
     
 };

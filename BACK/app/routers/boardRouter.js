@@ -21,5 +21,6 @@ boardRouter.get('/families/family/:id/users/user', cache, boardController.findBy
 
 boardRouter.post('/users/user', flush, validateBody(insertBoardSchema), boardController.addNewBoardForConnectedUser);
 boardRouter.delete('/board/:id/users/user', flush, boardController.DeleteBoardForConnectedUser);
+boardRouter.patch('/board/:id/users/user', validateBody(updateBoardSchema), flush, boardController.updateBoardForConnectedUser);
 
 module.exports = boardRouter;

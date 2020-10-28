@@ -19,6 +19,6 @@ operationRouter.get('/boards/board/:id', cache, operationController.allOperation
 operationRouter.get('/users/user', cache, operationController.allOperationsByUser);
 operationRouter.post('/users/user', flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
 operationRouter.delete('/operation/:id/users/user', flush, operationController.deleteOperationForConnectedUser);
-//operationRouter.patch('/board/:id/users/user', validateBody(updateBoardSchema), flush, operationController);
+operationRouter.patch('/operation/:id/users/user', validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);
 
 module.exports = operationRouter;

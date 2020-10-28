@@ -51,6 +51,23 @@ const operationController = {
         else {
             res.status(403).json("Vous n'êtes pas connecté !");
         }
+    },
+
+    updateOperationForConnectedUser: async (req,res) => {
+
+            if(req.session.user) {
+
+                const operation = new Operation(await Operation.findOne(req.params.id));
+                const newOperation = new Operation(req.body);
+                for(let prop in newOperation){
+                    operation[prop] = newOperation[prop];
+                }
+                await operation.save();
+                res.status(200).json("Operation modifié !");
+            }
+            else {
+                res.status(403).json("Vous n'êtes pas connecté :");
+            }
     }
     
 };

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { GET_PROFILE, loadProfile } from 'src/actions/profile';
 
 const profile = (store) => (next) => (action) => {
-  console.log('MW profile');
   switch (action.type) {
     case GET_PROFILE: {
       if (store.getState().profile.loading) {

@@ -9,11 +9,12 @@ import {
 } from 'src/actions/operations';
 
 const operations = (store) => (next) => (action) => {
+  console.log('MIDDLEWARE OPERATIONS');
   switch (action.type) {
     case GET_USER_BOARDS:
       axios.get('http://3.93.151.102:5555/v1/boards/users/user', { withCredentials: true })
         .then(function (res) {
-          // console.log(res);
+          console.log('USER_BOADS', res);
           store.dispatch(saveUserBoards(res.data));
         })
         .catch(function (error) {
@@ -23,7 +24,7 @@ const operations = (store) => (next) => (action) => {
     case GET_FAMILIES:
       axios.get('http://3.93.151.102:5555/v1/families', { withCredentials: true })
         .then(function (res) {
-          console.log(res);
+          console.log('FAMILIES', res);
           // store.dispatch(saveUserBoards(res.data));
         })
         .catch(function (error) {

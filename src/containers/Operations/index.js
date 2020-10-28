@@ -22,11 +22,11 @@ const mapDispatchToProps = (dispatch) => ({
   changeOperationsBoardValue: (name, id) => {
     dispatch(changeOperationsBoardValue(name, id));
   },
-  getUserBoards: () => {
-    dispatch(getUserBoards());
-  },
   getFamilies: () => {
     dispatch(getFamilies());
+  },
+  getUserBoards: () => {
+    dispatch(getUserBoards());
   },
   submitUserOperation: () => {
     dispatch(submitUserOperation());

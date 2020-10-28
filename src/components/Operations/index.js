@@ -29,6 +29,8 @@ const Operations = ({
     }
   }, []);
 
+  getFamilies();
+
   const handleOnChange = (event) => {
     changeOperationsValue(event.target.value, event.target.name);
     changeOperationsValue(event.target.value, event.target.name);
@@ -73,7 +75,7 @@ const Operations = ({
       {operation.operationType === 'Semer' && (
         <form action="post" onSubmit={handleSubmit}>
           <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoards} placeholder="Sur quelle planche ?" />
-          <SelectField name="boardFamily" onChange={handleOnChange} data={getFamilies} placeholder="De quelle famille ?" />
+          <SelectField name="boardFamily" onChange={handleOnChange} data={operation.families} placeholder="De quelle famille ?" />
           <VarietyField name="boardVariety" onChange={handleOnChange} data={data.variety} target={operation.boardFamily} placeholder="De quelle variété ?" />
           <Confirm />
         </form>
@@ -129,6 +131,7 @@ const Operations = ({
 Operations.propTypes = {
   operation: PropTypes.object.isRequired,
   getUserBoards: PropTypes.func.isRequired,
+  getFamilies: PropTypes.func.isRequired,
   changeOperationsValue: PropTypes.func.isRequired,
   changeOperationsBoardValue: PropTypes.func.isRequired,
   submitUserOperation: PropTypes.func.isRequired,

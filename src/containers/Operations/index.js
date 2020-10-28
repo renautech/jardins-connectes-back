@@ -6,7 +6,8 @@ import {
   changeOperationsBoardValue,
   resetOperationsValue,
   getUserBoards,
-  submitUserOperation
+  getFamilies,
+  submitUserOperation,
 } from 'src/actions/operations';
 
 const mapStateToProps = (state) => ({
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserBoards: () => {
     dispatch(getUserBoards());
+  },
+  getFamilies: () => {
+    dispatch(getFamilies());
   },
   submitUserOperation: () => {
     dispatch(submitUserOperation());

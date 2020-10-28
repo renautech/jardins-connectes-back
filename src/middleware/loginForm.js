@@ -14,7 +14,7 @@ const loginForm = (store) => (next) => (action) => {
       axios.post('http://3.93.151.102:5555/v1/signin', { email, password }, { withCredentials: true })
         .then((res) => {
           if (res.data.state === true) {
-            console.log('logged');
+            // console.log('logged');
             store.dispatch(isLogged());
           }
           else {

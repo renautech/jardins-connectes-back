@@ -19,6 +19,7 @@ const Operations = ({
   changeOperationsBoardValue,
   resetOperationsValue,
   getUserBoards,
+  getFamilies,
   isLogged,
   submitUserOperation,
 }) => {
@@ -72,7 +73,7 @@ const Operations = ({
       {operation.operationType === 'Semer' && (
         <form action="post" onSubmit={handleSubmit}>
           <SelectField name="boardName" onChange={handleOnChange} data={operation.userBoards} placeholder="Sur quelle planche ?" />
-          <SelectField name="boardFamily" onChange={handleOnChange} data={data.family} placeholder="De quelle famille ?" />
+          <SelectField name="boardFamily" onChange={handleOnChange} data={getFamilies} placeholder="De quelle famille ?" />
           <VarietyField name="boardVariety" onChange={handleOnChange} data={data.variety} target={operation.boardFamily} placeholder="De quelle variété ?" />
           <Confirm />
         </form>

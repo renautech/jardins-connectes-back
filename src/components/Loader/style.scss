@@ -1,0 +1,29 @@
+@use 'src/styles/vars';
+
+@keyframes rotation {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.loader {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  min-height: vars.$width-loader * 2;
+  padding: 1rem;
+  width: 100%;
+  .oclock-svg {
+    animation: rotation vars.$time linear infinite;
+    height: vars.$width-loader;
+    margin: 3rem auto;
+    transform-origin: center center;
+    width: vars.$width-loader;
+
+    > svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

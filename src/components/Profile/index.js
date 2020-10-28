@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'src/components/Loader';
 
 import './style.scss';
 
@@ -27,7 +28,7 @@ const Profile = ({ dataUser, getProfile, loading }) => {
 
   return (
     <div className="profile">
-      { !loading && (
+      { !loading ? (
         <div>
           <h2 className="profile__title">Mon Profil</h2>
           <div className="profile__container">
@@ -69,9 +70,9 @@ const Profile = ({ dataUser, getProfile, loading }) => {
             </p>
           </div>
         </div>
-      )}
-      { loading && (
-        <p>LOADER</p>
+      ) :
+      ( 
+        <Loader />
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import {
   CHANGE_OPERATIONS_VALUE,
+  CHANGE_OPERATIONS_BOARD_VALUE,
   RESET_OPERATIONS_VALUE,
   SAVE_USER_BOARDS,
 } from 'src/actions/operations';
@@ -22,6 +23,12 @@ const signupForm = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case CHANGE_OPERATIONS_BOARD_VALUE:
+      return {
+        ...state,
+        boardName: action.name,
+        boardId: action.id,
       };
     case RESET_OPERATIONS_VALUE:
       return {

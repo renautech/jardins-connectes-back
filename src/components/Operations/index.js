@@ -16,6 +16,7 @@ const Operations = ({
   dataBoard,
   operation,
   changeOperationsValue,
+  changeOperationsBoardValue,
   resetOperationsValue,
   getUserBoards,
   isLogged,
@@ -34,8 +35,8 @@ const Operations = ({
   };
 
   const handleOnChangeBoard = (event) => {
-    changeOperationsValue(event.target.value, [event.target.name, event.target.key]);
-    console.log('name', [event.target.name, event.target.key]);
+    changeOperationsBoardValue(event.target.value, event.target.name, event.target.id);
+    console.log('name', event.target.name, event.target.id);
   };
 
   const handleSubmit = (event) => {
@@ -126,6 +127,7 @@ Operations.propTypes = {
   operation: PropTypes.object.isRequired,
   getUserBoards: PropTypes.func.isRequired,
   changeOperationsValue: PropTypes.func.isRequired,
+  changeOperationsBoardValue: PropTypes.func.isRequired,
   submitUserOperation: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
 };

@@ -14,7 +14,8 @@ userRouter.get('/user/:id', cache, mainController.findOne(User));
 userRouter.patch('/user/:id', validateBody(updateUserSchema), flush,mainController.updateOne(User));
 userRouter.delete('/user/:id', flush, mainController.deleteOne(User));
 
-// Specific routes
+// Connected routes
 userRouter.get('/user', cache, userController.findConnected);
+userRouter.delete('/user', flush, userController.deleteConnected);
 
 module.exports = userRouter;

@@ -80,12 +80,58 @@ const userController = {
     },
 
     findConnected: async (req, res) => {
-        if (req.session.user) {
-            const connectedUser = await User.findOne(req.session.user.id);
-            delete connectedUser.password;
-            res.json(connectedUser);
+        if (req.session) {
+            if (req.session.user) {
+                const connectedUser = await User.findOne(req.session.user.id);
+                delete connectedUser.password;
+                res.json(connectedUser);
+            } else {
+                res.json({
+                    message: "Veuillez vous connecter",
+                    state: false
+                });
+            }  
         } else {
-            res.json("Veuillez vous connecter");
+            res.json({
+                message: "Pas de session active",
+                state: false
+            });
+        }   
+    },
+
+    deleteConnected: async (req, res) => {
+        if (req.session) {
+            if (req.session.user) {
+                const userToDelete = new User(req.session.user);
+                await userToDelete.delete();
+                if (userToDelete.errorMessage) {
+                    res.status(400).json(userToDelete.errorMessage);
+                } else {
+                    req.session.destroy(err => {
+                        if (err) {
+                            res.json({
+                                message: "Impossible de se déconnecter",
+                                state: false
+                            });
+                        } else {
+                            res.json({
+                                message: `Votre compte a bien été supprimé de notre base de données.`,
+                                state: true
+                            });
+                        }
+                    });                      
+                }
+            } else {
+                res.json({
+                    message: "Veuillez vous connecter",
+                    state: false
+                });
+            }  
+        } else {
+            res.json({
+                message: "Pas de session active",
+                state: false
+            });
         }  
     }
 

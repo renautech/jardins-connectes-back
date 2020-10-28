@@ -10,7 +10,7 @@ const userController = require('../controllers/userController');
 // Prefix : /users 
 userRouter.get('/', cache, mainController.findAll(User));
 userRouter.get('/user/:id', cache, mainController.findOne(User));
-userRouter.post('/', validateBody(insertUserSchema), flush, userController.signup);
+//userRouter.post('/', validateBody(insertUserSchema), flush, userController.signup);
 userRouter.patch('/user/:id', validateBody(updateUserSchema), flush,mainController.updateOne(User));
 userRouter.delete('/user/:id', flush, mainController.deleteOne(User));
 

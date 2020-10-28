@@ -36,7 +36,15 @@ class User {
             await db.query(`SELECT * FROM updateUser($1)`,[this]);
         } else {
 
-            const insertedUser = await db.query(`SELECT * FROM newUser($1)`,[this]);
+            let insertedUser;
+
+            if(this.role){
+                insertedUser = await db.query(`SELECT * FROM newUser($1)`,[this]);
+            }
+            else {
+                insertedUser = await db.query(`SELECT * FROM newUserWithoutRole($1)`,[this]);
+            }
+            
             if(insertedUser.rowCount) {
                 this.id = insertedUser.rows[0].id;
             }

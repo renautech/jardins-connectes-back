@@ -3,7 +3,7 @@ import Profile from 'src/components/Profile';
 import { getProfile } from 'src/actions/profile';
 
 const mapStateToProps = (state) => ({
-  loading: state.profile.loading,
+  profile: state.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

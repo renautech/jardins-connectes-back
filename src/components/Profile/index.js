@@ -5,81 +5,89 @@ import Loader from 'src/components/Loader';
 
 import './style.scss';
 
-const Profile = ({ dataUser, getProfile, loading }) => {
-  const { user } = dataUser;
-  const testUser = {
-    first_name: 'Mendoza',
-    last_name: 'Patrick',
-    street_name: 'Bay Parkway',
-    street_number: 7,
-    town: 'Vowinckel',
-    postcode: 59500,
-    department: 58,
-    country: 'North Carolina',
-    email: 'mendozapatrick@emtrac.com',
-    password: 'password',
-    nickname: 'Bowman',
-    profile_picture: 'http://seeding/osef',
-  };
+const Profile = ({ getProfile, profile }) => {
+  const {
+    firstName,
+    lastName,
+    nickName,
+    email,
+    streetName,
+    streetNumber,
+    town,
+    postcode,
+    department,
+    country,
+  } = profile;
   // requête API
   getProfile();
 
-  console.log('Valeur de loading : ', loading)
-
   return (
     <div className="profile">
-      { !loading ? (
+      { !profile.loading ? (
         <div>
           <h2 className="profile__title">Mon Profil</h2>
           <div className="profile__container">
             <p className="profile__info">
               <p className="profile__info__type">Nom : </p>
-              <p className="profile__info__text">{testUser.last_name}</p>
+              <p className="profile__info__text">{lastName}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Prénom : </p>
-              <p className="profile__info__text">{testUser.first_name}</p>
+              <p className="profile__info__text">{firstName}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Email : </p>
-              <p className="profile__info__text">{testUser.email}</p>
+              <p className="profile__info__text">{email}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Pseudo : </p>
-              <p className="profile__info__text">{testUser.nickname}</p>
+              <p className="profile__info__text">{nickName}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Country : </p>
-              <p className="profile__info__text">{testUser.country}</p>
+              <p className="profile__info__text">{country}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Adresse postale : </p>
-              <p className="profile__info__text">{testUser.postcode}</p>
+              <p className="profile__info__text">{postcode}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Ville : </p>
-              <p className="profile__info__text">{testUser.town}</p>
+              <p className="profile__info__text">{town}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Numéro de rue : </p>
-              <p className="profile__info__text">{testUser.street_number}</p>
+              <p className="profile__info__text">{streetNumber}</p>
             </p>
             <p className="profile__info">
               <p className="profile__info__type">Nom de rue : </p>
-              <p className="profile__info__text">{testUser.street_name}</p>
+              <p className="profile__info__text">{streetName}</p>
             </p>
           </div>
         </div>
       ) :
-      ( 
-        <Loader />
-      )}
+        (
+          <Loader />
+        )}
     </div>
   );
 };
 
 Profile.propTypes = {
-  dataUser: PropTypes.object.isRequired,
+  profile: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    nickName: PropTypes.string,
+    email: PropTypes.string,
+    streetName: PropTypes.string,
+    streetNumber: PropTypes.string,
+    town: PropTypes.string,
+    postcode: PropTypes.string,
+    department: PropTypes.string,
+    country: PropTypes.string,
+    loading: PropTypes.bool,
+  }).isRequired,
+  getProfile: PropTypes.func.isRequired,
 };
 
 export default Profile;

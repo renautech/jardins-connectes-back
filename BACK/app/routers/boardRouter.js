@@ -19,4 +19,7 @@ boardRouter.get('/users/user',cache , boardController.findAllBoardForConnectedUs
 boardRouter.get('/empty', cache, boardController.allEmptyBoardForConnectedUser);
 boardRouter.get('/families/family/:id/users/user', cache, boardController.findByFamilyForConnectedUser);
 
+boardRouter.post('/users/user', flush, validateBody(insertBoardSchema), boardController.addNewBoardForConnectedUser);
+boardRouter.delete('/board/:id/users/user', flush, boardController.DeleteBoardForConnectedUser);
+
 module.exports = boardRouter;

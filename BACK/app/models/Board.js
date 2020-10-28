@@ -50,10 +50,12 @@ class Board {
         }
     }
 
-    async delete() {
+    async delete(userid) {
 
         if(this.id) {
-        await db.query(`DELETE FROM "board" WHERE id=$1`,[this.id]);
+            const boardDelete = await db.query(`DELETE FROM "board" WHERE id=$1 and "user_id" = $2`,[this.id,userid]);
+            return boardDelete;
+            
         }
         else {
             this.errorMessage = "Impossible de supprimer une planche inexistante";

@@ -7,12 +7,18 @@ const isAuthentificate = async (req,res,next) => {
 }
 
 const isAdmin = async (req,res,next) => {
-    if (req.session.user.role === 'admin') {
-        next();
+    if(req.session.user) {
+        if (req.session.user.role === 'admin') {
+            next();
+        }
+        else {
+            res.json("Vous n'avez pas l'accès (admin requis)");
+        }
     }
     else {
-        res.json("Vous n'avez pas l'accès (admin requis)");
+        res.json("Vous n'êtes pas connecté !");
     }
+    
 }
 
 const isJardinier = async (req,res,next) => {

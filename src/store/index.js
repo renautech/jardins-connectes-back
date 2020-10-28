@@ -9,6 +9,7 @@ import loginForm from '../middleware/loginForm';
 import signupForm from '../middleware/signupForm';
 import myGarden from '../middleware/myGarden';
 import operations from '../middleware/operations';
+import profile from '../middleware/profile';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -21,6 +22,7 @@ const enhancers = composeEnhancers(
     signupForm,
     myGarden,
     operations,
+    profile,
   ),
 );
 

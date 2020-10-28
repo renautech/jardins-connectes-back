@@ -17,7 +17,8 @@ UPDATE "user" SET
     email = juser->> 'email',
     "password" = juser->> 'password',
     nickname = juser->> 'nickname',
-    profile_picture =  juser->> 'profile_picture'
+    profile_picture =  juser->> 'profile_picture',
+    "role" = juser->> 'role'
 WHERE id = (juser->> 'id')::int
 RETURNING *;
 $$ LANGUAGE sql STRICT;

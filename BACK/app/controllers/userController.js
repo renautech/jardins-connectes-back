@@ -57,7 +57,7 @@ const userController = {
     },
 
     signout: (req, res) => {
-        if (req.session) {
+        if (req.session.user) {
             req.session.destroy(err => {
                 if (err) {
                     res.json({
@@ -70,66 +70,78 @@ const userController = {
                         state: true
                     });
                 }
-            });
+            });  
         } else {
             res.json({
-                message: "Pas de session active",
+                message: "Vous êtes déjà déconnecté",
                 state: false
             });
-        }   
+        }
+        
     },
 
     findConnected: async (req, res) => {
-        if (req.session) {
-            if (req.session.user) {
-                const connectedUser = await User.findOne(req.session.user.id);
-                delete connectedUser.password;
-                res.json(connectedUser);
-            } else {
-                res.json({
-                    message: "Veuillez vous connecter",
-                    state: false
-                });
-            }  
+        if (req.session.user) {
+            const connectedUser = await User.findOne(req.session.user.id);
+            delete connectedUser.password;
+            res.json(connectedUser);
         } else {
             res.json({
-                message: "Pas de session active",
+                message: "Veuillez vous connecter",
+                state: false
+            });
+        }    
+    },
+
+    deleteConnected: async (req, res) => {
+        if (req.session.user) {
+            const userToDelete = new User(req.session.user);
+            await userToDelete.delete();
+            if (userToDelete.errorMessage) {
+                res.json({
+                    message: userToDelete.errorMessage,
+                    state: false
+                });
+            } else {
+                req.session.destroy(err => {
+                    if (err) {
+                        res.json({
+                            message: "Impossible de se déconnecter",
+                            state: false
+                        });
+                    } else {
+                        res.json({
+                            message: `Votre compte a bien été supprimé de notre base de données.`,
+                            state: true
+                        });
+                    }
+                });                      
+            }
+        } else {
+            res.json({
+                message: "Veuillez vous connecter",
                 state: false
             });
         }   
     },
 
-    deleteConnected: async (req, res) => {
-        if (req.session) {
-            if (req.session.user) {
-                const userToDelete = new User(req.session.user);
-                await userToDelete.delete();
-                if (userToDelete.errorMessage) {
-                    res.status(400).json(userToDelete.errorMessage);
-                } else {
-                    req.session.destroy(err => {
-                        if (err) {
-                            res.json({
-                                message: "Impossible de se déconnecter",
-                                state: false
-                            });
-                        } else {
-                            res.json({
-                                message: `Votre compte a bien été supprimé de notre base de données.`,
-                                state: true
-                            });
-                        }
-                    });                      
-                }
-            } else {
-                res.json({
-                    message: "Veuillez vous connecter",
-                    state: false
-                });
-            }  
+    updateConnected: async (req, res) => {
+        if (req.session.user) {
+            const userToUpdate = new User(await User.findOne(req.session.user.id));
+            if (req.body.password) {
+                const salt = await bcrypt.genSalt(10);
+                const encryptedPassword = await bcrypt.hash(req.body.password,salt);
+                req.body.password = encryptedPassword;
+            }
+            for(const prop in req.body) {
+                userToUpdate[prop] = req.body[prop];     
+            }
+            await userToUpdate.save();
+            delete userToUpdate.password;
+            res.json(userToUpdate);
         } else {
             res.json({
-                message: "Pas de session active",
+                message: "Veuillez vous connecter",
                 state: false
             });
         }  

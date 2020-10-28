@@ -22,9 +22,9 @@ const MyGarden = ({
 
   console.log('user_families', userFamilies);
 
-  if (userFamilies === []) {
-    userFamilies = [{ name: 'Pas encore de plantations' }];
-  }
+  // if (userFamilies === []) {
+  //   userFamilies = [{ name: 'Pas encore de plantations' }];
+  // }
 
   const Families = userFamilies.map((family) => {
     console.log(family);

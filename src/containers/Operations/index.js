@@ -7,6 +7,7 @@ import {
   changeOperationsFamilyValue,
   changeOperationsVarietyValue,
   resetOperationsValue,
+  resetAllOperationsValue,
   getUserBoards,
   getFamilies,
   getVarieties,
@@ -45,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetOperationsValue: () => {
     dispatch(resetOperationsValue());
+  },
+  resetAllOperationsValue: () => {
+    dispatch(resetAllOperationsValue());
   },
 });
 

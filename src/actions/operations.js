@@ -3,6 +3,7 @@ export const CHANGE_OPERATIONS_BOARD_VALUE = 'CHANGE_OPERATIONS_BOARD_VALUE';
 export const CHANGE_OPERATIONS_FAMILY_VALUE = 'CHANGE_OPERATIONS_FAMILY_VALUE';
 export const CHANGE_OPERATIONS_VARIETY_VALUE = 'CHANGE_OPERATIONS_VARIETY_VALUE';
 export const RESET_OPERATIONS_VALUE = 'RESET_OPERATIONS_VALUE';
+export const RESET_ALL_OPERATIONS_VALUE = 'RESET_ALL_OPERATIONS_VALUE';
 export const GET_USER_BOARDS = 'GET_BOARDS';
 export const GET_FAMILIES = 'GET_FAMILIES';
 export const GET_VARIETIES = 'GET_VARIETIES';
@@ -37,6 +38,10 @@ export const changeOperationsVarietyValue = (name, id) => ({
 
 export const resetOperationsValue = () => ({
   type: RESET_OPERATIONS_VALUE,
+});
+
+export const resetAllOperationsValue = () => ({
+  type: RESET_ALL_OPERATIONS_VALUE,
 });
 
 export const getUserBoards = () => ({

@@ -1,5 +1,6 @@
 import {
   SAVE_USER_FAMILIES,
+  LOADING_USER_FAMILIES,
 } from 'src/actions/myGarden';
 
 export const initialState = {
@@ -14,6 +15,11 @@ const myGarden = (state = initialState, action = {}) => {
         ...state,
         userFamilies: action.families,
         loading: false,
+      };
+    case LOADING_USER_FAMILIES:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

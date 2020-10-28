@@ -10,10 +10,11 @@
     min-width: 50%;
     border-radius: 15px;
     padding: 1rem 3rem 1rem 3rem;
-    border: none;
-    background-color: v.$medium-color;
+    border: black 2px solid;
+    background-color: v.$white-color;
     font-size: 1rem;
     font-weight: bold;
+    background-color: white;
   }
   
   &__type option {

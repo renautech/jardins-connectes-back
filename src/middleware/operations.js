@@ -23,6 +23,8 @@ const operations = (store) => (next) => (action) => {
       boardId,
       boardFamily,
       boardFamilyId,
+      boardVariety,
+      boardVarietyId,
       comment,
     },
   } = store.getState();
@@ -68,6 +70,7 @@ const operations = (store) => (next) => (action) => {
           name: boardName,
           active: true,
           variety_id: 1,
+          family_id: 1,
           user_id: 6,
         },
         {
@@ -84,7 +87,8 @@ const operations = (store) => (next) => (action) => {
       }
       if (operationType === 'Semer') {
         axios.patch(`http://3.93.151.102:5555/v1/boards/board/${boardId}`, {
-          variety_id: 2,
+          variety_id: boardVarietyId,
+          family_id: boardFamilyId,
         },
         {
           withCredentials: true,

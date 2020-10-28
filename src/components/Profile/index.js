@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
+import ProfileEdit from 'src/components/ProfileEdit';
 
 import './style.scss';
 
@@ -22,8 +23,9 @@ const Profile = ({ getProfile, profile }) => {
   getProfile();
 
   return (
-    <div className="profile">
+    <>
       { !profile.loading ? (
+      <div className="profile">
         <div>
           <h2 className="profile__title">Mon Profil</h2>
           <div className="profile__container">
@@ -65,11 +67,14 @@ const Profile = ({ getProfile, profile }) => {
             </p>
           </div>
         </div>
+      </div>
+          
       ) :
         (
           <Loader />
         )}
-    </div>
+      <ProfileEdit />
+    </>
   );
 };
 

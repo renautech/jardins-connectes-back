@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import ProfileEdit from 'src/components/ProfileEdit';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 const mapDispatchToProps = () => ({

@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import Profile from 'src/components/Profile';
 import { getProfile } from 'src/actions/profile';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  loading: state.profile.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

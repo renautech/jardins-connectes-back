@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Profile = ({ dataUser, getProfile }) => {
+const Profile = ({ dataUser, getProfile, loading }) => {
   const { user } = dataUser;
   const testUser = {
     first_name: 'Mendoza',
@@ -23,47 +23,56 @@ const Profile = ({ dataUser, getProfile }) => {
   // requête API
   getProfile();
 
+  console.log('Valeur de loading : ', loading)
+
   return (
     <div className="profile">
-      <h2 className="profile__title">Mon Profil</h2>
-      <div className="profile__container">
-        <p className="profile__info">
-          <p className="profile__info__type">Nom : </p>
-          <p className="profile__info__text">{testUser.last_name}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Prénom : </p>
-          <p className="profile__info__text">{testUser.first_name}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Email : </p>
-          <p className="profile__info__text">{testUser.email}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Pseudo : </p>
-          <p className="profile__info__text">{testUser.nickname}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Country : </p>
-          <p className="profile__info__text">{testUser.country}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Adresse postale : </p>
-          <p className="profile__info__text">{testUser.postcode}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Ville : </p>
-          <p className="profile__info__text">{testUser.town}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Numéro de rue : </p>
-          <p className="profile__info__text">{testUser.street_number}</p>
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Nom de rue : </p>
-          <p className="profile__info__text">{testUser.street_name}</p>
-        </p>
-      </div>
+      { !loading && (
+        <div>
+          <h2 className="profile__title">Mon Profil</h2>
+          <div className="profile__container">
+            <p className="profile__info">
+              <p className="profile__info__type">Nom : </p>
+              <p className="profile__info__text">{testUser.last_name}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Prénom : </p>
+              <p className="profile__info__text">{testUser.first_name}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Email : </p>
+              <p className="profile__info__text">{testUser.email}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Pseudo : </p>
+              <p className="profile__info__text">{testUser.nickname}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Country : </p>
+              <p className="profile__info__text">{testUser.country}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Adresse postale : </p>
+              <p className="profile__info__text">{testUser.postcode}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Ville : </p>
+              <p className="profile__info__text">{testUser.town}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Numéro de rue : </p>
+              <p className="profile__info__text">{testUser.street_number}</p>
+            </p>
+            <p className="profile__info">
+              <p className="profile__info__type">Nom de rue : </p>
+              <p className="profile__info__text">{testUser.street_name}</p>
+            </p>
+          </div>
+        </div>
+      )}
+      { loading && (
+        <p>LOADER</p>
+      )}
     </div>
   );
 };

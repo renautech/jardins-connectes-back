@@ -3,16 +3,16 @@ const Joi = require('joi');
 const insertUserSchema = Joi.object({
     first_name: Joi.string().required(),
     last_name: Joi.string().required(),
-    street_name: Joi.string().min(0),
+    street_name: Joi.string().allow(''),
     street_number: Joi.number(),
-    town: Joi.string(),
-    postcode: Joi.string().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')),
+    town: Joi.string().allow(''),
+    postcode: Joi.string().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')).allow(''),
     department: Joi.string().required(),
     country: Joi.string().required(),
     email: Joi.string().email({minDomainSegments: 2}).required(),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
     nickname: Joi.string().alphanum().min(3).max(30).required(),
-    profile_picture: Joi.string().max(200)
+    profile_picture: Joi.string().max(200).allow('')
     
 });
 

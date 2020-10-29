@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const insertOperationTypeSchema = Joi.object({
     name: Joi.string().required(),
-    description: Joi.string()
+    description: Joi.string().allow('')
 });
 
 const updateOperationTypeSchema = Joi.object({

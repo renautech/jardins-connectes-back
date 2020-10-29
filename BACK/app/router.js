@@ -4,6 +4,7 @@ const userController = require('./controllers/userController');
 const { insertUserSchema, signinSchema } = require('./schemas/userschema');
 const { validateBody } = require('./services/validator');
 const { flush } = require('./cache/cacheStrategy');
+const { isAdmin, isAuthentificate } = require('./services/session');
 const {
     userRouter,
     operationRouter,
@@ -25,6 +26,6 @@ router.use('/varieties', varietyRouter);
 // Authentification
 router.post('/signup', flush, validateBody(insertUserSchema), userController.signup);
 router.post('/signin', validateBody(signinSchema), userController.signin);
-router.delete('/signout', userController.signout);
+router.delete('/signout', isAuthentificate, userController.signout);
 
 module.exports = router;

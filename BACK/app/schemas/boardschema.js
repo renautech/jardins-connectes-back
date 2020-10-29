@@ -9,7 +9,8 @@ const insertBoardSchema = Joi.object({
 
 const updateBoardSchema = Joi.object({
     name: Joi.string(),
-    active: Joi.boolean()
+    active: Joi.boolean(),
+    variety_id: Joi.number().integer().min(1)
 });
 
 module.exports = { insertBoardSchema, updateBoardSchema };

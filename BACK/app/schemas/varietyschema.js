@@ -11,7 +11,8 @@ const updateVarietySchema = Joi.object({
     "name": Joi.string(),
     picture: Joi.string(),
     description: Joi.string(),
-    family_id: Joi.number().integer()
+    family_id: Joi.number().integer(),
+    variety_id: Joi.number().integer()
 });
 
 module.exports = {insertVarietySchema,updateVarietySchema};

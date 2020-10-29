@@ -14,6 +14,11 @@ const boardController = {
         
     },
 
+    findOneBoardForConnectedUser: async (req,res) => {
+
+        res.json(await Board.findOneByUser(req.session.user.id));
+    },
+
     allEmptyBoardForConnectedUser: async (req,res) => {
 
         if(req.session.user){

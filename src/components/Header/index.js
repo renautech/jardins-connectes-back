@@ -1,14 +1,30 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const Header = ({ isLogged, logout }) => {
+const Header = ({ isLogged, logout, checkLogged }) => {
+  console.log('render header')
   const handleOnClick = () => {
     logout();
   };
+
+  useEffect(() => {
+    if (!checkLogged) {
+      if (!isLogged) {
+        logout();
+      }
+    }
+  }, []);
+
+  // if (!checkLogged) {
+  //   if (!isLogged) {
+  //     logout();
+  //   }
+  // }
+
   return (
     <div className="header">
       <span className="logo">LOGO</span>

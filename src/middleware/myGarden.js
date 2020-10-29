@@ -17,7 +17,7 @@ const myGarden = (store) => (next) => (action) => {
       break;
     case GET_USER_EMPTY_BOARDS:
       store.dispatch(loadingUserFamilies());
-      axios.get('http://3.93.151.102:5555/v1/boards/empty', { withCredentials: true })
+      axios.get('http://3.93.151.102:5555/v1/boards/empty/users/user', { withCredentials: true })
         .then(function (res) {
           console.log('save_user_empty_boards', res.data);
           store.dispatch(saveUserEmptyBoards(res.data));

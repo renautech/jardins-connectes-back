@@ -5,6 +5,7 @@ import {
   LOGOUT,
   isLogged,
   loginError,
+  loggedOut,
 } from 'src/actions/loginForm';
 
 const loginForm = (store) => (next) => (action) => {
@@ -30,7 +31,7 @@ const loginForm = (store) => (next) => (action) => {
     case LOGOUT: {
       axios.delete('http://3.93.151.102:5555/v1/signout', { withCredentials: true })
         .then((res) => {
-          store.dispatch(isLogged());
+          store.dispatch(loggedOut());
         })
         .catch((error) => {
           console.error(error);

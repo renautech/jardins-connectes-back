@@ -66,12 +66,10 @@ const operations = (store) => (next) => (action) => {
     }
     case SUBMIT_USER_OPERATION: {
       if (operationType === 'Créer une planche') {
-        axios.post('http://3.93.151.102:5555/v1/boards', {
+        axios.post('http://3.93.151.102:5555/v1/boards/users/user', {
           name: boardName,
           active: true,
           variety_id: 1,
-          family_id: 1,
-          user_id: 6,
         },
         {
           withCredentials: true,
@@ -102,20 +100,18 @@ const operations = (store) => (next) => (action) => {
           });
       }
       if (operationType === 'Supprimer une planche') {
-        if (boardId !== '') {
-          axios.delete(`http://3.93.151.102:5555/v1/boards/board/${parseInt(boardId, 10)}`, {},
-            {
-              withCredentials: true,
-            })
-            .then(function (res) {
-              // console.log(res);
-              store.dispatch(getUserBoards());
-              store.dispatch(getUserEmptyBoards());
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
+        axios.delete(`http://3.93.151.102:5555/v1/boards/board/${parseInt(boardId, 10)}/users/user`, {},
+          {
+            withCredentials: true,
+          })
+          .then(function (res) {
+            // console.log(res);
+            store.dispatch(getUserBoards());
+            store.dispatch(getUserEmptyBoards());
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
       break;
     }

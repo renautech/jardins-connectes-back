@@ -3,12 +3,14 @@ import {
   CHANGE_PASSWORD,
   IS_LOGGED,
   LOGIN_ERROR,
+  LOGGED_OUT,
 } from 'src/actions/loginForm';
 
 export const initialState = {
   email: '',
   password: '',
   isLogged: false,
+  checkLogged: false,
   loginError: '',
 };
 
@@ -30,6 +32,15 @@ const loginForm = (state = initialState, action = {}) => {
         email: '',
         password: '',
         isLogged: !state.isLogged,
+        loginError: '',
+      };
+    case LOGGED_OUT:
+      return {
+        ...state,
+        email: '',
+        password: '',
+        isLogged: false,
+        checkLogged: true,
         loginError: '',
       };
     case LOGIN_ERROR:

@@ -3,7 +3,7 @@ const Joi = require('joi');
 const insertUserSchema = Joi.object({
     first_name: Joi.string().required(),
     last_name: Joi.string().required(),
-    street_name: Joi.string(),
+    street_name: Joi.string().min(0),
     street_number: Joi.number(),
     town: Joi.string(),
     postcode: Joi.string().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')),

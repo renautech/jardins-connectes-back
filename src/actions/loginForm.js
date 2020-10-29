@@ -4,6 +4,7 @@ export const LOGIN = 'LOGIN';
 export const IS_LOGGED = 'IS_LOGGED';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
+export const LOGGED_OUT = 'LOGGED_OUT';
 
 export const changeEmail = (email) => ({
   type: CHANGE_EMAIL,
@@ -30,4 +31,8 @@ export const loginError = (error) => ({
 
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const loggedOut = () => ({
+  type: LOGGED_OUT,
 });

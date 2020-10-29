@@ -15,7 +15,7 @@ const varietyController = {
             //const photoObject = JSON.parse(req.body.photo);
             const variety = new Variety({
                 name: req.body.name,
-                picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+                picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` || '',
                 description: req.body.description,
                 family_id: req.body.family_id
             });
@@ -23,7 +23,7 @@ const varietyController = {
             variety.save();
         } catch (err) {
             res.status(500).send({
-                message: `Could not upload the image: ${req.file}. ${err}`
+                message: err
             });
         }
     }

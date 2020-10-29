@@ -19,12 +19,6 @@ const Header = ({ isLogged, logout, checkLogged }) => {
     }
   }, []);
 
-  // if (!checkLogged) {
-  //   if (!isLogged) {
-  //     logout();
-  //   }
-  // }
-
   return (
     <div className="header">
       <span className="logo">LOGO</span>

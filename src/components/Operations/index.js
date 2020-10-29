@@ -110,7 +110,8 @@ const Operations = ({
       {operation.operationType === 'Fertiliser' && (
         <form action="post" onSubmit={handleSubmit}>
           <SelectField name="boardName" onChange={handleOnChangeBoard} data={operation.userBoards} placeholder="Quelle planche fertiliser ?" />
-          <CommentField name="comment" onChange={handleOnChange} value={operation.comment} placeholder="Avec quel fertilisant ?" />
+          <Field name="product" onChange={handleOnChange} value={operation.product} placeholder="Avec quel fertilisant ?" />
+          <CommentField name="comment" onChange={handleOnChange} value={operation.comment} placeholder="Plus de détails" />
           <Confirm />
         </form>
       )}

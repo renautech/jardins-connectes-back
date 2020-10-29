@@ -35,10 +35,10 @@ const MyGarden = ({
     return <Family key={family.name} type={family.name} picture={family.picture} />;
   });
 
-  const EmptyBoards = userEmptyBoards.map((family) => {
-    console.log(family);
-    return <EmptyBoard key={family.name} type={family.name} picture={family.picture} />;
-  });
+  // const EmptyBoards = userEmptyBoards.map((family) => {
+  //   console.log(family);
+  //   return <EmptyBoard key={family.name} type={family.name} picture={family.picture} />;
+  // });
 
   return (
     <div className="mygarden">
@@ -46,7 +46,7 @@ const MyGarden = ({
       {!loading && (
         <div className="mygarden__families">
           {Families}
-          {EmptyBoards}
+          {/* {EmptyBoards} */}
         </div>
       )}
       {loading && (

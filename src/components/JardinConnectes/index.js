@@ -27,7 +27,7 @@ import dataUser from 'src/data/dataFake';
 import './style.scss';
 import OperationList from '../OperationList';
 
-const JardinConnectes = ({ isLogged, profileEdition }) => {
+const JardinConnectes = ({ isLogged, isSigned, profileEdition }) => {
   return (
     <div className="jardinconnectes">
 
@@ -63,6 +63,9 @@ const JardinConnectes = ({ isLogged, profileEdition }) => {
       <Route path="/inscription">
         {isLogged && (
           <Redirect to="/mon-jardin" />
+        )}
+        {isSigned && (
+          <Redirect to="/connexion" />
         )}
         <Page>
           <SignupForm />

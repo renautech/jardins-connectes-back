@@ -3,6 +3,7 @@ export const CHANGE_POSTCODE = 'CHANGE_POSTCODE';
 export const CHANGE_TOWN_LIST = 'CHANGE_TOWNLIST';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const SIGNUP = 'SIGNUP';
+export const IS_SIGNED = 'IS_SIGNED';
 
 export const changeSignupFormValue = (value, name) => ({
   type: CHANGE_SIGNUPFORM_VALUE,
@@ -26,4 +27,8 @@ export const changePostcode = () => ({
 export const changeTownList = (townList) => ({
   type: CHANGE_TOWN_LIST,
   list: townList,
+});
+
+export const isSigned = () => ({
+  type: IS_SIGNED,
 });

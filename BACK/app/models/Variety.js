@@ -25,6 +25,12 @@ class Variety {
         return varieties.rows;
     }
 
+    static async findByName(name) {
+
+        const oneVariety = await db.query(`SELECT name FROM variety WHERE name = $1`,[name]);
+        return oneVariety.rows[0];
+    }
+
     async save() {
 
         if(this.id) {

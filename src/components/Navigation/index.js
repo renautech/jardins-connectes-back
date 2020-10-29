@@ -17,6 +17,9 @@ const Navigation = ({ isLogged }) => {
           <NavLink to="/mon-jardin" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
             Mon Jardin
           </NavLink>
+          <NavLink to="/mon-profil" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
+            Mon profil
+          </NavLink>
         </div>
         )}
         {!isLogged && (
@@ -26,9 +29,6 @@ const Navigation = ({ isLogged }) => {
           </NavLink>
           <NavLink to="/connexion" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
             Mon Jardin
-          </NavLink>
-          <NavLink to="/mon-profil" className="navigation__nav__link" activeClassName="navigation__nav__link--active" exact>
-            Mon profil
           </NavLink>
         </div>
         )}

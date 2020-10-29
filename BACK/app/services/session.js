@@ -43,4 +43,4 @@ const isAdmin = async (req,res,next) => {
     }
 }*/
 
-module.exports = { isAuthentificate, isAdmin, isJardinier };
+module.exports = { isAuthentificate, isAdmin};

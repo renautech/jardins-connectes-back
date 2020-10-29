@@ -24,6 +24,7 @@
     text-shadow: 2px 2px 1px black;
   }
   &__families {
+    transition: ease-in 0.3s;
     margin-left: v.$m-gut;
     display: flex;
     flex-direction: column;
@@ -31,6 +32,7 @@
     height: 90%;
   }
   &__family {
+    transition: ease-in 0.3s;
     background: rgb(239,255,251);
     background: linear-gradient(324deg, rgba(239,255,251,1) 0%, rgba(160,255,248,1) 100%, rgba(0,212,255,1) 100%);
     background-color: white;

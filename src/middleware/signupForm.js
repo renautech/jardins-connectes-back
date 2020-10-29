@@ -1,8 +1,12 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
-import { SIGNUP, changeTownList, signupError } from 'src/actions/signupForm';
-import { isLogged } from 'src/actions/loginForm';
+import {
+  SIGNUP,
+  changeTownList,
+  signupError,
+  isSigned,
+} from 'src/actions/signupForm';
 
 const signupForm = (store) => (next) => (action) => {
   if (store.getState().signupForm.newPostcodeFlag) {
@@ -46,7 +50,7 @@ const signupForm = (store) => (next) => (action) => {
         })
           .then((res) => {
             // console.log('logged');
-            store.dispatch(isLogged(true));
+            store.dispatch(isSigned());
           })
           .catch((error) => {
             console.error(error);

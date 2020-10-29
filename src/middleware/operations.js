@@ -15,8 +15,6 @@ import {
 import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
 
 const operations = (store) => (next) => (action) => {
-  console.log('MIDDLEWARE OPERATIONS');
-
   const {
     operations: {
       operationType,

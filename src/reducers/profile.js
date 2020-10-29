@@ -1,4 +1,5 @@
-import { LOAD_PROFILE } from 'src/actions/profile';
+import { LOAD_PROFILE, SHOW_PROFILE_EDITION } from 'src/actions/profile';
+import { DISABLE_PROFILE_EDITION } from 'src/actions/profileEdit';
 import { bindActionCreators } from 'redux';
 
 export const initialState = {
@@ -13,6 +14,7 @@ export const initialState = {
   department: 'initialdepartment',
   country: 'initialcountry',
   loading: true,
+  profileEdition: false,
 };
 
 const profile = (state = initialState, action = {}) => {
@@ -31,6 +33,16 @@ const profile = (state = initialState, action = {}) => {
         postcode: action.profileData.postcode,
         department: action.profileData.department,
         country: action.profileData.country,
+      };
+    case SHOW_PROFILE_EDITION:
+      return {
+        ...state,
+        profileEdition: true,
+      };
+    case DISABLE_PROFILE_EDITION:
+      return {
+        ...state,
+        profileEdition: false,
       };
     default:
       return state;

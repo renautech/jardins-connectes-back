@@ -11,6 +11,9 @@
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   overflow: hidden;
+  &__button__edition {
+
+  }
   &__title {
     margin-top: v.$s-gut;
     margin-bottom: v.$s-gut;

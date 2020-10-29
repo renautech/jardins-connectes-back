@@ -56,7 +56,6 @@ const SignupForm = (
         <fieldset className="signupForm__fieldset">
           <legend>Adresse</legend>
           <div className="signupForm__fieldset__group">
-
             <div className="signupForm__element signupForm__element--number">
               <input
                 name="streetNumber"

@@ -27,7 +27,7 @@ import dataUser from 'src/data/dataFake';
 import './style.scss';
 import OperationList from '../OperationList';
 
-const JardinConnectes = ({ isLogged }) => {
+const JardinConnectes = ({ isLogged, profileEdition }) => {
   return (
     <div className="jardinconnectes">
 
@@ -71,13 +71,11 @@ const JardinConnectes = ({ isLogged }) => {
 
       <Route exact path="/mon-profil">
         <Page>
-          <Profile />
-        </Page>
-      </Route>
-
-      <Route exact path="/mon-profil/modification">
-        <Page>
-          <ProfileEdit />
+          { profileEdition ? (
+            <ProfileEdit />
+          ) : (
+            <Profile />
+          )}
         </Page>
       </Route>
 

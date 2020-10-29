@@ -1,75 +1,153 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import PropTypes from 'prop-types';
+import TownList from 'src/components/SignupForm/TownList';
 
 import './style.scss';
 
-const ProfileEdit = () => {
-  const testUser = {
-    first_name: 'Mendoza',
-    last_name: 'Patrick',
-    street_name: 'Bay Parkway',
-    street_number: 7,
-    town: 'Vowinckel',
-    postcode: 59500,
-    department: 58,
-    country: 'North Carolina',
-    email: 'mendozapatrick@emtrac.com',
-    password: 'password',
-    nickname: 'Bowman',
-    profile_picture: 'http://seeding/osef',
+const ProfileEdit = (
+  {
+    profile,
+    changeProfileFormValue,
+    updateProfile,
+    disableProfileEdition,
+    townList,
+    changePostcode,
+  },
+) => {
+  console.log('profile : ', profile.nickName)
+  const handleOnChange = (event) => {
+    console.log("handleonchange");
+    changeProfileFormValue(event.target.value, event.target.name);
+  };
+
+  const handleOnChangePostcode = (event) => {
+    changeProfileFormValue(event.target.value, event.target.name);
+    changePostcode();
+  };
+
+  const handleOnSubmit = (event) => {
+    console.log("Submit update profile");
+    event.preventDefault();
+    updateProfile();
+  };
+
+  const handleOnCancel = (event) => {
+    console.log("Cancel update profile");
+    event.preventDefault();
+    disableProfileEdition();
   };
 
   return (
-    <div className="profile">
-      <h2 className="profile__title">Mon Profil</h2>
-      <div className="profile__container">
-        <p className="profile__info">
-          <p className="profile__info__type">Nom : </p>
-          <input className="profile__info__input" placeholder={testUser.last_name} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Prénom : </p>
-          <input className="profile__info__input" placeholder={testUser.first_name} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Email : </p>
-          <input className="profile__info__input" placeholder={testUser.email} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Pseudo : </p>
-          <input className="profile__info__input" placeholder={testUser.nickname} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Country : </p>
-          <input className="profile__info__input" placeholder={testUser.country} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Adresse postale : </p>
-          <input className="profile__info__input" placeholder={testUser.postcode} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Ville : </p>
-          <input className="profile__info__input" placeholder={testUser.town} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Numéro de rue : </p>
-          <input className="profile__info__input" placeholder={testUser.street_number} />
-        </p>
-        <p className="profile__info">
-          <p className="profile__info__type">Nom de rue : </p>
-          <input className="profile__info__input" placeholder={testUser.street_name} />
-        </p>
-      </div>
+    <div className="profileEdit">
+      <h2 className="profileEdit__title">Modifications de mon Profil</h2>
+      <form autoComplete="off" onSubmit={handleOnSubmit}>
+        <div className="profileEdit__container">
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Nom : </p>
+            <input
+              className="profileEdit__info__input" 
+              placeholder={profile.lastName}
+              name="lastName"
+              id="lastName"
+              onChange={handleOnChange}
+            />
+          </p>
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Prénom : </p>
+            <input 
+              className="profileEdit__info__input" 
+              placeholder={profile.firstName}
+              name="firstName"
+              id="firstName"
+              onChange={handleOnChange}
+            />
+          </p>
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Email : </p>
+            <input
+              className="profileEdit__info__input"
+              placeholder={profile.email}
+              name="email"
+              id="email"
+              onChange={handleOnChange}
+            />
+          </p>
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Pseudo : </p>
+            <input
+              className="profileEdit__info__input"
+              placeholder={profile.nickName}
+              name="nickName"
+              id="nickName"
+              onChange={handleOnChange}
+            />
+          </p>
+          {/* <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Country : </p>
+            <input className="profileEdit__info__input" placeholder={profile.country} />
+          </p> */}
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Code postal : </p>
+            <input
+              className="profileEdit__info__input"
+              placeholder={profile.postcode}
+              name="postcode"
+              id="postcode"
+              onChange={handleOnChangePostcode}
+            />
+          </p>
+          <p className="profileEdit__info__type">Ville : </p>
+          <TownList
+            className="signupForm__select"
+            townList={townList}
+            changeSignupFormValue={changeProfileFormValue}
+          />
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Numéro de rue : </p>
+            <input
+              className="profileEdit__info__input"
+              placeholder={profile.streetNumber}
+              name="streetNumber"
+              id="streetNumber"
+              onChange={handleOnChange}
+            />
+          </p>
+          <p className="profileEdit__info">
+            <p className="profileEdit__info__type">Nom de rue : </p>
+            <input
+              className="profileEdit__info__input"
+              placeholder={profile.streetName}
+              name="streetName"
+              id="streetName"
+              onChange={handleOnChange}
+            />
+          </p>
+          <div className="profileEdit__buttons">
+          <button
+            type="submit"
+            className="profileEdit__button"
+          >
+            VALIDER
+          </button>
+          <button
+            type="submit"
+            className="profileEdit__button profileEdit__button--cancel"
+            onClick={handleOnCancel}
+          >
+            ANNULER
+          </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };
 
-ProfileEdit.propTypes = {};
-
-ProfileEdit.defaultProps = {
-  addressRoad: '',
-  addressNumber: '',
+ProfileEdit.propTypes = {
+  changeProfileFormValue: PropTypes.func.isRequired,
+  updateProfile: PropTypes.func.isRequired,
+  disableProfileEdition: PropTypes.func.isRequired,
 };
 
 export default ProfileEdit;

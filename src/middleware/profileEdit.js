@@ -31,8 +31,10 @@ const profileEdit = (store) => (next) => (action) => {
       delete newdata.streetNumber;
       newdata.nickname = newdata.nickName;
       delete newdata.nickName;
+      delete newdata.newPostcodeFlag;
+      delete newdata.townList;
 
-      axios.patch('http://3.93.151.102:5555/v1/users/user/7', newdata)
+      axios.patch('http://3.93.151.102:5555/v1/users/user', newdata, { withCredentials: true })
         .then(function (res) {
           console.log('update profile réussie');
           store.dispatch(disableProfileEdition());

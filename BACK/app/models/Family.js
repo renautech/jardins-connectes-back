@@ -19,6 +19,12 @@ class Family {
         return oneFamily.rows[0];
     }
 
+    static async findByName(name) {
+
+        const family = await db.query(`SELECT name FROM family WHERE name = $1`,[name]);
+        return family.rows[0];
+    }
+
     static async findWhereActiveBoardsByUser(userId) {
         const families = await db.query(`SELECT * FROM findWhereActiveBoardsByUser($1)`, [userId]);
         return families.rows;

@@ -18,7 +18,7 @@ const loginForm = (store) => (next) => (action) => {
             store.dispatch(isLogged());
           }
           else {
-            store.dispatch(loginError('Mauvaise adresse mail / Mot de passe'));
+            console.log(res.data.message);
           }
         })
         .catch((error) => {

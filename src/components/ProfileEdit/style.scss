@@ -10,6 +10,25 @@
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   overflow: hidden;
+  &__buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  &__button {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 0.7em;
+    border: 2px solid v.$dark-color;
+    background-color: v.$medium-color;
+    font-weight: 600;
+    color: white;
+    &--cancel{
+      background-color: v.$darker-color;
+    }
+  }
   &__title {
     margin-top: v.$s-gut;
     margin-bottom: v.$s-gut;

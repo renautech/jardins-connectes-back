@@ -6,7 +6,7 @@ import ProfileEdit from 'src/components/ProfileEdit';
 
 import './style.scss';
 
-const Profile = ({ getProfile, profile }) => {
+const Profile = ({ getProfile, profile, showProfileEdition }) => {
   const {
     firstName,
     lastName,
@@ -22,10 +22,19 @@ const Profile = ({ getProfile, profile }) => {
   // requête API
   getProfile();
 
+  const handleEdition = () => {
+    showProfileEdition();
+  };
+
   return (
     <>
       { !profile.loading ? (
       <div className="profile">
+        <div className="profile__button__edition">
+          <a href="#" onClick={handleEdition}>
+            <img alt="update profile" src="https://img.icons8.com/fluent-systems-regular/24/000000/settings.png"/>
+          </a>
+        </div>
         <div>
           <h2 className="profile__title">Mon Profil</h2>
           <div className="profile__container">

@@ -1,14 +1,18 @@
+import { CHANGE_TOWN_LIST, CHANGE_POSTCODE } from 'src/actions/profileEdit';
+
 export const initialState = {
-  nickName: 'initialnickname',
-  firstName: 'initialfirstname',
-  lastName: 'testlastname',
-  email: 'initialemail',
-  streetName: 'initialstreetname',
-  streetNumber: 'initialstreetnumber',
-  town: 'initialtown',
-  postcode: 'initialpostcode',
-  department: 'initialdepartment',
-  country: 'initialcountry',
+  nickName: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  streetName: '',
+  streetNumber: '',
+  town: '',
+  postcode: '',
+  department: '',
+  country: '',
+  newPostcodeFlag: false,
+  townList: [],
 };
 
 const profileEdit = (state = initialState, action = {}) => {
@@ -17,6 +21,17 @@ const profileEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case CHANGE_POSTCODE:
+      return {
+        ...state,
+        newPostcodeFlag: true,
+      };
+    case CHANGE_TOWN_LIST:
+      return {
+        ...state,
+        townList: action.list,
+        newPostcodeFlag: false,
       };
     default:
       return state;

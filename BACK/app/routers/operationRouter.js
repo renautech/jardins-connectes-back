@@ -21,5 +21,6 @@ operationRouter.get('/users/user', cache, operationController.allOperationsByUse
 operationRouter.post('/users/user', flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
 operationRouter.delete('/operation/:id/users/user', flush, operationController.deleteOperationForConnectedUser);
 operationRouter.patch('/operation/:id/users/user', validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);
+operationRouter.get('/families/family/:id', operationController.findByFamillyForConnectedUser);
 
 module.exports = operationRouter;

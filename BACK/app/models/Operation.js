@@ -22,6 +22,12 @@ class Operation {
         return operations.rows;
     }
 
+    static async findByUserByFamily(userId, familyId) {
+
+        const operations = await db.query(`SELECT * from operationByUserByFamily($1, $2);`, [userId, familyId]);
+        return operations.rows;
+    }
+
     static async findAllForUser(id) {
 
         const allOperations = await db.query(`SELECT * from operation JOIN board on board.id = operation.board_id WHERE board.user_id = $1;`,[id]);

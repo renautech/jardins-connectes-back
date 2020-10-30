@@ -232,7 +232,7 @@ const operations = (store) => (next) => (action) => {
         axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
           operation_type_id: 8,
           board_id: boardId,
-          qunatity: parseInt(quantity, 10),
+          quantity: parseInt(quantity, 10),
           comment: comment,
         },
         {

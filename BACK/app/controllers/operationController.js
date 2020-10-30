@@ -68,6 +68,18 @@ const operationController = {
             else {
                 res.status(403).json("Vous n'êtes pas connecté :");
             }
+    },
+
+    findByFamillyForConnectedUser : async (req, res) => {
+        try {
+            const operations = await Operation.findByUserByFamily(req.session.user.id, req.params.id);
+            res.json(operations);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }
     }
     
 };

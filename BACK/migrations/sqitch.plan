@@ -23,3 +23,4 @@ functions/filters/findActiveBoardByUser 2020-10-26T08:27:27Z Tidus91 <kurama91@h
 functions/filters/allVarietiesByFamily 2020-10-26T08:32:30Z Tidus91 <kurama91@hotmail.fr> # add sqitch function to find all varieties by a familyId
 functions/filters/findBoardsByFamilyByUser 2020-10-26T14:33:00Z Flyworkz <pedron.dorian@gmail.com> # function to get all boards by family for connected user
 functions/inserts/newUserWithoutRole 2020-10-28T08:36:40Z Tidus91 <kurama91@hotmail.fr> # add new SQL function when role not defined
+functions/filters/findOperationByUserByFamily 2020-10-30T08:51:51Z Flyworkz <pedron.dorian@gmail.com> # function to find all operations by family for one user

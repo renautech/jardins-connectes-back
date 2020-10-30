@@ -4,7 +4,7 @@ export const initialState = {
   name: '',
   temp: '',
   icon: '',
-  postcode: '',
+  humidity: '',
   loading: true,
 };
 
@@ -15,6 +15,7 @@ const weather = (state = initialState, action = {}) => {
         ...state,
         name: action.weather.name,
         temp: action.weather.main.temp,
+        humidity: action.weather.main.humidity,
         icon: `http://openweathermap.org/img/wn/${action.weather.weather[0].icon}@2x.png`,
         loading: false,
       };

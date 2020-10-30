@@ -7,9 +7,10 @@ import Loader from 'src/components/Loader';
 
 import './style.scss';
 
-const Weather = ({ getWeather, weather, loading }) => {
+const Weather = ({ getWeather, weather, loading, getPostcode }) => {
   useEffect(() => {
-    getWeather('01500');
+    //getWeather('01500');
+    getPostcode();
   }, []);
 
   return (
@@ -20,6 +21,7 @@ const Weather = ({ getWeather, weather, loading }) => {
           <img className="weather__icon" src={weather.icon} alt=""/>
           <span className="weather__temp">{weather.name}</span>
           <span className="weather__name">{weather.temp}°C</span>
+          <span className="weather__name">humidité {weather.humidity}%</span>
         </div>
       )}
       {loading && (

@@ -3,27 +3,44 @@ const Variety = require('../models/Variety');
 const varietyController = {
 
     allVarietiesByFamily: async (req,res) => {
-
-        const varieties = await Variety.findAllByFamily(req.params.id);
-        res.json(varieties);
+        try {
+            const varieties = await Variety.findAllByFamily(req.params.id);
+            res.json(varieties);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }
     },
 
     insert: async (req,res) => {
         try {
-            console.log("le req.body : ",req.body);
-            console.log(" le req.file : ", req.file);
-            //const photoObject = JSON.parse(req.body.photo);
+            const reqVariety = await Variety.findByName(req.body.name);
+            if (reqVariety) {
+                throw new Error("Cette variété existe déjà");
+            }
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
+            }
             const variety = new Variety({
                 name: req.body.name,
-                picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` || '',
+                picture: '',
                 description: req.body.description,
-                family_id: req.body.family_id
+                family_id: parseInt(req.body.family_id)
             });
-            res.status(200).send(variety);
-            variety.save();
+            if (req.file) {
+                variety.picture = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+            }
+            await variety.save();
+            if (!variety.id) {
+                throw new Error("L'insertion a échoué");
+            }
+            res.json(variety);
         } catch (err) {
-            res.status(500).send({
-                message: err
+            res.json({
+                message: err.message,
+                state: false
             });
         }
     }

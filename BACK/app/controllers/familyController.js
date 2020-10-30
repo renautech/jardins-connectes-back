@@ -3,31 +3,44 @@ const Family = require('../models/Family');
 const familyController = {
 
     findWhereActiveBoardForConnectedUser: async (req, res) => {
-        if (req.session.user) {
-            console.log(req.session.user.id)
+        try {
             res.json(await Family.findWhereActiveBoardsByUser(req.session.user.id));
-        } else {
-            res.json('Veuillez vous connecter avant d\'accéder à votre jardin');
-        }
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }  
     },
 
     insert: async (req,res) => {
         try {
-            console.log("le req.body : ",req.body);
-            console.log(" le req.file : ", req.file);
-            //const photoObject = JSON.parse(req.body.photo);
+            const reqFamily = await Family.findByName(req.body.name);
+            if (reqFamily) {
+                throw new Error("Cette famille existe déjà");
+            }
+            if (!req.file) {
+                throw new Error("L'insertion de la photo a échouée");
+            }
+            if (req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
+            }
             const family = new Family({
                 name: req.body.name,
                 picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
-                description: req.body.description
+                description: req.body.description || ''
             });
-            res.status(200).send(family);
-            family.save();
+            await family.save();
+            if (!family.id) {
+                throw new Error("L'insertion a échoué");
+            }
+            res.json(family);
         } catch (err) {
-            res.status(500).send({
-                message: `Could not upload the image: ${req.file}. ${err}`
+            res.json({
+                message: err.message,
+                state: false
             });
-        }
+        }   
     }
     
 }

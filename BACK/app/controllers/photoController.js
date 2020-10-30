@@ -26,9 +26,6 @@ const photoController = {
 
     findOneForUserConnected: async (req,res) => {
         try {
-            if (!req.session.user) { 
-                throw new Error("Veuillez vous connecter");
-            }
             const photo = await Photo.findOneByUser(req.params.id, req.session.user.id);
             if (!photo) {
                 throw new Error("Photo introuvable");
@@ -44,9 +41,6 @@ const photoController = {
 
     findAllForUserConnected: async (req,res) => {
         try {
-            if (!req.session.user) { 
-                throw new Error("Veuillez vous connecter");
-            }
             const photos = await Photo.findAllByUser(req.session.user.id);
             if (!photos) {
                 throw new Error("Photos introuvables");

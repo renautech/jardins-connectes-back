@@ -3,65 +3,42 @@ const Board = require('../models/Board');
 const boardController = {
 
 
-
     findAllBoardForConnectedUser: async (req,res) => {
 
-        if(req.session.user) {
-            res.json(await Board.findAllByUser(req.session.user.id));
-        }else {
-            res.json("Veuillez vous connecter");
-        }
-        
+        res.json(await Board.findAllByUser(req.session.user.id));
     },
 
     findOneBoardForConnectedUser: async (req,res) => {
 
-        res.json(await Board.findOneByUser(req.session.user.id));
+        res.json(await Board.findOneByUser(req.session.user.id,req.params.id));
     },
 
     allEmptyBoardForConnectedUser: async (req,res) => {
 
-        if(req.session.user){
-            const boardsEmpty = await Board.findAllEmptyBoardByUser(req.session.user.id);
-            res.json(boardsEmpty);
-        }
-        else {
-            res.json("Veuillez vous connecter");
-        }
-            
+        const boardsEmpty = await Board.findAllEmptyBoardByUser(req.session.user.id);
+        res.json(boardsEmpty);      
     },
 
     findByFamilyForConnectedUser: async (req,res) => {
 
-        if(req.session.user){
-            const boards = await Board.findByFamilyByUser(req.session.user.id, req.params.id);
-            res.json(boards);
-        }
-        else {
-            res.json("Veuillez vous connecter");
-        } 
+        const boards = await Board.findByFamilyByUser(req.session.user.id, req.params.id);
+        res.json(boards);
     },
 
     addNewBoardForConnectedUser: async (req,res) => {
 
-        if(req.session.user){
-            const newBoard = new Board(req.body);
-            newBoard.user_id = req.session.user.id;
-            await newBoard.save();
-            res.json(newBoard);
-        }
-        else {
-            res.json("Veuillez vous connecter");
-        }
+        const newBoard = new Board(req.body);
+        newBoard.user_id = req.session.user.id;
+        await newBoard.save();            
+        res.json(newBoard);
     },
 
     DeleteBoardForConnectedUser: async (req,res) => {
 
-        if(req.session.user){
-            const deleteBoard = new Board(await Board.findOne(req.params.id));
-            const boardDeleted = await deleteBoard.delete(req.session.user.id);
-            if (boardDeleted.rowCount === 1) {
-                res.json("Planche supprimé !");
+        const deleteBoard = new Board(await Board.findOne(req.params.id));
+        const boardDeleted = await deleteBoard.delete(req.session.user.id);
+        if (boardDeleted.rowCount === 1) {
+            res.json("Planche supprimé !");
             }
             else if (deleteBoard.user_id !== req.session.user.id) {
                 res.json("Planche non supprimé !, cette planche ne vous appartient pas ! vilain !");
@@ -69,29 +46,19 @@ const boardController = {
             else {
                 res.json("Planche non supprimé !");
             }
-        }
-        else {
-            res.json("Veuillez vous connecter");
-        }
     },
 
     updateBoardForConnectedUser: async (req,res) => {
 
-        if(req.session.user) {
-
-            const oldData = new Board(await Board.findOne(req.params.id));
-            const newData = new Board(req.body); 
-            for(const prop in newData) {
-                oldData[prop] = newData[prop];
-            }
-            oldData.save();
-            res.json(`Changement effectué ! `);
+        const oldData = new Board(await Board.findOne(req.params.id));
+        const newData = new Board(req.body); 
+        for(const prop in newData) {
+            oldData[prop] = newData[prop];
         }
-        else {
-            res.json("Veuillez vous connecter");
-        }
+        oldData.save();
+        res.json(`Changement effectué ! `);
     }
-    
+
 };
 
 module.exports = boardController;

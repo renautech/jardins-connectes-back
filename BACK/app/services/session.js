@@ -29,6 +29,23 @@ const isAdmin = async (req,res,next) => {
     }
 }
 
+const isSuperAdmin = async (req,res,next) => {
+    try {
+        if (!req.session.user) {
+            throw new Error("Vous n'êtes pas connecté");
+        }
+        if (req.session.user.role !== 'superAdmin') {
+            throw new Error("Vous n'avez pas l'accès (superAdmin requis)");
+        }
+        next();
+    } catch (err) {
+        res.json({
+            message: err.message,
+            state: false
+        });
+    }
+}
+
 /*const isJardinier = async (req,res,next) => {
     if(req.session.user) {
         if(req.session.user.role === ('jardinier' || 'admin')) {
@@ -43,4 +60,4 @@ const isAdmin = async (req,res,next) => {
     }
 }*/
 
-module.exports = { isAuthentificate, isAdmin};
+module.exports = { isAuthentificate, isAdmin, isSuperAdmin};

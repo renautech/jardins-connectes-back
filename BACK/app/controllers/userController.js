@@ -160,6 +160,21 @@ const userController = {
                 state: false
             });
         }  
+    },
+
+    deleteFromAdmin: async (req,res) => {
+
+        const userToDelete = new User(req.session.user);
+        if(req.session.role !== 'superAdmin') {
+            await userToDelete.delete();
+            req.session.destroy;
+            res.json("Utilisateur supprimé !");
+        }
+        else {
+            res.json("Vous ne pouvez pas supprimé un super Admin !");
+        }
+        
+
     }
 
 };

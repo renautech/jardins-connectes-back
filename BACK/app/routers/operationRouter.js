@@ -6,7 +6,7 @@ const { validateBody } = require('../services/validator');
 const { cache, flush } = require('../cache/cacheStrategy');
 const { insertOperationSchema, updateOperationSchema } = require('../schemas/operation.schema');
 const Operation = require('../models/Operation');
-const {isAdmin} = require('../services/session');
+const {isAdmin,isAuthentificate} = require('../services/session');
 
 // Prefix : /operations
 operationRouter.get('/', isAdmin, cache, mainController.findAll(Operation));

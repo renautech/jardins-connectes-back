@@ -10,7 +10,9 @@ const OneOperation = ({ operation }) => {
     ? (
       <div className="oneOperation__element oneOperation__element--below">
         <span>{operation.comment}</span>
-        <img className="oneOperation__right" alt="légume" src="https://img.icons8.com/fluent-systems-regular/24/000000/settings.png"/>
+        <a href="/" onClick={toggleClick}>
+          <img className="oneOperation__right" alt="légume" src="https://img.icons8.com/fluent-systems-regular/24/000000/settings.png"/>
+        </a>
       </div>
     )
     : (

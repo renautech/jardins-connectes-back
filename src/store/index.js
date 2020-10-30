@@ -1,5 +1,6 @@
 // == Import : npm
 import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 // == Import : local
 import rootReducer from 'src/reducers';
@@ -17,7 +18,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
   applyMiddleware(
-    logMiddleware,
     weather,
     loginForm,
     signupForm,
@@ -25,6 +25,7 @@ const enhancers = composeEnhancers(
     operations,
     profile,
     profileEdit,
+    thunk,
   ),
 );
 

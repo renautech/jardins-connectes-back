@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
+import 'react-toastify/dist/ReactToastify.css';
 import './style.scss';
 
 const Header = ({ isLogged, logout, checkLogged }) => {
-  console.log('render header')
   const handleOnClick = () => {
     logout();
   };

@@ -11,6 +11,8 @@ export const SAVE_USER_BOARDS = 'SAVE_BOARDS';
 export const SAVE_FAMILIES = 'SAVE_FAMILIES';
 export const SAVE_VARIETIES = 'SAVE_VARIETIES';
 export const SUBMIT_USER_OPERATION = 'SUBMIT_USER_OPERATION';
+export const SEND_NOTIFICATION = 'SEND_NOTIFICATION';
+export const SEND_NOTIFICATION_ERROR = 'SEND_NOTIFICATION_ERROR';
 
 export const changeOperationsValue = (value, name) => ({
   type: CHANGE_OPERATIONS_VALUE,
@@ -74,3 +76,14 @@ export const saveVarieties = (varieties) => ({
 export const submitUserOperation = () => ({
   type: SUBMIT_USER_OPERATION,
 });
+
+export const sendNotification = (notification) => ({
+  type: SEND_NOTIFICATION,
+  notification,
+});
+
+export const sendNotificationError = (notification) => ({
+  type: SEND_NOTIFICATION_ERROR,
+  notification,
+});
+

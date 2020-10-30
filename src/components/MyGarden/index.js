@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import { ToastContainer, Zoom } from 'react-toastify';
 import Family from './Family';
 import EmptyBoard from './EmptyBoard';
 
@@ -23,9 +23,6 @@ const MyGarden = ({
       getUserEmptyBoards();
     }
   }, []);
-
-  console.log('user_families', userFamilies);
-
   // if (userFamilies === []) {
   //   userFamilies = [{ name: 'Pas encore de plantations' }];
   // }
@@ -52,6 +49,18 @@ const MyGarden = ({
       {loading && (
         <Loader />
       )}
+      <ToastContainer
+        transition={Zoom}
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

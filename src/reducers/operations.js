@@ -8,7 +8,11 @@ import {
   SAVE_USER_BOARDS,
   SAVE_FAMILIES,
   SAVE_VARIETIES,
+  SEND_NOTIFICATION,
+  SEND_NOTIFICATION_ERROR,
 } from 'src/actions/operations';
+
+import { toast } from 'react-toastify';
 
 export const initialState = {
   operationType: 'Quelle opération effectuer ?',
@@ -93,6 +97,12 @@ const signupForm = (state = initialState, action = {}) => {
         ...state,
         varieties: action.varieties,
       };
+    case SEND_NOTIFICATION:
+      toast.success(action.notification);
+      break;
+    case SEND_NOTIFICATION_ERROR:
+      // toast.error(action.notification);
+      break;
     default:
       return state;
   }

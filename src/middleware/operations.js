@@ -10,9 +10,12 @@ import {
   saveFamilies,
   getUserBoards,
   saveVarieties,
+  sendNotification,
+  sendNotificationError,
 } from 'src/actions/operations';
 
 import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
+import { toast } from 'react-toastify';
 
 const operations = (store) => (next) => (action) => {
   const {
@@ -94,9 +97,11 @@ const operations = (store) => (next) => (action) => {
             store.dispatch(getUserFamilies());
             store.dispatch(getUserBoards());
             store.dispatch(getUserEmptyBoards());
+            store.dispatch(sendNotification(`Planche "${boardName}" créée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Labourer') {
@@ -110,9 +115,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`"${boardName}" a bien été labourée`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Semer') {
@@ -139,9 +146,11 @@ const operations = (store) => (next) => (action) => {
           .then(function (res) {
             store.dispatch(getUserFamilies());
             store.dispatch(getUserEmptyBoards());
+            store.dispatch(sendNotification(`${boardFamily} bien plantées sur la planche "${boardName}" !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Arroser') {
@@ -155,9 +164,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`Planche "${boardName}" a bien été arrosée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Fertiliser') {
@@ -172,9 +183,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`Planche "${boardName}" a bien été fertilisée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Traiter') {
@@ -190,9 +203,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`Planche "${boardName}" a bien été traitée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Désherber') {
@@ -206,16 +221,18 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`Planche "${boardName}" a bien été désherbée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Récolter') {
         axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
           operation_type_id: 8,
           board_id: boardId,
-          qunatity: quantity,
+          qunatity: parseInt(quantity, 10),
           comment: comment,
         },
         {
@@ -223,9 +240,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`Récolte de "${boardName}" a bien été enregistrée !`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       if (operationType === 'Supprimer une planche') {
@@ -238,9 +257,11 @@ const operations = (store) => (next) => (action) => {
         })
           .then(function (res) {
             console.log(res);
+            store.dispatch(sendNotification(`La planche "${boardName}" a bien été supprimée.`));
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
         axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
           {
@@ -254,6 +275,7 @@ const operations = (store) => (next) => (action) => {
           })
           .catch(function (error) {
             console.log(error);
+            store.dispatch(sendNotificationError('Erreur'));
           });
       }
       break;

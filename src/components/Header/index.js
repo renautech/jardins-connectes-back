@@ -1,6 +1,5 @@
 /* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
-import { ToastContainer, toast, Zoom } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
@@ -12,10 +11,7 @@ const Header = ({ isLogged, logout, checkLogged }) => {
     logout();
   };
 
-  const notification = () => toast.success('Reqûete envoyée !');
-
   useEffect(() => {
-    notification();
     if (!checkLogged) {
       if (!isLogged) {
         logout();
@@ -24,7 +20,6 @@ const Header = ({ isLogged, logout, checkLogged }) => {
   }, []);
 
   return (
-    
     <div className="header">
       <span className="logo">LOGO</span>
       <h1 className="header-title"><NavLink to="/">LES JARDINS CONNECTES</NavLink></h1>
@@ -53,18 +48,6 @@ const Header = ({ isLogged, logout, checkLogged }) => {
         )}
       </div>
       <a className="navMobile" href="/navMobile"><img src="https://img.icons8.com/plasticine/100/000000/menu.png" height="50"/></a>
-      <ToastContainer
-        transition={Zoom}
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

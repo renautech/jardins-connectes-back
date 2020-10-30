@@ -1,5 +1,6 @@
 // == Import : npm
 import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 // == Import : local
 import rootReducer from 'src/reducers';
@@ -24,6 +25,7 @@ const enhancers = composeEnhancers(
     operations,
     profile,
     profileEdit,
+    thunk,
   ),
 );
 

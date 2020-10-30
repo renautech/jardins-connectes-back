@@ -30,7 +30,7 @@ const varietyController = {
                 family_id: parseInt(req.body.family_id)
             });
             if (req.file) {
-                variety.picture = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+                variety.picture = `/${req.file.filename}`
             }
             await variety.save();
             if (!variety.id) {

@@ -27,7 +27,7 @@ const familyController = {
             }
             const family = new Family({
                 name: req.body.name,
-                picture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+                picture: `/${req.file.filename}`,
                 description: req.body.description || ''
             });
             await family.save();

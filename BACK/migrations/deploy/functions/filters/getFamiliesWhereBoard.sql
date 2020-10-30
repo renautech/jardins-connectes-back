@@ -4,10 +4,8 @@ BEGIN;
 
 CREATE FUNCTION
     findWhereActiveBoardsByUser(userId int)
-    RETURNS TABLE ("name" text, "picture" text) AS $$
-SELECT
-	"name",
-	"picture"
+    RETURNS SETOF family AS $$
+SELECT family.*
 FROM "family"
 WHERE "id" IN	(
 		SELECT "family"."id"

@@ -25,7 +25,7 @@ import data from 'src/data/data';
 import dataBoard from 'src/data/dataBoard';
 import dataUser from 'src/data/dataFake';
 import './style.scss';
-import OperationList from '../OperationList';
+import OperationList from 'src/containers/OperationList';
 
 const JardinConnectes = ({ isLogged, isSigned, profileEdition }) => {
   return (

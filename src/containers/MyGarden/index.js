@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import MyGarden from 'src/components/MyGarden';
 
 import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
+import { setOperationListId } from 'src/actions/operationList';
 
 const mapStateToProps = (store) => ({
   userFamilies: store.myGarden.userFamilies,
@@ -16,6 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserEmptyBoards: () => {
     dispatch(getUserEmptyBoards());
+  },
+
+  setOperationListId: (id) => {
+    dispatch(setOperationListId(id));
   },
 });
 

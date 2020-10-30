@@ -16,6 +16,7 @@ const MyGarden = ({
   userEmptyBoards,
   isLogged,
   loading,
+  setOperationListId,
 }) => {
   useEffect(() => {
     if (isLogged) {
@@ -27,9 +28,14 @@ const MyGarden = ({
   //   userFamilies = [{ name: 'Pas encore de plantations' }];
   // }
 
+  const handleOnClick = (id) => {
+    console.log('setOperationListId', id);
+    setOperationListId(parseInt(id, 10));
+  };
+
   const Families = userFamilies.map((family) => {
-    console.log(family);
-    return <Family key={family.name} type={family.name} picture={family.picture} />;
+    console.log('family', family);
+    return <Family key={family.name} type={family.name} handleOnClick={handleOnClick} id={family.id} picture={family.picture} />;
   });
 
   // const EmptyBoards = userEmptyBoards.map((family) => {

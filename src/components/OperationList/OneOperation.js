@@ -23,7 +23,7 @@ const OneOperation = ({ operation }) => {
   return (
     <div className="oneOperation">
       <span className="oneOperation__element">{operation.date}</span>
-      <span className="oneOperation__element">{operation.quantity}</span>
+      <span className="oneOperation__element">{operation.id}</span>
       <span className="oneOperation__element">{operation.product_name}</span>
       {comment}
     </div>

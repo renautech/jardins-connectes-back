@@ -7,6 +7,7 @@ import myGarden from './myGarden';
 import operations from './operations';
 import profile from './profile';
 import profileEdit from './profileEdit';
+import operationList from './operationList';
 
 export default combineReducers({
   weather,
@@ -16,4 +17,5 @@ export default combineReducers({
   myGarden,
   profile,
   profileEdit,
+  operationList,
 });

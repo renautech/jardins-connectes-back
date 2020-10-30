@@ -5,10 +5,10 @@ import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const Family = ({ type, picture }) => {
+const Family = ({ type, picture, id, handleOnClick }) => {
   return (
     <div className="mygarden__family">
-      <NavLink className="mygarden__navlink" to="/liste-operations">
+      <NavLink onClick={() => handleOnClick(id)} className="mygarden__navlink" to="/liste-operations">
         <img className="mygarden__family--image" src={picture} alt="famille de légume" />
         <p className="mygarden__family--text">{type}</p>
       </NavLink>

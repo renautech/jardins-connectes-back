@@ -1,13 +1,19 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import OneOperation from 'src/components/OperationList/OneOperation';
 
 import './style.scss';
 
-const OperationList = ({ dataOperations }) => {
-  const operations = dataOperations.map((operation) => {
+const OperationList = ({ dataOperations, getFamilyOperations, operationList }) => {
+  useEffect(() => {
+    getFamilyOperations();
+  }, []);
+
+  console.log('OPERATION LIST', operationList.data);
+
+  const operations = operationList.data.map((operation) => {
     return <OneOperation operation={operation} />;
   });
 
@@ -24,6 +30,7 @@ const OperationList = ({ dataOperations }) => {
 
 OperationList.propTypes = {
   dataOperations: PropTypes.array.isRequired,
+  getFamilyOperations: PropTypes.func.isRequired,
 };
 
 export default OperationList;

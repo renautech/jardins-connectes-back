@@ -12,6 +12,7 @@ import myGarden from '../middleware/myGarden';
 import operations from '../middleware/operations';
 import profile from '../middleware/profile';
 import profileEdit from '../middleware/profileEdit';
+import operationList from '../middleware/operationList';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,6 +26,7 @@ const enhancers = composeEnhancers(
     operations,
     profile,
     profileEdit,
+    operationList,
     thunk,
   ),
 );

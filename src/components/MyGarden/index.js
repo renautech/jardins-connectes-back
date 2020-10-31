@@ -12,6 +12,7 @@ import './style.scss';
 const MyGarden = ({
   getUserFamilies,
   getUserEmptyBoards,
+  getOperationTypes,
   userFamilies,
   userEmptyBoards,
   isLogged,
@@ -22,11 +23,9 @@ const MyGarden = ({
     if (isLogged) {
       getUserFamilies();
       getUserEmptyBoards();
+      getOperationTypes();
     }
   }, []);
-  // if (userFamilies === []) {
-  //   userFamilies = [{ name: 'Pas encore de plantations' }];
-  // }
 
   const handleOnClick = (id) => {
     console.log('setOperationListId', id);
@@ -35,13 +34,16 @@ const MyGarden = ({
 
   const Families = userFamilies.map((family) => {
     console.log('family', family);
-    return <Family key={family.name} type={family.name} handleOnClick={handleOnClick} id={family.id} picture={family.picture} />;
+    return (
+      <Family
+        key={family.name}
+        type={family.name}
+        handleOnClick={handleOnClick}
+        id={family.id}
+        picture={family.picture}
+      />
+    );
   });
-
-  // const EmptyBoards = userEmptyBoards.map((family) => {
-  //   console.log(family);
-  //   return <EmptyBoard key={family.name} type={family.name} picture={family.picture} />;
-  // });
 
   return (
     <div className="mygarden">
@@ -74,6 +76,8 @@ const MyGarden = ({
 MyGarden.propTypes = {
   getUserFamilies: PropTypes.func.isRequired,
   getUserEmptyBoards: PropTypes.func.isRequired,
+  getOperationTypes: PropTypes.func.isRequired,
+  setOperationListId: PropTypes.func.isRequired,
   userFamilies: PropTypes.array.isRequired,
   userEmptyBoards: PropTypes.array.isRequired,
   isLogged: PropTypes.bool.isRequired,

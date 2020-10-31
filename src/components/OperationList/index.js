@@ -8,16 +8,21 @@ import './style.scss';
 
 const OperationList = ({
   getFamilyOperations,
-  getOperationTypes,
   operationList,
+  operationTypes,
 }) => {
   useEffect(() => {
     getFamilyOperations();
-    getOperationTypes();
   }, []);
 
   const operations = operationList.data.map((operation) => {
-    return <OneOperation key={operation.id} operation={operation} />;
+    return (
+      <OneOperation
+        key={operation.id}
+        operation={operation}
+        operationTypes={operationTypes}
+      />
+    );
   });
 
   return (
@@ -33,8 +38,8 @@ const OperationList = ({
 
 OperationList.propTypes = {
   getFamilyOperations: PropTypes.func.isRequired,
-  getOperationTypes: PropTypes.func.isRequired,
-  operationList: PropTypes.array.isRequired,
+  operationList: PropTypes.object.isRequired,
+  operationTypes: PropTypes.array.isRequired,
 };
 
 export default OperationList;

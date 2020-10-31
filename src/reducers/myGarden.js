@@ -1,12 +1,14 @@
 import {
   SAVE_USER_FAMILIES,
   SAVE_USER_EMPTY_BOARDS,
+  SAVE_OPERATION_TYPES,
   LOADING_USER_FAMILIES,
 } from 'src/actions/myGarden';
 
 export const initialState = {
   userFamilies: [],
   userEmptyBoards: [],
+  operationTypes: [],
   loading: true,
 };
 
@@ -22,6 +24,12 @@ const myGarden = (state = initialState, action = {}) => {
       return {
         ...state,
         userEmptyBoards: action.emptyBoards,
+        loading: false,
+      };
+    case SAVE_OPERATION_TYPES:
+      return {
+        ...state,
+        operationTypes: action.operationTypes,
         loading: false,
       };
     case LOADING_USER_FAMILIES:

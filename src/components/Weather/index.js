@@ -7,9 +7,13 @@ import Loader from 'src/components/Loader';
 
 import './style.scss';
 
-const Weather = ({ getWeather, weather, loading, getPostcode }) => {
+const Weather = ({
+  getWeather,
+  weather,
+  loading,
+  getPostcode
+}) => {
   useEffect(() => {
-    //getWeather('01500');
     getPostcode();
   }, []);
 
@@ -32,7 +36,6 @@ const Weather = ({ getWeather, weather, loading, getPostcode }) => {
 };
 
 Weather.propTypes = {
-  zipcode: PropTypes.string.isRequired,
   getWeather: PropTypes.func.isRequired,
   weather: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,

@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import OperationList from 'src/components/OperationList';
 
-import { getFamilyOperations } from 'src/actions/operationList';
+import {
+  getFamilyOperations,
+  getOperationTypes,
+} from 'src/actions/operationList';
 
 const mapStateToProps = (state) => ({
   operationList: state.operationList,
@@ -10,6 +13,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getFamilyOperations: () => {
     dispatch(getFamilyOperations());
+  },
+  getOperationTypes: () => {
+    dispatch(getOperationTypes());
   },
 });
 

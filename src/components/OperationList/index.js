@@ -6,15 +6,18 @@ import OneOperation from 'src/components/OperationList/OneOperation';
 
 import './style.scss';
 
-const OperationList = ({ dataOperations, getFamilyOperations, operationList }) => {
+const OperationList = ({
+  getFamilyOperations,
+  getOperationTypes,
+  operationList,
+}) => {
   useEffect(() => {
     getFamilyOperations();
+    getOperationTypes();
   }, []);
 
-  console.log('OPERATION LIST', operationList.data);
-
   const operations = operationList.data.map((operation) => {
-    return <OneOperation operation={operation} />;
+    return <OneOperation key={operation.id} operation={operation} />;
   });
 
   return (
@@ -29,8 +32,9 @@ const OperationList = ({ dataOperations, getFamilyOperations, operationList }) =
 };
 
 OperationList.propTypes = {
-  dataOperations: PropTypes.array.isRequired,
   getFamilyOperations: PropTypes.func.isRequired,
+  getOperationTypes: PropTypes.func.isRequired,
+  operationList: PropTypes.array.isRequired,
 };
 
 export default OperationList;

@@ -209,14 +209,14 @@ const operations = (store) => (next) => (action) => {
       }
       if (operationType === 'Traiter') { // TRAITER UNE PLANCHE
         if (boardId === '' || product === '') {
-          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et un produit !'));
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche, un produit et une quantité !'));
         }
         else {
           axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
             operation_type_id: 6,
             board_id: boardId,
-            comment: comment,
             product_name: product,
+            comment: comment,
             quantity: parseInt(quantity, 10),
           },
           {

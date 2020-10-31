@@ -68,7 +68,6 @@ const Operations = ({
     event.preventDefault();
     console.log('submit');
     submitUserOperation();
-    resetAllOperationsValue();
   };
 
   console.log('USERBOARD', operation.userBoards);

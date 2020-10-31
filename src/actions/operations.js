@@ -12,6 +12,7 @@ export const SAVE_FAMILIES = 'SAVE_FAMILIES';
 export const SAVE_VARIETIES = 'SAVE_VARIETIES';
 export const SUBMIT_USER_OPERATION = 'SUBMIT_USER_OPERATION';
 export const SEND_NOTIFICATION = 'SEND_NOTIFICATION';
+export const SEND_NOTIFICATION_WARNING = 'SEND_NOTIFICATION_WARNING';
 export const SEND_NOTIFICATION_ERROR = 'SEND_NOTIFICATION_ERROR';
 
 export const changeOperationsValue = (value, name) => ({
@@ -82,8 +83,12 @@ export const sendNotification = (notification) => ({
   notification,
 });
 
+export const sendNotificationWarning = (notification) => ({
+  type: SEND_NOTIFICATION_WARNING,
+  notification,
+});
+
 export const sendNotificationError = (notification) => ({
   type: SEND_NOTIFICATION_ERROR,
   notification,
 });
-

@@ -11,7 +11,9 @@ import {
   getUserBoards,
   saveVarieties,
   sendNotification,
+  sendNotificationWarning,
   sendNotificationError,
+  resetAllOperationsValue,
 } from 'src/actions/operations';
 
 import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
@@ -69,214 +71,254 @@ const operations = (store) => (next) => (action) => {
       break;
     }
     case SUBMIT_USER_OPERATION: {
-      if (operationType === 'Créer une planche') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 1,
-          board_id: boardId,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        axios.post('http://3.93.151.102:5555/v1/boards/users/user', {
-          name: boardName,
-          active: true,
-          variety_id: 1,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            // console.log(res);
-            store.dispatch(getUserFamilies());
-            store.dispatch(getUserBoards());
-            store.dispatch(getUserEmptyBoards());
-            store.dispatch(sendNotification(`Planche "${boardName}" créée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Labourer') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 2,
-          board_id: boardId,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`"${boardName}" a bien été labourée`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Semer') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 3,
-          board_id: boardId,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        axios.patch(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`, {
-          variety_id: boardVarietyId,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            store.dispatch(getUserFamilies());
-            store.dispatch(getUserEmptyBoards());
-            store.dispatch(sendNotification(`${boardFamily} bien plantées sur la planche "${boardName}" !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Arroser') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 4,
-          board_id: boardId,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`Planche "${boardName}" a bien été arrosée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Fertiliser') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 5,
-          board_id: boardId,
-          product_name: product,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`Planche "${boardName}" a bien été fertilisée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Traiter') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 6,
-          board_id: boardId,
-          comment: comment,
-          product_name: product,
-          quantity: parseInt(quantity, 10),
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`Planche "${boardName}" a bien été traitée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Désherber') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 7,
-          board_id: boardId,
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`Planche "${boardName}" a bien été désherbée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Récolter') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 8,
-          board_id: boardId,
-          quantity: parseInt(quantity, 10),
-          comment: comment,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`Récolte de "${boardName}" a bien été enregistrée !`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-      }
-      if (operationType === 'Supprimer une planche') {
-        axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
-          operation_type_id: 9,
-          board_id: boardId,
-        },
-        {
-          withCredentials: true,
-        })
-          .then(function (res) {
-            console.log(res);
-            store.dispatch(sendNotification(`La planche "${boardName}" a bien été supprimée.`));
-          })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
-        axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
+      if (operationType === 'Créer une planche') { // CREATION DE PLANCHE
+        if (boardName === '') {
+          store.dispatch(sendNotificationWarning('Vous devez donner un nom à votre planche'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/boards/users/user', {
+            name: boardName,
+            active: true,
+            variety_id: 1,
+          },
           {
             withCredentials: true,
           })
-          .then(function (res) {
-            // console.log(res);
-            store.dispatch(getUserFamilies());
-            store.dispatch(getUserBoards());
-            store.dispatch(getUserEmptyBoards());
+            .then(function (res) {
+              // console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(getUserFamilies());
+              store.dispatch(getUserBoards());
+              store.dispatch(getUserEmptyBoards());
+              store.dispatch(sendNotification(`Planche "${boardName}" créée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Labourer') { // LABOURE
+        if (boardId === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 2,
+            board_id: boardId,
+            comment: comment,
+          },
+          {
+            withCredentials: true,
           })
-          .catch(function (error) {
-            console.log(error);
-            store.dispatch(sendNotificationError('Erreur'));
-          });
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(sendNotification(`"${boardName}" a bien été labourée`));
+            })
+            .catch(function (error) {
+              console.error('ERREUR ???', error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Semer') { // SEMER SUR UNE PLANCHE
+        if (boardId === '' || boardFamily === '' || boardVariety === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche, une famille et une variété de légume !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 3,
+            board_id: boardId,
+            comment: comment,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          axios.patch(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`, {
+            variety_id: boardVarietyId,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(getUserFamilies());
+              store.dispatch(getUserEmptyBoards());
+              store.dispatch(sendNotification(`${boardFamily} bien plantées sur la planche "${boardName}" !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Arroser') { // ARROSER UNE PLANCHE
+        if (boardId === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 4,
+            board_id: boardId,
+            comment: comment,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`Planche "${boardName}" a bien été arrosée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Fertiliser') { // FERTILISER UNE PLANCHE
+        if (boardId === '' || product === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et un fertilisant !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 5,
+            board_id: boardId,
+            product_name: product,
+            comment: comment,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`Planche "${boardName}" a bien été fertilisée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Traiter') { // TRAITER UNE PLANCHE
+        if (boardId === '' || product === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et un produit !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 6,
+            board_id: boardId,
+            comment: comment,
+            product_name: product,
+            quantity: parseInt(quantity, 10),
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`Planche "${boardName}" a bien été traitée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Désherber') { // DESHERBER UNE PLANCHE
+        if (boardId === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 7,
+            board_id: boardId,
+            comment: comment,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`Planche "${boardName}" a bien été désherbée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Récolter') { // RECOLTER UNE PLANCHE
+        if (boardId === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et la quantité de votre récolte !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 8,
+            board_id: boardId,
+            quantity: parseInt(quantity, 10),
+            comment: comment,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`Récolte de "${boardName}" a bien été enregistrée !`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
+      }
+      if (operationType === 'Supprimer une planche') { // SUPPRIMER UNE PLANCHE
+        if (boardId === '') {
+          store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
+        }
+        else {
+          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+            operation_type_id: 9,
+            board_id: boardId,
+          },
+          {
+            withCredentials: true,
+          })
+            .then(function (res) {
+              console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(sendNotification(`La planche "${boardName}" a bien été supprimée.`));
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+          axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
+            {
+              withCredentials: true,
+            })
+            .then(function (res) {
+              // console.log(res);
+              store.dispatch(resetAllOperationsValue());
+              store.dispatch(getUserFamilies());
+              store.dispatch(getUserBoards());
+              store.dispatch(getUserEmptyBoards());
+            })
+            .catch(function (error) {
+              console.log(error);
+              store.dispatch(sendNotificationError('Erreur'));
+            });
+        }
       }
       break;
     }

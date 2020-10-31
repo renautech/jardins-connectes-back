@@ -9,6 +9,7 @@ import {
   SAVE_FAMILIES,
   SAVE_VARIETIES,
   SEND_NOTIFICATION,
+  SEND_NOTIFICATION_WARNING,
   SEND_NOTIFICATION_ERROR,
 } from 'src/actions/operations';
 
@@ -99,10 +100,19 @@ const signupForm = (state = initialState, action = {}) => {
       };
     case SEND_NOTIFICATION:
       toast.success(action.notification);
-      break;
+      return {
+        ...state,
+      };
+    case SEND_NOTIFICATION_WARNING:
+      toast.warning(action.notification);
+      return {
+        ...state,
+      };
     case SEND_NOTIFICATION_ERROR:
-      // toast.error(action.notification);
-      break;
+      toast.error(action.notification);
+      return {
+        ...state,
+      };
     default:
       return state;
   }

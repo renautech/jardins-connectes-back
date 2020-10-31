@@ -30,7 +30,7 @@ const OneOperation = ({ operation }) => {
     );
   return (
     <div className="oneOperation">
-      <span className="oneOperation__element">Date : {date}</span>
+      <span className="oneOperation__element">{date}</span>
       <span className="oneOperation__element">{operation.id}</span>
       {/* <span className="oneOperation__element">{operation.operation_type_id}</span> */}
       <span className="oneOperation__element">{operation.product_name}</span>

@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable arrow-body-style */
 import React from 'react';
 
 import './style.scss';
@@ -13,7 +15,7 @@ const Description = () => {
         <li>Apprenez à plusieurs jardiniers grâce au partage de vos historiques et en discutant, tout simplement !</li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Description;

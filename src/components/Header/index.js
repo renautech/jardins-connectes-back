@@ -47,7 +47,7 @@ const Header = ({ isLogged, logout, checkLogged }) => {
         </div>
         )}
       </div>
-      <a className="navMobile" href="/navMobile"><img src="https://img.icons8.com/plasticine/100/000000/menu.png" height="50"/></a>
+      <a className="navMobile" href="/navMobile"><img alt="navigationMobile" src="https://img.icons8.com/plasticine/100/000000/menu.png" height="50" /></a>
     </div>
   );
 };

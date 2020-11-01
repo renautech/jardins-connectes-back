@@ -6,7 +6,12 @@ import Options from 'src/components/Operations/SelectField/Options';
 
 import './style.scss';
 
-const VarietyField = ({ onChange, data, target, placeholder, name }) => {
+const VarietyField = ({
+  onChange,
+  data,
+  placeholder,
+  name,
+}) => {
   const varieties = data.map((option) => {
     return (
       <Options key={option.id} keyData={option.id} value={option.name} />
@@ -26,13 +31,8 @@ const VarietyField = ({ onChange, data, target, placeholder, name }) => {
 VarietyField.propTypes = {
   onChange: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
-  target: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-};
-
-VarietyField.defaultProps = {
-  target: '',
 };
 
 export default VarietyField;

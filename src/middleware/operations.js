@@ -17,7 +17,6 @@ import {
 } from 'src/actions/operations';
 
 import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
-import { toast } from 'react-toastify';
 
 const operations = (store) => (next) => (action) => {
   const {
@@ -209,7 +208,7 @@ const operations = (store) => (next) => (action) => {
         }
       }
       if (operationType === 'Traiter') { // TRAITER UNE PLANCHE
-        if (boardId === '' || product === '') {
+        if (boardId === '' || product === '' || quantity === '') {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche, un produit et une quantité !'));
         }
         else {

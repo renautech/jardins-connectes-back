@@ -2,10 +2,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContainer, Zoom } from 'react-toastify';
+import Loader from 'src/components/Loader';
 import Family from './Family';
 import EmptyBoard from './EmptyBoard';
-
-import Loader from 'src/components/Loader';
 
 import './style.scss';
 
@@ -22,7 +21,7 @@ const MyGarden = ({
 }) => {
   useEffect(() => {
     if (isLogged) {
-      getUserBoards()
+      getUserBoards();
       getUserFamilies();
       getUserEmptyBoards();
       getOperationTypes();

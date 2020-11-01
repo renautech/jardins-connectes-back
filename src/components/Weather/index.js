@@ -1,6 +1,6 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable arrow-body-style */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from 'src/components/Loader';
@@ -8,10 +8,9 @@ import Loader from 'src/components/Loader';
 import './style.scss';
 
 const Weather = ({
-  getWeather,
   weather,
   loading,
-  getPostcode
+  getPostcode,
 }) => {
   useEffect(() => {
     getPostcode();
@@ -22,10 +21,10 @@ const Weather = ({
       <h2 className="weather__title">Météo</h2>
       {!loading && (
         <div className="weather__detail">
-          <img className="weather__icon" src={weather.icon} alt=""/>
+          <img className="weather__icon" src={weather.icon} alt="" />
           <span className="weather__temp">{weather.name}</span>
           <span className="weather__name">{weather.temp}°C</span>
-          <span className="weather__name">humidité {weather.humidity}%</span>
+          <span className="weather__name">Humidité {weather.humidity}%</span>
         </div>
       )}
       {loading && (
@@ -36,7 +35,7 @@ const Weather = ({
 };
 
 Weather.propTypes = {
-  getWeather: PropTypes.func.isRequired,
+  getPostcode: PropTypes.func.isRequired,
   weather: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
 };

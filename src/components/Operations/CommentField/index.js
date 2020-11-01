@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const CommentField = ({ onChange, placeholder, name, value }) => {
+const CommentField = ({
+  onChange,
+  placeholder,
+  name,
+  value,
+}) => {
   return (
     <div className="commentfield">
       <textarea className="commentfield__input" name={name} value={value} onChange={onChange} placeholder={placeholder} />

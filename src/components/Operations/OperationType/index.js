@@ -2,11 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Operation from './Operation';
-
 import './style.scss';
 
-const OperationType = ({ handleOpType, name, value }) => {
+const OperationType = ({
+  handleOpType,
+  name,
+  value,
+}) => {
   // const operations = getOperationsType();
   return (
     <div className="operation__type">

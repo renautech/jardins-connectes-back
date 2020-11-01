@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Field = ({ onChange, placeholder, name, value }) => {
+const Field = ({
+  onChange,
+  placeholder,
+  name,
+  value,
+}) => {
   return (
     <div className="field">
       <input className="field__input" name={name} type="text" value={value} onChange={onChange} placeholder={placeholder} />

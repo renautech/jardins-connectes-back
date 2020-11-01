@@ -18,7 +18,6 @@ const Operations = ({
   changeOperationsFamilyValue,
   changeOperationsVarietyValue,
   resetOperationsValue,
-  resetAllOperationsValue,
   getUserBoards,
   getFamilies,
   getVarieties,
@@ -158,7 +157,6 @@ Operations.propTypes = {
   changeOperationsFamilyValue: PropTypes.func.isRequired,
   changeOperationsVarietyValue: PropTypes.func.isRequired,
   resetOperationsValue: PropTypes.func.isRequired,
-  resetAllOperationsValue: PropTypes.func.isRequired,
   submitUserOperation: PropTypes.func.isRequired,
   isLogged: PropTypes.bool.isRequired,
 };

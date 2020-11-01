@@ -25,12 +25,6 @@ const OperationList = ({
   const operations = operationList.data.map((operation) => {
     return (
       <div>
-        <Select
-          className="basic-single"
-          name="color"
-          options={options}
-          placeholder="heu..."
-        />
         <OneOperation
           key={operation.id}
           operation={operation}
@@ -47,6 +41,12 @@ const OperationList = ({
       <h2 className="operationList__title">Mes dernières actions</h2>
       <img className="operationList__img" src="https://www.academiedugout.fr/images/15695/1200-auto/courgette_000.jpg?poix=50&poiy=50" alt="vegetable" />
       <div className="operationList__bloc">
+        <Select
+          className="basic-single"
+          name="color"
+          options={options}
+          placeholder="heu..."
+        />
         {operations}
       </div>
     </div>

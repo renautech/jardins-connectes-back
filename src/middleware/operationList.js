@@ -7,11 +7,6 @@ import {
   saveFamilyOperations,
 } from 'src/actions/operationList';
 
-import {
-  sendNotification,
-  sendNotificationError,
-} from 'src/actions/operations';
-
 const operationList = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_FAMILY_OPERATIONS: {

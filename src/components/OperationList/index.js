@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 import OneOperation from 'src/components/OperationList/OneOperation';
 
@@ -17,15 +18,27 @@ const OperationList = ({
     getFamilyOperations();
   }, []);
 
+  const options = [
+    { value: 'wip', label: 'Workinprogress' },
+  ];
+
   const operations = operationList.data.map((operation) => {
     return (
-      <OneOperation
-        key={operation.id}
-        operation={operation}
-        operationTypes={operationTypes}
-        userBoards={userBoards}
-        deleteOperation={deleteOperation}
-      />
+      <div>
+        <Select
+          className="basic-single"
+          name="color"
+          options={options}
+          placeholder="heu..."
+        />
+        <OneOperation
+          key={operation.id}
+          operation={operation}
+          operationTypes={operationTypes}
+          userBoards={userBoards}
+          deleteOperation={deleteOperation}
+        />
+      </div>
     );
   });
 

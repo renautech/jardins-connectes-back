@@ -10,6 +10,8 @@ const OperationList = ({
   getFamilyOperations,
   operationList,
   operationTypes,
+  userBoards,
+  deleteOperation,
 }) => {
   useEffect(() => {
     getFamilyOperations();
@@ -21,6 +23,8 @@ const OperationList = ({
         key={operation.id}
         operation={operation}
         operationTypes={operationTypes}
+        userBoards={userBoards}
+        deleteOperation={deleteOperation}
       />
     );
   });
@@ -40,6 +44,8 @@ OperationList.propTypes = {
   getFamilyOperations: PropTypes.func.isRequired,
   operationList: PropTypes.object.isRequired,
   operationTypes: PropTypes.array.isRequired,
+  userBoards: PropTypes.array.isRequired,
+  deleteOperation: PropTypes.func.isRequired,
 };
 
 export default OperationList;

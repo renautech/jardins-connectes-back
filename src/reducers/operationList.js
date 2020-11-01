@@ -6,6 +6,7 @@ import {
 export const initialState = {
   data: [],
   requestDone: false,
+  familyId: 1,
 };
 
 const operationList = (state = initialState, action = {}) => {

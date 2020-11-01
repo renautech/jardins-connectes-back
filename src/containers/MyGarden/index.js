@@ -9,6 +9,8 @@ import {
 
 import { setOperationListId } from 'src/actions/operationList';
 
+import { getUserBoards } from 'src/actions/operations';
+
 const mapStateToProps = (store) => ({
   userFamilies: store.myGarden.userFamilies,
   userEmptyBoards: store.myGarden.userEmptyBoards,
@@ -29,6 +31,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   setOperationListId: (id) => {
     dispatch(setOperationListId(id));
+  },
+
+  getUserBoards: () => {
+    dispatch(getUserBoards());
   },
 });
 

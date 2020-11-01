@@ -13,6 +13,11 @@
   background-size: 100%;
   background-position: center -30rem;
 
+  &-image {
+    width: 100px;
+    height: 100px;
+  }
+
   &-links{
     display:flex;
     flex-direction: column;

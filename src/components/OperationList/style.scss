@@ -1,7 +1,11 @@
 @use 'src/styles/vars' as v;
 
 .operationList {
+  background: url(https://images.pexels.com/photos/1000057/pexels-photo-1000057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-position: center;
+  background-size: cover;
   font-family: "Chilanka";
+  min-height: 300px;
   display: flex;
   width: 75%;
   margin-left: auto;
@@ -19,7 +23,7 @@
     font-size: 1.5rem;
   }
   &__img {
-    margin: 0 auto;
+    margin-left: 7%;
     max-width: 200px;
   }
 }
@@ -27,26 +31,33 @@
 .oneOperation {
   border: 1px black solid;
   border-radius: 25px;
-  background-color: v.$medium-color;
-  display: flex;
+  background-color: rgba($color: #FFFFFF, $alpha: 0.8);
   justify-content: space-between;
-  flex-wrap: wrap;
   margin: v.$xs-gut ;
   padding: 0.2em;
   
   &__element{
+
+    &__title {
+      min-width: 15%;
+    }
     
-    padding: 0.5em;
-    &--hidden{
-      visibility: hidden;
-    }
-    &--below{
-      width: 100%;
-    }
+    // padding: 0.5em;
+    // &--hidden{
+    //   visibility: hidden;
+    // }
+    // &--below{
+    //   width: 100%;
+    // }
   }
   &__right{
     float: right;
     margin-right: v.$xs-gut;
+    &__img {
+      margin-right: 1rem;
+      float: right;
+      max-width: 15px;
+    }
   }
 }
 
@@ -60,6 +71,22 @@
     }
   }
   .oneOperation {
+
+    &__element {
+      &__img {
+        margin-left: 1rem;
+        max-width: 30px;
+        min-width: 30px;
+        display: inline;
+      }
+      &__title {
+        margin: 0.2rem;
+        color: black;
+        display: inline-block;
+        transform: translate(0%, -35%);
+        margin-left: 1rem;
+      }
+    }
     
     margin: 0 v.$s-gut v.$xs-gut 30%;
   }

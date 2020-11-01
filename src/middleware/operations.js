@@ -113,6 +113,7 @@ const operations = (store) => (next) => (action) => {
           })
             .then(function (res) {
               console.log(res);
+              store.dispatch(resetAllOperationsValue());
               store.dispatch(sendNotification(`"${boardName}" a bien été labourée`));
             })
             .catch(function (error) {

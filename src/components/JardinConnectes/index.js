@@ -43,6 +43,9 @@ const JardinConnectes = ({ isLogged, isSigned, profileEdition }) => {
       </Route>
 
       <Route path="/mon-jardin">
+        {!isLogged && (
+          <Redirect to="/connexion" />
+        )}
         <Page>
           <Garden
             data={data}
@@ -83,6 +86,9 @@ const JardinConnectes = ({ isLogged, isSigned, profileEdition }) => {
       </Route>
 
       <Route exact path="/liste-operations">
+        {!isLogged && (
+          <Redirect to="/connexion" />
+        )}
         <Page>
           <OperationList dataOperations={dataUser.operation} />
         </Page>

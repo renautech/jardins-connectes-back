@@ -51,7 +51,9 @@ class User {
             }
             
             if(insertedUser.rowCount) {
-                this.id = insertedUser.rows[0].id;
+                for (const prop in insertedUser.rows[0]) {
+                    this[prop] = insertedUser.rows[0][prop];
+                }
             }
 
         }

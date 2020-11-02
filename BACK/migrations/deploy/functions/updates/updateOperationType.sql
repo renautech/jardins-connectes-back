@@ -7,6 +7,7 @@ CREATE FUNCTION
     RETURNS "operation_type" AS $$
 UPDATE "operation_type" SET
     "name" = joptype->> 'name',
+    "picture" = joptype->> 'picture',
     "description" = joptype->> 'description'
 WHERE id = (joptype->> 'id')::int
 RETURNING *;

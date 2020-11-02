@@ -7,10 +7,12 @@ CREATE FUNCTION
     RETURNS "operation_type" AS $$
 INSERT INTO "operation_type" (
     "name",
-    "description"
+    "description",
+    "picture"
 ) VALUES(
     joptype->> 'name',
-    joptype->> 'description'
+    joptype->> 'description',
+    joptype->> 'picture'
 ) RETURNING *;
 $$ LANGUAGE sql STRICT;
 

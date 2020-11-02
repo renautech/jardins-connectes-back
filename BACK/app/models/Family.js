@@ -39,7 +39,9 @@ class Family {
 
             const insertedFamily = await db.query(`SELECT * FROM newFamily($1)`,[this]);
             if(insertedFamily.rowCount) {
-                this.id = insertedFamily.rows[0].id;
+                for (const prop in insertedFamily.rows[0]) {
+                    this[prop] = insertedFamily.rows[0][prop];
+                }
             }
 
         }

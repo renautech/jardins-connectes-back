@@ -57,8 +57,9 @@ class Photo {
                 insertedPhoto = await db.query(`SELECT * FROM newPhotoWithoutDate($1)`,[this]);
             }
             if(insertedPhoto.rowCount) {
-                this.id = insertedPhoto.rows[0].id;
-                this.date = insertedPhoto.rows[0].date;
+                for (const prop in insertedPhoto.rows[0]) {
+                    this[prop] = insertedPhoto.rows[0][prop];
+                }
             }
         }
     }

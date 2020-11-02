@@ -24,6 +24,7 @@ const updateUserSchema = Joi.object({
     postcode: Joi.string().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')),
     department: Joi.string(),
     country: Joi.string(),
+    email: Joi.string().email({minDomainSegments: 2}),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     nickname: Joi.string().alphanum().min(3).max(30),
     profile_picture: Joi.string().max(200)
@@ -43,6 +44,7 @@ const updateFromSuperAdmin = Joi.object({
     postcode: Joi.string().pattern(new RegExp('0[1-9][0-9]{3}$|^[1-9][0-9]{4}$|^2[A,B][0-9]{3}$')),
     department: Joi.string(),
     country: Joi.string(),
+    email: Joi.string().email({minDomainSegments: 2}),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     nickname: Joi.string().alphanum().min(3).max(30),
     profile_picture: Joi.string().max(200),

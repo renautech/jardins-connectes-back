@@ -40,7 +40,7 @@
     border: 1px solid black;
     border-radius: 10px;
     &--image {
-      max-height: 32px;
+      max-width: 32px;
       display : inline-block;
     }
     &--text {
@@ -129,7 +129,7 @@
       border: 1px solid black;
       border-radius: 10px;
       &--image {
-        max-height: 32px;
+        max-width: 32px;
         display : inline-block;
       }
       &--text {

@@ -11,10 +11,11 @@ const Family = ({
   id,
   handleOnClick,
 }) => {
+  const pictureBuild = `http://3.93.151.102:5555${picture}`;
   return (
     <div className="mygarden__family">
       <NavLink onClick={() => handleOnClick(parseInt(id, 10))} className="mygarden__navlink" to="/liste-operations">
-        <img className="mygarden__family--image" src={picture} alt="famille de légume" />
+        <img className="mygarden__family--image" src={pictureBuild} alt="famille de légume" />
         <p className="mygarden__family--text">{type}</p>
       </NavLink>
     </div>

@@ -40,7 +40,9 @@ class Variety {
 
             const insertedVariety = await db.query(`SELECT * FROM newVariety($1)`,[this]);
             if(insertedVariety.rowCount) {
-                this.id = insertedVariety.rows[0].id;
+                for (const prop in insertedVariety.rows[0]) {
+                    this[prop] = insertedVariety.rows[0][prop];
+                }
             }
 
         }

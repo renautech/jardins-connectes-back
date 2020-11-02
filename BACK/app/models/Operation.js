@@ -55,8 +55,9 @@ class Operation {
                 insertedOperation = await db.query(`SELECT * FROM newOperationWithoutDate($1)`,[this]);
             }
             if(insertedOperation.rowCount) {
-                this.id = insertedOperation.rows[0].id;
-                this.date = insertedOperation.rows[0].date;
+                for (const prop in insertedOperation.rows[0]) {
+                    this[prop] = insertedOperation.rows[0][prop];
+                }
             }
         }
     }

@@ -44,7 +44,7 @@ const ProfileEdit = (
       <form autoComplete="off" onSubmit={handleOnSubmit}>
         <div className="profileEdit__container">
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Nom : </p>
+            <p className="profileEdit__info__type">Nom</p>
             <input
               className="profileEdit__info__input" 
               placeholder={profile.lastName}
@@ -54,7 +54,7 @@ const ProfileEdit = (
             />
           </p>
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Prénom : </p>
+            <p className="profileEdit__info__type">Prénom</p>
             <input 
               className="profileEdit__info__input" 
               placeholder={profile.firstName}
@@ -64,7 +64,7 @@ const ProfileEdit = (
             />
           </p>
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Email : </p>
+            <p className="profileEdit__info__type">Email </p>
             <input
               className="profileEdit__info__input"
               placeholder={profile.email}
@@ -74,7 +74,7 @@ const ProfileEdit = (
             />
           </p>
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Pseudo : </p>
+            <p className="profileEdit__info__type">Pseudo</p>
             <input
               className="profileEdit__info__input"
               placeholder={profile.nickName}
@@ -88,7 +88,7 @@ const ProfileEdit = (
             <input className="profileEdit__info__input" placeholder={profile.country} />
           </p> */}
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Code postal : </p>
+            <p className="profileEdit__info__type">Code postal</p>
             <input
               className="profileEdit__info__input"
               placeholder={profile.postcode}
@@ -97,14 +97,14 @@ const ProfileEdit = (
               onChange={handleOnChangePostcode}
             />
           </p>
-          <p className="profileEdit__info__type">Ville : </p>
+          <p className="profileEdit__info__type">Ville</p>
           <TownList
             className="signupForm__select"
             townList={townList}
             changeSignupFormValue={changeProfileFormValue}
           />
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Numéro de rue : </p>
+            <p className="profileEdit__info__type">Numéro de rue</p>
             <input
               className="profileEdit__info__input"
               placeholder={profile.streetNumber}
@@ -114,7 +114,7 @@ const ProfileEdit = (
             />
           </p>
           <p className="profileEdit__info">
-            <p className="profileEdit__info__type">Nom de rue : </p>
+            <p className="profileEdit__info__type">Nom de rue</p>
             <input
               className="profileEdit__info__input"
               placeholder={profile.streetName}

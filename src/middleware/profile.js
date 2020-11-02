@@ -10,6 +10,7 @@ const profile = (store) => (next) => (action) => {
           .then(function (res) {
             console.log('requête profile réussie');
             // update state with user profile data
+            console.log('Données profil : ', res.data);
             store.dispatch(loadProfile(res.data));
           })
           .catch(function (error) {

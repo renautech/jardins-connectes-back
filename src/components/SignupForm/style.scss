@@ -5,7 +5,7 @@
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   background-color: v.$white-color;
-  padding: 2em;
+  
   margin: 0 auto;
   border: 1px lightgrey solid;
   border-radius: 0.7em;
@@ -37,17 +37,10 @@
   &__element {
     display: inline-block;
     margin: 0 0.2em;
-    &--number{
-      max-width: 6.8rem;
-    }
-    &--townlist{
-      width: 100%;
-    }
-    &--street__name {
-      width: 21rem;
-    }
+
     &--townlist {
       width: 340px;
+      max-width: 80%;
     }
   }
   label {
@@ -90,5 +83,14 @@
 
   .signupForm {
     max-width: 600px;
+    padding: 2em;
+    &__element {
+      &--number{
+        max-width: 6.8rem;
+      }
+      &--street__name {
+        width: 21rem;
+      }
+    }
   }
 }

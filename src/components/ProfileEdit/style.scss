@@ -1,11 +1,14 @@
 @use 'src/styles/vars' as v;
 
 .profileEdit {
-  width: 45%;
+
   margin: 1em auto;
   text-align: center;
-  background-color: v.$medium-color;
-  border-radius: 15px;
+  background-color: v.$white-color;
+  padding: 0.5em;
+  margin: 2em auto;
+  border: 1px lightgrey solid;
+  border-radius: 0.7em;
   -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
   box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
@@ -36,13 +39,12 @@
   }
   &__container {
     text-align: left;
-    background-color : v.$lighter-color;
-    overflow: hidden;
   }
   &__info {
     overflow: hidden;
     margin-top: v.$xs-gut;
     &__type {
+      display: block;
       padding: v.$xs-gut;
       margin-left: v.$xs-gut;
       font-size: 1.1rem;
@@ -57,10 +59,19 @@
       text-align: center;
       font-weight: normal;
       background-color: white;
-      width: 45%;
+      width: 100%;
       padding: v.$xs-gut;
-      border-radius: 15px;
+      border: none;
+      border-bottom: 2px solid darkgrey;
       display: inline-block;
     }
+  }
+}
+
+@media screen and (min-width:480px){
+
+  .profileEdit {
+    width: 350px;
+    padding: 2em;
   }
 }

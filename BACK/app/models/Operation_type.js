@@ -20,6 +20,12 @@ class Operation_type {
         return theType.rows[0];
     }
 
+    static async findByName(name) {
+
+        const oneType = await db.query(`SELECT name FROM operation_type WHERE name = $1`,[name]);
+        return oneType.rows[0];
+    }
+
     async save() {
 
         if(this.id) {
@@ -27,7 +33,9 @@ class Operation_type {
         } else {
             const insertedOperationType = await db.query(`SELECT * FROM newOperationType($1)`,[this]);
             if(insertedOperationType.rowCount) {
-                this.id = insertedOperationType.rows[0].id;
+                for (const prop in insertedOperationType.rows[0]) {
+                    this[prop] = insertedOperationType.rows[0][prop];
+                }
             }
         }
     }

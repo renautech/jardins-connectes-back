@@ -16,7 +16,12 @@ import {
   resetAllOperationsValue,
 } from 'src/actions/operations';
 
-import { getUserFamilies, getUserEmptyBoards } from 'src/actions/myGarden';
+import {
+  getUserFamilies,
+  getUserEmptyBoards,
+} from 'src/actions/myGarden';
+
+import { serverIp } from 'src/selectors/serverInfo';
 
 const operations = (store) => (next) => (action) => {
   const {
@@ -36,7 +41,7 @@ const operations = (store) => (next) => (action) => {
 
   switch (action.type) {
     case GET_USER_BOARDS: {
-      axios.get('http://3.93.151.102:5555/v1/boards/users/user', { withCredentials: true })
+      axios.get(`${serverIp}/v1/boards/users/user`, { withCredentials: true })
         .then(function (res) {
           console.log('bonjour2');
           store.dispatch(saveUserBoards(res.data));
@@ -47,7 +52,7 @@ const operations = (store) => (next) => (action) => {
       break;
     }
     case GET_FAMILIES: {
-      axios.get('http://3.93.151.102:5555/v1/families', { withCredentials: true })
+      axios.get(`${serverIp}/v1/families`, { withCredentials: true })
         .then(function (res) {
           store.dispatch(saveFamilies(res.data));
         })
@@ -58,7 +63,7 @@ const operations = (store) => (next) => (action) => {
     }
     case GET_VARIETIES: {
       if (boardFamilyId != null) {
-        axios.get(`http://3.93.151.102:5555/v1/varieties/families/family/${boardFamilyId}`, { withCredentials: true })
+        axios.get(`${serverIp}/v1/varieties/families/family/${boardFamilyId}`, { withCredentials: true })
           .then(function (res) {
             console.log('varieties', res);
             store.dispatch(saveVarieties(res.data));
@@ -75,7 +80,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez donner un nom à votre planche'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/boards/users/user', {
+          axios.post(`${serverIp}/v1/boards/users/user`, {
             name: boardName,
             active: true,
             variety_id: 1,
@@ -102,7 +107,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 2,
             board_id: boardId,
             comment: comment,
@@ -126,7 +131,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche, une famille et une variété de légume !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 3,
             board_id: boardId,
             comment: comment,
@@ -140,7 +145,7 @@ const operations = (store) => (next) => (action) => {
             .catch(function (error) {
               console.log(error);
             });
-          axios.patch(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`, {
+          axios.patch(`${serverIp}/v1/boards/board/${boardId}/users/user/`, {
             variety_id: boardVarietyId,
           },
           {
@@ -163,7 +168,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 4,
             board_id: boardId,
             comment: comment,
@@ -187,7 +192,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et un fertilisant !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 5,
             board_id: boardId,
             product_name: product,
@@ -212,7 +217,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche, un produit et une quantité !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 6,
             board_id: boardId,
             product_name: product,
@@ -238,7 +243,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 7,
             board_id: boardId,
             comment: comment,
@@ -262,7 +267,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche et la quantité de votre récolte !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 8,
             board_id: boardId,
             quantity: parseInt(quantity, 10),
@@ -287,7 +292,7 @@ const operations = (store) => (next) => (action) => {
           store.dispatch(sendNotificationWarning('Vous devez sélectionner une planche !'));
         }
         else {
-          axios.post('http://3.93.151.102:5555/v1/operations/users/user', {
+          axios.post(`${serverIp}/v1/operations/users/user`, {
             operation_type_id: 9,
             board_id: boardId,
           },
@@ -298,7 +303,7 @@ const operations = (store) => (next) => (action) => {
               console.log(res);
               store.dispatch(resetAllOperationsValue());
               store.dispatch(sendNotification(`La planche "${boardName}" a bien été supprimée.`));
-              axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
+              axios.delete(`${serverIp}/v1/boards/board/${boardId}/users/user/`,
                 {
                   withCredentials: true,
                 })

@@ -18,6 +18,7 @@ operationRouter.delete('/operation/:id', isAdmin, flush, mainController.deleteOn
 // Specifics routes
 operationRouter.get('/boards/board/:id', isAuthentificate, cache, operationController.allOperationsByBoard);
 operationRouter.get('/users/user', isAuthentificate, cache, operationController.allOperationsByUser);
+
 operationRouter.post('/users/user', isAuthentificate, validateBody(insertOperationSchema), flush, operationController.addOperationForConnectedUser);
 operationRouter.delete('/operation/:id/users/user', isAuthentificate, flush, operationController.deleteOperationForConnectedUser);
 operationRouter.patch('/operation/:id/users/user', isAuthentificate, validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);

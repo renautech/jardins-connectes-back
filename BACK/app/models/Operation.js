@@ -30,7 +30,7 @@ class Operation {
 
     static async findAllForUser(id) {
 
-        const allOperations = await db.query(`SELECT * from operation JOIN board on board.id = operation.board_id WHERE board.user_id = $1;`,[id]);
+        const allOperations = await db.query(`SELECT operation.* from operation JOIN board on board.id = operation.board_id WHERE board.user_id = $1;`,[id]);
         return allOperations.rows;
     }
 
@@ -38,6 +38,12 @@ class Operation {
 
         const oneOperations = await db.query(`SELECT * FROM operation WHERE id = $1`,[id]);
         return oneOperations.rows[0];
+    }
+
+    static async findOneByUser(operationId,userId) {
+
+        const oneOperation = await db.query(`SELECT operation.* FROM operation JOIN board on board.id = operation.board_id WHERE operation.id = $1 and board.user_id = $2`, [operationId,userId]);
+        return oneOperation.rows[0];
     }
 
     async save() {

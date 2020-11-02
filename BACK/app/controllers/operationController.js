@@ -1,73 +1,102 @@
 const Operation = require('../models/Operation');
+const Board = require('../models/Board');
 
 const operationController = {
 
 
     allOperationsByBoard: async (req,res) => {
 
-        const operations = await Operation.findAllByBoard(req.params.id);
-        res.json(operations);
+        try {
+            const operations = await Operation.findAllByBoard(req.params.id);
+            res.json(operations);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }
     },
 
     allOperationsByUser: async (req,res) => {
 
-        if(req.session.user) {
+        try {
             const operations = await Operation.findAllForUser(req.session.user.id);
-            console.log(operations);
-            res.status(200).json(operations);
+            res.json(operations);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
         }
-        else {
-            res.json("Vous n'êtes pas connecté !");
-        }
+        
     },
 
     addOperationForConnectedUser: async (req,res) => {
 
-        if(req.session.user) {
-            // sécurité BACK supplémentaire pour que l'on ne puisse changer seulement les planches nous appartenant
-            //if(req.session.user.id === board_id) {
+        try {
+            const boardTest = Board.findOneByUser(req.session.user.id,req.body.board_id);
+            console.log(`boardTest : = ${boardTest}`);
+            if(!req.body.board_id === boardTest.id) {
+                throw new Error("Vous ne pouvez pas ajouter cette operation, cette planche ne vous appartient probablement pas !");
+            }
             const newOperation = new Operation(req.body);
-            console.log("ma new operation ! ",newOperation);
             await newOperation.save();
-            res.json("operation sauvegardé !");
-            //}
-            //else {
-            //    res.status(400).json("Vous ne pouvez modifier seulement les planches vous appartenant !");
-            //}
-        }
-        else {
-            res.status(403).json("Vous n'êtes pas connecté !");
-        }
+            if(!newOperation.id){
+                throw new Error("l'insertion a échoué !")
+            }
+            res.json(newOperation);
+            } catch (err) {
+                res.json({
+                    message: err.message,
+                    state: false
+                });
+            }
     },
 
     deleteOperationForConnectedUser: async (req,res) => {
 
-        if(req.session.user) {
-            //if() securite pour que l'on ne puisse supprimer seulement les planches nous appartenant
+        try {
             const operation = new Operation(await Operation.findOne(req.params.id));
-            await operation.delete();
-            res.status(200).json("Operation supprimé !");
-        }
-        else {
-            res.status(403).json("Vous n'êtes pas connecté !");
+            const newOperation = await Operation.findOneByUser(operation.id,req.session.user.id);
+            if(!newOperation || (newOperation === [] )) {
+                throw new Error("Vous ne pouvez pas supprimé cette opération ! elle ne vous appartient pas ou n'existe pas!");
+            }
+            else {
+                await operation.delete();
+                res.json({
+                    message: "Opération supprimé !",
+                    state: true
+                });
+            }
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
         }
     },
 
     updateOperationForConnectedUser: async (req,res) => {
 
-            if(req.session.user) {
-                // if() securite pour que l'on ne puisse changer seulement les planches nous appartenant
-                const operation = new Operation(await Operation.findOne(req.params.id));
-                const newOperation = new Operation(req.body);
-                for(let prop in newOperation){
-                    operation[prop] = newOperation[prop];
-                }
-                await operation.save();
-                res.status(200).json("Operation modifié !");
+
+        try {
+            const operation = new Operation(await Operation.findOne(req.params.id));
+            const operationTest = await Operation.findOneByUser(operation.id,req.session.user.id);
+            if(!operationTest || (operationTest === [])) {
+                throw new Error("Vous ne pouvez pas modifié cette operation ! elle ne vous appartient pas ou n'existe pas !")
             }
-            else {
-                res.status(403).json("Vous n'êtes pas connecté :");
+            const newOperation = new Operation(req.body);
+            for(let prop in newOperation){
+                operation[prop] = newOperation[prop];
             }
+            await operation.save();
+            res.json(operation);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }
     },
 
     findByFamillyForConnectedUser : async (req, res) => {

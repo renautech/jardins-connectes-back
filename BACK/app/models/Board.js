@@ -22,7 +22,7 @@ class Board {
 
     static async findOneByUser(id,idBoard) {
         const board = await db.query(`SELECT * from "board" WHERE user_id = $1 and id = $2`,[id,idBoard]);
-        return board.rows;
+        return board.rows[0];
     }
 
     static async findByFamilyByUser(userId, familyId) {

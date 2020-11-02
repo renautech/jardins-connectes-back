@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, SHOW_PROFILE_EDITION } from 'src/actions/profile';
+import { LOAD_PROFILE, SHOW_PROFILE_EDITION, ENABLE_LOADING } from 'src/actions/profile';
 import { DISABLE_PROFILE_EDITION } from 'src/actions/profileEdit';
 import { bindActionCreators } from 'redux';
 
@@ -43,6 +43,11 @@ const profile = (state = initialState, action = {}) => {
       return {
         ...state,
         profileEdition: false,
+      };
+    case ENABLE_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;

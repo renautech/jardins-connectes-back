@@ -18,7 +18,7 @@ app.use(cors({
 	origin: 'http://localhost:8080'
 }));
 
-app.use('/images',express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join(__dirname, '/../images')));
 app.use(express.json());
 
 // on ne donne pas de nom de session dans l'objet de config car : L’utilisation d’un nom de cookie de session par défaut risque d’ouvrir votre application aux attaques. Le problème de sécurité qui en découle est similaire à X-Powered-By : une personne potentiellement malveillante peut l’utiliser pour s’identifier auprès du serveur et cibler ses attaques en conséquence.
@@ -34,7 +34,7 @@ app.use(session({
         httpOnly: true, // Garantit que le cookie n’est envoyé que sur HTTP(S), pas au JavaScript du client, ce qui renforce la protection contre les attaques de type cross-site scripting.
         // domain - Indique le domaine du cookie ; utilisez cette option pour une comparaison avec le domaine du serveur dans lequel l’URL est demandée. S’ils correspondent, vérifiez ensuite l’attribut de chemin.
         // path - Indique le chemin du cookie ; utilisez cette option pour une comparaison avec le chemin demandé. Si le chemin et le domaine correspondent, envoyez le cookie dans la demande.
-        expires: new Date(Date.now() + 60*60*1000)
+        expires: new Date(Date.now() + 1000*60*60*24*30) // 30 days
     }
 }));
 

@@ -14,6 +14,7 @@ const {
     varietyRouter,
     familyRouter
 } = require('./routers');
+const mainController = require('./controllers/mainController');
 
 router.use('/users', userRouter);
 router.use('/operations', operationRouter);
@@ -27,5 +28,7 @@ router.use('/varieties', varietyRouter);
 router.post('/signup', flush, validateBody(insertUserSchema), userController.signup);
 router.post('/signin', validateBody(signinSchema), userController.signin);
 router.delete('/signout', isAuthentificate, userController.signout);
+
+router.use(mainController.notFound);
 
 module.exports = router;

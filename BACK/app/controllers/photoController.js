@@ -11,7 +11,7 @@ const photoController = {
                 throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");
             }
             const photo = new Photo({
-                url: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+                url: `/${req.file.filename}`,
                 board_id: req.body.board_id
             });
             await photo.save();

@@ -49,9 +49,10 @@ class Board {
         } else {
             const insertedBoard = await db.query(`SELECT * FROM newBoard($1)`,[this]);
             if(insertedBoard.rowCount) {
-                this.id = insertedBoard.rows[0].id;
+                for (const prop in insertedBoard.rows[0]) {
+                    this[prop] = insertedBoard.rows[0][prop];
+                }
             }
-
         }
     }
 

@@ -18,9 +18,10 @@ operationRouter.delete('/operation/:id', isAdmin, flush, mainController.deleteOn
 // Specifics routes
 operationRouter.get('/boards/board/:id', isAuthentificate, cache, operationController.allOperationsByBoard);
 operationRouter.get('/users/user', isAuthentificate, cache, operationController.allOperationsByUser);
-operationRouter.post('/users/user', isAuthentificate, flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
+
+operationRouter.post('/users/user', isAuthentificate, validateBody(insertOperationSchema), flush, operationController.addOperationForConnectedUser);
 operationRouter.delete('/operation/:id/users/user', isAuthentificate, flush, operationController.deleteOperationForConnectedUser);
 operationRouter.patch('/operation/:id/users/user', isAuthentificate, validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);
-operationRouter.get('/families/family/:id', isAuthentificate, operationController.findByFamillyForConnectedUser);
+operationRouter.get('/families/family/:id/users/user', isAuthentificate, cache, operationController.findByFamillyForConnectedUser);
 
 module.exports = operationRouter;

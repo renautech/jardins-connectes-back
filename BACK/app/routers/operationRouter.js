@@ -16,11 +16,11 @@ operationRouter.patch('/operation/:id', isAdmin, validateBody(updateOperationSch
 operationRouter.delete('/operation/:id', isAdmin, flush, mainController.deleteOne(Operation));
 
 // Specifics routes
-operationRouter.get('/boards/board/:id', cache, operationController.allOperationsByBoard);
-operationRouter.get('/users/user', cache, operationController.allOperationsByUser);
-operationRouter.post('/users/user', flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
-operationRouter.delete('/operation/:id/users/user', flush, operationController.deleteOperationForConnectedUser);
-operationRouter.patch('/operation/:id/users/user', validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);
-operationRouter.get('/families/family/:id', operationController.findByFamillyForConnectedUser);
+operationRouter.get('/boards/board/:id', isAuthentificate, cache, operationController.allOperationsByBoard);
+operationRouter.get('/users/user', isAuthentificate, cache, operationController.allOperationsByUser);
+operationRouter.post('/users/user', isAuthentificate, flush, validateBody(insertOperationSchema), operationController.addOperationForConnectedUser);
+operationRouter.delete('/operation/:id/users/user', isAuthentificate, flush, operationController.deleteOperationForConnectedUser);
+operationRouter.patch('/operation/:id/users/user', isAuthentificate, validateBody(updateOperationSchema), flush, operationController.updateOperationForConnectedUser);
+operationRouter.get('/families/family/:id', isAuthentificate, operationController.findByFamillyForConnectedUser);
 
 module.exports = operationRouter;

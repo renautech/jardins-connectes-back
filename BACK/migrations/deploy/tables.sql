@@ -52,7 +52,8 @@ CREATE TABLE photo (
 CREATE TABLE operation_type (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "name" text NOT NULL,
-    "description" text
+    "description" text,
+    picture text
 );
 
 CREATE TABLE operation (

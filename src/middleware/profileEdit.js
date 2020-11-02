@@ -1,6 +1,8 @@
 /* eslint-disable prefer-arrow-callback */
 import axios from 'axios';
 import { UPDATE_PROFILE, disableProfileEdition, changeTownList } from 'src/actions/profileEdit';
+import { eachMonthOfInterval } from 'date-fns';
+import { showProfileEdition } from '../actions/profile';
 
 const profileEdit = (store) => (next) => (action) => {
   if (store.getState().profileEdit.newPostcodeFlag) {
@@ -9,17 +11,14 @@ const profileEdit = (store) => (next) => (action) => {
         store.dispatch(changeTownList(res.data.cities));
       });
   }
-  switch(action.type) {
+  switch (action.type) {
     case UPDATE_PROFILE: {
       // delete empty values from the profileEdit form.
       // It avoids to empty data that the user did not change.
-      const newdata = store.getState().profileEdit;
-      // eslint-disable-next-line no-restricted-syntax
-      for (let value in newdata) {
-        if (newdata[value] === '') {
-          delete newdata[value];
-        }
-      };
+      const newdata = {...store.getState().profileEdit};
+      console.log("newData après copie du profile : ", newdata);
+     
+      
       // Change field names to follow API field names
       newdata.first_name = newdata.firstName;
       delete newdata.firstName;
@@ -30,11 +29,20 @@ const profileEdit = (store) => (next) => (action) => {
       newdata.street_number = newdata.streetNumber;
       delete newdata.streetNumber;
       newdata.nickname = newdata.nickName;
+      // delete state properties of profile not needed
       delete newdata.nickName;
       delete newdata.newPostcodeFlag;
       delete newdata.townList;
+       // eslint-disable-next-line no-restricted-syntax
+       for (let value in newdata) {
+        if (newdata[value] === '') {
+          delete newdata[value];
+        }
+      };
+      console.log("newData après suppression des champs '' : ", newdata);
 
-      axios.patch('http://3.93.151.102:5555/v1/users/user', newdata, { withCredentials: true })
+
+     axios.patch('http://3.93.151.102:5555/v1/users/user', newdata, { withCredentials: true })
         .then(function (res) {
           console.log('update profile réussie');
           store.dispatch(disableProfileEdition());

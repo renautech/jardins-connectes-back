@@ -8,11 +8,13 @@ import {
   loggedOut,
 } from 'src/actions/loginForm';
 
+import { serverIp } from 'src/selectors/serverInfo';
+
 const loginForm = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN: {
       const { loginForm: { email, password } } = store.getState();
-      axios.post('http://3.93.151.102:5555/v1/signin', { email, password }, { withCredentials: true })
+      axios.post(`${serverIp}/v1/signin`, { email, password }, { withCredentials: true })
         .then((res) => {
           if (res.data.state === true) {
             // console.log('logged');
@@ -29,7 +31,7 @@ const loginForm = (store) => (next) => (action) => {
       break;
     }
     case LOGOUT: {
-      axios.delete('http://3.93.151.102:5555/v1/signout', { withCredentials: true })
+      axios.delete(`${serverIp}/v1/signout`, { withCredentials: true })
         .then((res) => {
           store.dispatch(loggedOut());
         })

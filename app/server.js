@@ -13,12 +13,9 @@ const port = process.env.PORT || 5555;
 const host = process.env.HOST || "localhost";
 
 // Accès à l'API
-app.use(cors({
-    credentials: true,
-	origin: 'http://localhost:8080'
-}));
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, '/../images')));
+app.use(express.static(path.join(__dirname, '/../dist')));
 app.use(express.json());
 
 // on ne donne pas de nom de session dans l'objet de config car : L’utilisation d’un nom de cookie de session par défaut risque d’ouvrir votre application aux attaques. Le problème de sécurité qui en découle est similaire à X-Powered-By : une personne potentiellement malveillante peut l’utiliser pour s’identifier auprès du serveur et cibler ses attaques en conséquence.

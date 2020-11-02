@@ -17,7 +17,7 @@ const operationTypeController = {
                 description: req.body.description
             });
             if (req.file) {
-                operationType.picture = `/${req.file.filename}`
+                operationType.picture = `/images/${req.file.filename}`
             }
             await operationType.save();
             if (!operationType.id) {

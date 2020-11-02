@@ -1,0 +1,26 @@
+%syntax-version=1.0.0
+%project=jardins-connectes
+
+tables 2020-10-16T09:25:33Z Flyworkz <pedron.dorian@gmail.com> # Creation of sql tables
+functions/inserts/newUser 2020-10-19T09:08:27Z Tidus91 <kurama91@hotmail.fr> # SQL function  in order to create a new User easily
+functions/updates/updateUser 2020-10-19T12:02:21Z Tidus91 <kurama91@hotmail.fr> # updateUser function
+functions/inserts/newPhoto 2020-10-20T12:12:59Z Flyworkz <pedron.dorian@gmail.com> # function to create a new photo easily
+functions/updates/updatePhoto 2020-10-20T13:00:53Z Flyworkz <pedron.dorian@gmail.com> # function to update a photo easily
+functions/inserts/newPhotoWithoutDate 2020-10-21T07:55:48Z Flyworkz <pedron.dorian@gmail.com> # function to add a new photo without date easily
+functions/inserts/newOperationType 2020-10-20T13:57:26Z Flyworkz <pedron.dorian@gmail.com> # function to create a new operation type easily
+functions/updates/updateOperationType 2020-10-20T14:04:52Z Flyworkz <pedron.dorian@gmail.com> # function to update an operation type easily
+functions/inserts/newBoard 2020-10-20T08:44:20Z Flyworkz <pedron.dorian@gmail.com> # function to create easily a new board
+functions/updates/updateBoard 2020-10-20T09:15:33Z Flyworkz <pedron.dorian@gmail.com> # function to update easily a board
+functions/inserts/newFamily 2020-10-20T08:24:30Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new Family
+functions/updates/updateFamily 2020-10-20T08:32:46Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to modify easily a family
+functions/inserts/newVariety 2020-10-20T10:48:46Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to create a new Variety easily
+functions/updates/updateVariety 2020-10-20T10:55:36Z Tidus91 <kurama91@hotmail.fr> # adding a SQL function in order to modify a  Variety easily
+functions/inserts/newOperation 2020-10-20T12:58:52Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to create easily a new operation
+functions/updates/updateOperation 2020-10-20T12:59:17Z Tidus91 <kurama91@hotmail.fr> # SQL function in order to change easily an operation
+functions/inserts/newOperationWithoutDate 2020-10-21T07:59:05Z Tidus91 <kurama91@hotmail.fr> # function in order to create a new operation without a date easily
+functions/filters/getFamiliesWhereBoard 2020-10-23T07:33:18Z Flyworkz <pedron.dorian@gmail.com> # function to get families which have at least one active board for one user
+functions/filters/findActiveBoardByUser 2020-10-26T08:27:27Z Tidus91 <kurama91@hotmail.fr> # add sqitch function to find all the active board by user
+functions/filters/allVarietiesByFamily 2020-10-26T08:32:30Z Tidus91 <kurama91@hotmail.fr> # add sqitch function to find all varieties by a familyId
+functions/filters/findBoardsByFamilyByUser 2020-10-26T14:33:00Z Flyworkz <pedron.dorian@gmail.com> # function to get all boards by family for connected user
+functions/inserts/newUserWithoutRole 2020-10-28T08:36:40Z Tidus91 <kurama91@hotmail.fr> # add new SQL function when role not defined
+functions/filters/findOperationByUserByFamily 2020-10-30T08:51:51Z Flyworkz <pedron.dorian@gmail.com> # function to find all operations by family for one user

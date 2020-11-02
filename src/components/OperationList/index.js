@@ -18,6 +18,8 @@ const OperationList = ({
     getFamilyOperations();
   }, []);
 
+  const pictureBuild = `http://3.93.151.102:5555${operationList.familyInfo.picture}`;
+
   const options = [
     { value: 'wip', label: 'Workinprogress' },
   ];
@@ -39,7 +41,7 @@ const OperationList = ({
   return (
     <div className="operationList">
       <h2 className="operationList__title">Mes dernières actions</h2>
-      <img className="operationList__img" src="https://www.academiedugout.fr/images/15695/1200-auto/courgette_000.jpg?poix=50&poiy=50" alt="vegetable" />
+      <img className="operationList__img" src={pictureBuild} alt="vegetable" />
       <div className="operationList__bloc">
         <Select
           className="basic-single"

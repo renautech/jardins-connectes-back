@@ -12,10 +12,11 @@ const operationList = (store) => (next) => (action) => {
     case GET_FAMILY_OPERATIONS: {
       const {
         operationList: {
-          familyId,
+          familyInfo,
         },
       } = store.getState();
-      axios.get(`http://3.93.151.102:5555/v1/operations/families/family/${familyId}/users/user`, { withCredentials: true })
+      console.log('IDDDDDDDDDDDDD: ', familyInfo);
+      axios.get(`http://3.93.151.102:5555/v1/operations/families/family/${parseInt(familyInfo.id, 10)}/users/user`, { withCredentials: true })
         .then(function (res) {
           store.dispatch(saveFamilyOperations(res.data));
         })

@@ -7,9 +7,9 @@ export const getFamilyOperations = () => ({
   type: GET_FAMILY_OPERATIONS,
 });
 
-export const setOperationListId = (id) => ({
+export const setOperationListId = (infos) => ({
   type: SET_OPERATIONLIST_ID,
-  id,
+  infos,
 });
 
 export const saveFamilyOperations = (operations) => ({

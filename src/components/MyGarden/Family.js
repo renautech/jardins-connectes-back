@@ -8,13 +8,13 @@ import './style.scss';
 const Family = ({
   type,
   picture,
-  id,
+  family,
   handleOnClick,
 }) => {
   const pictureBuild = `http://3.93.151.102:5555${picture}`;
   return (
     <div className="mygarden__family">
-      <NavLink onClick={() => handleOnClick(parseInt(id, 10))} className="mygarden__navlink" to="/liste-operations">
+      <NavLink onClick={() => handleOnClick(family)} className="mygarden__navlink" to="/liste-operations">
         <img className="mygarden__family--image" src={pictureBuild} alt="famille de légume" />
         <p className="mygarden__family--text">{type}</p>
       </NavLink>
@@ -25,7 +25,7 @@ const Family = ({
 Family.propTypes = {
   type: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  family: PropTypes.object.isRequired,
   handleOnClick: PropTypes.func.isRequired,
 };
 

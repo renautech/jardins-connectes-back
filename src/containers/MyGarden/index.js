@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getOperationTypes());
   },
 
-  setOperationListId: (id) => {
-    dispatch(setOperationListId(id));
+  setOperationListId: (infos) => {
+    dispatch(setOperationListId(infos));
   },
 
   getUserBoards: () => {

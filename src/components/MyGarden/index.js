@@ -28,9 +28,9 @@ const MyGarden = ({
     }
   }, []);
 
-  const handleOnClick = (id) => {
-    console.log('setOperationListId', id);
-    setOperationListId(parseInt(id, 10));
+  const handleOnClick = (family) => {
+    console.log('setOperationListId', family);
+    setOperationListId(family);
   };
 
   const Families = userFamilies.map((family) => {
@@ -40,7 +40,7 @@ const MyGarden = ({
         key={family.name}
         type={family.name}
         handleOnClick={handleOnClick}
-        id={family.id}
+        family={family}
         picture={family.picture}
       />
     );

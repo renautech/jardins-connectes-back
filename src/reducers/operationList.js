@@ -6,7 +6,7 @@ import {
 export const initialState = {
   data: [],
   requestDone: false,
-  familyId: 1,
+  familyInfo: {},
 };
 
 const operationList = (state = initialState, action = {}) => {
@@ -14,7 +14,7 @@ const operationList = (state = initialState, action = {}) => {
     case SET_OPERATIONLIST_ID:
       return {
         ...state,
-        familyId: action.id,
+        familyInfo: action.infos,
       };
     case SAVE_FAMILY_OPERATIONS:
       return {

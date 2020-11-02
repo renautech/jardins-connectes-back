@@ -298,21 +298,21 @@ const operations = (store) => (next) => (action) => {
               console.log(res);
               store.dispatch(resetAllOperationsValue());
               store.dispatch(sendNotification(`La planche "${boardName}" a bien été supprimée.`));
-            })
-            .catch(function (error) {
-              console.log(error);
-              store.dispatch(sendNotificationError('Erreur'));
-            });
-          axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
-            {
-              withCredentials: true,
-            })
-            .then(function (res) {
-              // console.log(res);
-              store.dispatch(resetAllOperationsValue());
-              store.dispatch(getUserFamilies());
-              store.dispatch(getUserBoards());
-              store.dispatch(getUserEmptyBoards());
+              axios.delete(`http://3.93.151.102:5555/v1/boards/board/${boardId}/users/user/`,
+                {
+                  withCredentials: true,
+                })
+                .then(function (res) {
+                  // console.log(res);
+                  store.dispatch(resetAllOperationsValue());
+                  store.dispatch(getUserFamilies());
+                  store.dispatch(getUserBoards());
+                  store.dispatch(getUserEmptyBoards());
+                })
+                .catch(function (error) {
+                  console.log(error);
+                  store.dispatch(sendNotificationError('Erreur'));
+                });
             })
             .catch(function (error) {
               console.log(error);

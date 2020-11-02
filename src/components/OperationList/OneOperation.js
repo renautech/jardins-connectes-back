@@ -29,34 +29,6 @@ const OneOperation = ({
 
   const foundType = operationTypes.find((type) => type.id === operation.operation_type_id);
 
-  // if (foundType.id === 1) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/628/628647.svg';
-  // }
-  // if (foundType.id === 2) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/735/735044.svg';
-  // }
-  // if (foundType.id === 3) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/3628/3628681.svg';
-  // }
-  // if (foundType.id === 4) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/67/67739.svg';
-  // }
-  // if (foundType.id === 5) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/2674/2674324.svg';
-  // }
-  // if (foundType.id === 6) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/2965/2965775.svg';
-  // }
-  // if (foundType.id === 7) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/2950/2950521.svg';
-  // }
-  // if (foundType.id === 8) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/2230/2230512.svg';
-  // }
-  // if (foundType.id === 9) {
-  //   const typeImage = 'https://www.flaticon.com/svg/static/icons/svg/3096/3096687.svg';
-  // }
-
   const comment = showOpDetail
     ? (
       <div className="oneOperation__element oneOperation__element--below">

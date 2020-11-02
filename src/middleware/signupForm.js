@@ -8,6 +8,8 @@ import {
   isSigned,
 } from 'src/actions/signupForm';
 
+import { serverIp } from 'src/selectors/serverInfo';
+
 const signupForm = (store) => (next) => (action) => {
   if (store.getState().signupForm.newPostcodeFlag) {
     axios.get(`https://vicopo.selfbuild.fr/cherche/${store.getState().signupForm.postcode}`)
@@ -35,7 +37,7 @@ const signupForm = (store) => (next) => (action) => {
       const department = postcode.substring(0, 2);
 
       if (password === passwordVerify) {
-        axios.post('http://3.93.151.102:5555/v1/signup', {
+        axios.post(`${serverIp}/v1/signup`, {
           first_name: firstName,
           last_name: lastName,
           nickname: nickName,

@@ -7,6 +7,8 @@ import {
   saveFamilyOperations,
 } from 'src/actions/operationList';
 
+import { serverIp } from 'src/selectors/serverInfo';
+
 const operationList = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_FAMILY_OPERATIONS: {
@@ -16,7 +18,7 @@ const operationList = (store) => (next) => (action) => {
         },
       } = store.getState();
       console.log('IDDDDDDDDDDDDD: ', familyInfo);
-      axios.get(`http://3.93.151.102:5555/v1/operations/families/family/${parseInt(familyInfo.id, 10)}/users/user`, { withCredentials: true })
+      axios.get(`${serverIp}/v1/operations/families/family/${parseInt(familyInfo.id, 10)}/users/user`, { withCredentials: true })
         .then(function (res) {
           store.dispatch(saveFamilyOperations(res.data));
         })
@@ -26,7 +28,7 @@ const operationList = (store) => (next) => (action) => {
       break;
     }
     case DELETE_OPERATION:
-      axios.delete(`http://3.93.151.102:5555/v1/operations/operation/${action.id}/users/user`, { withCredentials: true })
+      axios.delete(`${serverIp}/v1/operations/operation/${action.id}/users/user`, { withCredentials: true })
         .then(function (res) {
           console.log('opération supprimée !', res);
           store.dispatch(getFamilyOperations());

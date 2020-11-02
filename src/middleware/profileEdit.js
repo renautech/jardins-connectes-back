@@ -39,7 +39,7 @@ const profileEdit = (store) => (next) => (action) => {
           console.log('update profile réussie');
           store.dispatch(disableProfileEdition());
           // force page reload to get new profile data from API
-          window.location.reload();
+          //window.location.reload();
         })
         .catch(function (error) {
           console.log('Erreur dans la récupération du profil : ', error);

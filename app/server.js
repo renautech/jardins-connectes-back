@@ -18,7 +18,9 @@ const host = process.env.HOST || "localhost";
 app.use(helmet());
 
 // authorize the access of API
-app.use(cors());
+app.use(cors({
+    origin: 'localhost:8080'
+}));
 
 app.use(express.static(path.join(__dirname, '/../dist')));
 app.use(express.json());

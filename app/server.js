@@ -15,11 +15,12 @@ const port = process.env.PORT || 5555;
 const host = process.env.HOST || "localhost";
 
 // https://www.npmjs.com/package/helmet
-app.use(helmet());
+//app.use(helmet());
 
 // authorize the access of API
 app.use(cors({
-    origin: 'localhost:8080'
+    origin: 'http://localhost:8080',
+    credentials: true
 }));
 
 app.use(express.static(path.join(__dirname, '/../dist')));

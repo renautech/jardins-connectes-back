@@ -17,7 +17,7 @@ const isAdmin = async (req,res,next) => {
         if (!req.session.user) {
             throw new Error("Vous n'êtes pas connecté");
         }
-        if (req.session.user.role !== 'admin') {
+        if (req.session.user.role !== 'admin' && req.session.user.role !== 'superAdmin') {
             throw new Error("Vous n'avez pas l'accès (admin requis)");
         }
         next();

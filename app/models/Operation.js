@@ -18,7 +18,7 @@ class Operation {
 
     static async findAllByBoard(id) {
 
-        const operations = await db.query(`SELECT * from operation where board_id = $1`,[id]);
+        const operations = await db.query(`SELECT * from operation where board_id = $1 ORDER BY "date" DESC`,[id]);
         return operations.rows;
     }
 

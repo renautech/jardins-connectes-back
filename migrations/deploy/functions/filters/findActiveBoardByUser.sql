@@ -4,7 +4,7 @@ BEGIN;
 
 CREATE FUNCTION 
 findActiveBoardByUser(userId int)
-RETURNS board AS $$
+RETURNS SETOF board AS $$
 SELECT board.*
 FROM board 
 JOIN variety on variety.id = board.variety_id

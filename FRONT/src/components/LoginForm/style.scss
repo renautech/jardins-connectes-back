@@ -1,0 +1,61 @@
+@use 'src/styles/vars' as v;
+
+.loginForm {
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+  background-color: v.$white-color;
+  padding: 2em;
+  margin: 0 auto;
+  border: 1px lightgrey solid;
+  border-radius: 0.7em;
+
+  &-element {
+    display: block;
+  }
+  &-Title {
+    text-align: center;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+  }
+  input {
+    color: v.$black-color;
+    width: 100%;
+    max-width: 300px;
+    padding: .7em;
+    margin: 0.5em 0;
+    font-size: 1em;
+    border: none;
+    border-bottom: 2px solid darkgrey;
+    // border-radius: 0.7em;
+    height: 2.5em;
+  }
+  label, button {
+    color: black;
+  }
+  button {
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin: 1em auto;
+    padding: 0.5em;
+    border-radius: 0.7em;
+    border: 2px solid v.$dark-color;
+    background-color: v.$dark-color;
+    font-weight: 600;
+    color: white;
+  }
+  &-Error {
+    text-align: center;
+    color: red;
+    margin-bottom: v.$s-gut;
+  }
+
+}
+
+@media screen and (min-width:480px){
+
+  .loginForm {
+    width: 350px;
+  }
+}

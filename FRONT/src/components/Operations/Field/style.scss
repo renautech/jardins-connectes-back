@@ -1,0 +1,13 @@
+@use 'src/styles/vars' as v;
+
+.field {
+  text-align: center;
+  &__input {
+    min-width: 50%;
+    margin-top : v.$s-gut;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    border-radius: 15px;
+    border: 1px solid black;
+  }
+}

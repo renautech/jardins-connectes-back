@@ -27,7 +27,7 @@ const familyController = {
             }
             const family = new Family({
                 name: req.body.name,
-                picture: `/${req.file.filename}`,
+                picture: `/images/${req.file.filename}`,
                 description: req.body.description || ''
             });
             await family.save();

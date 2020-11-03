@@ -1,0 +1,54 @@
+@use 'src/styles/vars' as v;
+
+.navigation {
+  visibility: hidden;
+  -webkit-box-shadow: 0px 10px 13px 3px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 10px 13px 3px rgba(0,0,0,0.53);
+  box-shadow: 0px 10px 13px 3px rgba(0,0,0,0.53);
+}
+
+@media screen and (min-width:480px){
+  .navigation {
+    visibility: visible;
+    text-align: center;
+    background-color: v.$dark-color;
+    margin-bottom: v.$l-gut;
+    &__nav {
+      &__link {
+        display: inline-block;
+        width: 100px;
+        font-size: 1.1rem;
+        padding: 0.3rem;
+        transition: ease-in 0.2s;
+      }
+      &__link:hover, &__link--active {
+        color: white;
+        background-color: v.$darker-color;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:800px){
+  .navigation {
+    visibility: visible;
+    text-align: center;
+    background-color: v.$dark-color;
+    margin-bottom: v.$l-gut;
+    &__nav {
+      &__link {
+        display: inline-block;
+        width: 150px;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        transition: ease-in 0.2s;
+      }
+      &__link:hover, &__link--active {
+        color: white;
+        background-color: v.$darker-color;
+      }
+    }
+  }
+  
+
+}

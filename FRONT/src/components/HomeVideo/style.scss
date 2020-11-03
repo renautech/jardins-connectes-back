@@ -1,0 +1,31 @@
+@use 'src/styles/vars' as v;
+
+
+.homevideo{
+  position:relative;
+  margin:0 auto;
+  padding-bottom:56.25%; /* ratio 16:9 */
+  padding-top:30px;
+  height:0;
+  overflow:hidden
+ }
+  .homevideo iframe {
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  max-width:100%;
+  max-height:100%;
+ }
+
+ @media screen and (min-width:800px){
+  .homevideo{
+    padding-bottom:300px;  // to set according to real video height
+   }
+  .homevideo iframe {
+    left:calc(50%-320px);  // to set according to real video width
+
+   }
+
+ }

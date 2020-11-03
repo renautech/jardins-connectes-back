@@ -1,0 +1,28 @@
+@use 'reset';
+@use 'vars';
+
+body {
+  font-family: sans-serif;
+}
+
+/* 
+  // or you can import your own font
+  @font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-Regular.ttf');
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+*/
+
+@font-face {
+	font-family: "Capture It";
+	src: url('../assets/fonts/Capture-it.ttf');
+}
+
+
+@font-face {
+	font-family: "Chilanka";
+	src: url('../assets/fonts/Chilanka-Regular.ttf');
+}

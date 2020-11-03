@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "reload": "npm i && cd FRONT/ && yarn && yarn build && cd ..",
     "start": "node index.js",
     "db": "createdb jardins && sqitch deploy",
     "seed": "node app/services/seeding",

@@ -3,7 +3,9 @@ const express= require('express');
 const app = express();
 const router = require('./router');
 const cors = require('cors');
-const path = require('path'); // pour express static
+const path = require('path');
+const helmet = require('helmet');
+const { sanitize } = require('./services/sanitizer');
 
 // il ne sauvegarde que l’ID session dans le cookie lui-même, mais pas les données de session (à la différence de cookie-session ou express.session (fourni de base))
 //Par défaut, il utilise le stockage en mémoire et n’est pas conçu pour un environnement de production. En production, on devra configurer un magasin de sessions évolutif
@@ -12,7 +14,10 @@ const session = require('express-session');
 const port = process.env.PORT || 5555;
 const host = process.env.HOST || "localhost";
 
-// Accès à l'API
+// https://www.npmjs.com/package/helmet
+app.use(helmet());
+
+// authorize the access of API
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '/../dist')));
@@ -35,8 +40,8 @@ app.use(session({
     }
 }));
 
-// permet d'ajouter une sécurité en "cachant" que l'application tourne sur un server Express et donc plus difficile de lancer des attaques spécifiquement ciblées
-app.disable('x-powered-by');
+// sanitize the HTML sent to the app
+app.use(sanitize);
 
 app.use('/v1', router);
 

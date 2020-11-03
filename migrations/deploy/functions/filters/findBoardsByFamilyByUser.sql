@@ -4,8 +4,8 @@ BEGIN;
 
 CREATE FUNCTION
     findBoardsByFamilyByUser("userId" int, "familyId" int)
-    RETURNS TABLE ("name" text) AS $$
-SELECT "board"."name"
+    RETURNS board AS $$
+SELECT board.*
 FROM "board" 
 JOIN "variety" ON "variety"."id" = "board"."variety_id"
 WHERE "board"."user_id" = "userId" AND "board"."active" = true AND "variety"."family_id" = "familyId"

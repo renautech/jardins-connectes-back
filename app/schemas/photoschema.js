@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const insertPhotoSchema = Joi.object({
     date: Joi.date(),
-    image: Joi.any().required(),
+    image: Joi.any(),
     board_id: Joi.number().integer().required()
 });
 

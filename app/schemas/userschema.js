@@ -12,7 +12,7 @@ const insertUserSchema = Joi.object({
     email: Joi.string().email({minDomainSegments: 2}).required(),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
     nickname: Joi.string().alphanum().min(3).max(30).required(),
-    image: Joi.any().required(),
+    image: Joi.any()
 });
 
 const updateUserSchema = Joi.object({
@@ -47,7 +47,7 @@ const updateFromSuperAdmin = Joi.object({
     email: Joi.string().email({minDomainSegments: 2}),
     password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     nickname: Joi.string().alphanum().min(3).max(30),
-    profile_picture: Joi.string().max(200),
+    profile_picture: Joi.any(),
     role: Joi.string()
 })
 module.exports = {

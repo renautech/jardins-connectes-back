@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const fs = require('fs');
 
 const userController = {
 
@@ -13,19 +14,23 @@ const userController = {
             if (reqNickname) {
                 throw new Error("Ce pseudo est déjà utilisé");
             }
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
+            }
             const salt = await bcrypt.genSalt(10);
             const encryptedPassword = await bcrypt.hash(req.body.password,salt);
             req.body.password = encryptedPassword;
             const newUser = new User(req.body);
+            if (req.file) {
+                newUser.profile_picture = `/images/${req.file.filename}`
+            } else {
+                newUser.profile_picture = "";
+            }
             await newUser.save();
             if (!newUser.id) {
                 throw new Error("L'insertion a échoué");
             }
-            const theUser = new User(await User.findOne(newUser.id));
-            if (!theUser) {
-                throw new Error("Utilisateur introuvable");
-            }
-            req.session.user = theUser;
+            req.session.user = newUser;
             delete req.session.user.password;
             res.json({
                 message: "Inscrit et connecté",
@@ -90,9 +95,6 @@ const userController = {
 
     findConnected: async (req, res) => {
         try {
-            if (!req.session.user) { 
-                throw new Error("Veuillez vous connecter");
-            }
             const connectedUser = await User.findOne(req.session.user.id);
             if (!connectedUser) {
                 throw new Error("Utilisateur introuvable");
@@ -109,9 +111,6 @@ const userController = {
 
     deleteConnected: async (req, res) => {
         try {
-            if (!req.session.user) { 
-                throw new Error("Veuillez vous connecter");
-            }
             const userToDelete = new User(req.session.user);
             await userToDelete.delete();
             if (userToDelete.errorMessage) {
@@ -136,10 +135,10 @@ const userController = {
 
     updateConnected: async (req, res) => {
         try {
-            if (!req.session.user) { 
-                throw new Error("Veuillez vous connecter");
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
             }
-            const userToUpdate = new User(await User.findOne(req.session.user.id));
+            const userToUpdate = await User.findOne(req.session.user.id);
             if (!userToUpdate) {
                 throw new Error("Utilisateur introuvable");
             }
@@ -148,12 +147,24 @@ const userController = {
                 const encryptedPassword = await bcrypt.hash(req.body.password,salt);
                 req.body.password = encryptedPassword;
             }
+            const user = new User(userToUpdate);
             for(const prop in req.body) {
-                userToUpdate[prop] = req.body[prop];     
+                if (typeof user[prop] === "number") {
+                    user[prop] = parseInt(req.body[prop]);
+                } else {
+                    user[prop] = req.body[prop];
+                }   
             }
-            await userToUpdate.save();
-            delete userToUpdate.password;
-            res.json(userToUpdate);
+            if (req.file) {
+                fs.unlink('public' + user.profile_picture, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+                user.profile_picture = `/images/${req.file.filename}`
+            }
+            await user.save();
+            delete user.password;
+            res.json(user);
         } catch (err) {
             res.json({
                 message: err.message,

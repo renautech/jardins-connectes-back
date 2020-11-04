@@ -17,7 +17,7 @@ const varietyController = {
     insert: async (req,res) => {
         try {
             const reqVariety = await Variety.findByName(req.body.name);
-            if (reqVariety) {
+            if (reqVariety.name !== 'Autre') {
                 throw new Error("Cette variété existe déjà");
             }
             if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {

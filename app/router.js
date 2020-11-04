@@ -15,6 +15,7 @@ const {
     familyRouter
 } = require('./routers');
 const mainController = require('./controllers/mainController');
+const upload = require('./services/upload');
 
 router.use('/users', userRouter);
 router.use('/operations', operationRouter);
@@ -25,7 +26,7 @@ router.use('/families', familyRouter);
 router.use('/varieties', varietyRouter);
 
 // Authentification
-router.post('/signup', flush, validateBody(insertUserSchema), userController.signup);
+router.post('/signup', upload, flush, validateBody(insertUserSchema), userController.signup);
 router.post('/signin', validateBody(signinSchema), userController.signin);
 router.delete('/signout', isAuthentificate, userController.signout);
 

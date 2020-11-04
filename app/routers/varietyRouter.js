@@ -13,7 +13,7 @@ const {isAdmin,isAuthentificate} = require('../services/session');
 varietyRouter.get('/', isAuthentificate, cache, mainController.findAll(Variety));
 varietyRouter.get('/variety/:id', isAuthentificate, cache, mainController.findOne(Variety));
 varietyRouter.post('/', isAdmin, upload, validateBody(insertVarietySchema), flush, varietyController.insert);
-varietyRouter.patch('/variety/:id', isAdmin, validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
+varietyRouter.patch('/variety/:id', isAdmin, upload, validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
 varietyRouter.delete('/variety/:id', isAdmin, flush, mainController.deleteOne(Variety));
 
 // Specifics routes

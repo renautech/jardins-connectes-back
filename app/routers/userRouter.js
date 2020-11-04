@@ -6,6 +6,7 @@ const { cache, flush } = require('../cache/cacheStrategy');
 const { insertUserSchema, updateUserSchema, updateFromSuperAdmin } = require('../schemas/userschema');
 const User = require('../models/User');
 const userController = require('../controllers/userController');
+const upload = require('../services/upload');
 const {isAdmin,isAuthentificate,isSuperAdmin} = require('../services/session');
 
 // Prefix : /users 
@@ -17,6 +18,6 @@ userRouter.delete('/user/:id', isAdmin, flush, userController.deleteFromAdmin);
 // Connected routes
 userRouter.get('/user', isAuthentificate, cache, userController.findConnected);
 userRouter.delete('/user', isAuthentificate, flush, userController.deleteConnected);
-userRouter.patch('/user', isAuthentificate, validateBody(updateUserSchema), flush, userController.updateConnected);
+userRouter.patch('/user', isAuthentificate, upload, validateBody(updateUserSchema), flush, userController.updateConnected);
 
 module.exports = userRouter;

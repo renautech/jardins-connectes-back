@@ -13,7 +13,7 @@ const {isAdmin,isAuthentificate} = require('../services/session');
 operationTypeRouter.get('/', isAuthentificate, cache, mainController.findAll(Operation_type));
 operationTypeRouter.get('/operation_type/:id', isAuthentificate, cache, mainController.findOne(Operation_type));
 operationTypeRouter.post('/', isAdmin, upload, validateBody(insertOperationTypeSchema), flush, operationTypeController.insert);
-operationTypeRouter.patch('/operation_type/:id', isAdmin, validateBody(updateOperationTypeSchema), flush, mainController.updateOne(Operation_type));
+operationTypeRouter.patch('/operation_type/:id', upload, isAdmin, validateBody(updateOperationTypeSchema), flush, mainController.updateOne(Operation_type));
 operationTypeRouter.delete('/operation_type/:id', isAdmin, flush, mainController.deleteOne(Operation_type));
 
 module.exports = operationTypeRouter;

@@ -13,7 +13,7 @@ const {isAdmin,isAuthentificate} = require('../services/session');
 familyRouter.get('/', isAuthentificate, cache, mainController.findAll(Family));
 familyRouter.get('/family/:id', isAuthentificate, cache, mainController.findOne(Family));
 familyRouter.post('/', isAdmin, upload, validateBody(insertFamilySchema), flush, familyController.insert);
-familyRouter.patch('/family/:id', isAdmin, validateBody(updateFamilySchema), flush, mainController.updateOne(Family));
+familyRouter.patch('/family/:id', isAdmin, upload, validateBody(updateFamilySchema), flush, mainController.updateOne(Family));
 familyRouter.delete('/family/:id', isAdmin, flush, mainController.deleteOne(Family));
 
 // Specifics routes

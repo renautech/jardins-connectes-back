@@ -13,7 +13,7 @@ const {isAdmin,isAuthentificate} = require('../services/session');
 photoRouter.get('/', isAdmin, cache, mainController.findAll(Photo));
 photoRouter.get('/photo/:id', isAdmin, cache, mainController.findOne(Photo));
 photoRouter.post('/', isAdmin, upload, validateBody(insertPhotoSchema), flush, photoController.insert);
-photoRouter.patch('/photo/:id', isAdmin, validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
+photoRouter.patch('/photo/:id', isAdmin, upload, validateBody(updatePhotoSchema), flush,mainController.updateOne(Photo));
 photoRouter.delete('/photo/:id', isAdmin, flush, mainController.deleteOne(Photo));
 
 // Connected Routes

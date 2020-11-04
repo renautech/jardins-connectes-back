@@ -10,7 +10,7 @@ const theKeys = [];
 
 const cache = (request,response,next) => {
     const theKey = buildKey(request.originalUrl, request.params);
-    console.log(theKey);
+    
     theKeys.push(theKey);
 
     client.exists(theKey, (_,itExists) => {

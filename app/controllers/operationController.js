@@ -35,7 +35,6 @@ const operationController = {
 
         try {
             const boardTest = Board.findOneByUser(req.session.user.id,req.body.board_id);
-            console.log(`boardTest : = ${boardTest}`);
             if(!req.body.board_id === boardTest.id) {
                 throw new Error("Vous ne pouvez pas ajouter cette operation, cette planche ne vous appartient probablement pas !");
             }

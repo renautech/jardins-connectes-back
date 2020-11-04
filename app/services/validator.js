@@ -14,7 +14,7 @@ const validateBody = (schema) => (req,res,next) => {
     const validatedBody = schema.validate(req.body);
 
     if (validatedBody.error) {
-        console.log(req);
+        
         res.status(400).json(validatedBody.error);
 
 

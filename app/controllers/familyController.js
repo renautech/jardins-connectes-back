@@ -1,4 +1,6 @@
 const Family = require('../models/Family');
+const fs = require('fs');
+
 
 const familyController = {
 
@@ -41,8 +43,40 @@ const familyController = {
                 state: false
             });
         }   
-    }
-    
+    },
+
+    update: async (req,res) => {
+        try {
+            const toUpdate = await Family.findOne(req.params.id);
+            if (!toUpdate) {
+                throw new Error("Famille introuvable");
+            }         
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");
+            }
+            const family = new Family(toUpdate);
+            for(const prop in req.body) {
+                family[prop] = req.body[prop];
+            }
+            if (req.file) {
+                fs.unlink('public' + family.picture, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+                family.picture = `/images/${req.file.filename}`
+            }
+            await family.save();
+            if (!family.id) {
+                throw new Error("L'insertion a échoué");
+            }
+            res.json(family);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }   
+    }   
 }
 
 module.exports = familyController;

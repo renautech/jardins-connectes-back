@@ -1,4 +1,5 @@
 const Variety = require('../models/Variety');
+const fs = require('fs');
 
 const varietyController = {
 
@@ -43,6 +44,43 @@ const varietyController = {
                 state: false
             });
         }
+    },
+
+    update: async (req,res) => {
+        try {
+            const toUpdate = await Variety.findOne(req.params.id);
+            if (!toUpdate) {
+                throw new Error("Variété introuvable");
+            }         
+            if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
+                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");
+            }
+            const variety = new Variety(toUpdate);
+            for(const prop in req.body) {
+                if (typeof variety[prop] === "number") {
+                    variety[prop] = parseInt(req.body[prop]);
+                } else {
+                    variety[prop] = req.body[prop];
+                }  
+            }
+            if (req.file) {
+                fs.unlink('public' + variety.picture, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+                variety.picture = `/images/${req.file.filename}`
+            }
+            await variety.save();
+            if (!variety.id) {
+                throw new Error("L'insertion a échoué");
+            }
+            res.json(variety);
+        } catch (err) {
+            res.json({
+                message: err.message,
+                state: false
+            });
+        }   
     }
     
 };

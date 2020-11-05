@@ -5,6 +5,7 @@ const varietyController = require('../controllers/varietyController');
 const { validateBody } = require('../services/validator');
 const { cache, flush } = require('../cache/cacheStrategy');
 const { insertVarietySchema, updateVarietySchema } = require('../schemas/varietyschema');
+const { uploadSchema } = require('../schemas/uploadSchema');
 const Variety = require('../models/Variety');
 const upload = require('../services/upload');
 const {isAdmin,isAuthentificate} = require('../services/session');
@@ -12,8 +13,8 @@ const {isAdmin,isAuthentificate} = require('../services/session');
 // Prefix : /varieties
 varietyRouter.get('/', isAuthentificate, cache, mainController.findAll(Variety));
 varietyRouter.get('/variety/:id', isAuthentificate, cache, mainController.findOne(Variety));
-varietyRouter.post('/', isAdmin, upload, validateBody(insertVarietySchema), flush, varietyController.insert);
-varietyRouter.patch('/variety/:id', isAdmin, validateBody(updateVarietySchema), flush, mainController.updateOne(Variety));
+varietyRouter.post('/', isAdmin, upload, validateBody(insertVarietySchema, uploadSchema), flush, varietyController.insert);
+varietyRouter.patch('/variety/:id', isAdmin, upload, validateBody(updateVarietySchema, uploadSchema), flush, varietyController.update);
 varietyRouter.delete('/variety/:id', isAdmin, flush, mainController.deleteOne(Variety));
 
 // Specifics routes

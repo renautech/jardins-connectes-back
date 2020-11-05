@@ -26,3 +26,4 @@ functions/inserts/newUserWithoutRole 2020-10-28T08:36:40Z Tidus91 <kurama91@hotm
 functions/filters/findOperationByUserByFamily 2020-10-30T08:51:51Z Flyworkz <pedron.dorian@gmail.com> # function to find all operations by family for one user
 fix/varietyNotUnique 2020-11-04T00:07:36Z Flyworkz <pedron.dorian@gmail.com> # variety unique => not unique
 fix/removeCastedInt 2020-11-04T14:57:12Z Tidus91 <kurama91@hotmail.fr> # remove casted int for user
+fix/descriptionInUpdateVariety 2020-11-05T09:06:42Z Flyworkz <pedron.dorian@gmail.com> # add description in update variety function

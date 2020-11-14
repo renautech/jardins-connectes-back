@@ -27,3 +27,4 @@ functions/filters/findOperationByUserByFamily 2020-10-30T08:51:51Z Flyworkz <ped
 fix/varietyNotUnique 2020-11-04T00:07:36Z Flyworkz <pedron.dorian@gmail.com> # variety unique => not unique
 fix/removeCastedInt 2020-11-04T14:57:12Z Tidus91 <kurama91@hotmail.fr> # remove casted int for user
 fix/descriptionInUpdateVariety 2020-11-05T09:06:42Z Flyworkz <pedron.dorian@gmail.com> # add description in update variety function
+family_id 2020-11-14T10:51:23Z renautech,,, <renautech@VM-LinuxMint> # add column family_id in family table

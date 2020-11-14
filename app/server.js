@@ -19,7 +19,7 @@ const host = process.env.HOST || "localhost";
 
 // authorize the access of API
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: ['http://localhost', 'http://localhost:8080', 'http://jardinsconnectes.renautech.fr'],
     credentials: true
 }));
 
@@ -41,7 +41,7 @@ app.use(session({
         httpOnly: true, // Garantit que le cookie n’est envoyé que sur HTTP(S), pas au JavaScript du client, ce qui renforce la protection contre les attaques de type cross-site scripting.
         // domain - Indique le domaine du cookie ; utilisez cette option pour une comparaison avec le domaine du serveur dans lequel l’URL est demandée. S’ils correspondent, vérifiez ensuite l’attribut de chemin.
         // path - Indique le chemin du cookie ; utilisez cette option pour une comparaison avec le chemin demandé. Si le chemin et le domaine correspondent, envoyez le cookie dans la demande.
-        expires: new Date(Date.now() + 1000*60*60*24*30) // 30 days
+        expires: new Date(Date.now() + 1000*60*60*24*30), // 30 days
     }
 }));
 

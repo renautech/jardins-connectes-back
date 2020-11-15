@@ -28,3 +28,4 @@ fix/varietyNotUnique 2020-11-04T00:07:36Z Flyworkz <pedron.dorian@gmail.com> # v
 fix/removeCastedInt 2020-11-04T14:57:12Z Tidus91 <kurama91@hotmail.fr> # remove casted int for user
 fix/descriptionInUpdateVariety 2020-11-05T09:06:42Z Flyworkz <pedron.dorian@gmail.com> # add description in update variety function
 family_id 2020-11-14T10:51:23Z renautech,,, <renautech@VM-LinuxMint> # add column family_id in family table
+family_id_fk_variety 2020-11-14T15:48:28Z renautech,,, <renautech@VM-LinuxMint> # chenge FK in variety table from family(id) to family(family_id)

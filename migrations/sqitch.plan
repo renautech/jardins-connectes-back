@@ -29,3 +29,4 @@ fix/removeCastedInt 2020-11-04T14:57:12Z Tidus91 <kurama91@hotmail.fr> # remove 
 fix/descriptionInUpdateVariety 2020-11-05T09:06:42Z Flyworkz <pedron.dorian@gmail.com> # add description in update variety function
 family_id 2020-11-14T10:51:23Z renautech,,, <renautech@VM-LinuxMint> # add column family_id in family table
 family_id_fk_variety 2020-11-14T15:48:28Z renautech,,, <renautech@VM-LinuxMint> # chenge FK in variety table from family(id) to family(family_id)
+fix/boardVarietyIdCanBeNull 2020-11-16T16:45:35Z renautech,,, <renautech@VM-LinuxMint> # allow variety_id in board table to be NULL to allow empty boards

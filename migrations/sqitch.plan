@@ -30,3 +30,5 @@ fix/descriptionInUpdateVariety 2020-11-05T09:06:42Z Flyworkz <pedron.dorian@gmai
 family_id 2020-11-14T10:51:23Z renautech,,, <renautech@VM-LinuxMint> # add column family_id in family table
 family_id_fk_variety 2020-11-14T15:48:28Z renautech,,, <renautech@VM-LinuxMint> # chenge FK in variety table from family(id) to family(family_id)
 fix/boardVarietyIdCanBeNull 2020-11-16T16:45:35Z renautech,,, <renautech@VM-LinuxMint> # allow variety_id in board table to be NULL to allow empty boards
+fix/newfindActiveBoardByUser 2020-11-17T08:07:54Z renautech,,, <renautech@VM-LinuxMint> # family_id=NULL instead of 1 : new way to handle empty boards
+findEmptyBoardByUser 2020-11-17T08:37:24Z renautech,,, <renautech@VM-LinuxMint> # replace findActiveBoardByUser

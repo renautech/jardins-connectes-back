@@ -14,7 +14,7 @@ class Family {
     }
 
     static async findOne(id) {
-
+        console.log('id ', id);
         const oneFamily = await db.query(`SELECT * FROM family WHERE id = $1`,[id]);
         return oneFamily.rows[0];
     }

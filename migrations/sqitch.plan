@@ -32,3 +32,4 @@ family_id_fk_variety 2020-11-14T15:48:28Z renautech,,, <renautech@VM-LinuxMint> 
 fix/boardVarietyIdCanBeNull 2020-11-16T16:45:35Z renautech,,, <renautech@VM-LinuxMint> # allow variety_id in board table to be NULL to allow empty boards
 fix/newfindActiveBoardByUser 2020-11-17T08:07:54Z renautech,,, <renautech@VM-LinuxMint> # family_id=NULL instead of 1 : new way to handle empty boards
 findEmptyBoardByUser 2020-11-17T08:37:24Z renautech,,, <renautech@VM-LinuxMint> # replace findActiveBoardByUser
+functions/filters/newgetFamiliesWhereBoard 2020-11-20T04:29:26Z renautech,,, <renautech@VM-LinuxMint> # side effect of adding family_id reference : change family.id to family.family_id

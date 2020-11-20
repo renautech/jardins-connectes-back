@@ -59,10 +59,12 @@ const familyController = {
                 family[prop] = req.body[prop];
             }
             if (req.file) {
-                fs.unlink('public' + family.picture, function(err) {
-                    if (err) throw err;
-                    console.log('file deleted');
-                });
+                if(family.picture!='') {
+                    fs.unlink('public' + family.picture, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                }
                 family.picture = `/images/${req.file.filename}`
             }
             await family.save();

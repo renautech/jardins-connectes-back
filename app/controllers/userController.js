@@ -46,9 +46,6 @@ const userController = {
 
     signin: async (req,res) => {
         try {
-            if (req.session.user) {
-                throw new Error("Vous êtes déjà connecté");
-            }
             const userAllowed = await User.findByEmail(req.body.email);
             if(!userAllowed) {
                 throw new Error("Cet email n'existe pas");

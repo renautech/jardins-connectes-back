@@ -33,3 +33,5 @@ fix/boardVarietyIdCanBeNull 2020-11-16T16:45:35Z renautech,,, <renautech@VM-Linu
 fix/newfindActiveBoardByUser 2020-11-17T08:07:54Z renautech,,, <renautech@VM-LinuxMint> # family_id=NULL instead of 1 : new way to handle empty boards
 findEmptyBoardByUser 2020-11-17T08:37:24Z renautech,,, <renautech@VM-LinuxMint> # replace findActiveBoardByUser
 functions/filters/newgetFamiliesWhereBoard 2020-11-20T04:29:26Z renautech,,, <renautech@VM-LinuxMint> # side effect of adding family_id reference : change family.id to family.family_id
+fix/userAddTokenAddActive 2020-12-11T08:46:30Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to user table
+fix/newUserAddTokenAddActive 2020-12-11T08:23:42Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to new user function

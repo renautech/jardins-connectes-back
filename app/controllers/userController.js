@@ -125,6 +125,11 @@ const userController = {
             if(!passwordValidation) {
                 throw new Error("Mot de passe incorrect pour cette adresse email");
             }
+            // user authorized to log in only if his account has been validated by email : 'active' property should be true
+            if(!userAllowed.active)
+            {
+                throw new Error("Email non approuvé. Veuillez cliquer sur lien reçu par email afin de valider votre compte.");
+            }
             req.session.user = new User(userAllowed);
             delete req.session.user.password;
             res.json({

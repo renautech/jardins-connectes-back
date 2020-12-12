@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
+const nodemailer = require("nodemailer");
+require('dotenv').config();
 
 const userController = {
 
@@ -20,26 +22,95 @@ const userController = {
             const salt = await bcrypt.genSalt(10);
             const encryptedPassword = await bcrypt.hash(req.body.password,salt);
             req.body.password = encryptedPassword;
-            const newUser = new User(req.body);
+            let userContent = req.body;
+            // Token creation for email validation
+            let rand=Math.floor((Math.random() * 100)*((Math.random()+100) * 100) + 54);
+            // Add token to the new user data
+            userContent.token = rand;
+            const newUser = new User(userContent);
+            // save users in DB
+            await newUser.save();
+            if (!newUser.id) {
+                throw new Error("L'insertion a échoué");
+            }
+            // Link creation sent to user by email. This link corresponds to the route to validate new user
+            const port = process.env.PORT || 5555;
+            const host = process.env.HOST || "localhost";
+            let link=`http://${host}:${port}/v1/users/user/validation/${newUser.id}&${rand}`;
+            // Send email validation to validate user owns email box
+            let transporter = nodemailer.createTransport({
+                host: "smtp.orange.fr",
+                port: 25,
+                secure: false,
+               // logger: true,
+                //debug: true,
+            });
+            // verify connection configuration - not mandatory
+            transporter.verify(function(error, success) {
+                if (error) {
+                console.log(error);
+                } else {
+                console.log("Server is ready to take our messages");
+                }
+            });
+            let mailOptions = {
+                from: '"test Nodemailer" <renautech.fr@gmail.com>',
+                to: "renautech.fr@gmail.com",
+                subject: "Test avec code",
+                html: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>",
+            };
+            let info = transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                }else{
+                    console.log("Message sent: " + info.messageId);
+                }
+            });
+            res.json({
+                message: "Un email vous a été envoyé. Veuillez cliquer sur le lien dans cet email pour valider votre inscription",
+            });
+
+            
             if (req.file) {
                 newUser.profile_picture = `/images/${req.file.filename}`
             } else {
                 newUser.profile_picture = "";
             }
-            await newUser.save();
-            if (!newUser.id) {
-                throw new Error("L'insertion a échoué");
-            }
             req.session.user = newUser;
             delete req.session.user.password;
-            res.json({
-                message: "Inscrit et connecté",
-                state: true
-            });
         } catch (err) {
             res.json({
                 message: err.message,
                 state: false
+            });
+        }
+    },
+
+    validateEmail: async (req, res) => {
+        try {
+            const userToValidate = await User.findOne(req.params.id);
+            if(userToValidate.token == req.params.token) {
+                // change validate column of user to true
+                // create a new User object 'user' from userToValidate which is a simple object
+                const user = new User(userToValidate);
+                console.log(user)
+                user["active"] = true;
+                // token is deleted, so the link sent by email works only one time for security
+                user["token"] = undefined;
+                console.log(user)
+                await user.save();
+                res.json({
+                    message: `User approved. Id : ${req.params.id} Token : ${req.params.token}`,
+                });
+            } else {
+                res.json({
+                    message: `User NOT approved. Email verification failed. Id : ${req.params.id} Token : ${req.params.token}`,
+                }); 
+            };
+            
+        } catch (err) {
+            res.json({
+                message: err.message,
             });
         }
     },
@@ -133,7 +204,7 @@ const userController = {
     updateConnected: async (req, res) => {
         try {
             if (req.file && req.file.filename.substring(req.file.filename.length - 9, req.file.filename.length) === 'undefined') {
-                throw new Error("Seul les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
+                throw new Error("Seuls les formats suivants sont acceptés: JPEG, JPG, PNG, SVG");;
             }
             const userToUpdate = await User.findOne(req.session.user.id);
             if (!userToUpdate) {
@@ -179,7 +250,7 @@ const userController = {
             res.json("Utilisateur supprimé !");
         }
         else {
-            res.json("Vous ne pouvez pas supprimé un super Admin !");
+            res.json("Vous ne pouvez pas supprimer un super Admin !");
         }
         
 

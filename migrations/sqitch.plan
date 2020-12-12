@@ -35,3 +35,5 @@ findEmptyBoardByUser 2020-11-17T08:37:24Z renautech,,, <renautech@VM-LinuxMint> 
 functions/filters/newgetFamiliesWhereBoard 2020-11-20T04:29:26Z renautech,,, <renautech@VM-LinuxMint> # side effect of adding family_id reference : change family.id to family.family_id
 fix/userAddTokenAddActive 2020-12-11T08:46:30Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to user table
 fix/newUserAddTokenAddActive 2020-12-11T08:23:42Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to new user function
+fix/newUserWithoutRoleAddTokenAddActive 2020-12-11T14:39:37Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to new user function without role
+fix/updateUserAddTokenAddActive 2020-12-12T05:07:25Z renautech,,, <renautech@VM-LinuxMint> # Change Signup email confirm - Add token and active columns to update user function with role

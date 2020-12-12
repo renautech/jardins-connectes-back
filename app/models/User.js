@@ -6,8 +6,10 @@ class User {
 
     constructor(data) {
         for(const prop in data) {
-            this[prop] = data[prop]; 
+            this[prop] = data[prop];
         }
+        // new user account is inactive until validation email received
+        this.active = false;
     }
 
     static async findAll() {
@@ -35,12 +37,10 @@ class User {
     }
 
     async save() {
-
         if(this.id) {
 
             await db.query(`SELECT * FROM updateUser($1)`,[this]);
         } else {
-
             let insertedUser;
 
             if(this.role){

@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+// a function that returns a middleware to allow this middleware to be modified depending on the schema 'schema'
+// receives as a parameter
 const validateQuery = (schema) => (req,res,next) => {
     const validatedQuery = schema.validate(req.query);
 
@@ -11,6 +13,7 @@ const validateQuery = (schema) => (req,res,next) => {
         next();
     }
 };
+
 
 const validateBody = (bodySchema, fileSchema) => (req,res,next) => {
 

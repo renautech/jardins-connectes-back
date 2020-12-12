@@ -15,6 +15,7 @@ userRouter.get('/', isAdmin, cache, mainController.findAll(User));
 userRouter.get('/user/:id', isAdmin, cache, mainController.findOne(User));
 userRouter.patch('/user/:id', isSuperAdmin, validateBody(updateFromSuperAdmin), flush,mainController.updateOne(User));
 userRouter.delete('/user/:id', isSuperAdmin, flush, userController.deleteFromAdmin);
+userRouter.get('/user/validation/:id&:token', userController.validateEmail);
 
 // Connected routes
 userRouter.get('/user', isAuthentificate, cache, userController.findConnected);

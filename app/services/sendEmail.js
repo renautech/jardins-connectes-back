@@ -1,7 +1,8 @@
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
-const sendEmail = async (newUser, rand) => {
+const sendEmail = async (newUser, rand, email) => {
+    console.log("email " + email);
     // Link creation sent to user by email. This link corresponds to the route to validate new user
     const port = process.env.PORT || 5555;
     const host = process.env.HOST || "localhost";
@@ -29,7 +30,7 @@ const sendEmail = async (newUser, rand) => {
     });
     let mailOptions = {
         from: '"test Nodemailer" <renautech.fr@gmail.com>',
-        to: "renautech.fr@gmail.com",
+        to: email,
         subject: "Test avec code",
         html: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>",
     };

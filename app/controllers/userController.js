@@ -34,8 +34,8 @@ const userController = {
             if (!newUser.id) {
                 throw new Error("L'insertion a échoué");
             }
-            
-            sendEmail(newUser, rand);
+            let email = req.body.email;
+            sendEmail(newUser, rand, email);
             
             // if (req.file) {
             //     newUser.profile_picture = `/images/${req.file.filename}`

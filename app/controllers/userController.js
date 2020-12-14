@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs');
 const nodemailer = require("nodemailer");
 require('dotenv').config();
+const sendEmail = require('../services/sendEmail');
 
 const userController = {
 
@@ -33,51 +34,17 @@ const userController = {
             if (!newUser.id) {
                 throw new Error("L'insertion a échoué");
             }
-            // Link creation sent to user by email. This link corresponds to the route to validate new user
-            const port = process.env.PORT || 5555;
-            const host = process.env.HOST || "localhost";
-            let link=`http://${host}:${port}/v1/users/user/validation/${newUser.id}&${rand}`;
-            // Send email validation to validate user owns email box
-            let transporter = nodemailer.createTransport({
-                host: "smtp.orange.fr",
-                port: 25,
-                secure: false,
-               // logger: true,
-                //debug: true,
-            });
-            // verify connection configuration - not mandatory
-            transporter.verify(function(error, success) {
-                if (error) {
-                console.log(error);
-                } else {
-                console.log("Server is ready to take our messages");
-                }
-            });
-            let mailOptions = {
-                from: '"test Nodemailer" <renautech.fr@gmail.com>',
-                to: "renautech.fr@gmail.com",
-                subject: "Test avec code",
-                html: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>",
-            };
-            let info = transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    console.log(error);
-                }else{
-                    console.log("Message sent: " + info.messageId);
-                }
-            });
+            
+            sendEmail(newUser, rand);
+            
+            // if (req.file) {
+            //     newUser.profile_picture = `/images/${req.file.filename}`
+            // } else {
+            //     newUser.profile_picture = "";
+            // }
             res.json({
                 message: "Un email vous a été envoyé. Veuillez cliquer sur le lien dans cet email pour valider votre inscription",
             });
-
-            
-            if (req.file) {
-                newUser.profile_picture = `/images/${req.file.filename}`
-            } else {
-                newUser.profile_picture = "";
-            }
-            req.session.user = newUser;
-            delete req.session.user.password;
         } catch (err) {
             res.json({
                 message: err.message,

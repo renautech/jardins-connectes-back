@@ -5,7 +5,7 @@ const sendEmail = async (newUser, rand, email) => {
     console.log("email " + email);
     // Link creation sent to user by email. This link corresponds to the route to validate new user
     const port = process.env.PORT || 5555;
-    const host = process.env.HOST || "localhost";
+    const host = process.env.PUBLICHOST || "localhost";
     let link=`http://${host}:${port}/v1/users/user/validation/${newUser.id}&${rand}`;
     // Send email validation to validate user owns email box
     let transporter = nodemailer.createTransport({

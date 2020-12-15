@@ -14,9 +14,6 @@ const sendEmail = async (newUser, rand, email) => {
             user: 'renaudtechnical@gmail.com',
             pass: 'jFOQuX7rswD9mx2`X~hV'
         }
-        // host: "smtp.orange.fr",
-        // port: 25,
-        // secure: false,
         // logger: true,
         //debug: true,
     });

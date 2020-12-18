@@ -13,7 +13,7 @@ UPDATE "user" SET
     street_name = juser->> 'street_name',
     street_number = (juser->> 'street_number')::int,
     town = juser->> 'town',
-    postcode = (juser->> 'postcode')::int,
+    postcode = juser->> 'postcode',
     department = (juser->> 'department')::text,
     country = juser->> 'country',
     email = juser->> 'email',

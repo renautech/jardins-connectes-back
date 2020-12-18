@@ -27,7 +27,7 @@ INSERT INTO "user" (
     juser->> 'street_name',
     (juser->> 'street_number')::int,
     juser->> 'town',
-    (juser->> 'postcode')::int,
+    juser->> 'postcode',
     (juser->> 'department')::text,
     juser->> 'country',
     juser->> 'email',
